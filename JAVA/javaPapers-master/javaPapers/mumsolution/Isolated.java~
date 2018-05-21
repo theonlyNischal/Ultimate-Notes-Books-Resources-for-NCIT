@@ -1,0 +1,19 @@
+class Isolated
+{
+  static int isIsolated(long n)
+  {
+    int ret=0;
+    long sqr=n*n, cube=sqr*n;
+    while(sqr!=0)
+    {
+      int r1=(int)sqr%10;
+    }
+    return ret;
+  }
+  public static void main(String args[])
+  {
+    int x=isIsolated(8);
+    System.out.println(x);
+  }
+}
+  

@@ -1,0 +1,31 @@
+JAR (Java Archive) Files:
+--Java Archive (JAR) is a platform independent file format that allows to compress and bundle multiple files associated with a Java application, applet into a single file.
+--The Java Runtime environment can load classes from the JAR file directly without un-jarring the file.
+
+Creating JAR File:
+1. Via command line jar tool
+2. Via the "export" or "build" option of IDE such as Eclipse or Netbeans.
+
+1. Via command line:
+-- f:\javapr\file handling>jar cvf hello.jar *.class
+
+   creating executable jar file:
+----------------------------------------------
+First create a manifest file: (To specify which class is the main class)
+Manifest-Version: 1.0
+Main-Class: ItemEventDemo
+--f:\javapr\gui\events>jar cvfm gui.jar item.mf ItemEventDemo.class
+--------------------------------------------------
+updating a jar file:
+---------------------------
+f:\javapr\file handling>jar 
+uvf hello.jar *.class
+
+Reading from a jar file: 
+------------------------------
+1. To list table of contents of a jar file.
+f:\javapr\file handling>jar tvf file.jar
+2. To extract the contents of a jar file.
+f:\javapr\file handling>jar xvf file.jar
+
+					 

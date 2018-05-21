@@ -1,0 +1,35 @@
+import java.sql.*;
+
+class StaticInsert
+{
+  public static void main(String args[])
+  {
+    Connection con=null;
+    try{
+    Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
+    con=DriverManager.getConnection("jdbc:odbc:mydatasource","sa","orchid");
+    String sql="insert into tbltest(id,name,address)values(3,'shyam','pokhara')";
+    Statement st=con.createStatement();
+    st.executeUpdate(sql);
+    System.out.println("Record Inserted");
+    }
+    catch(ClassNotFoundException e)
+    {
+      System.out.println(e);
+    }
+    catch(SQLException e)
+    {
+      System.out.println(e);
+    }
+    finally
+    {
+      try{
+      con.close();
+      }
+      catch(SQLException e)
+      {
+        System.out.println(e);
+      }
+    }
+  }
+}

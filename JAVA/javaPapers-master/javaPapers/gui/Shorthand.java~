@@ -1,0 +1,38 @@
+import java.awt.*;
+import javax.swing.*;
+public class Shorthand extends JPanel {
+public Shorthand () {
+setLayout(new GridBagLayout());
+GridBagConstraints c = new GridBagConstraints();
+c.fill = GridBagConstraints.BOTH;
+c.weightx = 1;
+add(new JButton("1"), c);
+add(new JButton("2"), c);
+add(new JButton("3"), c);
+add(new JButton("4"), c);
+c.gridwidth = GridBagConstraints.REMAINDER;
+add(new JButton("5"), c);
+c.gridwidth = 1;
+c.weightx = 0;
+add(new JButton("A"), c);
+add(new JButton("B"), c);
+
+add(new JButton("C"), c);
+c.gridwidth = GridBagConstraints.REMAINDER;
+add(new JButton("D"), c);
+c.gridwidth = 1;
+add(new JButton("a"), c);
+c.gridwidth = GridBagConstraints.RELATIVE;
+add(new JButton("b"), c);
+c.gridwidth = GridBagConstraints.REMAINDER;
+add(new JButton("c"), c);
+c.gridwidth = 1;
+}
+public static void main(String args[]) {
+JFrame f = new JFrame("GridBag Example 5");
+Shorthand sh = new Shorthand();
+f.getContentPane().add(sh, BorderLayout.CENTER);
+f.pack();
+f.setVisible(true);
+}
+}

@@ -1,0 +1,28 @@
+import java.awt.*;
+import javax.swing.*;
+import java.awt.event.*;
+
+class MouseEventDemo extends JFrame implements MouseListener
+{
+  JLabel l1;
+  JPanel p;
+  MouseEventDemo()
+  {
+    setLayout(new BorderLayout());
+    l1=new JLabel();
+    add(l1,BorderLayout.SOUTH);
+     p=new JPanel();
+    add(p,BorderLayout.CENTER);
+    
+    setVisible(true);
+    setSize(200,200);
+  }
+  public static void main(String args[])
+  {
+    new MouseEventDemo();
+  }
+  public void mouseEntered(MouseEvent e)
+  {
+    p.setBackground(Color.BLUE);
+  }
+}

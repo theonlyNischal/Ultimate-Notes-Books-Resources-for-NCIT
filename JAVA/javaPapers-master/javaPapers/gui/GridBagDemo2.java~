@@ -1,0 +1,14 @@
+import javax.swing.*;
+import java.awt.*;
+
+class GridBagDemo2
+{
+  GridBagDemo2()
+  {
+  }
+  public static void main(String args[])
+  {
+    new GridBagDemo2();
+  }
+}
+      

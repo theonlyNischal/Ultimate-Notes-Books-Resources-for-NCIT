@@ -1,0 +1,13 @@
+JComboBox:
+----------------
+-->used to create a drop down list.
+-->constructor:
+	JComboBox(Object[]items)
+
+-->addItem(Object obj) can be used to add items to    the combo box.
+
+-->setMaximumRowCount(int) is used to specify the number of items visible at a time.
+
+-->getSelectedItem() / getSelectedIndex() return the selected item or index.
+
+-->Both ActionEvent and ItemEvent are generated when an item is clicked.

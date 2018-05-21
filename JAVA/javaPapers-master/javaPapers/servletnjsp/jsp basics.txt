@@ -1,0 +1,94 @@
+A JSP that displays how many times it has been accessed
+
+<html>
+<body>
+The page count is:
+<%
+out.println(Counter.getCount());
+%>
+</body>
+</html>
+
+-------------------------------------------
+
+package mypack;
+public class Counter{
+   private static int count;
+   public static int getCount( ){
+        count++;
+         return count;
+     }
+}
+
+----------------------------------------------
+
+we get error Counter class is not recognized. To solve this problem:
+
+solution 1: mypack.Counter.getCount( )
+
+solution 2:
+<%@ page import="mypack.*" %>
+<html>
+<body>
+The page count is:
+<%
+out.println(Counter.getCount());
+%>
+</body>
+</html>
+ ----------------------------------------------------------------
+
+To import multiple packages:
+<%@ page import="java.util.*, java.net.*" %>
+
+Directive: A directive is a way to give special instructions to the Container at page translation time. They do not produce any output that is visible to the client. 
+The directives are characterized using <%@    %> tags.
+Following are the directives available in JSP:
+a. page --> The page directive allows importing classes, setting content type and so on. It can be placed anywhere within the document.
+b. include-->The include directive is used to include HTML file, JSP or servlet into a JSP file. Usually the included files are for tables, headers and footers.
+c. taglib-->The taglib directive allows the page to use custom tags inside the JSP page.
+
+JSP comments:
+<%//single line comment %>  
+<%-- single line comment --%>
+<%/*multi 
+         line comment  */%>
+
+Scriptlet: <%    %> whatever java code is written inside this tag.
+Expression: <%= %>whatever java code is written inside this tag.
+
+Note: in JSP we can remove out.println by using expression.
+
+
+
+
+
+
+for eg in above jsp page:
+<%= Counter.getCount( ) %> can be done.
+Notice that there is no semicolon in an expression.
+
+-------------------------------------------------------------------------
+
+Declaring a variable:
+a. In a scriptlet:
+<% int count=0; %>  here count becomes a local variable
+b. In a declaration:
+<%! int count=0; %> 
+-->declarations are for static and instance variables and methods.
+
+
+
+************************************************
+
+Including contents of a text file into jsp 
+<html>
+<body>
+<%@ include file="include.txt" %>
+</body>
+</html>
+save it as include.jsp
+
+create a notepad file include.txt and write some text in it.
+save both file in the same folder.
+

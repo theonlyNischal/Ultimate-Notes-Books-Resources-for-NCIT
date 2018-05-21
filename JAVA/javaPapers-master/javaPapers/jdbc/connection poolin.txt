@@ -1,0 +1,5 @@
+Connection Pooling:
+-->It is a technique to allow multiple clients to make use of a cached set of shared and reusable connection objects providing access to a database. 
+-->Opening/Closing database connection is an expensive process and hence connection pools improve the performance of execution of commands on a database. It facilitates reuse of the same connection object to serve a number of client requests. 
+-->Every time a client request is received, the pool is searched for an available connection object and it's highly likely that it gets a free connection object. Otherwise, either the incoming requests are queued or a new connection object is created and added to the pool depending upon how many connections are already there in the pool.
+--> As soon as the request finishes using a connection object, the object is given back to the pool.

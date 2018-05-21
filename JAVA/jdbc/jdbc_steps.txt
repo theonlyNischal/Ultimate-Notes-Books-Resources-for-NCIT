@@ -1,0 +1,77 @@
+1. import the package
+2. Load  the Driver and Register
+3. Establish th connection
+4. Create the statement
+5. Execute the query
+6. Process Result
+7. Stop
+
+
+1. Import the package
+    import java.sql.*;
+2. Load and Register the Driver
+    Class.forName("com.mysql.jdbc.Driver");
+3. Establish the connection
+    String url = "";
+    String username = "root";
+    String password = "";
+    String query = "select username from student where userid=3"
+    
+    // For whole table
+    String query = "select * from student"
+    
+    => "insert into student values(4, "Mohini");
+    => "insert into student values(?,?);
+    
+    Connection con = DriverManagergetConnection(url, username, password);
+
+4. Create the Statement
+    Statement st = con.createStatement();
+    
+    PreparedStatement st = con.prepareStatement(query);
+    st.setInt(position_of_?, roll_no);
+    st.setInt(position_of_?, name);
+
+5. Execute the query
+
+    // Fetch the data from database
+    ResultSet = rs.executeQuery(query);
+    
+    //Insert the data to database
+    int count = rs.executeUpdate(query);
+    
+    
+    //PreparedStatement Insert
+    int count = rs.executeUpdate();
+    
+ 6. Process Result
+    // Fetch
+ 
+    rs.next();
+    String name = rs.getString("username");
+    S.o.p(name);
+    
+    // loop
+    while(rs.next()){
+        // Process the result.
+    }
+    
+    // Insert
+        S.o.p(count + "Rows is affected");
+ 7. Close
+     st.close()
+     con.close()
+
+
+
+
+
+
+
+
+
+
+
+
+
+

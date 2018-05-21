@@ -1,0 +1,15 @@
+class Check
+{
+  public static void main(String args[])
+  {
+    int a[]=new int[5];
+    int s=0;
+    for(int i=0;i<5;i++)
+    {
+      s=s+a[i];
+    }
+    System.out.println("Sum of array elements is : "+s);
+  }
+}
+    
+      

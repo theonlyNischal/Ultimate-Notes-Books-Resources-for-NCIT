@@ -1,0 +1,20 @@
+RequestDispatcher
+-------------------
+-->interface inside javax.servlet package that is used to dispatch a request to another resource (servlet/html/jsp).
+-->It provides two methods.
+
+public void forward(ServletRequest request,ServletResponse response)throws ServletException,IOException
+-->Forwards a request from a servlet to another resource (servlet, JSP file, or HTML file) on the server.
+
+public void include(ServletRequest request,ServletResponse response)throws ServletException,IOException
+-->Includes the content of a resource (servlet, JSP page, or HTML file) in the response.
+
+
+What is servlet API?
+--> It is a collection of class and interface under javax.servlet and javax.servlet.http that can be used to create server side java application.
+ javax.servlet
+     class -- Servlet, ServletException
+   interface -- ServletRequest, ServletResponse, RequestDispatcher
+javax.servlet.http
+   class - HttpServlet, Cookie
+  interface --HttpServletRequest, HttpServletResponse, HttpSession

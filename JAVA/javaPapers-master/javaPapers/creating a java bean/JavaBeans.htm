@@ -1,0 +1,1464 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0071)https://www3.ntu.edu.sg/home/ehchua/programming/java/J9f_JavaBeans.html -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><HTML 
+xmlns="http://www.w3.org/1999/xhtml"><HEAD><META content="IE=10.000" 
+http-equiv="X-UA-Compatible">
+ 
+<META http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+<TITLE>JavaBeans</TITLE> <LINK href="JavaBeans_files/programming_notes.css" rel="stylesheet" 
+type="text/css"> <LINK href="../favicon.ico" rel="shortcut icon" type="image/x-icon">
+<META name="GENERATOR" content="MSHTML 10.00.9200.16578"></HEAD> 
+<BODY><!-- Begin the outermost container division --> 
+<DIV id="container"><!-- print header --> 
+<SCRIPT src="JavaBeans_files/header.js" type="text/javascript"></SCRIPT>
+ <!-- begin main content division --> 
+<DIV id="content">
+<H1>Java Programming</H1>
+<H2>Javabeans</H2>
+<H3>Introduction</H3>
+<P><EM>Visual Programming Languages</EM> (such as  Visual Basic and Delphi) have 
+been very popular in building GUI applications. In visual programming, you can 
+drag and drop a visual component into a Application Builder and attach event 
+handler to the component. Visual programming is ideal for <EM>rapid 
+prototyping</EM> of GUI applications.  Visual programming relies on component 
+and event-driven technology.  Components are <EM>reusable software units</EM> 
+that can be assembled into an application via an application building tool 
+(e.g.,  Visual Studio, JBuilder, NetBeans, Eclipse).</P>
+<P>In Java, visual programming is supported via the "Javabean" API. The 
+application builder tool loads the beans into a "toolbox" or "palette". You can 
+select a bean from the toolbox, drop it into a "form", modify its appearance or 
+properties, and define its interaction with other beans.  Using the JavaBeans 
+component technology, you can compose (or assemble) an application with just a 
+few lines of codes.</P>
+<P>"A Javabean is a <EM>reusable software component</EM> that can be manipulated 
+visually in an application builder tool."</P>
+<P>"A Javabean is an independent, reusable software component.  Beans may be 
+visual object, like Swing components (e.g. <CODE>JButton</CODE>, 
+<CODE>JTextField</CODE>) that you can drag and drop using a GUI builder tool to 
+assemble your GUI application.  Beans may also be invisible object, like queues 
+or stacks.  Again, you can use these components to assemble your application 
+using a builder tool."</P>
+<P>Javabeans expose their features (such as properties, methods, events) to the 
+application builder tools for visual manipulation.  These feature names must 
+adhere to a strict naming convention in order for them to be examined 
+automatically.  In other words, an application builder tool relies on these 
+naming conventions to discover the exposed features, in a process known as 
+introspection. For examples,</P>
+<OL>
+  <LI>A property called <CODE>propertyName</CODE> of type 
+  <CODE>PropertyType</CODE> has the following convention: 
+<PRE class="code-syntax">PropertyType propertyName                    <SPAN class="code-comment">// declaration</SPAN>
+public PropertyType getPropertyName()        <SPAN class="code-comment">// getter</SPAN>
+public void setPropertyName(PropertyType p)  <SPAN class="code-comment">// setter</SPAN>
+</PRE></LI>
+  <LI>For an event <EM>source</EM> object, which can fire an <EM>event</EM> 
+  called <CODE>XxxEvent</CODE> specified in an interface 
+  <CODE>XxxListener</CODE>, the following methods must be provided to register 
+  and remove <EM>listener</EM>: 
+<PRE class="code-syntax">public void addXxxListener(XxxListener l)
+public void removeXxxListener(XxxListener l)
+</PRE></LI></OL>
+<P>I assume that you are familiar with OOP concepts (such as interface, 
+polymorphism) and GUI programming (in AWT and Swing).  Otherwise, study the 
+earlier chapters.</P>
+<H3>JavaBean Development Software</H3>
+<H4>Bean Development Kit (BDK)</H4>
+<P><STRONG>NOTE</STRONG>: BDK is no longer available for download from the Java 
+website.</P>
+<P>Bean Development Kit (BDK) is a tool for testing whether your Javabeans meets 
+the JavaBean specification.  Follow the instruction provided to install the BDK. 
+ Read the documentation and tutorial provided (in particular, "The Java 
+Tutorial, specialized trial on JavaBeans"). BDK  comes with a set of sample demo 
+beans.  You should try them out and closely study these demo beans before 
+writing our own beans.</P>
+<P>Let's try to assemble (or compose) an application using the BDK demo 
+beans.</P>
+<OL>
+  <LI>Start the "beanbox" by running "$bdk\beanbox\run.bat".</LI>
+  <LI>From the "Toolbox" window, select "Juggler" (a demo bean) and place it 
+  inside the "beanbox" (by clicking the desired location in the "beanbox" 
+  window).  Observe the "Property" window of the Juggler bean.</LI>
+  <LI>Create a button by selecting "OurButton" demo bean from the "Toolbox" and 
+  place it inside the "Beanbox".  In the "Proprety" window, change the "label" 
+  from "press" to "start".</LI>
+  <LI>Focus on "OurButton", choose "Edit”" from menu ⇒ "Events" ⇒ "mouse" ⇒ 
+  "mouseClicked" and place it onto the "Juggler" (i.e., "Juggler" is the target 
+  of this event).  In the "EventTargetDialog", select method "startJuggling" as 
+  the event handler.</LI>
+  <LI>Create another button by selecting "OurButton" bean from "Toolbox" and 
+  place it inside the "Beanbox" again.  In the "Proprety" window, change the 
+  "label" from "press" to "stop".</LI>
+  <LI>Focus on the stop button, choose "Edit" from menu ⇒ "Events" ⇒ "mouse" ⇒ 
+  "mouseClicked" and place it onto the "Juggler".  In the "EventTargetDialog", 
+  select method "stopJuggling" as the event handler.</LI>
+  <LI>Click on the buttons, and observe the result.</LI></OL>
+<P>[TODO] BDK diagram</P>
+<P>It is easy to assemble an application from components.  You can do it without 
+writing a single line code, if these components are readily available.</P>
+<P>NOTES:</P>
+<UL>
+  <LI>BDK is  old (since JDK 1.1), and does not make use of many of the latest 
+  Java features.  For example, it uses AWT GUI classes rather than the 
+  Swing.</LI>
+  <LI> To run BDK under JDK 1.5 and above, you may have to recompile the 
+  program.</LI></UL>
+<H4>Bean Builder</H4>
+<P>Bean Builder can be downloaded from <A href="https://bean-builder.dev.java.net/">https://bean-builder.dev.java.net/</A>.</P>
+<P>[TODO]</P>
+<H4>NetBeans</H4>
+<P>[TODO]</P>
+<H3>Writing Your Own Javabeans</H3>
+<P>The JavaBeans APIs covers five aspects:</P>
+<OL>
+  <LI><EM>Properties</EM>: represent the attributes of a component.</LI>
+  <LI><EM>Event Handling</EM>:  allows beans to communicate with each others 
+  (JavaBean uses JDK 1.1 AWT event-delegation model).</LI>
+  <LI><EM>Persistence</EM>:  allows beans' internal states to be stored and 
+  later restored.</LI>
+  <LI><EM>Introspection</EM>:  allows Application Builder tool to analyze 
+  beans.</LI>
+  <LI><EM>Application Builder Tool</EM>:  for composing applications from 
+  Javabeans components.</LI></OL>
+<H4>Property:</H4>
+<P>A bean has properties, which define the attributes of the bean, and can be 
+manipulated by an application builder tool.</P>
+<P><STRONG>Javabean Property Naming Convention:</STRONG> For a <EM>property</EM> 
+called <CODE>propertyName</CODE> of type <CODE>PropertyType</CODE>, a 
+<EM>getter</EM> and a <EM>setter</EM> method must be defined as follows:</P>
+<PRE class="code-syntax">private PropertyType PropertyName               <SPAN class="code-comment">// declare</SPAN>
+public PropertyType getPropertyName()           <SPAN class="code-comment">// getter</SPAN>
+public void setPropertyName(PropertyType value) <SPAN class="code-comment">// setter</SPAN>
+</PRE>
+<P>For properties of <CODE>boolean</CODE> type, the getter shall be:</P>
+<PRE class="code-syntax">private boolean PropertyName
+public boolean <STRONG>isPropertyName()</STRONG>                 <SPAN class="code-comment">// getter for boolean property</SPAN>
+public void setPropertyName(boolean value)      <SPAN class="code-comment">// setter</SPAN>
+</PRE>
+<H4>First Javabean - A LightBulb</H4>
+<P>Let's create our first bean - a  light bulb, which can be switched on or 
+off.</P>
+<TABLE class="table-program">
+  <TBODY>
+  <TR>
+    <TD class="code-line-number-width">
+<PRE class="code-line-number">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+</PRE></TD>
+    <TD>
+<PRE class="code-listing">package elect;
+import java.awt.*;
+import java.io.Serializable;
+   
+public class LightBulb extends Canvas implements Serializable {
+   
+   public LightBulb() {     <SPAN class="code-comment">// constructor</SPAN>
+       setSize(50,50);
+       setBackground(Color.GRAY);
+   }
+   
+   <SPAN class="code-comment">// Properties</SPAN>
+   private static final Color COLOR_OFF = Color.BLACK;
+   private Color color = Color.ORANGE;        <SPAN class="code-comment">// property with a default value</SPAN>
+   public Color getColor() { return color; }  <SPAN class="code-comment">// getter</SPAN>
+   public void setColor(Color color) { this.color = color; } <SPAN class="code-comment">// setter</SPAN>
+   
+   boolean on = false;                        <SPAN class="code-comment">// property with a default value</SPAN>
+   public boolean isOn() { return on; }       <SPAN class="code-comment">// getter for boolean</SPAN>
+   public void setOn(boolean on) { this.on = on; } <SPAN class="code-comment">// setter</SPAN>
+   
+   <SPAN class="code-comment">// Override the paint() method to draw the LightBulb</SPAN>
+   public void paint(Graphics g) {
+      if (on) g.setColor(color);
+      else g.setColor(COLOR_OFF);
+      g.fillOval(10, 10, 30, 30);
+   }
+   
+   public void switchOn() {   <SPAN class="code-comment">// switch on the Light</SPAN>
+      on = true;
+      repaint();
+   }
+   
+   public void switchOff() {  <SPAN class="code-comment">// switch off the Light</SPAN>
+      on = false;
+      repaint();
+   }
+   
+   public void toggle() {   <SPAN class="code-comment">// If on turns off; else turns on</SPAN>
+      on = !on;
+      repaint();
+   }
+}
+</PRE></TD></TR></TBODY></TABLE>
+<P>Dissecting "<CODE>LightBulb.java</CODE>"</P>
+<UL>
+  <LI>A JavaBean must implement <CODE>java.io.Serializable</CODE> interface (a 
+  tag interface without declaring any method).  It is to ensure that the 
+  internal state of a bean can be stored in an external persistent storage and 
+  later restored.</LI>
+  <LI>This bean has two <CODE>private</CODE> properties: <CODE>color</CODE> (of 
+  the type <CODE>Color</CODE>) and <CODE>on</CODE> (of the type 
+  <CODE>boolean</CODE>).  Each of the <CODE>private</CODE> properties has its 
+  own <CODE>public</CODE> getter and setter, which follow the Javabeans property 
+  naming convention.  The builder tool can discover (or introspect) these 
+  <CODE>private</CODE> properties based on the <CODE>public</CODE> getters and 
+  setters, based on the property naming convention.</LI>
+  <LI>Three <CODE>public</CODE> methods are defined: <CODE>switchOn()</CODE>, 
+  <CODE>switchOff()</CODE>, and <CODE>toggle()</CODE>.  These methods can be 
+  used as event handlers, which will be fired upon triggering of a certain 
+  event.</LI></UL>
+<P>This bean, belonging to the package <CODE>elect</CODE>, has a fully-qualified 
+class name of "<CODE>elect.LightBulb</CODE>", with a corresponding directory 
+structure of "<CODE>elect\lightBulb</CODE>".</P>
+<P>Suppose that the source and class files are kept in separate directories as 
+shown below (so that classes can be distributed without the source).  The source 
+file is denoted as "<CODE>$SRC_BASEDIR\elect\lightBulb.java</CODE>", where 
+<CODE>$SRC_BASEDIR</CODE> denotes the base directory of the source file 
+("<CODE>c:\javabeans\src</CODE>" in our example). The class is denoted as 
+"<CODE>$CLASS_BASEDIR\elect\LightBulb.class</CODE>" where 
+<CODE>$CLASS_BASEDIR</CODE> denotes the base directory of the classes.</P>
+<P>[TODO] directory diagram</P>
+<P>To compile the all the source files in the package and place the classes in 
+<CODE>$CLASS_BASEDIR</CODE>:</P>
+<PRE class="code-command">&gt; cd $SRC_BASEDIR                       <SPAN class="code-comment">// set current directory at source base directory</SPAN>
+&gt; javac –d $CLASS_BASEDIR elect\*.java  <SPAN class="code-comment">// compile the entire package and place in class base directory</SPAN>
+</PRE>
+<P>Create a <EM>manifest</EM> (to be included into the jar file) called 
+"<CODE>$CLASS_BASEDIR\manifest.Bulb</CODE>" as follows:</P>
+<PRE class="code-listing">Manifest-Version: 1.0
+&nbsp;
+Name: elect/LightBulb.class
+Java-Bean: True
+</PRE>
+<P>Notes:</P>
+<UL>
+  <LI>The last line must be terminated with a newline.</LI>
+  <LI>Use forward slash <CODE>'/'</CODE> as the directory separator.</LI></UL>
+<P>Put the bean into a jar file (because builder tool usually loads a bean from 
+a jar file), assuming that the jar file is to be kept in directory 
+<CODE>$JAR_BASEDIR</CODE>:</P>
+<PRE class="code-command">&gt; cd $CLASS_BASEDIR
+&gt; jar cmfv manifest.Bulb $JAR_BASEDIR/lightbulb.jar elect\LightBulb.class
+</PRE>
+<P>Notes:</P>
+<UL>
+  <LI>The <CODE>'c'</CODE> option is used for <EM>creating</EM> new jar file.  
+  The <CODE>'m'</CODE> option indicates that a <EM>manifest</EM> file is 
+  provided.  The <CODE>'f'</CODE> option indicates that the <EM>filename</EM> of 
+  the output jar file is provided.  The <CODE>'v'</CODE> option enables the 
+  <EM>verbose</EM> mode.</LI>
+  <LI>You can keep you manifest and jar file in any directory.  But the jar 
+  command must be issue from <CODE>$CLASS_BASEDIR</CODE> and you have to follow 
+  the package sub-directory structure to reference you classes, so that they can 
+  be retrieved later.</LI>
+  <LI>The name of the jar file is usually in lowercase.</LI></UL>
+<H4>Testing the LightBulb Bean (with BDK)</H4>
+<OL>
+  <LI>Start the BDK beanbox (by executing 
+  "<CODE>$BDK\beanbox\run.bat</CODE>").</LI>
+  <LI>From the "<CODE>Beanbox</CODE>" window, choose "File" ⇒ "LoadJar" ⇒ Chose 
+  "<CODE>lightbulb.jar</CODE>".  You shall see <CODE>LightBulb</CODE> appears at 
+  the bottom of the "ToolBox" window.</LI>
+  <LI>Select LightBulb from the "ToolBox" window, and place it into the 
+  "Beanbox".  Observe that the "Property" window shows the two properties 
+  defined in this bean: <CODE>color</CODE> and <CODE>on</CODE>.  Try changing 
+  these properties and observe the result.  The "Property" window also shows the 
+  properties inherited from the superclasses.</LI>
+  <LI>Select "OurButton" bean (a demo bean provided by BDK) from "Toolbox" and 
+  place it inside the "Beanbox".  In the "Property" window, change the "label" 
+  from "press" to "toggle".</LI>
+  <LI>Focus on "OurButton", choose "Edit" from menu ⇒ "Events" ⇒ "mouse" ⇒ 
+  "mouseClicked" and place it onto the <CODE>LightBulb</CODE>.  In the 
+  "EventTargetDialog", select method <CODE>toggle()</CODE> as the event 
+  handler.</LI>
+  <LI>Click the "toggle" button and observe the result.</LI>
+  <LI>Focus on <CODE>LightBulb</CODE>, choose "Edit" from menu ⇒ "Events" ⇒ 
+  "mouse" ⇒ "mouseClicked" and place it back to <CODE>LightBulb</CODE>.  In the 
+  "EventTargetDialog", select method <CODE>toggle()</CODE> as the event 
+  handler.</LI>
+  <LI>Click the <CODE>LightBulb</CODE> and observe the effect.</LI></OL>
+<P>[TODO] Test under Bean Builder and NetBeans.</P>
+<H4>Second Javabean - a Switch</H4>
+<P>Let's write another bean, a switch, that can be used to switch on/off the 
+light bulb.</P>
+<TABLE class="table-program">
+  <TBODY>
+  <TR>
+    <TD class="code-line-number-width">
+<PRE class="code-line-number">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+</PRE></TD>
+    <TD>
+<PRE class="code-listing">package elect;
+import java.awt.*;
+import java.io.Serializable;
+   
+public class Switch extends Canvas implements Serializable {
+   
+   public Switch() { setSize(80,40); }  <SPAN class="code-comment">// constructor</SPAN>
+   
+   private boolean closed = false;      <SPAN class="code-comment">// property</SPAN>
+   public boolean isClosed() { return closed; }
+   public void setClosed(boolean b) { closed = b; }
+   
+   public void paint(Graphics g) {
+      g.drawLine(10, 20, 30, 20);
+      g.drawLine(50, 20, 70, 20);
+      g.fillOval(30-2, 20-2, 5, 5);
+      g.fillOval(50-2, 20-2, 5, 5);
+      if (closed)
+         g.drawLine(30, 20, 50, 20);
+      else
+         g.drawLine(30, 20, 47, 10);
+   }
+   
+   <SPAN class="code-comment">// Toggle the switch</SPAN>
+   public void toggle() {
+      closed = !closed;
+      repaint();
+   }
+}
+</PRE></TD></TR></TBODY></TABLE>
+<P>Dissecting "<CODE>Switch.java</CODE>"</P>
+<UL>
+  <LI>One <CODE>private</CODE> property, <CODE>closed</CODE> (of the type 
+  <CODE>boolean</CODE>), is defined.  The <CODE>public</CODE> setter and getter 
+  are also defined, which conforms to the Javabean property naming 
+  convention.</LI>
+  <LI>A <CODE>public</CODE> method called <CODE>toggle()</CODE> is provided, to 
+  be used as event handler.</LI></UL>
+<H4>Testing the Switch Bean (with BDK)</H4>
+<OL>
+  <LI>Start the BDK beanbox and Load the <CODE>Switch</CODE> bean and 
+  <CODE>LightBulb</CODE> bean (created earlier).</LI>
+  <LI>Select <CODE>Switch</CODE> bean from "Toolbox", and place it into the 
+  "Beanbox".  Observe the "Property" window.</LI>
+  <LI>Select <CODE>LightBulb</CODE> from "Toolbox", and place it into the 
+  beanbox.</LI>
+  <LI>Focus on the <CODE>Switch</CODE> bean, choose "Edit" from the menu ⇒ 
+  "Events" ⇒ "mouse" ⇒ "mouseClicked" ⇒ place it onto the 
+  <CODE>LightBulb</CODE>.  In the "EventTargetDialog", select method 
+  <CODE>toggle()</CODE> as the event handler.</LI>
+  <LI>Focus on the <CODE>Switch</CODE>, choose "Edit" from the menu ⇒ "Events" ⇒ 
+  "mouse" ⇒ "mouseClicked" ⇒ place it back to the <CODE>Switch</CODE>.  In the 
+  "EventTargetDialog", select method <CODE>toggle()</CODE> as the event 
+  handler.</LI>
+  <LI>Click the <CODE>Switch</CODE> and observe the result.</LI></OL>
+<H4>Event Handling</H4>
+<P>Beans communicate with other beans by sending and receiving event 
+notification.  Javabeans use the AWT event-delegation model (in package 
+<CODE>java.awt.event</CODE>, since JDK 1.1).  The model consists of three parts: 
+<EM>source</EM>, <EM>listener</EM> and <EM>event</EM>. The procedures for event 
+handling are:</P>
+<OL>
+  <LI>For a particular <EM>event</EM> says <CODE>XxxEvent</CODE>, a companion 
+  <CODE>XxxListener</CODE> interface is set up, which declares the various 
+  methods that could be fired under this <CODE>XxxEvent</CODE>.  For example, 
+  for <CODE>java.awt.event.MouseEvent</CODE>, an interface called 
+  <CODE>java.awt.event.MouseListener</CODE> is declared with the following 
+  <CODE>abstract</CODE> methods: 
+<PRE class="code-example">public void mouseClicked(MouseEvent evt)
+public void mouseEntered(MouseEvent evt)
+public void mouseExited(MouseEvent evt)
+public void mousePressed(MouseEvent evt)
+public void mouseReleased(MouseEvent evt)
+</PRE></LI>
+  <LI>The source object that fires <CODE>XxxEvent</CODE> must maintain a 
+  <CODE>private</CODE> listener list of <CODE>XxxListener</CODE>, and provide 
+  two <CODE>public</CODE> methods for registering and removing listener to and 
+  from this list. 
+<PRE class="code-example">public void addXxxListener(XxxListener lis)
+public void removeXxxListener(XxxListener lis)
+</PRE>
+  <P>For example, the <CODE>java.awt.Component</CODE> may fire 
+  <CODE>MouseEvent</CODE>, the following two methods are provided to register 
+  and remove listener in <CODE>Component</CODE>.</P>
+<PRE class="code-example">public void addMouseListener(MouseListener lis)
+public void removeMouseListener(MouseListener lis)
+</PRE></LI>
+  <LI>A listener interested in <CODE>XxxEvent</CODE> must (a) implement 
+  <CODE>XxxListener</CODE> interface and provide implementation to all the 
+  abstract methods declared in the interface; (b) register with the source 
+  object via the <CODE>source.addXxxListener(XxxListener lis)</CODE> method.  
+  Notice that the listener object is upcasted to the super-type 
+  <CODE>XxxListener</CODE>.</LI>
+  <LI>When the particular event is triggered on the source object, e.g., 
+  <CODE>mouseClicked</CODE> of <CODE>MouseListener</CODE>, the source object 
+  scans its listener list and invoke the corresponding method (e.g., 
+  <CODE>mouseClicked()</CODE>) for all the listeners.</LI></OL>
+<P>In BDK, you set the "focus" on the <EM>source</EM> object and choose the 
+<EM>event method</EM> (e.g., <CODE>mouseClicked()</CODE> of 
+<CODE>MouseListener</CODE>).  The <EM>source</EM> object is then connected to 
+the <EM>listener</EM> object (called <EM>event target</EM> in BDK) and you pick 
+the handling method, among the available methods in the listener object.  BDK 
+automatically create an adapter class (kept in 
+"<CODE>$BDK\beanbox\tmp\sunw\beanbox</CODE>").  For example,</P>
+<PRE class="code-listing"><SPAN class="code-comment">// Automatically generated event lookup file.</SPAN>
+package tmp.sunw.beanbox;
+import elect.Bulb;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseEvent;
+   
+public class ___Hookup_1a379733cc implements java.awt.event.MouseListener, java.io.Serializable {
+   
+    public void setTarget(elect.Bulb t) {
+        target = t;
+    }
+   
+    public void mouseClicked(java.awt.event.MouseEvent arg0) {
+        target.toggle();
+    }
+    public void mouseEntered(java.awt.event.MouseEvent arg0) { }
+    public void mouseExited(java.awt.event.MouseEvent arg0) { }
+    public void mousePressed(java.awt.event.MouseEvent arg0) { }
+    public void mouseReleased(java.awt.event.MouseEvent arg0) { }
+    private elect.Bulb target;
+}
+</PRE>
+<P>In the LightBulb example, the methods <CODE>switchOn()</CODE>, 
+<CODE>switchOff()</CODE> and <CODE>toggle()</CODE> can be used as the event 
+handlers in response to firing of an event (such as <CODE>MouseEvent</CODE> of 
+mouse-clicked).</P>
+<P>Methods in Javabeans that can be exposed to application builder tool for use 
+as the event handlers are ordinary Java methods except that they take no 
+argument or a single argument of <CODE>XxxEvent</CODE> (or its super-type 
+<CODE>java.util.EventObject</CODE>).</P>
+<H3>BeanInfo</H3>
+<P>An application builder tool can examine and exposes a bean's feature (such as 
+properties, methods, and event) in a "properties sheet".  This discovery process 
+is called <EM>introspection</EM>.</P>
+<P>You can optionally provide an additional <CODE>BeanInfo</CODE> class to a 
+bean.  The <CODE>BeanInfo</CODE> can be used to:</P>
+<UL>
+  <LI>Restrict the properties, methods and events available to the builder 
+  tools.</LI>
+  <LI>Associate an icon with the bean.</LI>
+  <LI>Specify a customizer class.</LI>
+  <LI>Provide a more descriptive display name, or additional information about a 
+  bean feature.</LI></UL>
+<H4>Creating BeanInfo</H4>
+<P>The procedure for writing the companion <CODE>BeanInfo</CODE> class is:</P>
+<OL>
+  <LI>Name your <CODE>BeanInfo</CODE> class by appending "<CODE>BeanInfo</CODE>" 
+  to the target bean class.  E.g., if the bean is called 
+  "<CODE>LightBulb</CODE>", the companion <CODE>BeanInfo</CODE> class must be 
+  called "<CODE>LightBulbBeanInfo</CODE>".</LI>
+  <LI><CODE>BeanInfo</CODE> is specified in the interface 
+  <CODE>java.beans.BeanInfo</CODE>.   <CODE>BeanInfo</CODE> interface declares 
+  the following <CODE>abstract</CODE> methods: 
+<PRE class="code-syntax">BeanDescriptor getBeanDescriptor()
+PropertyDescriptor[] getPropertyDescriptors()
+EventSetDescriptor[] getEventSetDescriptors()
+MethodDescriptor[] getMethodDescriptors()
+Image getIcon(int iconType)
+int getDefaultEventIndex()
+int getDefaultPropertyIndex()
+BeanInfo[] getAdditionalBeanInfo()
+</PRE>
+  <P><CODE>BeanInfo</CODE> interface declares the following constants for use in 
+  <CODE>getIcon()</CODE> method:</P>
+<PRE class="code-syntax">static int ICON_COLOR_16x16     <SPAN class="code-comment">// 16x16 color icon</SPAN>
+static int ICON_COLOR_32x32     <SPAN class="code-comment">// 32x32 color icon</SPAN>
+static int ICON_MONO_16x16      <SPAN class="code-comment">// 16x16 monochrome icon</SPAN>
+static int ICON_MONO_32x32      <SPAN class="code-comment">// 32x32 monochrome icon</SPAN>
+</PRE>
+  <P>Application builder tool can invoke <CODE>getPropertyDescriptors()</CODE>, 
+  <CODE>getEventSetDescriptors()</CODE> and <CODE>getMethodDescriptors()</CODE> 
+  to obtain the properties, events and methods that are exposed by the bean to 
+  the application builder tool. <CODE>BeanInfo</CODE> also maintains up to four 
+  icons.  The application builder tool can retrieve these icons by invoking the 
+  <CODE>getIcon(int iconType)</CODE>.</P>
+  <P>Instead of implementing <CODE>java.beans.BeanInfo</CODE> directly, you can 
+  sub-class from <CODE>java.beans.SimpleBeanInfo</CODE>.  The 
+  <CODE>SimpleBeanInfo</CODE> provides default implementation of the 
+  <CODE>BeanInfo</CODE> interface.  You only have to override the desired 
+  methods.</P></LI></OL>
+<H4>Exposing Properties</H4>
+<P>The following <CODE>BeanInfo</CODE> (called <CODE>LightBulbBeanInfor</CODE>) 
+exposes two properties of the target bean "<CODE>LightBulb</CODE>": 
+<CODE>color</CODE> and <CODE>on</CODE>.</P>
+<TABLE class="table-program">
+  <TBODY>
+  <TR>
+    <TD class="code-line-number-width">
+<PRE class="code-line-number">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+</PRE></TD>
+    <TD>
+<PRE class="code-listing">package elect;
+import java.beans.*;
+   
+public class LightBulbBeanInfo extends SimpleBeanInfo {
+   
+   <SPAN class="code-comment">// This beaninfo class is meant for the following bean</SPAN>
+   private final static Class beanClass = LightBulb.class;
+   
+   public BeanDescriptor getBeanDescriptor() {
+      return new BeanDescriptor(beanClass);
+   }
+   
+   <SPAN class="code-comment">// Publish the "properties" available to builder tools</SPAN>
+   public PropertyDescriptor[] getPropertyDescriptors() {
+      try {
+         PropertyDescriptor color =
+            new PropertyDescriptor("color", beanClass);
+         color.setBound(true);
+         PropertyDescriptor on =
+            new PropertyDescriptor("on", beanClass);
+         on.setBound(true);
+         PropertyDescriptor rv[] = {color, on};
+         return rv;
+      } catch (IntrospectionException e) {
+         throw new Error(e.toString());
+      }
+   }
+   public int getDefaultPropertyIndex() { return 1; }
+}
+</PRE></TD></TR></TBODY></TABLE>
+<P>You need to jar the BeanInfo together with the target bean:</P>
+<PRE class="code-command">&gt; cd $CLASS_BASEDIR
+&gt; jar cmfv manifest.Bulb $JAR_BASEDIR/lightbulb.jar elect\LightBulb*.class
+</PRE>
+<P>Try loading the jar file into BDK, and observe that only the property 
+declared in the <CODE>BeanInfo</CODE> are exposed in the "Property" window.</P>
+<H4>Exposing Methods</H4>
+<P>The following codes in <CODE>BeanInfo</CODE> expose three methods of the bean 
+"<CODE>LightBulb</CODE>": <CODE>switchOn()</CODE>, <CODE>swithcOff()</CODE> and 
+<CODE>toggle()</CODE>.  Notice that these methods take no argument.  You can 
+expose methods with no argument or with an argument of of 
+<CODE>EventObject</CODE> only.  These exposed methods can be used as event 
+handling method of the listener.</P>
+<PRE class="code-listing">   <SPAN class="code-comment">// Expose only the selected methods to the Builder tool</SPAN>
+   public MethodDescriptor[] getMethodDescriptors() {
+
+      Class args[] = {};      <SPAN class="code-comment">// argument of the method
+      // Use "Class args[] = { java.util.EventObject.class };"
+      // if the method takes Event as sole argument.</SPAN>
+
+      try {
+         MethodDescriptor toggle =
+            new MethodDescriptor(
+               LightBulb.class.getMethod("toggle", args));
+         MethodDescriptor switchOn =
+            new MethodDescriptor(
+               LightBulb.class.getMethod("switchOn", args));
+         MethodDescriptor switchOff =
+            new MethodDescriptor(
+               LightBulb.class.getMethod("swtichOff", args));
+         MethodDescriptor result[] = {toggle, switchOn, switchOff};
+         return result;
+      } catch (Exception ex) {
+         ex.printStackTrace();
+      }
+   }
+</PRE>
+<H4>Exposing Events</H4>
+<P>For exposing events, we shall work on <CODE>Switch</CODE> bean, which is a 
+source object capable of firing MouseEvent.  Create a <CODE>BeanInfo</CODE> 
+class called <CODE>SwitchBeanInfo</CODE> for the <CODE>Swtich</CODE> bean as 
+follows:</P>
+<TABLE class="table-program">
+  <TBODY>
+  <TR>
+    <TD class="code-line-number-width">
+<PRE class="code-line-number">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+</PRE></TD>
+    <TD>
+<PRE class="code-listing">package elect;
+import java.beans.*;
+   
+public class SwitchBeanInfo extends SimpleBeanInfo {
+   
+   <SPAN class="code-comment">// This beaninfo class is meant for the following bean</SPAN>
+   private final static Class beanClass = Switch.class;
+   
+   public BeanDescriptor getBeanDescriptor() {
+      return new BeanDescriptor(beanClass);
+   }
+   
+   <SPAN class="code-comment">// publish the "events" availeble to builder tools</SPAN>
+   public EventSetDescriptor[] getEventSetDescriptors() {
+      try {
+         <SPAN class="code-comment">// To expose MouseEvent</SPAN>
+         String[] mouseListenerMethods =
+            {"mouseClicked", "mousePressed", "mouseReleased",
+             "mouseEntered", "mouseExited"};
+         EventSetDescriptor mouse =
+            new EventSetDescriptor(
+               beanClass,
+               "mouse",
+               java.awt.event.MouseListener.class,
+               mouseListenerMethods,
+               "addMouseListener",
+               "removeMouseListener");
+         mouse.setDisplayName("mouse");
+   
+         EventSetDescriptor[] rv = {mouse};
+         return rv;
+      } catch (IntrospectionException e) {
+         ex.printStackTrace();
+      }
+   }
+}
+</PRE></TD></TR></TBODY></TABLE>
+<P>Try:</P>
+<UL>
+  <LI>Tailor your <CODE>SwitchBeanInfo</CODE> to expose the property 
+  <CODE>closed</CODE>.</LI>
+  <LI>Tailor your <CODE>SwitchBeanInfo</CODE> to expose the method 
+  <CODE>toggle()</CODE>.</LI></UL>
+<H4>Associating Icons with the Bean</H4>
+<P>The following codes in <CODE>BeanInfo</CODE> can be used to provide up to 
+four icons (16x16 or 32x32, color or monochrome) for a bean to the application 
+builder tool:</P>
+<PRE class="code-listing">   <SPAN class="code-comment">// Specify the "icons" availeble to builder tools</SPAN>
+   public java.awt.Image getIcon(int iconKind) {
+      if (iconKind == BeanInfo.ICON_MONO_16x16 ||
+          iconKind == BeanInfo.ICON_COLOR_16x16 ) {
+         java.awt.Image img = loadImage("LightBulbIcon16.gif");
+         return img;
+      } else if (iconKind == BeanInfo.ICON_MONO_32x32 ||
+         iconKind == BeanInfo.ICON_COLOR_32x32 ) {
+         java.awt.Image img = loadImage("LightBulbIcon32.gif");
+         return img;
+      } else {
+         return null;
+      }
+   }
+</PRE>
+<P>You have to jar the icon images together with the <CODE>BeanInfo</CODE> and 
+target bean class:</P>
+<PRE class="code-command">&gt; cd $CLASS_BASEDIR
+&gt; jar cmfv manifest.Bulb $JAR_BASEDIR/lightbulb.jar elect\LightBulb*.class LightBulbIcon*.gif
+</PRE>
+<P>Try:</P>
+<UL>
+  <LI>Try creating some icons and add them into the <CODE>BeanInfo</CODE> for 
+  <CODE>Switch</CODE> as well as <CODE>LightBulb</CODE>.</LI></UL>
+<H4>Specifying a Customizer &amp; Property Editors</H4>
+<P>A bean's appearance and behavior can be customized at design time by an 
+application builder tool.  There are two ways to customize a bean:</P>
+<UL>
+  <LI>Using property editors: Each bean property has its own property editor 
+  which can be displayed on the property sheet.</LI>
+  <LI>Using customizers: gives you complete control over bean’s customization, 
+  to be used when the property editors are not practical or application.</LI></UL>
+<P>A property editor is a tool for customizing a particular property type.  A 
+property editor implements <CODE>java.beans.PropertyEditor</CODE> interface, 
+which provides methods that specify how a property should be displayed in a 
+property sheet.</P>
+<PRE class="code-syntax">public Object getValue();
+public void setValue(Object value);
+public String getAsText();
+public void setAsText(String text);
+public boolean isPaintable();
+public void paintValue(Graphics g, Rectangle box);
+public boolean supportsCustomEditor();
+public Component getCustomEditor();
+</PRE>
+<P>For example, the <CODE>int</CODE> property editor implements the 
+<CODE>setAsText()</CODE> method.  This indicates to the property sheet that the 
+property can be displayed as a <CODE>String</CODE>, hence an editable text box 
+will be used.</P>
+<P>The property editors of type <CODE>Color</CODE> and <CODE>Font</CODE> use a 
+separate panel, and use the property sheet to display the current property 
+value.  To display the current property value inside the property sheet, you 
+need to override <CODE>isPaintable()</CODE> to return <CODE>true</CODE>,  and 
+override the <CODE>paintValue()</CODE> to paint the current property value in a 
+rectangle in the property sheet.  For example, in the 
+<CODE>ColorEditor</CODE>:</P>
+<PRE class="code-example">public void paintValue(Graphics g, Rectangle box) {
+   Color oldColor = g.getColor();
+   g.setColor(Color.BLACK);
+   g.drawRect(box.x, box.y, box.width-3, box.height-3);
+   g.setColor(color);
+   g.FillRect(box.x+1, box.y+1, box.width-4, box.height-4);
+   g.setColor(oldColor);
+}
+</PRE>
+<P>To support custom property editor, you need to override two methods: 
+<CODE>supportsCustomEditor()</CODE> to return <CODE>true</CODE>, and 
+<CODE>getCustomEditor()</CODE> to return a custom editor instance.</P>
+<P>Property editors are discovered and associate with a given property by:</P>
+<UL>
+  <LI>Explicit association via the associated BeanInfo object of the target 
+  bean.</LI>
+  <LI>Explicitly register via 
+  <CODE>java.beans.PropertyEditorManager.registerEditor()</CODE>.  This method 
+  takes two arguments: the class type, and the editor to be associated with that 
+  type.</LI>
+  <LI>Search by appending "<CODE>Editor</CODE>" to the fully qualified name, 
+  e.g., "<CODE>elect.LightBulbEditor</CODE>".</LI></UL>
+<P>The following codes can be used to specify a <CODE>Cstomizer</CODE> in 
+<CODE>BeanInfo</CODE>.</P>
+<PRE class="code-listing"><SPAN class="code-comment">// Specify the target Bean class, and,
+// If the Bean has a customizer, specify it also.</SPAN>
+private final static Class beanClass = LightBulb.class;
+private final static Class customizerClass = LightBulbCustomizer.class;
+   
+public BeanDescriptor getBeanDescriptor() {
+    return new BeanDescriptor(beanClass, customizerClass);
+}
+</PRE>
+<P>[TODO] Example.</P>
+<H3>More on Properties</H3>
+<H4>Bound Property and PropertyChangeEvent</H4>
+<P>When a property of a bean changes, you may want another bean to be notified 
+of the change and react to the change.  These properties are called <EM>bound 
+property</EM>.</P>
+<P>Javabean API introduces a new event called 
+<CODE>java.beans.PropertyChangeEvent</CODE> with an associated interface called 
+<CODE>java.beans.PropertyChangeListener</CODE>.  This interface declares the 
+following <CODE>abstract</CODE> methods:</P>
+<PRE class="code-syntax">public void propertyChange(PropertyChangeEvent evt)
+public String getPropertyName()
+</PRE>
+<P>A source bean can fire <CODE>PropertyChangeEvent</CODE> whenever the value of 
+a bound property is changed, e.g., via the Property Editor.</P>
+<P>To provide support for <CODE>PropertyChangeEvent</CODE>, the source bean 
+containing bound properties must maintain a list of property change listeners 
+and allow registering and removing of listener to and from the list.  To provide 
+such support, either you do you own coding or make use of the 
+<CODE>java.beans.PropertyChangeSupport</CODE> by including the following codes 
+in your source bean:</P>
+<PRE class="code-example"><SPAN class="code-comment">// "this" object maintains the property change listener list</SPAN>
+private PropertyChangeSupport changes = new PropertyChangeSupport(this);
+
+<SPAN class="code-comment">// Listeners can be registered using these methodss.</SPAN>
+public void addPropertyChangeListener(PropertyChangeListener l) {
+   changes.addPropertyChangeListener(l);
+}
+public void removePropertyChangeListener(PropertyChangeListener l) {
+   changes.removePropertyChangeListener(l);
+}
+</PRE>
+<P>For the sake of illustration, let's modify our <CODE>Switch</CODE> bean to 
+set the <CODE>boolean</CODE> property <CODE>closed</CODE> as a bound property 
+that fires <CODE>PropertyChangeEvent</CODE> if the value is changed.  Let's 
+called this new bean "<CODE>SwitchBound.java</CODE>".</P>
+<TABLE class="table-program">
+  <TBODY>
+  <TR>
+    <TD class="code-line-number-width">
+<PRE class="code-line-number">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+</PRE></TD>
+    <TD>
+<PRE class="code-listing">package elect;
+import java.awt.*;
+import java.io.Serializable;
+import java.beans.*;
+   
+public class SwitchBound extends Canvas implements Serializable {
+   
+   public SwitchBound(){ setSize(80,40); }  <SPAN class="code-comment">// constructor</SPAN>
+   
+   private boolean closed = false;          <SPAN class="code-comment">// property</SPAN>
+   public boolean isClosed() { return closed; }
+   
+   <SPAN class="code-comment">// Property change support for bound property</SPAN>
+   private PropertyChangeSupport changes = new PropertyChangeSupport(this);
+   public void addPropertyChangeListener(PropertyChangeListener lis) {
+         changes.addPropertyChangeListener(lis);
+   }
+   public void removePropertyChangeListener(PropertyChangeListener lis) {
+         changes.removePropertyChangeListener(lis);
+   }
+   
+   public void setClosed(boolean newStatus) {
+      boolean oldStatus = closed;
+      closed = newStatus;
+      changes.firePropertyChange("closed", new Boolean(oldStatus),new Boolean(newStatus));
+   }
+   
+   public void paint(Graphics g) {
+      g.drawLine(10, 20, 30, 20);
+      g.drawLine(50, 20, 70, 20);
+      g.fillOval(30-2, 20-2, 5, 5);
+      g.fillOval(50-2, 20-2, 5, 5);
+      if (closed) g.drawLine(30, 20, 50, 20);
+      else g.drawLine(30, 20, 47, 10);
+   }
+   
+   <SPAN class="code-comment">// Toggle the switch</SPAN>
+   public void toggle() {
+      closed = !closed;
+      repaint();
+   }
+}
+</PRE></TD></TR></TBODY></TABLE>
+<P>Dissecting “<CODE>SwitchBound.java</CODE>”</P>
+<UL>
+  <LI>The <CODE>PropertyChangeSupport</CODE> codes are included.</LI>
+  <LI>The setter for the bound property <CODE>closed</CODE> is modified to fire 
+  the <CODE>PropertyChangeEvent</CODE>.  "<CODE>change</CODE>" refers to the 
+  <CODE>PropertyChangeSupport</CODE> instance declared earlier.  All the 
+  registered listeners will receive the <CODE>PropertyChangeEvent</CODE> if this 
+  setter method is invoked.</LI>
+  <LI>For JDK 1.5, you can use the <EM>autoboxing</EM> feature and change the  
+  statement to: 
+<PRE class="code-example">changes.firePropertyChange("closed", oldStatus, newStatus);  <SPAN class="code-comment">// autobox to boolean</SPAN>
+</PRE></LI></UL>
+<H4>Testing the Property Change</H4>
+<OL>
+  <LI>Start the beanbox. Load the <CODE>SwitchBound</CODE> and 
+  <CODE>LightBulb</CODE> beans. Drop an instance of <CODE>SwitchBound</CODE> and 
+  an instance of <CODE>LightBulb</CODE> into the beanbox.</LI>
+  <LI>Focus of <CODE>SwtichBound</CODE>, select "Event" ⇒ "bound property 
+  change" ⇒ "property change" and choose <CODE>LightBulb</CODE> as the target of 
+  the Event.  Select <CODE>toggle()</CODE> as the handling method.</LI>
+  <LI>Focus on <CODE>SwtichBound</CODE>, change the bound property 
+  <CODE>closed</CODE> in the "Property" window and observe the result.</LI></OL>
+<P>Try:</P>
+<UL>
+  <LI>Create the <CODE>BeanInfo</CODE> for <CODE>SwitchBound</CODE> to expose 
+  the "mouse" event and "property change" events. 
+  <TABLE class="table-program">
+    <TBODY>
+    <TR>
+      <TD class="code-line-number-width">
+<PRE class="code-line-number">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+</PRE></TD>
+      <TD>
+<PRE class="code-listing">package elect;
+import java.beans.*;
+   
+public class SwitchBoundBeanInfo extends SimpleBeanInfo {
+   
+   <SPAN class="code-comment">// This beaninfo class is meant for the following bean</SPAN>
+   private final static Class beanClass = SwitchBound.class;
+   
+   public BeanDescriptor getBeanDescriptor() {
+      return new BeanDescriptor(beanClass);
+   }
+   
+   <SPAN class="code-comment">// publish the "events" available to builder tools</SPAN>
+   public EventSetDescriptor[] getEventSetDescriptors() {
+      try {
+         <SPAN class="code-comment">// To expose MouseEvent</SPAN>
+         String[] mouseListenerMethods =
+               {"mouseClicked", "mousePressed", "mouseReleased",
+                "mouseEntered", "mouseExited"};
+         EventSetDescriptor mouse =
+            new EventSetDescriptor(
+               beanClass,
+               "mouse",
+               java.awt.event.MouseListener.class,
+               mouseListenerMethods,
+               "addMouseListener",
+               "removeMouseListener");
+         mouse.setDisplayName("mouse");
+   
+         <SPAN class="code-comment">// To expose PropertyChangeEvent</SPAN>
+         EventSetDescriptor changed =
+            new EventSetDescriptor(
+               beanClass,
+               "propertyChange",
+               java.beans.PropertyChangeListener.class,
+               "propertyChange");
+         changed.setDisplayName("bound property change");
+   
+         EventSetDescriptor[] rv = {mouse, changed};
+         return rv;
+      } catch (IntrospectionException ex) {
+         ex.printStackTrace();
+      }
+   }
+}
+</PRE></TD></TR></TBODY></TABLE></LI>
+  <LI>Create the <CODE>BeanInfo</CODE> for <CODE>SwitchBound</CODE> to expose 
+  the property <CODE>closed</CODE>.</LI>
+  <LI>Create the <CODE>BeanInfo</CODE> for <CODE>SwitchBound</CODE> to expose 
+  the method <CODE>toggle()</CODE>.</LI></UL>
+<H4>Constrained Property &amp; VetoableChangeEvent</H4>
+<P>A bean property is constrained when any change to that property can be vetoed 
+by another object.  The mechanism is similar to bound property and consists of 
+three parts:</P>
+<UL>
+  <LI>A source bean contains one or more constrained properties.</LI>
+  <LI>Listener object(s) that implement 
+  <CODE>java.beans.VetoableChangeListener</CODE> interface.  The 
+  <CODE>VetoableChangeListener</CODE> interface declares one abstract method: 
+<PRE class="code-syntax">public void vetoableChange(PropertyChangeEvent evt)
+</PRE></LI>
+  <LI>A <CODE>PropertyChangeEvent</CODE> object containing the property name, 
+  and its old and new values.</LI></UL>
+<P>For illustrating purpose, let's rewrite our <CODE>Switch</CODE> (called 
+<CODE>SwitchConstrained</CODE>) with <CODE>closed</CODE> as a constrained 
+property.  Instead of implementing <CODE>VetoableChangeListener</CODE> interface 
+directly, we use an adaptor class called <CODE>VetoableChangeSupport</CODE> 
+(similar to <CODE>PropertyChangeSupport</CODE> for bound property).</P>
+<TABLE class="table-program">
+  <TBODY>
+  <TR>
+    <TD class="code-line-number-width">
+<PRE class="code-line-number">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+</PRE></TD>
+    <TD>
+<PRE class="code-listing">package elect;
+import java.awt.*;
+import java.io.Serializable;
+import java.beans.*;
+   
+public class SwitchConstrained extends Canvas implements Serializable {
+   
+   public SwitchConstrained() { setSize(80,40); }  <SPAN class="code-comment">// constructor</SPAN>
+   
+   private boolean closed = false;      <SPAN class="code-comment">// Property</SPAN>
+   public boolean isClosed() { return closed; }
+   
+   <SPAN class="code-comment">// Property change support for constrained property</SPAN>
+   private VetoableChangeSupport vetos = new VetoableChangeSupport(this);
+   public void addVetoableChangeListener(VetoableChangeListener lis) {
+         vetos.addVetoableChangeListener(lis);
+   }
+   public void removeVetoableChangeListener(VetoableChangeListener lis) {
+         vetos.removeVetoableChangeListener(lis);
+   }
+   
+   public void setClosed(boolean newStatus) throws PropertyVetoException {
+      boolean oldStatus = closed;
+      <SPAN class="code-comment">// First tell the vetoers about the change.
+      // If anyone objects, we don't catch the exception
+      // but just let if pass on to our caller.</SPAN>
+      vetos.fireVetoableChange("closed", new Boolean(oldStatus),new Boolean(newStatus));
+      <SPAN class="code-comment">// No-one vetoed, so go ahead and make the change.</SPAN>
+      closed = newStatus;
+   }
+   
+   public void paint(Graphics g) {
+      g.drawLine(10, 20, 30, 20);
+      g.drawLine(50, 20, 70, 20);
+      g.fillOval(30-2, 20-2, 5, 5);
+      g.fillOval(50-2, 20-2, 5, 5);
+      if (closed) g.drawLine(30, 20, 50, 20);
+      else g.drawLine(30, 20, 47, 10);
+   }
+   
+   public void toggle() {   <SPAN class="code-comment">// Toggle the switch</SPAN>
+      closed = !closed;
+      repaint();
+   }
+}
+</PRE></TD></TR></TBODY></TABLE>
+<H4>Testing SwitchConstrained bean</H4>
+<P>When you drop <CODE>SwitchConstrained</CODE> into beanbox, you shall see the 
+event interface "<CODE>vetoableChange</CODE>" and method 
+"<CODE>vetoableChange</CODE>" in the "Event" menu.</P>
+<P>BDK has a demo bean called <CODE>Vetor</CODE>, which can be used to test our 
+<CODE>SwitchConstrained</CODE>. Read the source code of in 
+"<CODE>$BDK\sunw\demo\misc\Vetor.java</CODE>".  A <CODE>boolean</CODE> property 
+called <CODE>vetoAll</CODE> is defined:</P>
+<PRE class="code-example">private boolean vetoAll = true;
+The Vetor bean provides the following event handler for the VetoableChangeEvent:
+public void vetoableChange(PropertyChangeEvent evt) throws PropertyVetoException {
+   if (vetoAll) {
+      throw new PropertyVetoException("NO!", evt);
+   }
+}
+</PRE>
+<P>You can change the property vetoAll to veto or not to veto constrained 
+property change.</P>
+<P>The testing procedure is:</P>
+<OL>
+  <LI>Start BDK.  Load the <CODE>SwtichConstrained</CODE> bean.  Drop an 
+  instance of <CODE>SwtichConstrained</CODE> bean and <CODE>Vetor</CODE> bean 
+  into the beanbox.</LI>
+  <LI>Focus on <CODE>SwtichConstrained</CODE> bean, select event 
+  "<CODE>vetoableChange</CODE>" and method "<CODE>vetoableChange</CODE>".  
+  Choose <CODE>Vetor</CODE> as the target of the event, and 
+  <CODE>vetoableChange()</CODE> method as the event handler.</LI>
+  <LI>Try changing the <CODE>closed</CODE> property of the 
+  <CODE>SwtichConstrained</CODE> bean.</LI>
+  <LI>Change the <CODE>vetoAll</CODE> property of the <CODE>Vetor</CODE> to 
+  <CODE>true</CODE>.  Try changing the <CODE>closed</CODE> property of the 
+  <CODE>SwtichConstrained</CODE> bean again.</LI></OL>
+<H4>Indexed Property</H4>
+<P>Indexed property represents collections of values, which can be accessed by 
+an index.  Indexed property is kept in an array.</P>
+<P>For example,</P>
+<PRE class="code-example"><SPAN class="code-comment">// Methods to access the entire indexed property</SPAN>
+public PropertyType[] getPropertyName();
+public void setPropertyName(PropertyType[] values);
+
+<SPAN class="code-comment">// Methods to access individual item</SPAN>
+public PropertyType getPropertyName(int index);
+public void setPropertyName(int index, PropertyType value);
+</PRE>
+<P>Implementing indexed property is straightforward. See BDK demo bean 
+<CODE>OurListBox</CODE>.</P>
+<H3>Persistence (Serializable &amp; XML)</H3>
+<P>A bean's state can be saved and later restore.  All beans are serializable 
+(i.e., implement the Serializable interface) via <CODE>ObjectInputStream</CODE> 
+and <CODE>ObjectOutputStream</CODE>.  All non-static and 
+non-<CODE>transient</CODE> instance variable can be saved.</P>
+<P>JDK 1.4 introduces XML persistence.</P>
+<P>[TODO] more</P>
+<H3>Manifest for JavaBeans' JAR file</H3>
+<P>A manifest is a special file that contains information about the files 
+packaged in a JAR file.  When you create a JAR file, it automatically receives a 
+default manifest file called "<CODE>META-INF\MANIFEST.MF</CODE>" which contains 
+the following:</P>
+<PRE class="code-example">Manifest-Version: 1.0
+Created-By: 1.5.0_04 (Sun Microsystems Inc.)
+</PRE>
+<P>The entries in manifest take the form of "name: values" pair.  The name and 
+value are separated by a colon <CODE>':'</CODE>.  The names are also called 
+attributes.</P>
+<P>To extract the manifest from a JAR file:</P>
+<PRE class="code-command">&gt; jar xfv jarFileName META-INF\MANIFEST.MF
+</PRE>
+<P>To create a JAR file with your own manifest:</P>
+<PRE class="code-command">&gt; jar cmfv manifestFile jarFileName filesToJar
+</PRE>
+<P>A manifest consists of a "main" section followed by a list of sections for 
+individual JAR file entries.  The sections are separated by a newline.  The main 
+section contains security and configuration information about the JAR file 
+itself; and defines the main attributes that apply to every individual manifest 
+entry.  Main section should not contain attribute "Name".</P>
+<P>Individual section defines various attributes for package or files contained 
+in this JAR file.  Each section starts with an attribute "Name", having value of 
+a relative path to the file, or an absolute URL referencing data outside the 
+archive.</P>
+<P>An example of a manifest used for jarring  JavaBeans is:</P>
+<PRE class="code-listing">Manifest-Version: 1.0
+&nbsp;
+Name: elect/Switch.class
+Java-Bean: True
+&nbsp;
+Name: elect/LightBulb.class
+Java-Bean: True
+</PRE>
+<P>Notes:</P>
+<UL>
+  <LI>The manifest used in BDK is incorrect.  E.g., in the demo bean 
+  "buttons.jar", the main section has attribute "Name".</LI>
+  <LI>The "Name" attribute specifies the location of the bean class.  Hence, 
+  directory is used instead of package name.  Forward slash <CODE>'/'</CODE> is 
+  used.</LI>
+  <LI>The sections are separated by a newline.  The last line must be terminated 
+  by a new line.</LI>
+  <LI>Do not put trailing spaces behind the value.</LI></UL>
+<H3>Writing your Application Builder Tool</H3>
+<P>The following codes can be used to filter all the JAR files from a particular 
+directory:</P>
+<PRE class="code-listing">String jarDirName = "c:\\_javabin\\bdk1.1\\jars";
+File jarDir = new File(jarDirName);
+<SPAN class="code-comment">// filter only ".jar"</SPAN>
+String[] jarFiles = jarDir.list(new FilenameFilter() {
+   public boolean accept(File dir, String fileName) {
+      return (fileName.endsWith(".jar"));
+   }
+});
+</PRE>
+<P>The following codes can be use to set up a <CODE>JarURLClassLoader</CODE>, 
+which is capable of loading a class or resource from all the JAR files.</P>
+<PRE class="code-listing">int numFiles = jarFiles.length;
+URL[] urls = new URL[numFiles];
+for (int i = 0; i &lt; numFiles; i++) {
+   <SPAN class="code-comment">// Create an URL object from string</SPAN>
+   URL url = new URL("file:" + jarDirName + "\\" + jarFiles[i]);
+   urls[i] = url;
+}
+<SPAN class="code-comment">// URLClassLoader loads classes by searching a list of URLs.</SPAN>
+URLClassLoader loader = new URLClassLoader(urls);
+</PRE>
+<P>For each of the JAR file, the following codes can be used to read the 
+manifest to look for JavaBeans packaged within the JAR file, and retrieve the 
+bean name.</P>
+<PRE class="code-listing">JarFile jarfile = new JarFile(jarDirName + "\\" + file);
+Manifest mf = jarfile.getManifest();
+String beanName = null;
+   
+<SPAN class="code-comment">// Check the manifest's main section
+// BDK's demo bean put the Javabean on the main section
+// which is incorrect.</SPAN>
+Attributes attribs = mf.getMainAttributes();
+if (attribs != null) {
+   <SPAN class="code-comment">// Determine if this is a java bean.</SPAN>
+   String isJavaBean = attribs.getValue(Attributes_Name_JAVA_BEAN);
+   if (isJavaBean != null
+       &amp;&amp; isJavaBean.equalsIgnoreCase("True")) {
+      beanName = attribs.getValue(Attributes_Name_NAME);
+      processBean(beanName, loader);
+   }
+}
+   
+<SPAN class="code-comment">// Check the individual section for Javabean</SPAN>
+Iterator iterator = mf.getEntries().keySet().iterator();
+while (iterator.hasNext()) {
+   beanName = (String) iterator.next();
+   attribs = mf.getAttributes(beanName);
+   if (attribs != null) {
+      String isJavaBean = attribs.getValue(Attributes_Name_JAVA_BEAN);
+      if (isJavaBean != null &amp;&amp; isJavaBean.equalsIgnoreCase("True")) {
+      processBean(beanName, loader);
+      }
+   }
+}
+</PRE>
+<P>The <CODE>processBead(beanName, loader)</CODE> method can be used to load the 
+bean.  We can then apply the introspection to list the properties, events, and 
+methods available in the bean.</P>
+<H4>Introspection</H4>
+<P>Application builder tool can use the class 
+<CODE>java.beans.Introspector</CODE> to <EM>introspect</EM> properties, events 
+and methods supported by a target Javabean.  For each of these three kinds of 
+information, the Introspector will separately analyze the target bean’s class 
+and superclasses looking for either explicit or implicit information and use 
+this information to build a <CODE>java.beans.BeanInfo</CODE> object to describe 
+the target bean.</P>
+<P>The explicit information of a target bean (says <CODE>Xxx</CODE>) is obtained 
+through a companion class <CODE>XxxBeanInfo</CODE>.</P>
+<P>If the target bean does not have a companion BeanInfo class, then the 
+Introspector uses the low-level reflection mechanism (in 
+<CODE>java.lang.reflect</CODE>) to study the public methods of the target class. 
+ It applies the Javabean Naming Convention to identify properties, event 
+sources, or event handling methods of the target class and its superclasses.</P>
+<P>The most important method in Introspector is <CODE>getBeanInfo()</CODE> which 
+return a <CODE>BeanInfo</CODE> object to describe the target bean:</P>
+<PRE class="code-example">public static BeanInfo getBeanInfo(Class beanClass);
+</PRE>
+<P>The <CODE>BeanInfo</CODE> interface declares the following abstract methods 
+for retrieving the property, events and event handling methods:</P>
+<PRE class="code-example">public BeanDescriptor[] getBeanDescriptors()
+public PropertyDescriptor[] getPropertyDescriptors()
+public EventSetDescriptor[] getEventSetDescriptors()
+public MethodDescriptor[] getMethodDescriptors()
+public java.awt.Image getIcon(int iconKind)
+  <SPAN class="code-comment">// iconKind ICON_COLOR_16x16, ICON_COLOR_32x32, ICON_MONO_16x16, ICON_MONO_32x32</SPAN>
+</PRE>
+<P>Example:</P>
+<PRE class="code-listing">static void processBean(String beanName, URLClassLoader loader) {
+   <SPAN class="code-comment">// change "elect/LightBulb.class" to "elect.LightBulb"</SPAN>
+   
+   if (!beanName.endsWith(".class")) return;
+   beanName = beanName.replace('/', '.');
+   beanName = beanName.substring(0, beanName.length() - 6);
+   try {
+      Class beanClass = loader.loadClass(beanName);
+      BeanInfo beanInfo = Introspector.getBeanInfo(beanClass);
+      PropertyDescriptor[] properties = beanInfo.getPropertyDescriptors();
+      for (PropertyDescriptor p : properties)
+         System.out.println("  Property: " + p.getName());
+   
+      MethodDescriptor[] methods = beanInfo.getMethodDescriptors();
+      for (MethodDescriptor m : methods)
+         System.out.println("  Method: " + m.getName());
+   
+      EventSetDescriptor[] eventSets = beanInfo.getEventSetDescriptors();
+      for (EventSetDescriptor e : eventSets)
+         System.out.println("  Event: " + e.getName());
+   
+      <SPAN class="code-comment">// Image img = beanInfo.getIcon(BeanInfo.ICON_COLOR_16x16);</SPAN>
+   } catch (ClassNotFoundException ex) {
+      ex.printStackTrace();
+   } catch (IntrospectionException ex) {
+      ex.printStackTrace();
+   }
+}
+</PRE>
+<H4>Reflection</H4>
+<P>Read "The Java Tutorial", specialized trail on "Reflection".</P>
+<P><CODE>Class</CODE> (<CODE>java.lang.Class</CODE>)</P>
+<P>Class Loader: <CODE>java.lang.ClassLoader</CODE>, 
+<CODE>java.net.URLClassLoader</CODE></P>
+<P>Package: <CODE>java.lang.reflect</CODE></P>
+<P>Package: <CODE>java.beans</CODE></P>
+<UL>
+  <LI>Introspector: <CODE>java.beans.Introspector</CODE></LI>
+  <LI>Feature Descriptors: <CODE>BeanDescriptor</CODE>, 
+  <CODE>EventSetDescriptor</CODE>, <CODE>MethodDescriptor</CODE>, 
+  <CODE>PropertyDescriptor</CODE>, <CODE>ParameterDescriptor</CODE>.</LI>
+  <LI>Bean Utilities:  <CODE>java.bean.Beans</CODE></LI>
+  <LI>Property change and vetoable change:</LI>
+  <LI>BeanInfo:</LI>
+  <LI>Editor:</LI>
+  <LI>Customizer:</LI>
+  <LI>Serialization: <CODE>XMLEncoder</CODE>, <CODE>XMLDecoder</CODE>.</LI></UL>
+<P>[TODO] to be continued...</P>
+<H4>Bean Context</H4>
+<P>package: <CODE>java.beans.beancontext</CODE>.</P>
+<P>"Bean context" is the standard mechanism through which Java developers can 
+logically group a set of related JavaBeans into a "context" that the beans can 
+become aware of and/or interact with. This context, or "containing environment", 
+is known as the <CODE>BeanContext</CODE>.</P>
+<P>There are two distinct types of <CODE>BeanContext</CODE>: one which supports 
+membership only (interface <CODE>java.beans.beancontext.BeanContext</CODE>) and 
+one which supports membership and offers services (interface 
+<CODE>java.beans.beancontext.BeanContextServices</CODE>) to its JavaBeans nested 
+within.</P>
+<P>[TODO] to be continued...</P>
+<P>&nbsp;</P>
+<H4>REFERENCES &amp; RESOURCES</H4>
+<UL>
+  <LI>JavaBeans home page @ <A 
+  href="http://java.sun.com/products/javabeans">http://java.sun.com/products/javabeans</A></LI>
+  <LI>JavaBeans API Specification</LI>
+  <LI>"The Java Tutorial", specialized trail on "JavaBeans"</LI>
+  <LI>"The Java Tutorial", specialized trail on "Jar Files"</LI>
+  <LI>"The Java Tutorial", specialized trail on "Reflection"</LI>
+  <LI>Bean Development Kit (BDK) 1.1 (no longer available)</LI>
+  <LI>Bean Builder 0.6 alpha @ <A 
+  href="https://bean-builder.dev.java.net/">https://bean-builder.dev.java.net/</A></LI></UL>
+<P class="p-last-modified">Latest version tested: JDK 1.6<BR>Last modified:  
+August 4, 2008</P></DIV><!-- End the content division --> <!-- print footer --> 
+<SCRIPT src="JavaBeans_files/footer.js" type="text/javascript"></SCRIPT>
+ </DIV><!-- End the container division --> </BODY></HTML>

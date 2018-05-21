@@ -1,0 +1,138 @@
+String:
+-->String is a sequence of characters.
+--> For e.g. “Hello” is a string of 5 characters. 
+-->In java, string is an immutable object which means it is    constant and cannot be changed once it has been created.
+
+Creating String:
+--> 1. Using String constructor
+--> 2. Using String literal
+
+1. String Constructor:
+--> a. String()
+	String s=new String();//creates an empty string
+
+--> b. String(char str[])
+	char str[]={'a','b','c','d'};
+	String s=new String(str);  
+	//creates s with "abcd"
+
+--> c. String(char str[],int startIndex,int numChars)
+	char str[]={'a','b','c','d'};
+	String s=new String(str,2,2);  
+	//creates s with "cd"
+
+--> d. String(String s)
+	char str[]={'a','b','c','d'};
+	String s=new String(str);
+	String s1=new String(s);  
+	//both s and s1 will have same value "abcd"
+
+--> e. String(byte str[])
+	byte str[]={65,66,67,68,69,70};
+	String s=new String(str);
+	//creates s with "ABCDEF"
+
+--> f. String(byte str[],int startIndex, int numChars)
+	byte str[]={65,66,67,68,69,70};
+	String s=new String(str,2,3);
+	//creates s with "CDE"
+
+2. String literal:
+	String s="abc"; //creates an string object s                 with "abc"
+
+String length:
+------------------
+ int length() returns the number of characters in a given string.
+eg. String s="abc";
+    System.out.println(s.length());
+
+String concatenation:
+------------------------
+a. String s="He is" + 9 + "years old";
+b. String s= "Four: "+ 2 + 2;
+c. String s="Four: "+ (2+2);
+
+
+String comparison:
+-------------------------
+a. equals()-->returns true if the two strings are same. [checks case also] otherwise it returns false
+  
+b. equalsIgnoreCase()--> similar like equals() however it does not check case.
+
+c. compareTo()-->returns 0 if two strings are same, more than 0 or less than 0 if not same.
+d. compareToIgnoreCase() -->does not check case
+
+e. startsWith()-->returns true if the given string begins with a specified string otherwise returns false.
+f. endsWith() -->returns true if the given string ends with a specified string otherwise it returns false.
+eg. "FooBar".startsWith("Foo");  -->true
+    "FooBar".endsWith("Bar"); -->true
+    "FooBar".startsWith("Bar",3); -->true 
+g. == -->equals() compares characters inside the string object however == compares two object references to see whether they refer to the same instance.
+eg.     String s1="Hello";
+	String s2=new String(s1);
+	System.out.println(s1.equals(s2));  true
+	System.out.println(s1==s2);   false
+
+h. regionMatches() -->compares a specific region inside a string with another specific region in another string.
+           boolean regionMatches(int startIndex,String str2, int str2StartIndex, int numchars)
+
+           boolean regionMatches(boolean ignoreCase,int startIndex,String str2, int str2StartIndex, int numchars)
+
+eg. String str1="foobar";
+    String str2="oba";
+    System.out.println(str1.regionMatches(2,str2,0,3));
+
+Modifying a String:-
+------------------------------
+a. substring() --> To extract a portion of the string.
+	i. String substring(int startIndex)
+	ii. String substring(int startIndex, int endIndex)
+b. concat() --> to concatenate two strings. 
+	String concat(String str)
+c. replace() --> to replace string contents with one or more characters.
+   a. String replace(char original, char replacement)
+   b. String replace(CharSequence original, CharSequence replacement)
+
+eg. String str3="foobar".replace('o', 'i');
+    System.out.println(str3);
+    String str4="This is a test".replace("is", "os");
+    System.out.println(str4);    
+
+d. trim()--> used to remove the leading and trailing whitespace from a string.    
+	String trim()
+
+Character extraction:-
+----------------------------------
+a. charAt() -->  To extract a single character from the string.
+	char charAt(int index)
+
+b. getChars() --> To extract more than one characters at a time.
+	void getChars(int sourceStart,int sourceEnd, 
+        char target[],int targetStart)
+  (returns value upto sourceEnd-1)
+
+  eg. String s="Orchid International College";
+      int start=12;
+      int end=18;
+       char target[]=new char[end-start];
+	s.getChars(start,end,target,0);
+      System.out.println(target);
+
+c. getBytes() --> returns array of byte from given string.
+	byte[] getBytes()
+  eg. String str="This is a test";
+	byte b[]=str.getBytes();
+	System.out.println(b[0]); --> prints ASCII value of "T".
+
+d. toCharArray() --> to convert a string into array of characters.
+	char[] toCharArray()
+eg. String str="This is a test";
+	char c[]=str.toCharArray();
+	System.out.println(c[0]); --> prints "T".
+--------------------------------------------------
+
+
+String Conversion and toString():-
+--> During string concatenation, 
+
+

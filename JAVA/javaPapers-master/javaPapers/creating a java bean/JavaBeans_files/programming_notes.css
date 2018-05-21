@@ -1,0 +1,273 @@
+* {
+	margin: 0px; padding: 0px;
+}
+body {
+	color: rgb(0, 0, 0); font-family: "Segoe UI", Segoe, Calibri, Tahoma, Arial, Helvetica, Verdana, sans-serif; font-size: 14px;
+}
+p {
+	margin-top: 0.7em; margin-bottom: 0.3em;
+}
+pre {
+	margin: 5px 0px 6px; padding: 3px 10px; border: 1px dashed currentColor; text-align: left; color: rgb(0, 0, 0); line-height: 130%; font-family: Consolas, "Lucida Console", "Courier New", Courier, monospace; font-size: 13px;
+}
+code {
+	font-family: Consolas, "Lucida Console", "Courier New", Courier, monospace;
+}
+#container {
+	margin: 8px 20px 10px 18px; padding: 10px 0px; border-left-color: rgb(0, 117, 162); border-left-width: 2px; border-left-style: solid;
+}
+#content {
+	margin: 5px 20px 5px 15px; padding: 0px; text-align: justify; line-height: 140%; font-size: 14px;
+}
+h1 {
+	margin: 0px; padding: 0.6em 0px 0.1em; line-height: 140%; letter-spacing: 1px; font-family: "Trebuchet MS", "Segoe UI", Segoe, Verdana, Tahoma, Arial, Helvetica, sans-serif;
+}
+h2 {
+	margin: 0px; padding: 0.6em 0px 0.1em; line-height: 140%; letter-spacing: 1px; font-family: "Trebuchet MS", "Segoe UI", Segoe, Verdana, Tahoma, Arial, Helvetica, sans-serif;
+}
+h3 {
+	margin: 0px; padding: 0.6em 0px 0.1em; line-height: 140%; letter-spacing: 1px; font-family: "Trebuchet MS", "Segoe UI", Segoe, Verdana, Tahoma, Arial, Helvetica, sans-serif;
+}
+h4 {
+	margin: 0px; padding: 0.6em 0px 0.1em; line-height: 140%; letter-spacing: 1px; font-family: "Trebuchet MS", "Segoe UI", Segoe, Verdana, Tahoma, Arial, Helvetica, sans-serif;
+}
+h5 {
+	margin: 0px; padding: 0.6em 0px 0.1em; line-height: 140%; letter-spacing: 1px; font-family: "Trebuchet MS", "Segoe UI", Segoe, Verdana, Tahoma, Arial, Helvetica, sans-serif;
+}
+h1 {
+	color: rgb(0, 78, 108); font-size: 26px; margin-top: 0.5em;
+}
+h2 {
+	color: rgb(0, 78, 108); padding-bottom: 0.5em; font-size: 22px; margin-bottom: 2em; border-bottom-color: rgb(0, 117, 162); border-bottom-width: 4px; border-bottom-style: solid;
+}
+h3 {
+	padding: 1.2em 0px 0px; color: rgb(0, 117, 162); text-transform: none; font-size: 19px; border-bottom-color: rgb(0, 117, 162); border-bottom-width: 1px; border-bottom-style: solid;
+}
+h4 {
+	padding: 1.5em 0px 0px; color: rgb(0, 117, 162); text-transform: none; font-family: "Segoe UI", Segoe, Verdana, "Trebuchet MS", Tahoma, Arial, Helvetica, sans-serif; font-size: 17px;
+}
+h5 {
+	padding: 1.5em 0px 0px; color: rgb(0, 0, 0); text-transform: none; font-family: "Segoe UI", Segoe, Verdana, "Trebuchet MS", Tahoma, Arial, Helvetica, sans-serif; font-size: 15px;
+}
+#content ul {
+	list-style: square url("images/BulletSquare.png"); margin: 0.3em 0px 0.2em 1.8em; padding: 0px;
+}
+#content ul ul {
+	list-style-type: circle;
+}
+ol ul {
+	list-style-type: circle;
+}
+#content ol {
+	margin: 0.3em 0px 0.2em 2.5em; padding: 0px; list-style-type: decimal; list-style-position: outside;
+}
+#content ol ol {
+	list-style-type: lower-alpha;
+}
+ul ol {
+	list-style-type: lower-alpha;
+}
+#content li {
+	margin-top: 0.3em; margin-bottom: 0.3em;
+}
+p.p-last-modified {
+	margin: 4em 0px 0px; text-align: right; color: rgb(0, 117, 162);
+}
+#content a {
+	color: rgb(0, 117, 162); text-decoration: none;
+}
+#content a:hover {
+	color: rgb(152, 72, 6); text-decoration: underline;
+}
+.code-syntax {
+	border: 2px solid rgb(248, 248, 248); background-color: rgb(199, 226, 250);
+}
+.code-example {
+	border: 2px solid rgb(248, 248, 248); background-color: rgb(236, 242, 218);
+}
+.code-explanation {
+	border: 2px solid rgb(248, 248, 248); background-color: rgb(238, 238, 238);
+}
+.code-command {
+	border: 2px solid rgb(248, 255, 255); background-color: rgb(196, 238, 255);
+}
+.code-output {
+	border: 2px solid rgb(248, 248, 248); white-space: pre; background-color: rgb(226, 246, 255);
+}
+.code-comment {
+	color: rgb(0, 153, 0);
+}
+.code-new {
+	color: rgb(227, 27, 35);
+}
+.code-error {
+	color: rgb(255, 0, 153);
+}
+.code-listing {
+	border: 2px solid rgb(248, 248, 248); background-color: rgb(236, 242, 218);
+}
+.code-line-number {
+	border: 2px solid rgb(248, 248, 248); text-align: right; background-color: rgb(218, 230, 182);
+}
+.code-line-number-width {
+	width: 40px;
+}
+.output-web {
+	margin: 6px 0px; padding: 6px 10px; border: 2px solid rgb(248, 248, 248); text-align: left; background-color: rgb(238, 255, 255);
+}
+.highlight {
+	background-color: rgb(255, 255, 0);
+}
+.underline {
+	text-decoration: underline;
+}
+.line-heading {
+	letter-spacing: 0.5px; font-family: "Segoe UI", Segoe, Verdana, "Trebuchet MS", Tahoma, Arial, Helvetica, sans-serif; font-size: 15px; font-weight: bold;
+}
+.code-fragment {
+	border: currentColor; margin-left: 15pt; background-color: rgb(255, 255, 255);
+}
+.code-plain {
+	padding: 0px; border: currentColor; color: rgb(0, 0, 0);
+}
+.code-font {
+	font-family: Consolas, "Lucida Console", "Courier New", Courier, monospace;
+}
+.image-center {
+	margin: 10px auto 0px; display: block;
+}
+.image-left {
+	margin-top: 10px; margin-bottom: 0px; margin-left: 30px; display: block;
+}
+.image-left-border {
+	border: thin solid currentColor; margin-top: 10px; margin-bottom: 0px; margin-left: 30px;
+}
+table.table-data {
+	margin: 12px auto; border: 0px currentColor; text-align: center; vertical-align: top;
+}
+table.table-data tr {
+	background-color: rgb(196, 238, 255);
+}
+table.table-data tr.table-row-alt {
+	background-color: rgb(226, 246, 255);
+}
+table.table-data td {
+	padding: 2px 10px; text-align: left; vertical-align: top;
+}
+table.table-data td.td-center {
+	padding: 2px 10px; text-align: center; vertical-align: top;
+}
+table.table-data th {
+	padding: 4px 10px; text-align: center; color: rgb(255, 255, 255); background-color: rgb(0, 125, 173);
+}
+table.table-program {
+	margin: 0px auto; padding: 0px; border: 0px currentColor; width: 100%;
+}
+table.table-program tr {
+	margin: 0px; padding: 0px;
+}
+table.table-program tr td {
+	margin: 0px; padding: 0px; vertical-align: top;
+}
+table.table-program th {
+	padding: 4px 10px; text-align: center; color: rgb(255, 255, 255); font-family: "Trebuchet MS", "Segoe UI", Segoe, Verdana, Helvetica, Tahoma, Arial, sans-serif; background-color: rgb(0, 125, 173);
+}
+table.table-code-desc {
+	border: 0px currentColor;
+}
+table.table-code-desc th {
+	padding: 6px 12px; text-align: center; color: rgb(255, 255, 255); font-family: "Trebuchet MS", "Segoe UI", Segoe, Verdana, Helvetica, Tahoma, Arial, sans-serif; font-size: 15px; background-color: rgb(0, 125, 173);
+}
+table.table-code-desc tr {
+	
+}
+table.table-code-desc td.td-code {
+	margin: 0px; padding: 2px 10px; font-family: Consolas, "Lucida Console", "Courier New", Courier, monospace; font-size: 13px; vertical-align: top; white-space: nowrap; background-color: rgb(226, 246, 255);
+}
+table.table-code-desc td.td-desc {
+	margin: 0px; padding: 2px 15px; vertical-align: top; background-color: rgb(238, 238, 238);
+}
+table.table-code-desc td.td-example {
+	margin: 0px; padding: 2px 10px; font-family: Consolas, "Lucida Console", "Courier New", Courier, monospace; font-size: 13px; vertical-align: top; white-space: pre; background-color: rgb(196, 238, 255);
+}
+table.table-zebra {
+	text-align: left; vertical-align: top; border-collapse: collapse; background-color: rgb(226, 246, 255);
+}
+table.table-zebra th {
+	padding: 4px 10px; border: 2px solid white; text-align: center; color: rgb(255, 255, 255); letter-spacing: 1px; font-size: 15px; background-color: rgb(0, 125, 173);
+}
+table.table-zebra td {
+	padding: 2px 10px; border: 2px solid white; vertical-align: top;
+}
+.table-center {
+	margin: 12px auto;
+}
+.td-center {
+	text-align: center;
+}
+.tr-center {
+	text-align: center;
+}
+.td-code {
+	font-family: Consolas, "Lucida Console", "Courier New", Courier, monospace;
+}
+.tr-code {
+	font-family: Consolas, "Lucida Console", "Courier New", Courier, monospace;
+}
+.table-code {
+	font-family: Consolas, "Lucida Console", "Courier New", Courier, monospace;
+}
+.td-code-smaller {
+	font-family: Consolas, "Lucida Console", "Courier New", Courier, monospace; font-size: 13px;
+}
+.tr-code-smaller {
+	font-family: Consolas, "Lucida Console", "Courier New", Courier, monospace; font-size: 13px;
+}
+.table-code-smaller {
+	font-family: Consolas, "Lucida Console", "Courier New", Courier, monospace; font-size: 13px;
+}
+.td-default {
+	font-family: "Segoe UI", Segoe, Calibri, Tahoma, Arial, Helvetica, Verdana, sans-serif;
+}
+.td-pre {
+	white-space: pre;
+}
+.tr-pre {
+	white-space: pre;
+}
+.table-pre {
+	white-space: pre;
+}
+.col-code {
+	background-color: rgb(196, 238, 255);
+}
+.tr-alt {
+	background-color: rgb(196, 238, 255);
+}
+.col-example {
+	background-color: rgb(238, 238, 238);
+}
+.col-desc {
+	background-color: rgb(226, 246, 255);
+}
+.col-default {
+	background-color: rgb(226, 246, 255);
+}
+#footer {
+	margin: 5px 20px 20px; padding: 0px; text-align: right; color: rgb(0, 117, 162); font-size: 12px; border-top-color: rgb(0, 117, 162); border-top-width: 4px; border-top-style: solid;
+}
+#footer a {
+	color: rgb(0, 117, 162); text-decoration: underline;
+}
+#footer a:hover {
+	color: rgb(152, 72, 6); text-decoration: none;
+}
+#header {
+	margin: 0px 20px 20px 0px; padding: 0px; text-align: right; color: rgb(0, 117, 162); font-size: 12px;
+}
+#header a {
+	color: rgb(0, 117, 162); text-decoration: underline;
+}
+#header a:hover {
+	color: rgb(152, 72, 6); text-decoration: none;
+}

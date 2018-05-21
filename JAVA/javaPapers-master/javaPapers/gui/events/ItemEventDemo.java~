@@ -1,0 +1,36 @@
+//Handling ItemEvent
+//note: item event is generated when we choose item in combobox
+import java.awt.event.*;
+import javax.swing.*;
+import java.awt.*;
+
+class ItemEventDemo implements ItemListener
+{
+  JComboBox<String> cmb;
+  JLabel status;
+  
+  ItemEventDemo()
+  {
+    JFrame frame=new JFrame();
+    frame.setLayout(new FlowLayout());
+    String []drinks={"coke","fanta","pepsi"};
+    cmb=new JComboBox<String>(drinks);
+    frame.add(cmb);
+    status=new JLabel("Item Selected");
+    frame.add(status);
+    cmb.addItemListener(this);
+  
+    frame.setVisible(true);
+    frame.setSize(200,200);
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+  }
+  public static void main(String args[])
+  {
+    new ItemEventDemo();
+  }
+  public void itemStateChanged(ItemEvent e)
+  {
+    
+    status.setText(cmb.getSelectedItem().toString());
+  }
+}

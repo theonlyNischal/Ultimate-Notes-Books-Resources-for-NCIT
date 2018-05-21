@@ -1,0 +1,4 @@
+ File f=new File("d:/test/abc.txt");
+        
+        String cmd[]={"attrib","+h",f.toString()};
+        Runtime.getRuntime().exec(cmd);

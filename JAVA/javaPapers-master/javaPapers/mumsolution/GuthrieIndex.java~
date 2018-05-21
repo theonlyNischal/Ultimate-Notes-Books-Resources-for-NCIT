@@ -1,0 +1,12 @@
+class GuthrieIndex
+{
+  static int guthrieIndex(int n)
+  {
+    
+  }
+  public static void main(String args[])
+  {
+    int x=guthrieIndex(2);
+    System.out.println(x);
+  }
+}

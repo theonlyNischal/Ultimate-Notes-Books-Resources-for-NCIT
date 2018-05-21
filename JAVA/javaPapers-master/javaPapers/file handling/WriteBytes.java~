@@ -1,0 +1,12 @@
+class WriteBytes
+{
+  public static void main(String args[])
+  {
+    FileOutputStream fout=new FileOutputStream("test");
+    String str="this is a way of writing bytes to the file";
+    byte b[]=str.getBytes();
+    fout.write(b);
+    System.out.println("Data written to file");
+  }
+}
+    

@@ -1,0 +1,10 @@
+//to display input mask for date
+         MaskFormatter mf1=null;
+        try {
+            mf1 = new MaskFormatter("####-##-##");
+        } catch (ParseException ex) {
+            Logger.getLogger(InsertDate.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         mf1.setPlaceholderCharacter('_');
+    JFormattedTextField dateTextField = new JFormattedTextField(mf1);
+        f1.add(dateTextField);

@@ -1,0 +1,81 @@
+package linkedlist;
+
+class Link {
+    public int data;
+    public Link nextLink;
+
+    //Link constructor
+    public Link(int d) {
+        data = d;
+    }
+
+    //Print Link data
+    public void printLink() {
+        System.out.print("{"+  data +"} ");
+    }
+}
+
+class LinkList {
+    private Link first;
+
+    //LinkList constructor
+    public LinkList() {
+        first = null;
+    }
+
+    //Returns true if list is empty
+    public boolean isEmpty() {
+        return first == null;
+    }
+
+    //Inserts a new Link at the first of the list
+    public void insert(int d) {
+        Link link = new Link(d);
+        link.nextLink = first;
+        first = link;
+    }
+
+    //Deletes the link at the first of the list
+    public Link delete() {
+        Link temp = first;
+        if(first == null){
+         return null;
+         //throw new NoSuchElementException(); // this is the better way. 
+        }
+        first = first.nextLink;
+        return temp;
+    }
+
+    //Prints list data
+    public void printList() {
+        Link currentLink = first;
+        System.out.print("List: ");
+        while(currentLink != null) {
+            currentLink.printLink();
+            currentLink = currentLink.nextLink;
+        }
+        System.out.println("");
+    }
+}  
+
+public class LinkedListDemo {
+
+	public static void main(String[] args) {
+		 LinkList list = new LinkList();
+
+	        list.insert(1);
+	        list.insert(2);
+	        list.insert(3);
+	        list.insert(4);
+	        list.insert(5);
+
+	        list.printList();
+	        while(!list.isEmpty()) {
+	            Link deletedLink = list.delete();
+	            System.out.print("deleted: ");
+	            deletedLink.printLink();
+	            System.out.println("");
+	        }
+	        list.printList();
+	}
+}

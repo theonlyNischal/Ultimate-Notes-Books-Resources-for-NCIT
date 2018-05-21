@@ -1,0 +1,22 @@
+import java.awt.*;
+class GUI2
+{
+  GUI1()
+  {
+    Frame f=new Frame();
+    Button b=new Button("Click Me");
+    b.setBounds(30,50,100,30);
+    f.add(b);
+    f.setLayout(null);
+    f.setSize(200,200);
+    f.setVisible(true);
+    //f.setDefaultCloseOperation(1);
+  }
+  public static void main(String args[])
+  {
+    new GUI2();
+  }
+}
+    
+    
+    

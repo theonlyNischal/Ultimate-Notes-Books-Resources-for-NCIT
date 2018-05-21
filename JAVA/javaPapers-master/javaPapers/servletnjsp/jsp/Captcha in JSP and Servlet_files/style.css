@@ -1,0 +1,351 @@
+body {
+	background: url("images/body_bg.png") rgb(18, 6, 0); font: 9pt/14pt Arial, Helvetica, sans-serif; margin: 0px; padding: 0px; width: 100%; font-size-adjust: none; font-stretch: normal;
+}
+ul {
+	margin: 0px 0px 0px 10px; padding: 0px;
+}
+li {
+	margin: 0px; padding: 0px;
+}
+img {
+	border: 0px currentColor;
+}
+.header {
+	margin: 0px auto; padding: 15px 0px; width: 100%;
+}
+.logo {
+	background: url("/images/logo.png") no-repeat left top; width: 252px; height: 74px; float: left;
+}
+.search {
+	padding: 20px 0px 0px; float: right;
+}
+.searchinput {
+	background: url("/images/graybg.png") repeat-x; padding: 6px 5px; border: 0px currentColor; color: rgb(51, 51, 51); float: left;
+}
+.searchbtn {
+	background: url("/images/orangebg.png") repeat-x; padding: 3px 5px; border: 0px currentColor; color: rgb(255, 255, 255); text-transform: uppercase; font-size: 12pt; float: left;
+}
+.navigation {
+	background: url("/images/menubg.png") repeat-x; margin: 15px 0px; width: 100%; height: 56px; float: left;
+}
+.navigationshow {
+	margin: 0px auto; width: 100%;
+}
+.menu {
+	margin: 3px 0px; padding: 0px; width: 100%; float: left;
+}
+.menu ul {
+	list-style: none; margin: 0px; padding: 0px; float: left;
+}
+.menu li {
+	list-style: none; margin: 0px; padding: 0px; float: left;
+}
+.menu li a {
+	font: 13pt/normal Georgia, "Times New Roman", Times, serif; padding: 15px; height: 20px; text-align: center; color: rgb(255, 255, 255); letter-spacing: 1px; text-decoration: none; display: block; font-size-adjust: none; font-stretch: normal;
+}
+.menu li a:hover {
+	background: url("/images/hover.png") no-repeat bottom rgb(83, 41, 0); color: rgb(255, 190, 0); text-decoration: none;
+}
+.menu ul li:hover a {
+	background: url("/images/hover.png") no-repeat bottom rgb(83, 41, 0); color: rgb(255, 190, 0); text-decoration: none;
+}
+.menu li ul {
+	background: rgb(83, 41, 0); border-width: 0px 1px 1px; border-style: none solid solid; border-color: currentColor rgb(135, 92, 0) rgb(135, 92, 0); margin: 0px; padding: 10px 0px 0px; width: 225px; height: auto; display: none; position: absolute; z-index: 200;
+}
+.menu li:hover ul {
+	display: block;
+}
+.menu li li {
+	margin: 0px; padding: 0px; width: 225px; float: none; display: block;
+}
+.menu li:hover li a {
+	font: 9pt/normal Arial, Helvetica, sans-serif; color: rgb(255, 255, 255); font-size-adjust: none; font-stretch: normal;
+}
+.menu li ul a {
+	margin: 0px; padding: 5px 10px 5px 20px; text-align: left; display: block;
+}
+.menu li ul a:hover {
+	background: url("/images/hover_sub.png") no-repeat left rgb(255, 190, 0); border: 0px currentColor; color: rgb(255, 255, 255); text-decoration: none;
+}
+.menu li ul li:hover a {
+	background: url("/images/hover_sub.png") no-repeat left rgb(255, 190, 0); border: 0px currentColor; color: rgb(255, 255, 255); text-decoration: none;
+}
+.bookmarkshare {
+	padding: 20px 0px 0px; width: 150px; text-align: right; float: right;
+}
+.page {
+	margin: 0px auto; width: 1000px;
+}
+.pagetop {
+	background: url("/images/pagetopbg.png") no-repeat; width: 1000px; height: 27px; float: left;
+}
+.pagemdl {
+	background: url("/images/pagebg.png") repeat-y; padding: 0px 10px; width: 980px; float: left;
+}
+.pageleft {
+	width: 100%; float: left;
+}
+.banner {
+	width: 100%; float: left;
+}
+.pageheadsec {
+	padding: 15px 0px; width: 100%; float: left;
+}
+.pageheadtxt {
+	margin: 0px 0px 10px; padding: 0px 0px 3px; width: 100%; border-bottom-color: rgb(204, 204, 204); border-bottom-width: 1px; border-bottom-style: dotted; float: left;
+}
+.pageheadtxth1 {
+	font: 20pt/normal Georgia, "Times New Roman", Times, serif; color: rgb(229, 0, 0); font-size-adjust: none; font-stretch: normal;
+}
+.pageheadtxth3 {
+	font: bold 12pt/normal Georgia, "Times New Roman", Times, serif; color: rgb(0, 0, 0); font-size-adjust: none; font-stretch: normal;
+}
+.latestarticlessec {
+	margin: 0px 0px 30px; width: 100%; float: left;
+}
+.latestarticlessecleft {
+	width: 150px; float: left;
+}
+.latestarticlessecright {
+	
+}
+.latesttopichead {
+	width: 450px; float: left;
+}
+.latesttopichead a {
+	font: 24pt/normal Georgia, "Times New Roman", Times, serif; color: rgb(0, 0, 0); text-decoration: none; font-size-adjust: none; font-stretch: normal;
+}
+.latestpostrelated {
+	font: 8pt/normal Arial, Helvetica, sans-serif; margin: 0px 0px 10px; padding: 8px 0px 3px; width: 100%; color: rgb(102, 102, 102); border-bottom-color: rgb(204, 204, 204); border-bottom-width: 1px; border-bottom-style: dotted; float: left; font-size-adjust: none; font-stretch: normal;
+}
+.latestpostrelated a {
+	font: bold 8pt/normal Arial, Helvetica, sans-serif; margin: 0px 8px 0px 0px; color: rgb(102, 102, 102); text-decoration: none; font-size-adjust: none; font-stretch: normal;
+}
+.latestpostrelated a:hover {
+	text-decoration: underline;
+}
+.latesttopiccontent {
+	width: 320px; float: left;
+}
+.latesttopiccontent a {
+	font: italic bold 10pt/normal Georgia, "Times New Roman", Times, serif; color: rgb(255, 190, 0); text-decoration: none; float: right; font-size-adjust: none; font-stretch: normal;
+}
+.latesttopiccontent a:hover {
+	color: rgb(0, 0, 0); text-decoration: underline;
+}
+.pagenavi {
+	text-align: center; float: right;
+}
+.pagenavi a {
+	font: bold 9pt/normal Arial, Helvetica, sans-serif; margin: 0px 2px; padding: 5px 10px; border: 1px solid rgb(204, 204, 204); color: rgb(0, 0, 0); text-decoration: none; float: left; font-size-adjust: none; font-stretch: normal;
+}
+.pagenavi a:hover {
+	background: rgb(255, 190, 0); font: bold 9pt/normal Arial, Helvetica, sans-serif; color: rgb(255, 255, 255); font-size-adjust: none; font-stretch: normal;
+}
+.breadcrumbs {
+	font: 9pt/normal Arial, Helvetica, sans-serif; padding: 0px 0px 15px; width: 98%; color: rgb(51, 51, 51); float: left; font-size-adjust: none; font-stretch: normal;
+}
+.breadcrumbs a {
+	background: url("images/rightarrow_orange.png") no-repeat right; font: bold 9pt/normal Arial, Helvetica, sans-serif; margin: 0px 8px 0px 0px; padding: 0px 10px 0px 0px; color: rgb(0, 0, 0); text-decoration: none; float: left; font-size-adjust: none; font-stretch: normal;
+}
+.breadcrumbs a:hover {
+	color: rgb(255, 190, 0); text-decoration: underline;
+}
+.posthead {
+	padding: 8px 0px; width: 100%; border-top-color: rgb(184, 184, 184); border-top-width: 1px; border-top-style: solid; float: left;
+}
+h1 {
+	margin: 0px; padding: 0px;
+}
+.h1 {
+	font: bold 24pt/normal Arial, Helvetica, sans-serif; margin: 0px; padding: 0px; color: rgb(0, 0, 0); text-decoration: none; font-size-adjust: none; font-stretch: normal;
+}
+.postrelated {
+	font: 8pt/normal Arial, Helvetica, sans-serif; width: 620px; color: rgb(102, 102, 102); float: left; font-size-adjust: none; font-stretch: normal;
+}
+.postrelated a {
+	font: bold 8pt/normal Arial, Helvetica, sans-serif; margin: 0px 8px 0px 0px; color: rgb(102, 102, 102); text-decoration: none; font-size-adjust: none; font-stretch: normal;
+}
+.postrelated a:hover {
+	text-decoration: underline;
+}
+.postcontentad {
+	padding: 10px 0px; width: 95%; text-align: center; float: left; align: left;
+}
+.postcontenttxt {
+	width: 100%; float: left;
+}
+.postnegivation {
+	font: bold 9pt/normal Arial, Helvetica, sans-serif; padding: 10px 0px; width: 100%; text-align: center; color: rgb(0, 0, 0); float: left; font-size-adjust: none; font-stretch: normal;
+}
+.postnegivation a {
+	font: bold 9pt/normal Arial, Helvetica, sans-serif; margin: 0px 10px; color: rgb(255, 190, 0); text-decoration: none; font-size-adjust: none; font-stretch: normal;
+}
+.postnegivation a:hover {
+	color: rgb(0, 0, 0); text-decoration: underline;
+}
+.posttags {
+	background: rgb(243, 243, 243); font: bold 8pt/normal Arial, Helvetica, sans-serif; margin: 0px 0px 20px; padding: 8px 0px; width: 100%; color: rgb(0, 0, 0); border-top-color: rgb(184, 184, 184); border-bottom-color: rgb(184, 184, 184); border-top-width: 1px; border-bottom-width: 1px; border-top-style: solid; border-bottom-style: solid; float: left; font-size-adjust: none; font-stretch: normal;
+}
+.posttags a {
+	font: 8pt/normal Arial, Helvetica, sans-serif; margin: 0px 3px; color: rgb(51, 51, 51); text-decoration: none; font-size-adjust: none; font-stretch: normal;
+}
+.posttags a:hover {
+	text-decoration: underline;
+}
+.postrelatestopic {
+	padding: 10px 0px; width: 100%; float: left;
+}
+.postrelatestopic ul {
+	font: bold 14pt/normal Arial, Helvetica, sans-serif; list-style: none; margin: 0px; padding: 0px; color: rgb(255, 190, 0); float: left; font-size-adjust: none; font-stretch: normal;
+}
+.postrelatestopic li {
+	list-style: none; margin: 0px; padding: 0px; float: left;
+}
+.postrelatestopic ul li a {
+	font: bold 9pt/normal Arial, Helvetica, sans-serif; list-style: none; margin: 0px; padding: 2px 0px; color: rgb(0, 0, 0); text-decoration: none; float: left; font-size-adjust: none; font-stretch: normal;
+}
+.postrelatestopic ul li a:hover {
+	text-decoration: underline;
+}
+.postcommentsec {
+	margin: 10px 0px; padding: 10px 0px; width: 100%; border-top-color: rgb(184, 184, 184); border-bottom-color: rgb(184, 184, 184); border-top-width: 1px; border-bottom-width: 1px; border-top-style: solid; border-bottom-style: solid; float: left;
+}
+.postcommentshow {
+	background: rgb(237, 237, 237); padding: 10px; width: 100%; float: left;
+}
+.postcommentshowhead {
+	width: 100%; float: left;
+}
+.postcommentusering {
+	padding: 2px; border: 1px solid rgb(204, 204, 204);
+}
+.postcommentreply {
+	width: 100%; float: left;
+}
+.postcommentreply a {
+	background: url("images/commentreplybg.png") no-repeat right top; font: bold 10pt/normal Arial, Helvetica, sans-serif; padding: 10px 0px 0px; width: 81px; height: 43px; text-align: center; color: rgb(0, 0, 0); text-transform: uppercase; text-decoration: none; float: right; font-size-adjust: none; font-stretch: normal;
+}
+.postcommentreply a:hover {
+	background: url("images/commentreplybg_hover.png") no-repeat right top; color: rgb(255, 255, 255);
+}
+.wriecommentsec {
+	width: 100%; float: left;
+}
+.writelvltxt {
+	font: bold 8pt/normal Arial, Helvetica, sans-serif; padding: 6px 20px 0px 0px; width: 120px; text-align: right; float: left; font-size-adjust: none; font-stretch: normal;
+}
+.writefrmtxt {
+	background: rgb(237, 237, 237); margin: 0px 0px 10px; padding: 8px 5px; border: 0px currentColor; width: 70%; float: left;
+}
+.writefrmbtn {
+	background: rgb(0, 0, 0); font: bold 10pt/normal Arial, Helvetica, sans-serif; padding: 5px 10px; border: 0px currentColor; text-align: center; color: rgb(255, 255, 255); text-transform: uppercase; letter-spacing: 1px; float: left; font-size-adjust: none; font-stretch: normal;
+}
+.pageright {
+	background: rgb(246, 231, 181); width: 320px;
+}
+.rightbarheading {
+	background: url("/images/orangebg.png"); font: 16pt/normal Georgia, "Times New Roman", Times, serif; padding: 5px 0px 5px 10px; width: 310px; color: rgb(255, 255, 255); float: left; font-size-adjust: none; font-stretch: normal;
+}
+.rightnavigation {
+	width: 100%; float: left;
+}
+.rightnavigation ul {
+	list-style: none; margin: 0px; padding: 0px; float: left;
+}
+.rightnavigation li {
+	list-style: none; margin: 0px; padding: 0px; float: left;
+}
+.rightnavigation ul li a {
+	background: url("/images/orangebullet.png") no-repeat left; font: bold 9pt/normal Arial, Helvetica, sans-serif; list-style: none; margin: 0px; padding: 6px 0px 6px 15px; width: 315px; color: rgb(0, 0, 0); text-decoration: none; border-bottom-color: rgb(201, 201, 201); border-bottom-width: 1px; border-bottom-style: dotted; float: left; font-size-adjust: none; font-stretch: normal;
+}
+.rightnavigation ul li a:hover {
+	background: url("/images/orangebullet.png") no-repeat left rgb(255, 244, 210);
+}
+.tutorialsec {
+	padding: 10px 0px; width: 340px; float: left;
+}
+.tutoeialsecleft {
+	width: 210px; float: left;
+}
+.tutorialcatheading {
+	background: url("/images/orangebg.png"); font: 13pt/normal Georgia, "Times New Roman", Times, serif; padding: 8px 0px 7px 10px; width: 200px; color: rgb(255, 255, 255); float: left; font-size-adjust: none; font-stretch: normal;
+}
+.tutorialcat {
+	width: 210px; float: left;
+}
+.tutorialcat ul {
+	list-style: none; margin: 0px; padding: 0px; float: left;
+}
+.tutorialcat li {
+	list-style: none; margin: 0px; padding: 0px; float: left;
+}
+.tutorialcat ul li a {
+	background: url("/images/orangebullet.png") no-repeat left; font: 9pt/normal Arial, Helvetica, sans-serif; list-style: none; margin: 0px; padding: 4px 0px 4px 15px; width: 195px; color: rgb(0, 0, 0); text-decoration: none; float: left; font-size-adjust: none; font-stretch: normal;
+}
+.tutorialcat ul li a:hover {
+	background: url("/images/orangebullet.png") no-repeat left rgb(255, 244, 210);
+}
+.tutorialsecad {
+	width: 125px; float: right;
+}
+.rightbarbottomadd {
+	width: 310px; text-align: center; float: left;
+}
+.rightpopular {
+	width: 320px; float: left;
+}
+.rightpopulartopic {
+	width: 320px; float: left;
+}
+.rightpopulartopic ol {
+	list-style: decimal-leading-zero; margin: 5px 0px 5px 10px; padding: 0px 0px 0px 15px; width: 315px; float: left;
+}
+.rightpopulartopic li {
+	margin: 5px 0px; padding: 2px 0px 2px 5px; float: left;
+}
+.rightpopulartopic a {
+	color: rgb(0, 0, 0); text-decoration: none;
+}
+.rightpopulartopic a:hover {
+	color: rgb(255, 190, 0); text-decoration: underline;
+}
+#tag-cloud {
+	margin: 0px; padding: 5px 0px; width: 320px; float: left;
+}
+#tag-cloud li {
+	float: left; display: block;
+}
+#tag-cloud a {
+	text-decoration: none; float: left;
+}
+.tag01 {
+	font: bold 18pt/normal Arial, Helvetica, sans-serif; margin: 0px 6px; color: rgb(255, 204, 0); float: left; font-size-adjust: none; font-stretch: normal;
+}
+.tag02 {
+	font: bold 10pt/normal Arial, Helvetica, sans-serif; margin: 0px 6px; padding: 4px 0px 0px; color: rgb(51, 51, 51); float: left; font-size-adjust: none; font-stretch: normal;
+}
+.tag03 {
+	font: bold 24pt/normal Arial, Helvetica, sans-serif; margin: 0px 6px; padding: 0px; color: rgb(255, 204, 0); float: left; font-size-adjust: none; font-stretch: normal;
+}
+.tag04 {
+	font: bold 20pt/normal Arial, Helvetica, sans-serif; margin: 0px 6px; padding: 0px; color: rgb(0, 0, 0); float: left; font-size-adjust: none; font-stretch: normal;
+}
+.tag05 {
+	font: bold 8pt/normal Arial, Helvetica, sans-serif; margin: 0px 6px; padding: 0px; color: rgb(102, 102, 102); float: left; font-size-adjust: none; font-stretch: normal;
+}
+.rightbartagcloud {
+	width: 340px; float: left;
+}
+.pagebottom {
+	background: url("/images/pagebottombg.png") no-repeat; width: 1000px; height: 27px; float: left;
+}
+.footer {
+	background: url("/images/footerbg.png") repeat-x; font: 8pt/normal Arial, Helvetica, sans-serif; margin: 15px 0px; padding: 10px 0px; width: 100%; height: 65px; text-align: center; color: rgb(255, 190, 0); float: left; font-size-adjust: none; font-stretch: normal;
+}
+.footer a {
+	font: 13pt/30pt Georgia, "Times New Roman", Times, serif; padding: 15px 20px; color: rgb(255, 255, 255); letter-spacing: 1px; text-decoration: none; font-size-adjust: none; font-stretch: normal;
+}
+.footer a:hover {
+	color: rgb(255, 190, 0);
+}

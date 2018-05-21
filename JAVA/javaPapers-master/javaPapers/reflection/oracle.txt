@@ -1,0 +1,84 @@
+to change oracle port number:
+--------------------------
+exec DBMS_XDB.SETHTTPPORT(8888)
+---------------------------
+
+alter user hr account unlock identified by password;
+
+Connected to:
+	Personal Oracle9i Release 9.2.0.1.0 - Production
+	With the Partitioning, OLAP and Oracle Data Mining options
+	JServer Release 9.2.0.1.0 - Production
+	
+	SQL> 
+	SQL> sho user
+	USER is "SYSTEM"
+	SQL> select * from system_privilege_map
+	  2  where name like '%PRIV%';
+	
+	 PRIVILEGE NAME                                       PROPERTY
+	---------- ---------------------------------------- ----------
+	      -167 GRANT ANY PRIVILEGE                               0
+	      -244 GRANT ANY OBJECT PRIVILEGE                        0
+	
+	SQL> 
+	SQL> -- Create a new user with just create session (to log on) and grant 
+	SQL> -- any privilege to, well grant all privileges.
+	SQL> create user emil identified by emil;
+	
+	User created.
+	
+	SQL> grant create session, grant any privilege to emil;
+	
+	Grant succeeded.
+	
+	SQL> -- because we want to test this privilege create a second user to 
+	SQL> -- test it with
+	SQL> create user zulia identified by zulia;
+	
+	User created.
+	
+	SQL> -- connect as emil and grant all privileges to Zulia
+	SQL> connect emil/emil@sans
+	Connected.
+	SQL> grant all privileges to zulia;
+	
+	Grant succeeded.
+	
+	SQL> -- connect as system and find out if it worked.
+	SQL> connect system/manager@sans
+	Connected.
+	
+	SQL> select count(*),grantee
+	  2  from dba_sys_privs
+	  3  where grantee in ('MDSYS','EMIL','ZULIA')
+	  4* group by grantee
+	SQL> /
+	
+	  COUNT(*) GRANTEE
+	---------- ------------------------------
+	         2 EMIL
+	       139 MDSYS
+	       139 ZULIA
+	
+	SQL>
+	
+	We used MDSYS as a checkpoint as MDSYS has all privileges granted to it
+	by default in a default installation of Oracle. The privilege you need
+	therefore is GRANT ANY PRIVILEGE. 	
+
+-----------------------------------
+to give create table grant:
+-->grant create table to test;
+
+---------------------------------
+
+
+create tablespace users:
+--------------------------
+create smallfile tablespace users datafile '/u01/app/oracle/oradata/ORCL/users.dbf' size 10g;
+
+-----------------------------
+set users as default database permanent tablespace:
+-----------------
+

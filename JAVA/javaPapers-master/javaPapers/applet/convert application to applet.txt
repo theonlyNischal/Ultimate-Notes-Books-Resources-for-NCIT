@@ -1,0 +1,11 @@
+2Converting applications to applet:
+-------------------------------------
+Steps:
+1. Make an HTML page with the appropriate tag to load the applet code.
+2. Supply a subclass of Applet/JApplet class. Make this class public. 
+3. Eliminate the main method in the application. Do not construct a frame window for the application. Your applet will be displayed inside the browser.
+4. Move any initialization code from the frame window constructor to the init method of the applet.
+5. Remove the call to setSize; for applets, sizing is done with the width and height attributes in the HTML file.
+6. Remove the call to setDefaultCloseOperation/windowClosing. An applet cannot  be closed it terminates when the browser exits.
+7. If the application calls setTitle, eliminate the call to the method. Applets cannot have title bars.
+8. Don't call setVisible(true). The applet is displayed automatically.

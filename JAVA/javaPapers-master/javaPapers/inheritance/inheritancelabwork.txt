@@ -1,0 +1,34 @@
+1.a. Create an interface Calculation with two abstract methods:
+     void add(int a,int b)
+     int multiply(int a,int b)
+  b. Create a sub-class of Calculation.
+  c. Provide a test class.
+
+2.a. Create a class Person with 
+  String firstName,lastName  int age
+  Create a constructor to initialize the variables
+ and one abstract method showInfo()
+b. Create a class Student which is a sub class of Person
+   and add the field     String faculty
+   Create a constructor to initialize the variables.
+   Implement the abstract method showInfo()
+c. Create a class Teacher which is a sub class of Person and add the field     double salary
+   Create a constructor to initialize the variables.  
+   Implement the abstract method showInfo()
+
+d. Provide a test class.
+--------------------------------------------------------------------------
+
+2.a. Create a class Vehicle with the following:
+     int numSeats    int numWheels      String model
+     String engineType      double price
+     Create a constructor to initialize the variables.
+  b. Create an interface VehicleInfo with the methods 
+      void showDetails()
+      double getTax()
+  c. Create a class Car which is a sub-class of Vehicle and VehicleInfo
+     Calcuate tax as 15% of price
+    d. Create a class Bike which is a sub-class of Vehicle and VehicleInfo
+     Calculate tax as 12% of price.
+                         
+  e. Provide a test class.    

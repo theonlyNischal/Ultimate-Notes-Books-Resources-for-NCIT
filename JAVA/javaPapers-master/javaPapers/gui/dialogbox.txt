@@ -1,0 +1,20 @@
+Dialog Box:
+-------------
+--> A dialog box is a window similar to frame however, it does not 
+contain menu bar and it cannot run independently.
+
+--> We use the class JDialog.
+--> Its constructors are:
+
+	a. JDialog(JFrame parent,boolean isModal)
+	b. JDialog(JFrame parent,String title, boolean isModal)
+
+Types of Dialog Box:
+-----------------------------
+a. Modal Dialog Box: It is a type of dialog box which does not allow to access other parts of application until it is closed. We set the value "true" for isModal in the constructor to make a modal dialog box.
+
+b. Non-Modal Dialog Box:- It is a type of dialog box which allows to 
+access other parts of application before it is closed. We set the value "false" for isModal in the constructor to make a non-modal dialog box.
+
+
+

@@ -1,0 +1,701 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0057)http://www.devmanuals.com/tutorials/java/jsp/captcha.html -->
+<!DOCTYPE html PUBLIC "" ""><HTML lang="en"><HEAD><META content="IE=10.000" 
+http-equiv="X-UA-Compatible">
+     
+<META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">     
+<META http-equiv="X-UA-Compatible" content="IE=edge">     
+<META name="viewport" content="width=device-width, initial-scale=1">     <LINK 
+href="Captcha%20in%20JSP%20and%20Servlet_files/bootstrap.min.css" rel="stylesheet">
+	 <LINK href="Captcha%20in%20JSP%20and%20Servlet_files/style.css" rel="stylesheet"> 
+<TITLE>Captcha in JSP and Servlet</TITLE> 
+<META name="description" content="This tutorial explains how to create Captcha in JSP and Servlet. This example is created in eclipse IDE and run on tomcat server."> 
+<META name="keywords" content="Captcha in JSP and Servlet, captcha in jsp"> 
+<STYLE type="text/css">
+label.error { width: 250px; color: red; display: block; float: left; padding-left: 10px; }
+</STYLE>
+ <LINK href="Captcha%20in%20JSP%20and%20Servlet_files/prettify.css" rel="stylesheet" 
+type="text/css"> 
+<SCRIPT type="text/javascript">
+window.google_analytics_uacct = "UA-13170385-2";
+</SCRIPT>
+ 
+<META name="GENERATOR" content="MSHTML 10.00.9200.16578"></HEAD> 
+<BODY onload="prettyPrint()">
+<DIV class="container">
+<DIV class="row">
+<DIV class="header">
+<DIV class="logo"><A class="logo" 
+href="http://www.devmanuals.com/index.html"></A></DIV>
+<DIV class="search"></DIV></DIV><BR clear="all"><!-- Fixed navbar -->     
+<DIV class="navbar navbar-default" role="navigation">
+<DIV class="container">
+<DIV class="navbar-header"><BUTTON class="navbar-toggle" type="button" 
+data-toggle="collapse" data-target=".navbar-collapse"><SPAN 
+class="sr-only">Toggle navigation</SPAN>             <SPAN 
+class="icon-bar"></SPAN><SPAN class="icon-bar"></SPAN><SPAN 
+class="icon-bar"></SPAN></BUTTON>         </DIV>
+<DIV class="navbar-collapse collapse">
+<UL class="nav navbar-nav navbar-left">
+  <LI><A href="http://www.devmanuals.com/index.html">HOME</A></LI>
+  <LI class="dropdown"><A class="dropdown-toggle" href="http://www.devmanuals.com/tutorials/java/jsp/captcha.html#" 
+  data-toggle="dropdown">Tutorials<B class="caret"></B></A>
+  <UL class="dropdown-menu">
+    <LI><A href="http://www.devmanuals.com/tutorials/">Index</A></LI>
+    <LI><A 
+    href="http://www.devmanuals.com/tutorials/java/index.html">Java</A></LI></UL></LI>
+  <LI><A href="http://www.devmanuals.com/aboutus.html">About Us</A></LI>
+  <LI><A 
+href="http://www.devmanuals.com/advertise.html">Advertise</A></LI></UL></DIV><!--/.nav-collapse --> 
+      </DIV></DIV>
+<DIV class="container" style="background: white;">
+<DIV class="row">
+<DIV class="col-md-8">
+<DIV class="row">
+<DIV class="pageleft">
+<DIV class="breadcrumbs"><A href="http://www.devmanuals.com/index.html">Home</A>
+																													 <A 
+href="http://www.devmanuals.com/tutorials/">Tutorials</A>																	 <A 
+href="http://www.devmanuals.com/tutorials/java/">Java</A>																	 <A 
+href="http://www.devmanuals.com/tutorials/java/jsp/">Jsp</A>														
+													Captcha in JSP and Servlet</DIV>
+<DIV class="posthead">
+<DIV style="float: right;"><IMG class="postcommentusering" alt="Captcha in JSP and Servlet" 
+src="Captcha%20in%20JSP%20and%20Servlet_files/ProgrammingTutorial.gif">
+						 </DIV>
+<H1><A class="h1" href="http://www.devmanuals.com/tutorials/java/jsp/captcha.html">Captcha 
+in JSP and Servlet</A></H1><BR clear="all">
+<DIV class="postrelated">																Posted in : <A href="http://www.devmanuals.com/tutorials/java/corejava/index.html">Servlet</A>
+								Posted on : <B>April 28, 2011 at 12:15 PM</B>								Comments : <A href="http://www.devmanuals.com/tutorials/java/jsp/captcha.html#comments">[&nbsp;0&nbsp;]</A>
+							 </DIV>
+<DIV>
+<SCRIPT src="Captcha%20in%20JSP%20and%20Servlet_files/plusone.js" type="text/javascript"></SCRIPT>
+										 
+<DIV id="fb-root"></DIV>
+<SCRIPT>(function(d, s, id) {
+										  var js, fjs = d.getElementsByTagName(s)[0];
+										  if (d.getElementById(id)) return;
+										  js = d.createElement(s); js.id = id;
+										  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+										  fjs.parentNode.insertBefore(js, fjs);
+										}(document, 'script', 'facebook-jssdk'));</SCRIPT>
+																			 
+<TABLE border="0" widht="100%">
+  <TBODY>
+  <TR style="height: 40px;">
+    <TD>
+      <DIV class="fb-like" font="" data-show-faces="false" data-width="90" 
+      data-layout="button_count" data-send="true" data-href="http://www.devmanuals.com/tutorials/java/jsp/captcha.html"></DIV></TD>
+    <TD>
+      <DIV class="twitter"><A class="twitter-share-button" href="http://twitter.com/share" 
+      data-via="involver" data-count="horizontal" data-url="http://www.devmanuals.com/tutorials/java/jsp/captcha.html" 
+      data-text="What’s Happening to Facebook “Share”?">Tweet</A>
+<SCRIPT src="Captcha%20in%20JSP%20and%20Servlet_files/widgets.js" type="text/javascript"></SCRIPT>
+      </DIV></TD>
+    <TD>
+      <DIV class="linkedIn">
+<SCRIPT src="Captcha%20in%20JSP%20and%20Servlet_files/in.js" type="text/javascript"></SCRIPT>
+
+<SCRIPT type="in/share" data-url="http://www.devmanuals.com/tutorials/java/jsp/captcha.html" data-counter="right"></SCRIPT>
+      </DIV></TD>
+    <TD><g:plusone href="http://www.devmanuals.com/tutorials/java/jsp/captcha.html" 
+      size="medium"></g:plusone>										 </TD></TR></TBODY></TABLE></DIV></DIV>
+<DIV class="postcontentad"><SPAN 
+style="color: rgb(209, 208, 206);">Advertisements</SPAN><BR>
+<DIV style="margin: 4px; float: left;">
+<SCRIPT type="text/javascript"><!--
+google_ad_client = "pub-0562274132054498";
+/* 468x60, created 5/22/11 */
+google_ad_slot = "9780483969";
+google_ad_width = 468;
+google_ad_height = 60;
+//-->
+</SCRIPT>
+ 
+<SCRIPT src="Captcha%20in%20JSP%20and%20Servlet_files/fCAH3XHW2.txt" type="text/javascript"></SCRIPT>
+ </DIV>  This tutorial explains how to create Captcha in JSP and Servlet. This 
+example is created in eclipse IDE and run on tomcat server.												
+						 </DIV>
+<DIV class="postcontenttxt">
+<H1>Captcha in JSP and Servlet</H1>
+<P>This tutorial explains how to create Captcha in JSP and Servlet. This 
+ example is created in eclipse IDE and run on tomcat server.&nbsp; This example 
+ using following jar </P>
+<UL>
+  <LI>imaging.jar</LI>
+  <LI>jstl-1.2.jar</LI>
+  <LI>simplecaptcha-1.1.1.jar</LI>
+  <LI>standard.jar </LI></UL>
+<P>The application directory structure will look like as below, if you are using 
+ an Eclipse editor for developing the application. </P>
+<P><IMG alt="1121captcha1.gif" src="Captcha%20in%20JSP%20and%20Servlet_files/1121captcha1.gif" 
+border="1"></P>
+<P>There are the  following steps for creating a such application :.</P>
+<P><STRONG>Step 1 :</STRONG></P>
+<P>First we create Dynamic web project "captcha" in eclipse IDE . Again we 
+ create "simplecaptcha.jsp" file under WebContent folder. The code of&nbsp; 
+ "simplecaptcha.jsp"&nbsp; are given as:</P>
+<TABLE>
+  <TBODY>
+  <TR>
+    <TD bgcolor="#ffffcc"><FONT color="#bf5f3f" size="2"></FONT>
+      <P align="LEFT"><FONT color="#bf5f3f" size="2">&lt;%@</FONT><FONT 
+      size="2"> </FONT>		 <FONT color="#3f7f7f" size="2">taglib</FONT><FONT 
+      size="2"> </FONT>		 <FONT color="#7f007f" size="2">uri</FONT><FONT size="2">=</FONT><FONT 
+      color="#2a00ff" 
+      size="2"><I>"http://java.sun.com/jsp/jstl/core"</I></FONT><FONT size="2">
+      		 </FONT><FONT color="#7f007f" size="2">prefix</FONT><FONT 
+      size="2">=</FONT><FONT color="#2a00ff" size="2"><I>"c"</I></FONT><FONT 
+      color="#bf5f3f" size="2">%&gt;</FONT></P><FONT color="#bf5f3f" 
+      size="2"></FONT><FONT color="#008080" size="2">		 </FONT>
+      <P align="LEFT"><FONT color="#008080" size="2">&lt;!</FONT><FONT color="#3f7f7f" 
+      size="2">DOCTYPE</FONT><FONT size="2">		 </FONT><FONT color="#008080" 
+      size="2">HTML</FONT><FONT size="2"> </FONT>		 <FONT color="#808080" size="2">PUBLIC</FONT><FONT 
+      size="2"> </FONT>		 <FONT color="#008080" size="2">"-//W3C//DTD HTML 4.01 
+      Transitional//EN"&gt;</FONT></P><FONT color="#008080" size="2"></FONT>
+      <P align="LEFT"><FONT color="#008080" size="2">&lt;</FONT><FONT color="#3f7f7f" 
+      size="2">html</FONT><FONT color="#008080" size="2">&gt;</FONT></P><FONT 
+      color="#008080" size="2"></FONT>
+      <P align="LEFT"><FONT color="#008080" size="2">&lt;</FONT><FONT color="#3f7f7f" 
+      size="2">head</FONT><FONT color="#008080" size="2">&gt;</FONT></P><FONT 
+      color="#008080" size="2"></FONT>
+      <P align="LEFT"><FONT color="#008080" size="2">&lt;</FONT><FONT color="#3f7f7f" 
+      size="2">META</FONT><FONT size="2">		 </FONT><FONT color="#7f007f" size="2">http-equiv</FONT><FONT 
+      size="2">=</FONT><FONT color="#2a00ff" 
+      size="2"><I>"Content-Type"</I></FONT><FONT size="2">		 </FONT><FONT color="#7f007f" 
+      size="2">content</FONT><FONT size="2">=</FONT><FONT color="#2a00ff" size="2"><I>"text/html; 
+      		charset=ISO-8859-1"</I></FONT><FONT color="#008080" 
+      size="2">&gt;</FONT></P><FONT color="#008080" size="2"></FONT>
+      <P align="LEFT"><FONT color="#008080" size="2">&lt;</FONT><FONT color="#3f7f7f" 
+      size="2">title</FONT><FONT color="#008080" size="2">&gt;</FONT><FONT size="2">Simple 
+      		CAPTCHA Example</FONT><FONT color="#008080" size="2">&lt;/</FONT><FONT 
+      color="#3f7f7f" size="2">title</FONT><FONT color="#008080" 
+      size="2">&gt;</FONT></P><FONT color="#008080" size="2"></FONT>
+      <P align="LEFT"><FONT color="#008080" size="2">&lt;</FONT><FONT color="#3f7f7f" 
+      size="2">link</FONT><FONT size="2">		 </FONT><FONT color="#7f007f" size="2">href</FONT><FONT 
+      size="2">=</FONT><FONT color="#2a00ff" 
+      size="2"><I>"sc.css"</I></FONT><FONT size="2">		 </FONT><FONT color="#7f007f" 
+      size="2">type</FONT><FONT size="2">=</FONT><FONT color="#2a00ff" 
+      size="2"><I>"text/css"</I></FONT><FONT size="2">		 </FONT><FONT color="#7f007f" 
+      size="2">rel</FONT><FONT size="2">=</FONT><FONT color="#2a00ff" 
+      size="2"><I>"stylesheet"</I></FONT><FONT size="2">		 </FONT><FONT color="#008080" 
+      size="2">/&gt;</FONT></P><FONT color="#008080" size="2"></FONT>
+      <P align="LEFT"><FONT color="#008080" size="2">&lt;/</FONT><FONT color="#3f7f7f" 
+      size="2">head</FONT><FONT color="#008080" size="2">&gt;</FONT></P><FONT 
+      color="#008080" size="2"></FONT>
+      <P align="LEFT"><FONT color="#008080" size="2">&lt;</FONT><FONT color="#3f7f7f" 
+      size="2">body</FONT><FONT color="#008080" size="2">&gt;</FONT></P><FONT 
+      color="#008080" size="2"></FONT><FONT size="2"></FONT><FONT color="#008080" 
+      size="2">		 </FONT>
+      <P align="LEFT"><FONT color="#008080" size="2">&lt;</FONT><FONT color="#3f7f7f" 
+      size="2">center</FONT><FONT color="#008080" size="2">&gt;</FONT></P><FONT 
+      color="#008080" size="2"></FONT>
+      <P align="LEFT"><FONT color="#008080" size="2">&lt;</FONT><FONT color="#3f7f7f" 
+      size="2">h3</FONT><FONT color="#008080" size="2">&gt;</FONT><FONT 
+      size="2">Simple 		CAPTCHA Example</FONT><FONT color="#008080" 
+      size="2">&lt;/</FONT><FONT color="#3f7f7f" size="2">h3</FONT><FONT color="#008080" 
+      size="2">&gt;</FONT></P><FONT color="#008080" size="2"></FONT>
+      <P align="LEFT"><FONT color="#008080" size="2">&lt;</FONT><FONT color="#3f7f7f" 
+      size="2">img</FONT><FONT size="2">		 </FONT><FONT color="#7f007f" 
+      size="2">id</FONT><FONT size="2">=</FONT><FONT color="#2a00ff" 
+      size="2"><I>"captcha"</I></FONT><FONT size="2">		 </FONT><FONT color="#7f007f" 
+      size="2">src</FONT><FONT size="2">=</FONT><FONT color="#2a00ff" 
+      size="2"><I>"</I></FONT><FONT color="#008080" size="2">&lt;</FONT><FONT 
+      color="#3f7f7f" size="2">c:url</FONT><FONT size="2">		 </FONT><FONT color="#7f007f" 
+      size="2">value</FONT><FONT size="2">=</FONT><FONT color="#2a00ff" 
+      size="2"><I>"simpleCaptcha.jpg"</I></FONT><FONT size="2">		 </FONT><FONT 
+      color="#008080" size="2">/&gt;</FONT><FONT color="#2a00ff" 
+      size="2"><I>"</I></FONT><FONT size="2">		 </FONT><FONT color="#7f007f" 
+      size="2">width</FONT><FONT size="2">=</FONT><FONT color="#2a00ff" 
+      size="2"><I>"150"</I></FONT><FONT color="#008080" 
+      size="2">&gt;</FONT></P><FONT color="#008080" size="2"></FONT>
+      <P align="LEFT"><FONT color="#008080" size="2">&lt;</FONT><FONT color="#3f7f7f" 
+      size="2">form</FONT><FONT size="2">		 </FONT><FONT color="#7f007f" size="2">action</FONT><FONT 
+      size="2">=</FONT><FONT color="#2a00ff" 
+      size="2"><I>"captchasubmit.jsp"</I></FONT><FONT size="2">		 </FONT><FONT 
+      color="#7f007f" size="2">method</FONT><FONT size="2">=</FONT><FONT color="#2a00ff" 
+      size="2"><I>"post"</I></FONT><FONT color="#008080" 
+      size="2">&gt;&lt;</FONT><FONT color="#3f7f7f" size="2">input</FONT><FONT 
+      size="2">		 </FONT><FONT color="#7f007f" size="2">type</FONT><FONT size="2">=</FONT><FONT 
+      color="#2a00ff" size="2"><I>"text"</I></FONT></P><FONT color="#2a00ff" 
+      size="2"><I></I></FONT><FONT size="2">		 </FONT>
+      <P align="LEFT"><FONT size="2"></FONT><FONT color="#7f007f" 
+      size="2">name</FONT><FONT size="2">=</FONT><FONT color="#2a00ff" 
+      size="2"><I>"answer"</I></FONT><FONT size="2">		 </FONT><FONT color="#008080" 
+      size="2">/&gt;&lt;</FONT><FONT color="#3f7f7f" size="2">br</FONT><FONT 
+      color="#008080" size="2">&gt;</FONT></P><FONT color="#008080" 
+      size="2"></FONT>
+      <P align="LEFT"><FONT color="#008080" size="2">&lt;</FONT><FONT color="#3f7f7f" 
+      size="2">input</FONT><FONT size="2">		 </FONT><FONT color="#7f007f" size="2">type</FONT><FONT 
+      size="2">=</FONT><FONT color="#2a00ff" 
+      size="2"><I>"submit"</I></FONT><FONT size="2">		 </FONT><FONT color="#7f007f" 
+      size="2">value</FONT><FONT size="2">=</FONT><FONT color="#2a00ff" 
+      size="2"><I>"Submit"</I></FONT><FONT color="#008080" 
+      size="2">&gt;&lt;/</FONT><FONT color="#3f7f7f" size="2">form</FONT><FONT 
+      color="#008080" size="2">&gt;</FONT></P><FONT color="#008080" 
+      size="2"></FONT>
+      <P align="LEFT"><FONT color="#008080" size="2">&lt;/</FONT><FONT color="#3f7f7f" 
+      size="2">center</FONT><FONT color="#008080" size="2">&gt;</FONT></P><FONT 
+      size="2"></FONT><FONT color="#008080" size="2">		 </FONT>
+      <P align="LEFT"><FONT color="#008080" size="2">&lt;/</FONT><FONT color="#3f7f7f" 
+      size="2">body</FONT><FONT color="#008080" size="2">&gt;</FONT></P><FONT 
+      color="#008080" size="2"></FONT>
+      <P align="LEFT"><FONT color="#008080" size="2">&lt;/</FONT><FONT color="#3f7f7f" 
+      size="2">html</FONT><FONT color="#008080" size="2">&gt;</FONT></P><FONT 
+      color="#008080" size="2"></FONT></TD></TR></TBODY></TABLE>
+<P align="LEFT"><STRONG>Step 2 :</STRONG></P>
+<P align="LEFT">Again we create "captchasubmit.jsp" file under WebContent 
+folder.  This file used displays message for captcha code are correct or not. 
+The code of&nbsp;  "simplecaptcha.jsp"&nbsp; are given as:</P>
+<TABLE>
+  <TBODY>
+  <TR>
+    <TD bgcolor="#ffffcc"><FONT color="#bf5f3f" size="2"></FONT>
+      <P align="LEFT"><FONT color="#bf5f3f" size="2">&lt;%@</FONT><FONT 
+      size="2"> </FONT>		 <FONT color="#3f7f7f" size="2">page</FONT><FONT size="2"> 
+      </FONT>		 <FONT color="#7f007f" size="2">import</FONT><FONT 
+      size="2">=</FONT><FONT color="#2a00ff" 
+      size="2"><I>"nl.captcha.Captcha"</I></FONT><FONT color="#bf5f3f" 
+      size="2">%&gt;</FONT></P><FONT color="#bf5f3f" size="2"></FONT><FONT size="2"></FONT><FONT 
+      color="#bf5f3f" size="2">		 
+      <P align="LEFT">&lt;%</P></FONT><FONT size="2">		 
+      <P align="LEFT">Captcha captcha = (Captcha) 
+      session.getAttribute(Captcha.NAME);</P></FONT>
+      <P align="LEFT"><FONT size="2">request.setCharacterEncoding(</FONT><FONT 
+      color="#2a00ff" size="2">"UTF-8"</FONT><FONT size="2">);</FONT></P><FONT 
+      size="2"></FONT>
+      <P align="LEFT"><FONT size="2">String answer = 
+      request.getParameter(</FONT><FONT color="#2a00ff" 
+      size="2">"answer"</FONT><FONT size="2">);</FONT></P><FONT size="2"></FONT>
+      <P align="LEFT"><FONT size="2"></FONT><FONT color="#7f0055" 
+      size="2"><B>if</B></FONT><FONT size="2"> 		(captcha.isCorrect(answer)) 
+      {</FONT></P><FONT size="2"></FONT><FONT color="#bf5f3f" size="2">		 
+      <P align="LEFT">%&gt;</P></FONT><FONT color="#008080" size="2">		 </FONT>
+      <P align="LEFT"><FONT color="#008080" size="2">&lt;</FONT><FONT color="#3f7f7f" 
+      size="2">center</FONT><FONT color="#008080" size="2">&gt;&lt;</FONT><FONT 
+      color="#3f7f7f" size="2">b</FONT><FONT color="#008080" 
+      size="2">&gt;</FONT><FONT size="2">Correct		 <U>Captcha</U> Code 
+      !</FONT><FONT color="#008080" size="2">&lt;/</FONT><FONT color="#3f7f7f" 
+      size="2">b</FONT><FONT color="#008080" size="2">&gt;</FONT><FONT size="2">
+      		 </FONT><FONT color="#bf5f3f" size="2">&lt;%</FONT></P><FONT color="#bf5f3f" 
+      size="2"></FONT><FONT size="2">		 </FONT>
+      <P align="LEFT"><FONT size="2">} </FONT><FONT color="#7f0055" 
+      size="2"><B>else</B></FONT><FONT size="2"> 		{</FONT></P><FONT 
+      size="2"></FONT>
+      <P align="LEFT"><FONT size="2"></FONT><FONT color="#bf5f3f" 
+      size="2">%&gt;</FONT><FONT size="2">		 </FONT><FONT color="#008080" size="2">&lt;</FONT><FONT 
+      color="#3f7f7f" size="2">b</FONT><FONT color="#008080" 
+      size="2">&gt;</FONT><FONT size="2">In 		Correct <U>Captcha</U> Code 
+      !</FONT><FONT color="#008080" size="2">&lt;/</FONT><FONT color="#3f7f7f" 
+      size="2">b</FONT><FONT color="#008080" size="2">&gt;</FONT><FONT size="2">
+      		 </FONT><FONT color="#bf5f3f" size="2">&lt;%</FONT></P><FONT color="#bf5f3f" 
+      size="2"></FONT><FONT size="2">		 
+      <P align="LEFT">}</P></FONT>
+      <P align="LEFT"><FONT size="2"></FONT><FONT color="#bf5f3f" 
+      size="2">%&gt;</FONT></P><FONT color="#bf5f3f" size="2"></FONT><FONT 
+      color="#008080" size="2">		 </FONT>
+      <P align="LEFT"><FONT color="#008080" size="2">&lt;/</FONT><FONT color="#3f7f7f" 
+      size="2">center</FONT><FONT color="#008080" size="2">&gt;</FONT></P><FONT 
+      color="#008080" size="2"></FONT><FONT size="2"></FONT></TD></TR></TBODY></TABLE>
+<P align="LEFT"><STRONG>Step 3 :</STRONG></P>
+<P align="LEFT">&nbsp;Now create css folder under WebContent&nbsp; folder and 
+ create "styles.css" file under css folder. The code of&nbsp; "styles.css" below 
+ :</P>
+<TABLE>
+  <TBODY>
+  <TR>
+    <TD bgcolor="#ffffcc"><FONT color="#3f7f7f" size="2"><B></B></FONT>
+      <P align="LEFT"><FONT color="#3f7f7f" size="2"><B>body</B></FONT><FONT 
+      size="2"> {</FONT></P><FONT size="2"></FONT>
+      <P align="LEFT"><FONT size="2"></FONT><FONT color="#7f007f" 
+      size="2">color</FONT><FONT size="2">:		 </FONT><FONT color="#2a00e1" size="2"><I>black</I></FONT><FONT 
+      size="2">;</FONT></P><FONT size="2"></FONT>
+      <P align="LEFT"><FONT size="2"></FONT><FONT color="#7f007f" 
+      size="2">background-color</FONT><FONT size="2">:		 </FONT><FONT color="#2a00e1" 
+      size="2"><I>white</I></FONT><FONT size="2">;</FONT></P><FONT 
+      size="2"></FONT>
+      <P align="LEFT"><FONT size="2"></FONT><FONT color="#7f007f" 
+      size="2">font-family</FONT><FONT size="2">:		 </FONT><FONT color="#2a00e1" 
+      size="2"><I>"Helvetica Neue",</I></FONT><FONT size="2">		 </FONT><FONT 
+      color="#2a00e1" size="2"><I>Arial,</I></FONT><FONT size="2">
+      		 </FONT><FONT color="#2a00e1" size="2"><I>Helvetica,</I></FONT><FONT 
+      size="2">		 </FONT><FONT color="#2a00e1" 
+      size="2"><I>Geneva,</I></FONT><FONT size="2">		 </FONT><FONT color="#2a00e1" 
+      size="2"><I>sans-serif</I></FONT><FONT size="2">;</FONT></P><FONT 
+size="2">
+      <P>}</P></FONT></TD></TR></TBODY></TABLE>
+<P><STRONG>Step 4 :</STRONG></P>
+<P>Now you can open "web.xml" file and modify as:</P>
+<TABLE bgcolor="#ffffcc">
+  <TBODY>
+  <TR>
+    <TD><FONT color="#008080" size="2"></FONT>
+      <P align="LEFT"><FONT color="#008080" size="2">&lt;?</FONT><FONT color="#3f7f7f" 
+      size="2">xml</FONT><FONT size="2">		 </FONT><FONT color="#7f007f" 
+      size="2">version</FONT><FONT size="2">=</FONT><FONT color="#2a00ff" size="2"><I>"1.0"</I></FONT><FONT 
+      size="2">		 </FONT><FONT color="#7f007f" size="2">encoding</FONT><FONT 
+      size="2">=</FONT><FONT color="#2a00ff" size="2"><I>"UTF-8"</I></FONT><FONT 
+      color="#008080" size="2">?&gt;</FONT></P><FONT color="#008080" 
+      size="2"></FONT>
+      <P align="LEFT"><FONT color="#008080" size="2">&lt;</FONT><FONT color="#3f7f7f" 
+      size="2">web-app</FONT><FONT size="2">		 </FONT><FONT color="#7f007f" 
+      size="2">xmlns:xsi</FONT><FONT size="2">=</FONT><FONT color="#2a00ff" 
+      size="2"><I>"http://www.w3.org/2001/XMLSchema-instance"</I></FONT></P><FONT 
+      color="#2a00ff" size="2"><I></I></FONT><FONT size="2">		 </FONT>
+      <P align="LEFT"><FONT size="2"></FONT><FONT color="#7f007f" 
+      size="2">xmlns</FONT><FONT size="2">=</FONT><FONT color="#2a00ff" 
+      size="2"><I>"http://java.sun.com/xml/ns/javaee"</I></FONT><FONT size="2">
+      		 </FONT><FONT color="#7f007f" size="2">xmlns:web</FONT><FONT 
+      size="2">=</FONT><FONT color="#2a00ff" 
+      size="2"><I>"http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"</I></FONT></P><FONT 
+      color="#2a00ff" size="2"><I></I></FONT><FONT size="2">		 </FONT>
+      <P align="LEFT"><FONT size="2"></FONT><FONT color="#7f007f" 
+      size="2">xsi:schemaLocation</FONT><FONT size="2">=</FONT><FONT color="#2a00ff" 
+      size="2"><I>"http://java.sun.com/xml/ns/javaee 
+      		http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"</I></FONT></P><FONT 
+      color="#2a00ff" size="2"><I></I></FONT><FONT size="2">		 </FONT>
+      <P align="LEFT"><FONT size="2"></FONT><FONT color="#7f007f" 
+      size="2">id</FONT><FONT size="2">=</FONT><FONT color="#2a00ff" 
+      size="2"><I>"WebApp_ID"</I></FONT><FONT size="2">		 </FONT><FONT color="#7f007f" 
+      size="2">version</FONT><FONT size="2">=</FONT><FONT color="#2a00ff" size="2"><I>"2.5"</I></FONT><FONT 
+      color="#008080" size="2">&gt;</FONT></P><FONT color="#008080" 
+      size="2"></FONT><FONT size="2">		 </FONT>
+      <P align="LEFT"><FONT size="2"></FONT><FONT color="#008080" 
+      size="2">&lt;</FONT><FONT color="#3f7f7f" 
+      size="2">display-name</FONT><FONT color="#008080" 
+      size="2">&gt;</FONT><FONT size="2"><U>captcha</U></FONT><FONT color="#008080" 
+      size="2">&lt;/</FONT><FONT color="#3f7f7f" 
+      size="2">display-name</FONT><FONT color="#008080" 
+      size="2">&gt;</FONT></P><FONT color="#008080" size="2"></FONT><FONT size="2">
+      		 </FONT>
+      <P align="LEFT"><FONT size="2"></FONT><FONT color="#008080" 
+      size="2">&lt;</FONT><FONT color="#3f7f7f" size="2">servlet</FONT><FONT 
+      color="#008080" size="2">&gt;</FONT></P><FONT color="#008080" 
+      size="2"></FONT><FONT size="2">		 </FONT>
+      <P align="LEFT"><FONT size="2"></FONT><FONT color="#008080" 
+      size="2">&lt;</FONT><FONT color="#3f7f7f" 
+      size="2">servlet-name</FONT><FONT color="#008080" 
+      size="2">&gt;</FONT><FONT size="2">SimpleCaptcha</FONT><FONT color="#008080" 
+      size="2">&lt;/</FONT><FONT color="#3f7f7f" 
+      size="2">servlet-name</FONT><FONT color="#008080" 
+      size="2">&gt;</FONT></P><FONT color="#008080" size="2"></FONT><FONT size="2">
+      		 </FONT>
+      <P align="LEFT"><FONT size="2"></FONT><FONT color="#008080" 
+      size="2">&lt;</FONT><FONT color="#3f7f7f" 
+      size="2">servlet-class</FONT><FONT color="#008080" 
+      size="2">&gt;</FONT><FONT 
+      size="2">nl.captcha.servlet.SimpleCaptchaServlet</FONT><FONT color="#008080" 
+      size="2">&lt;/</FONT><FONT color="#3f7f7f" 
+      size="2">servlet-class</FONT><FONT color="#008080" 
+      size="2">&gt;</FONT></P><FONT color="#008080" size="2"></FONT><FONT size="2">
+      		 </FONT>
+      <P align="LEFT"><FONT size="2"></FONT><FONT color="#008080" 
+      size="2">&lt;/</FONT><FONT color="#3f7f7f" size="2">servlet</FONT><FONT 
+      color="#008080" size="2">&gt;</FONT></P><FONT color="#008080" 
+      size="2"></FONT><FONT size="2">		 </FONT>
+      <P align="LEFT"><FONT size="2"></FONT><FONT color="#008080" 
+      size="2">&lt;</FONT><FONT color="#3f7f7f" 
+      size="2">servlet-mapping</FONT><FONT color="#008080" 
+      size="2">&gt;</FONT></P><FONT color="#008080" size="2"></FONT><FONT size="2">
+      		 </FONT>
+      <P align="LEFT"><FONT size="2"></FONT><FONT color="#008080" 
+      size="2">&lt;</FONT><FONT color="#3f7f7f" 
+      size="2">servlet-name</FONT><FONT color="#008080" 
+      size="2">&gt;</FONT><FONT size="2">SimpleCaptcha</FONT><FONT color="#008080" 
+      size="2">&lt;/</FONT><FONT color="#3f7f7f" 
+      size="2">servlet-name</FONT><FONT color="#008080" 
+      size="2">&gt;</FONT></P><FONT color="#008080" size="2"></FONT><FONT size="2">
+      		 </FONT>
+      <P align="LEFT"><FONT size="2"></FONT><FONT color="#008080" 
+      size="2">&lt;</FONT><FONT color="#3f7f7f" size="2">url-pattern</FONT><FONT 
+      color="#008080" size="2">&gt;</FONT><FONT 
+      size="2">/simpleCaptcha.jpg</FONT><FONT color="#008080" 
+      size="2">&lt;/</FONT><FONT color="#3f7f7f" 
+      size="2">url-pattern</FONT><FONT color="#008080" 
+      size="2">&gt;</FONT></P><FONT color="#008080" size="2"></FONT><FONT size="2">
+      		 </FONT>
+      <P align="LEFT"><FONT size="2"></FONT><FONT color="#008080" 
+      size="2">&lt;/</FONT><FONT color="#3f7f7f" 
+      size="2">servlet-mapping</FONT><FONT color="#008080" 
+      size="2">&gt;</FONT></P><FONT color="#008080" size="2"></FONT><FONT size="2">
+      		 </FONT>
+      <P align="LEFT"><FONT size="2"></FONT><FONT color="#008080" 
+      size="2">&lt;</FONT><FONT color="#3f7f7f" 
+      size="2">welcome-file-list</FONT><FONT color="#008080" 
+      size="2">&gt;</FONT></P><FONT color="#008080" size="2"></FONT><FONT size="2">
+      		 </FONT>
+      <P align="LEFT"><FONT size="2"></FONT><FONT color="#008080" 
+      size="2">&lt;</FONT><FONT color="#3f7f7f" 
+      size="2">welcome-file</FONT><FONT color="#008080" 
+      size="2">&gt;</FONT><FONT size="2">simpleCaptcha.jsp</FONT><FONT color="#008080" 
+      size="2">&lt;/</FONT><FONT color="#3f7f7f" 
+      size="2">welcome-file</FONT><FONT color="#008080" 
+      size="2">&gt;</FONT></P><FONT color="#008080" size="2"></FONT><FONT size="2">
+      		 </FONT>
+      <P align="LEFT"><FONT size="2"></FONT><FONT color="#008080" 
+      size="2">&lt;/</FONT><FONT color="#3f7f7f" 
+      size="2">welcome-file-list</FONT><FONT color="#008080" 
+      size="2">&gt;</FONT></P><FONT color="#008080" size="2"></FONT>
+      <P><FONT color="#008080" size="2">&lt;/</FONT><FONT color="#3f7f7f" size="2">web-app</FONT><FONT 
+      color="#008080" size="2">&gt;</FONT></P><FONT color="#008080" 
+      size="2"></FONT></TD></TR></TBODY></TABLE>
+<P><STRONG>Step 5 :</STRONG></P>
+<P>Now download&nbsp; imaging.jar, jstl-1.2.jar,simplecaptcha-1.1.1.jar and 
+ standard.jar&nbsp; jar files and paste under&nbsp; "WebContent/WEB-INF/lib" 
+directory .</P>
+<P><STRONG>Step 6:</STRONG></P>
+<P>When run&nbsp; this application on tomcat server the following output will 
+ displays as:</P>
+<P><IMG alt="1121captcha2.gif" src="Captcha%20in%20JSP%20and%20Servlet_files/1121captcha2.gif" 
+border="1"></P>
+<P>Again enter captcha code in text input box and click "Submit"  button. If you 
+enter invalid captcha code displays error message as : </P>
+<P><IMG alt="1121captcha3.gif" src="Captcha%20in%20JSP%20and%20Servlet_files/1121captcha3.gif" 
+border="1"></P>
+<P>If match captcha code displays message as:</P>
+<P><IMG alt="1121captcha4.gif" src="Captcha%20in%20JSP%20and%20Servlet_files/1121captcha4.gif" 
+border="1"></P>
+<P><STRONG>Download Code</STRONG></P>
+<P><A href="http://www.devmanuals.com/images/images1/1121captcha.zip">Download 
+ example code</A></P></DIV>
+<DIV class="postcontentad">
+<SCRIPT type="text/javascript"><!--
+google_ad_client = "pub-0562274132054498";
+/* 336x280, created 2/21/11 */
+google_ad_slot = "5664172150";
+google_ad_width = 336;
+google_ad_height = 280;
+//-->
+</SCRIPT>
+ 
+<SCRIPT src="Captcha%20in%20JSP%20and%20Servlet_files/fCAH3XHW2.txt" type="text/javascript"></SCRIPT>
+ </DIV>
+<DIV class="postnegivation">							Go to Topic <A href="http://www.devmanuals.com/tutorials/java/jsp/sendemailto_selecteddropdownuser.html">«Previous</A><A 
+href="http://www.devmanuals.com/tutorials/java/jsp/index.html">Home</A><A href="http://www.devmanuals.com/tutorials/java/jsp/dropdown-values-from-propertiesfile.html">Next»</A>
+						 </DIV>
+<DIV class="posttags">Tags: 																											 </DIV>
+<DIV class="postrelatestopic">
+<UL>Related Articles<BR clear="all">
+  <LI><A href="http://www.devmanuals.com/tutorials/java/servlet/SessionListener.html">Session 
+  Listener Example </A></LI><BR>
+  <LI><A href="http://www.devmanuals.com/tutorials/java/jsp/dropdown-values-from-propertiesfile.html">Dropdown 
+  Values From Properties File</A></LI><BR>
+  <LI><A 
+  href="http://www.devmanuals.com/tutorials/java/jsp/captcha.html">Captcha in 
+  JSP and Servlet</A></LI><BR>
+  <LI><A href="http://www.devmanuals.com/tutorials/java/jsp/sendemailto_selecteddropdownuser.html">Send 
+  Email to selected dropdown user</A></LI><BR>
+  <LI><A href="http://www.devmanuals.com/tutorials/java/jsp/index.html">JSP, 
+  Java Server Pages</A></LI><BR></UL></DIV>
+<DIV class="postcommentsec">
+<H2><A name="comments">[ 0 ] Comments</A></H2><BR>
+<DIV class="postcommentshow"></DIV>
+<DIV class="postcommentreply"><A href="http://www.devmanuals.com/tutorials/java/jsp/captcha.html#">reply</A></DIV></DIV>
+<DIV class="wriecommentsec">
+<H2>Your Comment:</H2><BR>
+<FORM name="commentForm" id="commentForm" action="/formprocessing/savecomments.html" 
+method="post"><INPUT name="articleid" type="hidden" value="1121">								 <SPAN 
+class="writelvltxt">Your Name (<SPAN style="color: red;">*</SPAN>) :</SPAN>
+								 <INPUT name="name" class="writefrmtxt" id="name" type="text"><BR clear="all">
+<DIV class="label.error" id="errmsg"></DIV><SPAN class="writelvltxt">Your Email 
+:</SPAN>								 <INPUT name="email" class="writefrmtxt" id="email" 
+type="text"><BR clear="all"><SPAN class="writelvltxt">Subject (<SPAN style="color: red;">*</SPAN>):</SPAN>
+								 <INPUT name="subject" class="writefrmtxt" id="subject" type="text"><BR 
+clear="all"><SPAN class="writelvltxt">Your Comment (<SPAN 
+style="color: red;">*</SPAN>):</SPAN>								 <TEXTAREA name="comment" class="writefrmtxt" id="comment" rows="8"></TEXTAREA><BR 
+clear="all"><SPAN class="writelvltxt">&nbsp;</SPAN>								 <IMG name="siimage" 
+id="siimage" src="Captcha%20in%20JSP%20and%20Servlet_files/Captcha.jpg" border="0"> 
+																<A title="Refresh Image" onclick="document.getElementById('siimage').src = '/Captcha.jpg?sid=' + Math.random(); return false" 
+href="http://www.devmanuals.com/tutorials/java/jsp/captcha.html#"><IMG align="bottom" 
+onclick="this.blur()" alt="Reload Image" src="Captcha%20in%20JSP%20and%20Servlet_files/refresh.gif" 
+border="0"></A> 																<BR clear="all"><SPAN 
+class="writelvltxt">&nbsp;</SPAN>								 <INPUT name="captchavalue" class="writefrmtxt" 
+id="captchavalue" type="text"><BR clear="all"><SPAN 
+class="writelvltxt">&nbsp;</SPAN>								 
+<DIV id="divStatus" name="divStatus"></DIV><INPUT class="writefrmbtn" type="submit" value="submit"><BR>&nbsp;
+							</FORM></DIV></DIV></DIV></DIV>
+<DIV class="col-md-4">
+<DIV class="pageright1">
+<DIV class="rightbarheading">Tutorial Topics</DIV>
+<DIV class="rightnavigation">
+<UL>
+  <LI><A 
+href="http://www.devmanuals.com/tutorials/java/index.html">Java</A></LI></UL></DIV><BR 
+clear="all">
+<DIV class="rightbarbottomadd" style="margin-top: 8px;">
+<SCRIPT src="Captcha%20in%20JSP%20and%20Servlet_files/fCABBMT36.txt" async=""></SCRIPT>
+ <!-- flexibleRigth1 --> <INS class="adsbygoogle" style="display: block;" 
+data-ad-format="auto" data-ad-slot="2884824125" data-ad-client="ca-pub-0562274132054498"></INS>
+<SCRIPT>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</SCRIPT>
+			 </DIV>
+<DIV class="rightnavigation" style="background: white;"><BR>&nbsp;<BR><IFRAME 
+src="Captcha%20in%20JSP%20and%20Servlet_files/tweet_button.c197f64a14a7434e6e58ca9722b54406.en.htm" 
+frameborder="0" scrolling="no" style="border: currentColor; width: 300px; height: 290px; overflow: hidden;" 
+allowtransparency="true"></IFRAME>			 </DIV><BR clear="all">
+<DIV class="rightbarbottomadd">
+<P>&nbsp;</P>
+<SCRIPT src="Captcha%20in%20JSP%20and%20Servlet_files/widget.js"></SCRIPT>
+					 
+<SCRIPT>
+					new TWTR.Widget({
+					  version: 2,
+					  type: 'profile',
+					  rpp: 4,
+					  interval: 6000,
+					  width: 250,
+					  height: 300,
+					  theme: {
+						shell: {
+						  background: '#333333',
+						  color: '#ffffff'
+						},
+						tweets: {
+						  background: '#000000',
+						  color: '#ffffff',
+						  links: '#4aed05'
+						}
+					  },
+					  features: {
+						scrollbar: false,
+						loop: false,
+						live: false,
+						hashtags: true,
+						timestamp: true,
+						avatars: false,
+						behavior: 'all'
+					  }
+					}).render().setUser('DevManuals').start();
+					</SCRIPT>
+			 </DIV></DIV></DIV></DIV></DIV>
+<DIV class="container">
+<DIV class="row">
+<DIV class="footer"><A href="http://www.devmanuals.com/index.html">Home</A>	 <A 
+href="http://www.devmanuals.com/aboutus.html">About Us</A>		 <A href="http://www.devmanuals.com/privacypolicy.html">Privacy 
+Policy</A>		 <BR>	Copyright © devmanuals.com 2015. All rights reserved. </DIV>
+<SCRIPT type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-13170385-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</SCRIPT>
+ </DIV></DIV><!-- Bootstrap core JavaScript
+    ================================================== --> 
+    <!-- Placed at the end of the document so the pages load faster --> 
+<SCRIPT src="Captcha%20in%20JSP%20and%20Servlet_files/jquery.min.js" type="text/javascript"></SCRIPT>
+ 
+<SCRIPT src="Captcha%20in%20JSP%20and%20Servlet_files/jquery.validate.js" type="text/javascript"></SCRIPT>
+ 
+<SCRIPT src="Captcha%20in%20JSP%20and%20Servlet_files/additional-methods.js" type="text/javascript"></SCRIPT>
+ 
+<SCRIPT src="Captcha%20in%20JSP%20and%20Servlet_files/bootstrap.min.js"></SCRIPT>
+ 
+<SCRIPT src="Captcha%20in%20JSP%20and%20Servlet_files/prettify.js" type="text/javascript"></SCRIPT>
+ 
+<SCRIPT src="Captcha%20in%20JSP%20and%20Servlet_files/jquery.form.v2.43.js" type="text/javascript"></SCRIPT>
+ 
+<SCRIPT type="text/javascript"> 
+       $(document).ready(function() { 
+		  $("#commentForm").validate({ 
+	       rules: { 
+          name: "required",subject: "required",captchavalue: "required", 
+          email: { 
+          required: false, 
+          email: true 
+		   
+        }, 
+        url: { 
+	          url: false 
+        },comment: { 
+          required: true 
+	        } 
+	        }, 
+	        messages: { 
+	          comment: "Please enter a comment." 
+	        }
+		 }); 
+			var options = { 
+				success: showResponse,  // post-submit callback
+				beforeSubmit: beforeSubmit // pre-submit callback
+			}; 
+			$('#commentForm').ajaxForm(options);
+        }); 
+
+
+	function showResponse(responseText, statusText){ // post-submit callback
+			if(responseText=="Yes"){
+				$('#commentForm').clearForm();
+				//document.getElementById("divStatus").innerHTML = responseText;//Remove loading image
+				alert("Thanks for your posting your comment! We are reviewing your comment.");
+			}else{
+				//$("#captchavalue").value="";
+				alert("Captcha validation error! Please enter the correct value.");
+				$("#captchavalue").focus();
+
+			}	
+			
+			document.getElementById("divStatus").innerHTML = "";
+
+	}
+
+	function beforeSubmit(){ // post-submit callback
+		document.getElementById("divStatus").innerHTML = "<img src=\"/images/loading.gif\">";
+		/*
+		var username = $("#username").val();
+		var company = $("#company").val();
+		var email	= $("#email").val();
+		var contact = $("#contact").val();
+		var requirements = $("#requirements").val();
+
+		
+		if (username == null || username == ''){
+			alert("Please provide your name!");
+			$("#username").focus();
+			return false;
+		}
+
+		if (company == null || company == ''){
+			alert("Please provide company name!");
+			$("#company").focus();
+			return false;
+		}
+
+		if (email == null || email == ''){
+			alert("Please enter valid address!");
+			$("#email").focus();
+			return false;
+		}
+		else if(!validateEmail(email)){
+			alert("Please enter valid email address!");
+			$("#email").focus();
+			return false;
+		}
+
+		if (contact == null || contact == ''){
+			alert("Please enter contact number!");
+			$("#contact").focus();
+			return false;
+		}
+
+		if (requirements == null || requirements == ''){
+			alert("Please enter requirements!");
+			$("#requirements").focus();
+			return false;
+		}
+
+		
+		*/
+	}
+
+
+
+    </SCRIPT>
+ </DIV></DIV></BODY></HTML>

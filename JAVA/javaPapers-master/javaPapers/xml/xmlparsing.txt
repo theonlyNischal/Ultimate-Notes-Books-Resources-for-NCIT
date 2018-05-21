@@ -1,0 +1,22 @@
+XML Parsing: 
+------------------
+--> Reading XML files is called parsing.
+--> Two types of parser are used.
+
+DOM Parser:
+---------------
+--> Stands for Document Object Model.
+--> DOM reads the entire document.
+--> DOM is useful when reading small to medium size XML files.
+--> DOM is tree based parser.
+--> DOM is slow as compared to SAX.
+--> DOM can insert and delete nodes.
+
+SAX Parser:
+-----------------------------
+-->stands for Simple API for XML
+-->SAX reads node by node.
+-->SAX is used when big files need to be parsed.
+-->SAX is event based parser.
+-->SAX is faster than DOM.
+-->SAX cannot insert and delete nodes.

@@ -1,0 +1,35 @@
+Package
+---------
+-->A package is a collection of classes and interfaces.
+-->The advantage of using package is that we can easily use the classes of one package into another package simply by importing them. Also, a package helps us to group related classes into one location.
+
+Types of Package:
+----------------------
+1. Library/Built-In Package: These are the packages which are already available in java library.
+These are of two types:
+a. Core Package:- start with java. For eg. java.io,java.lang, java.util etc.
+
+b. Optional Package:- start with javax. For eg. javax.swing, javax.servlet, javax.servlet.http etc
+
+2. User Defined Package: These are the package which are created by user according to their need.
+
+Creating User Defined Package:
+-------------------------------
+"package" keyword is used. 
+For eg. package mypack; 
+Note: 
+* package must be the first statement in a java program except comments.
+* We can also create package hierarchy like
+  package mypack.day1;    
+
+Program to create our own package and importing it:
+----------------------------------------------------
+
+package mypack1;
+public class Test
+{
+	public void show()
+	{
+	   System.out.println("Inside test");
+	}
+}  

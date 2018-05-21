@@ -1,0 +1,43 @@
+Scrollable ResultSets:
+-----------------------
+Statement st=con.createStatement(type,concurrency);
+or, 
+PreparedStatement pst=con.prepareStatement(sqlcommand, type, concurrecny);
+
+Type of resultset:
+1. TYPE_FORWARD_ONLY		
+the result set is not scrollable
+2. TYPE_SCROLL_INSENSITIVE	
+the result set is scrollable but not sensitive to database changes.
+3. TYPE_SCROLL_SENSITIVE   
+the result set is scrollable and sensitive to database changes.
+
+Concurrency of result set:
+1. CONCUR_READ_ONLY	
+the result set cannot be used to update the database (default)
+2. CONCUR_UPDATABLE
+the result set can be used to update the database
+
+updating database from result set
+----------------------------------
+Statement st=con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE);
+ResultSet rs=st.executeQuery(sql);
+while(rs.next()){
+  if(condition){
+     String newAddress="Kathmandu";
+     rs.updateString("Address",newAddress); //causes change in resultset	     rs.updateRow();//causes change in database
+   }
+}
+
+deleting row from resultset
+-----------------------------
+rs.deleteRow();
+
+inserting new row from resultset
+----------------------------------
+rs.moveToInsertRow();//move the cursor to the special position
+rs.updateInt("Id",1);
+rs.updateString("Name","Rahul");
+rs.updateString("Address","Ktm");
+rs.insertRow();//deliver the new row to the database
+rs.moveToCurrentRow();//move the cursor back to the position before the call to moveToInsertRow.

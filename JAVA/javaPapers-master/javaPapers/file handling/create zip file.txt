@@ -1,0 +1,66 @@
+Zip Stream:
+-------------------
+-->Zip stream is used to create zip files.
+-->Zip files are the archives that store one or more files in compressed form. 
+-->java.util.zip contains the classes for working with zip files. 
+-->ZipInputStream is used to read a zip file.
+-->ZipOutputStream is used to create a zip file.
+-->ZipEntry is used to specify the file/s inside the zip file.
+
+
+
+creating a zip file:
+-------------------
+import java.io.*;
+import java.util.zip.*;
+public class CreateZipDemo {
+    public static void main(String[] args) {
+        try{
+            FileInputStream fin=new FileInputStream("d:/report.pdf");
+	    FileOutputStream fout=new FileOutputStream("d:/test.zip");
+            ZipOutputStream zos=new ZipOutputStream(fout);
+		
+            ZipEntry ze=new ZipEntry("report.pdf");
+            zos.putNextEntry(ze);
+            int ch;
+            while((ch=fin.read())!=-1){
+                zos.write((byte)ch);
+            }
+            zos.close();
+            fin.close();
+        }catch(Exception ex){
+            System.out.println(ex);
+        }
+    }
+}
+
+------------------------------------------------------------------
+
+reading from a zip file (unzipping)
+
+import java.io.*;
+import java.util.zip.*;
+public class ReadZipDemo {
+    public static void main(String[] args) {
+        try{
+            FileInputStream fin=new FileInputStream("d:/test.zip");
+            ZipInputStream zin=new ZipInputStream(fin);
+            ZipEntry ze;
+            
+            while((ze=zin.getNextEntry())!=null){
+		String fileName=ze.getName();
+               FileOutputStream fout=new FileOutputStream("f:/"+fileName);
+                int ch;
+                while((ch=zin.read())!=-1){
+                    fout.write(ch);
+                }
+                fout.close();
+		zin.closeEntry();
+            }
+            zin.close();
+        }
+        catch(Exception ex){
+            System.out.println(ex);
+        }
+    }
+}

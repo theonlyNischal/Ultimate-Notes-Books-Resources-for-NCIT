@@ -1,0 +1,43 @@
+ServletConfig
+-----------------------
+-->ServletConfig available in javax.servlet package
+-->ServletConfig object is one per servlet class
+-->Object of ServletConfig will be created during initialization process    of the servlet
+  This config object is public to a particular servlet only
+-->Scope: As long as a servlet is executing, ServletConfig object will be   available, it will be destroyed once the servlet execution is    completed.
+--><init-param> is used in web.xml
+<servlet>
+<servlet-name>First</servlet-name>
+<servlet-class>HelloServlet</servlet-class>
+<init-param>
+<param-name>adminEmail</param-name>
+<param-value>abc@gmail.com</param-value>
+</init-param>
+</servlet>
+
+-->In servlet we can read the init param using the code
+pw.println(getServletConfig().getInitParameter("adminEmail"));
+
+
+
+
+
+ServletContext
+-------------------
+-->ServletContext available in javax.servlet package
+-->ServletContext object is global to entire web application
+-->Object of ServletContext will be created at the time of web    application deployment
+-->Scope: As long as web application is executing, ServletContext object    will be available, and it will be destroyed once the application is    removed from the server.
+--><context-param> is used in web.xml
+
+<servlet>
+<servlet-name>First</servlet-name>
+<servlet-class>HelloServlet</servlet-class>
+</servlet>
+<context-param>
+<param-name>adminEmail</param-name>
+<param-value>abc@gmail.com</param-value>
+</context-param>
+
+-->In servlet we can read the context param using the code
+pw.println(getServletContext().getInitParameter("adminEmail"));

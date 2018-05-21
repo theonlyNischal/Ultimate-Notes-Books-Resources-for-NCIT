@@ -1,0 +1,7 @@
+File myfile=new File("d:/images/test.jpg");
+JFileChooser fc=new JFileChooser();
+        fc.showOpenDialog(null);
+        myfile=fc.getSelectedFile();
+        ImageIcon img=new ImageIcon(myfile.toString());
+        Image newimg=img.getImage().getScaledInstance(200, 200, BufferedImage.SCALE_DEFAULT);
+        jLabel_Picture.setIcon(new ImageIcon(newimg));

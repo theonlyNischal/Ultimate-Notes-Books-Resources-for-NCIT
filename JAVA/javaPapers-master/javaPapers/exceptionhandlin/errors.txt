@@ -1,0 +1,33 @@
+Exception Handling:
+--------------------
+Errors
+-------
+-->Errors are the mistakes in a program that prevent the normal execution of a program.
+-->Errors can be:
+a. syntax errors:- These are the errors which are detected by the compiler. Spelling mistakes, missing semicolon come under this category.
+
+   For eg. public static void main(String args)
+	   {
+		system.out.println("Hello)
+	   }
+
+b. Logical errors:- These are the errors which are not detected by the compiler.
+-->These are the errors in the logic of programmer.
+-->During runtime, we get different result.
+
+for eg. we have to print 1  4  9  16 .....100
+   and the code
+	for(int i=1;i<=100;i++)
+	   System.out.print(i*i);
+
+c. Runtime errors:- These are the errors which are not detected by the compiler.
+-->During program execution time, these errors terminate the running program. 
+  For eg. dividing a number by zero, using the array index that does not exist etc.
+
+
+
+
+
+
+
+

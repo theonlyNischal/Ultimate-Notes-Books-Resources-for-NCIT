@@ -1,0 +1,16 @@
+import java.awt.*;
+class GUI1
+{
+  Frame f1;
+  GUI1()
+  {
+    f1=new Frame("this is AWT frame");
+    f1.setSize(300,300);
+    f1.setVisible(true);
+
+  }
+  public static void main(String args[])
+  {
+    new GUI1();
+  }
+}

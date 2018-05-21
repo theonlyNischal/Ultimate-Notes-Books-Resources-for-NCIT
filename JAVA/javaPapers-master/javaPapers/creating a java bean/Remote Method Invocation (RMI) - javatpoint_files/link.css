@@ -1,0 +1,927 @@
+.dp-highlighter {
+	margin: 8px 0px !important; width: 99%; overflow: hidden; padding-top: 0px;
+}
+.dp-highlighter ol {
+	margin: 0px; padding: 0px; border: currentColor;
+}
+.dp-highlighter ol li {
+	margin: 0px; padding: 0px; border: currentColor;
+}
+.dp-highlighter ol li span {
+	margin: 0px; padding: 0px; border: currentColor;
+}
+.dp-highlighter a {
+	margin: 0px; padding: 0px; border: currentColor;
+}
+.dp-highlighter a:hover {
+	margin: 0px; padding: 0px; border: currentColor;
+}
+.dp-highlighter .bar {
+	padding-left: 45px;
+}
+.collapsed.dp-highlighter .bar {
+	padding-left: 0px;
+}
+.nogutter.dp-highlighter .bar {
+	padding-left: 0px;
+}
+.nogutter.dp-highlighter ol {
+	list-style: none !important; margin-left: 0px !important;
+}
+.nogutter.dp-highlighter ol li {
+	list-style: none !important; margin-left: 0px !important;
+}
+.dp-highlighter ol li {
+	padding: 0px 3px 0px 10px !important;
+}
+.dp-highlighter .columns div {
+	padding: 0px 3px 0px 10px !important;
+}
+.nogutter.dp-highlighter ol li {
+	border: 0px currentColor;
+}
+.nogutter.dp-highlighter .columns div {
+	border: 0px currentColor;
+}
+.dp-highlighter .columns {
+	width: 100%; color: gray; overflow: hidden;
+}
+.dp-highlighter .columns div {
+	padding-bottom: 5px;
+}
+.dp-highlighter ol li span {
+	color: rgb(0, 0, 0); background-color: inherit;
+}
+.collapsed.dp-highlighter ol {
+	margin: 0px;
+}
+.collapsed.dp-highlighter ol li {
+	display: none;
+}
+.printing.dp-highlighter {
+	border: currentColor;
+}
+.printing.dp-highlighter .tools {
+	display: none !important;
+}
+.printing.dp-highlighter li {
+	display: list-item !important;
+}
+.nogutter.dp-highlighter .tools {
+	border-left-color: currentColor; border-left-width: 0px; border-left-style: none;
+}
+.dp-about {
+	margin: 0px; padding: 0px; color: rgb(51, 51, 51); background-color: rgb(255, 255, 255);
+}
+.dp-about table {
+	width: 100%; height: 100%; font-family: Tahoma,Verdana,Arial,sans-serif !important; font-size: 11px;
+}
+.dp-about td {
+	padding: 10px; vertical-align: top;
+}
+.dp-about .copy {
+	height: 95%; border-bottom-color: rgb(172, 168, 153); border-bottom-width: 1px; border-bottom-style: solid;
+}
+.dp-about .title {
+	color: red; font-weight: 700; background-color: inherit;
+}
+.dp-about .para {
+	margin: 0px 0px 4px;
+}
+.dp-about .footer {
+	text-align: right; color: rgb(51, 51, 51); border-top-color: rgb(255, 255, 255); border-top-width: 1px; border-top-style: solid; background-color: rgb(236, 234, 219);
+}
+.dp-about .close {
+	width: 60px; height: 22px; color: rgb(51, 51, 51); font-family: Tahoma,Verdana,Arial,sans-serif !important; font-size: 11px; background-color: rgb(236, 234, 219);
+}
+.dp-highlighter .comment {
+	color: rgb(0, 130, 0); background-color: inherit;
+}
+.dp-highlighter .comments {
+	color: rgb(0, 130, 0); background-color: inherit;
+}
+.dp-highlighter .string {
+	color: blue; background-color: inherit;
+}
+.dp-highlighter .keyword {
+	color: rgb(0, 102, 153); font-weight: 700; background-color: inherit;
+}
+.dp-highlighter .preprocessor {
+	color: gray; background-color: inherit;
+}
+#container {
+	margin: 0px auto; padding: 0px; border-radius: 10px; border: 1px solid rgb(213, 221, 198); width: 98%; box-shadow: 0px 5px 20px #d4dbd4; background-color: white; -moz-box-shadow: 0 5px 20px #d4dbd4; -webkit-box-shadow: 0 5px 20px #d4dbd4;
+}
+span.nexttopiclink a {
+	text-decoration: none;
+}
+span.nexttopiclink a:hover {
+	text-decoration: underline;
+}
+.nexttopictext {
+	padding: 5px; color: rgb(255, 255, 255); font-weight: 700; margin-right: 10px; background-color: gray;
+}
+.nexttopicdiv {
+	border-radius: 0px; border: 2px solid rgb(255, 192, 203); margin-top: 10px;
+}
+.firsthomecontent a {
+	float: left;
+}
+.firsthomecontent .homecontent .h3home {
+	font: 21px times new roman; margin: 5px; padding: 5px; text-align: center; color: rgb(0, 0, 0); float: left; font-size-adjust: none; font-stretch: normal; box-shadow: 10px 2px 5px #888; background-color: rgb(224, 224, 224); -moz-box-shadow: 10px 2px 5px #888; -webkit-box-shadow: 10px 2px 5px #888;
+}
+.homecontent {
+	margin: 5px; padding: 10px; border-radius: 10px; border: 1px solid rgb(255, 192, 203); width: 150px; background-color: rgb(255, 255, 255);
+}
+.homecontent ul {
+	list-style: none;
+}
+.homecontent ul li span {
+	margin-left: 0px;
+}
+.homecontent ul li a {
+	background: url("images/logo/icon_bullet.png") no-repeat 0px 3px; color: red; padding-left: 25px; margin-left: -30px;
+}
+.homecontent a:hover {
+	color: green; text-decoration: none;
+}
+.homecontent2 {
+	padding: 10px; border: 1px solid rgb(255, 192, 203); width: 250px; height: 400px; margin-right: 10px; margin-left: 5px; float: left; box-shadow: 10px 10px 10px #888; background-color: rgb(255, 255, 255); -webkit-box-shadow: 10px 10px 5px #888;
+}
+.homecontent2 ul {
+	list-style: none;
+}
+.homecontent2 ul li span {
+	margin-left: 0px;
+}
+.homecontent2 ul li a {
+	background: url("images/logo/icon_bullet.png") no-repeat 0px 3px; color: red; padding-left: 25px; margin-left: -30px;
+}
+.homecontent2 a:hover {
+	color: green; text-decoration: none;
+}
+#h3ex {
+	font: 400 22px/normal tahoma; color: rgb(97, 11, 75); font-size-adjust: none; font-stretch: normal;
+}
+#h4ex {
+	font: italic 19px arial, sans-serif; color: rgb(97, 11, 75); font-size-adjust: none; font-stretch: normal;
+}
+#h1 {
+	color: rgb(97, 11, 56); font-family: erdana,helvetica,arial,sans-serif; font-size: 26px; font-weight: 400; margin-top: 5px;
+}
+#h3 {
+	padding: 0px 0px 0px 5px; color: green; font-family: erdana,helvetica,arial,sans-serif; font-size: 21px; font-weight: 400;
+}
+#h4 {
+	padding: 0px; color: rgb(85, 107, 47); font-family: erdana,helvetica,arial,sans-serif; font-size: 17px; font-weight: 700; margin-left: 0px;
+}
+#h3tag {
+	color: rgb(97, 11, 56); font-family: erdana,helvetica,arial,sans-serif; font-size: 21px; font-weight: 400;
+}
+#h2 {
+	color: rgb(97, 11, 56); font-family: erdana,helvetica,arial,sans-serif; font-size: 24px; font-weight: 400;
+}
+#r {
+	background: url("images/note.png") no-repeat 0px 3px; padding: 5px 0px 5px 35px; border: 1px rgb(255, 192, 203); color: green; font-family: sans-serif; font-size: 15px; font-style: italic; margin-left: 10px;
+}
+#filename {
+	font-size: 14px; font-style: italic;
+}
+#n {
+	background: url("images/note.png") no-repeat 0px 3px; padding: 5px 5px 5px 40px; border-radius: 25px; border: 2px solid rgb(161, 161, 161); color: green; font-family: sans-serif; font-size: 15px; font-style: italic; margin-left: 10px;
+}
+.h3ex {
+	font: 400 22px/normal tahoma; color: rgb(97, 11, 75); font-size-adjust: none; font-stretch: normal;
+}
+.h4ex {
+	font: italic 19px arial, sans-serif; color: rgb(97, 11, 75); font-size-adjust: none; font-stretch: normal;
+}
+.h1 {
+	color: rgb(97, 11, 56); font-family: erdana,helvetica,arial,sans-serif; font-size: 29px; font-weight: 400; margin-top: 5px;
+}
+.h3 {
+	color: rgb(97, 11, 75); font-family: erdana,helvetica,arial,sans-serif; font-size: 21px; font-weight: 400;
+}
+.h4 {
+	padding: 0px; color: rgb(97, 11, 75); font-family: erdana,helvetica,arial,sans-serif; font-size: 18px; font-weight: 600; margin-left: 0px;
+}
+.h3tag {
+	color: rgb(97, 11, 56); font-family: erdana,helvetica,arial,sans-serif; font-size: 21px; font-weight: 400;
+}
+.h2 {
+	color: rgb(97, 11, 56); font-family: erdana,helvetica,arial,sans-serif; font-size: 25px; font-weight: 400;
+}
+.r {
+	background: url("images/note.png") no-repeat 0px 3px; padding: 5px 0px 5px 35px; border: 1px rgb(255, 192, 203); color: green; font-family: sans-serif; font-size: 15px; font-style: italic; margin-left: 10px;
+}
+.filename {
+	font-size: 14px; font-style: italic;
+}
+.n {
+	background: url("images/note.png") no-repeat 0px 3px; padding: 5px 10px 5px 40px; border-radius: 5px; border: 1px solid rgb(161, 161, 161); color: green; font-family: sans-serif; font-size: 14px; font-style: italic;
+}
+#inchapter {
+	font: 15px times new roman; margin: 15px; border: 2px dashed rgb(212, 212, 212); font-size-adjust: none; font-stretch: normal; background-color: rgb(221, 255, 239);
+}
+#upr {
+	padding: 0px 1px 1px; border-radius: 20px; border: 2px solid rgb(255, 192, 203); width: 40%; margin-left: 0px; float: right; background-color: rgb(255, 255, 255);
+}
+#uprf {
+	margin: 10px; padding: 10px; font-style: italic; float: right; background-color: rgb(255, 255, 255);
+}
+#uplf {
+	width: 500px; margin-left: 10px; float: right;
+}
+#upr a {
+	font: 15px times new roman; color: green; font-size-adjust: none; font-stretch: normal;
+}
+#upl {
+	width: 370px; float: right;
+}
+#upr ol {
+	list-style: none; padding: 0px;
+}
+#upr ol ol {
+	list-style: none; margin: 0px; padding: 0px 0px 0px 5px;
+}
+#upr ul {
+	padding: 0px 5px 0px 2em;
+}
+#upr li {
+	background: url("images/r.jpg") no-repeat 0px 3px; padding: 0px 12px; line-height: 0.2em;
+}
+#upr li li {
+	padding: 3px 10px 0px;
+}
+#upr ul li {
+	padding: 0px 5px 0px 0px;
+}
+#interviewcategory a {
+	font-weight: 700; margin-left: 40px;
+}
+#q {
+	color: green; font-family: sans-serif; font-style: italic;
+}
+.q {
+	color: green; font-family: sans-serif; font-style: italic;
+}
+#updates a {
+	color: rgb(85, 107, 47); font-weight: 700;
+}
+#upcominglink p {
+	color: rgb(0, 0, 0);
+}
+#upcominglink a:link {
+	font: 400 14px/20px tahoma; margin: 0px; color: rgb(0, 0, 255); text-decoration: underline; font-size-adjust: none; font-stretch: normal;
+}
+#upcominglink a:hover {
+	font: 400 14px/20px tahoma; color: rgb(0, 0, 255); text-decoration: none; font-size-adjust: none; font-stretch: normal;
+}
+#upcominglink a:visited {
+	font: 400 14px/20px tahoma; color: rgb(0, 0, 255); text-decoration: underline; font-size-adjust: none; font-stretch: normal;
+}
+#upcominglink a:active {
+	font: 400 14px/20px tahoma; color: rgb(0, 0, 255); text-decoration: none; font-size-adjust: none; font-stretch: normal;
+}
+#updates a:hover {
+	color: rgb(85, 107, 47); text-decoration: none;
+}
+div.tutorials {
+	width: 100px; height: 100px; margin-left: 30px; float: left; box-shadow: 5px 10px 5px #888; background-image: url("images/topgreen.gif"); -webkit-box-shadow: 10px 10px 5px #888;
+}
+div.questions {
+	width: 250px; height: 500px; margin-left: 30px; float: left; box-shadow: 0px 10px 5px #888; -webkit-box-shadow: 10px 10px 5px #888;
+}
+div.updates {
+	width: 300px; height: 500px; margin-left: 30px; float: left; box-shadow: 0px 10px 5px #888; background-color: rgb(255, 240, 240); -webkit-box-shadow: 10px 10px 5px #888;
+}
+#uh3 {
+	font: 20px times new roman; text-align: center; color: rgb(255, 255, 255); font-size-adjust: none; font-stretch: normal; background-image: url("images/topgreen.gif");
+}
+#uh4 {
+	font: 20px times new roman; color: rgb(255, 255, 255); margin-left: 10px; font-size-adjust: none; font-stretch: normal; background-image: url("images/topgreen.gif");
+}
+hr {
+	border: 0px currentColor; height: 1px; color: rgb(212, 212, 212); clear: both; background-color: rgb(212, 212, 212);
+}
+#legendfont {
+	font: italic 20px/1.5 sans-serif; color: rgb(97, 11, 56); font-size-adjust: none; font-stretch: normal;
+}
+.legendfont {
+	font: italic 20px/1.5 sans-serif; color: rgb(97, 11, 56); font-size-adjust: none; font-stretch: normal;
+}
+#youknow td li a {
+	color: green; font-family: sans-serif; font-size: 13px; font-style: italic; font-weight: 700; text-decoration: none;
+}
+#youknow td li a:hover {
+	text-decoration: underline;
+}
+#whatlearn td li a {
+	font: 700 14px/1.5 times new roman; color: green; text-decoration: none; font-size-adjust: none; font-stretch: normal;
+}
+#whatlearn td li a:hover {
+	color: rgb(102, 68, 17); text-decoration: underline;
+}
+#city li {
+	font: 13px/1.5 Verdana; color: rgb(0, 0, 0); margin-top: 3px; font-size-adjust: none; font-stretch: normal;
+}
+li {
+	color: rgb(0, 0, 0);
+}
+#city .green {
+	color: green;
+}
+#city {
+	font: 13px/1.5 Verdana, Arial, Sans-Serif; color: rgb(0, 0, 0); margin-left: 0px; font-size-adjust: none; font-stretch: normal;
+}
+#city td {
+	font: 13px/23px verdana, helvetica, arial, sans-serif; color: rgb(0, 0, 0); margin-left: 20px; font-size-adjust: none; font-stretch: normal;
+}
+#interview td {
+	font: 13px/normal verdana, helvetica, arial, sans-serif; color: rgb(0, 0, 0); font-size-adjust: none; font-stretch: normal;
+}
+#interview h2 {
+	text-align: center; color: rgb(255, 255, 255); font-size: 20px;
+}
+#interview h3 {
+	color: rgb(97, 11, 56); font-family: erdana,helvetica,arial,sans-serif; font-size: 18px;
+}
+#q {
+	padding: 0.1em 0px 0.1em 0.1em; background-color: rgb(102, 187, 102);
+}
+.q {
+	padding: 0.1em 0px 0.1em 0.1em; background-color: rgb(102, 187, 102);
+}
+#interview a {
+	color: green;
+}
+#interview a:hover {
+	color: red; text-decoration: none;
+}
+#download a {
+	font: 17px/1.5 tahoma; color: red; font-size-adjust: none; font-stretch: normal;
+}
+#download a:hover {
+	color: green; text-decoration: none;
+}
+.download a {
+	font: 17px/1.5 tahoma; color: red; font-size-adjust: none; font-stretch: normal;
+}
+.download a:hover {
+	color: green; text-decoration: none;
+}
+#left table {
+	margin-top: 5px;
+}
+#footer a {
+	font: 13px/1.5 Verdana; color: green; padding-left: 19px; text-decoration: underline; font-size-adjust: none; font-stretch: normal;
+}
+#footer a:link {
+	font: 13px/1.5 Verdana; color: green; padding-left: 19px; text-decoration: underline; font-size-adjust: none; font-stretch: normal;
+}
+#footer a:hover {
+	font: 13px/1.5 Verdana; color: rgb(0, 0, 0); padding-left: 19px; text-decoration: none; font-size-adjust: none; font-stretch: normal;
+}
+#footer a:visited {
+	font: 13px/1.5 Verdana; color: green; padding-left: 19px; text-decoration: underline; font-size-adjust: none; font-stretch: normal;
+}
+#footer a:active {
+	font: 13px/1.5 Verdana; color: red; padding-left: 19px; text-decoration: underline; font-size-adjust: none; font-stretch: normal;
+}
+#headerlink {
+	height: 25px; color: rgb(97, 11, 56);
+}
+a {
+	color: green; text-decoration: none;
+}
+a:hover {
+	color: red; text-decoration: underline;
+}
+#methods li {
+	margin-top: 6px;
+}
+#leftmenu a:link {
+	background: url("images/arrowbullet.png") no-repeat 0px 4px; font: 13px/1.5 Verdana; width: 160px; color: rgb(0, 0, 0); padding-left: 15px; text-decoration: none; margin-top: 2px; margin-left: 14px; float: left; font-size-adjust: none; font-stretch: normal;
+}
+#leftmenu a:visited {
+	background: url("images/arrowbullet.png") no-repeat 0px 4px; font: 13px/1.5 Verdana; width: 160px; color: rgb(0, 0, 0); padding-left: 15px; text-decoration: none; margin-top: 2px; margin-left: 14px; float: left; font-size-adjust: none; font-stretch: normal;
+}
+#leftmenu a:active {
+	background: url("images/arrowbullet.png") no-repeat 0px 4px; font: 13px/1.5 Verdana; width: 160px; color: green; padding-left: 15px; text-decoration: underline; margin-top: 2px; margin-left: 14px; float: left; font-size-adjust: none; font-stretch: normal;
+}
+#leftmenu a:hover {
+	background: url("images/arrowbullet.png") no-repeat 0px 4px; font: 13px/1.5 Verdana; width: 160px; color: green; padding-left: 15px; text-decoration: underline; margin-top: 2px; margin-left: 14px; float: left; font-size-adjust: none; font-stretch: normal;
+}
+#leftmenu2 span {
+	color: rgb(97, 11, 56); padding-left: 28px; font-family: erdana,helvetica,arial,sans-serif; font-size: 13px; font-weight: 700;
+}
+.selected {
+	color: rgb(97, 11, 56);
+}
+#leftmenu2 a:link {
+	background: url("images/logo/icon_bullet.png") no-repeat 7px 3px; width: 180px; color: rgb(97, 11, 56); padding-left: 0px; font-weight: 700; text-decoration: none; margin-top: 5px; margin-left: 0px; float: left;
+}
+#leftmenu2 a:hover {
+	background: url("images/logo/icon_bullet.png") no-repeat 7px 3px; width: 180px; color: rgb(97, 11, 56); padding-left: 0px; font-weight: 700; text-decoration: none; margin-top: 5px; margin-left: 0px; float: left;
+}
+#leftmenu2 a:active {
+	background: url("images/logo/icon_bullet.png") no-repeat 7px 3px; width: 180px; color: rgb(97, 11, 56); padding-left: 0px; font-weight: 700; text-decoration: none; margin-top: 5px; margin-left: 0px; float: left;
+}
+#leftmenu2 a:visited {
+	background: url("images/logo/icon_bullet.png") no-repeat 7px 3px; width: 180px; color: rgb(97, 11, 56); padding-left: 0px; font-weight: 700; text-decoration: none; margin-top: 5px; margin-left: 0px; float: left;
+}
+#leftmenu2interview span {
+	font: 700 16px/1.5 times new roman; color: green; font-size-adjust: none; font-stretch: normal;
+}
+#leftmenu2interview a:link {
+	font: 700 16px/1.5 times new roman; width: 185px; color: green; text-decoration: underline; margin-top: 7px; margin-bottom: 7px; margin-left: 4px; float: left; font-size-adjust: none; font-stretch: normal;
+}
+#leftmenu2interview a:hover {
+	text-decoration: none; background-color: rgb(255, 240, 243);
+}
+#leftmenu2interview a:visited {
+	font: 700 16px/1.5 times new roman; width: 185px; color: green; text-decoration: underline; margin-top: 7px; margin-left: 4px; float: left; font-size-adjust: none; font-stretch: normal;
+}
+#leftmenu2interview a:active {
+	font: 700 16px/1.5 times new roman; width: 185px; color: green; text-decoration: underline; margin-top: 7px; margin-left: 4px; float: left; font-size-adjust: none; font-stretch: normal;
+}
+#next {
+	font: 700 13px/1.5 Verdana; padding: 2px 30px; border-radius: 5px; border: 1px solid rgb(255, 192, 203); color: green; text-decoration: none; font-size-adjust: none; font-stretch: normal;
+}
+.next {
+	font: 700 13px/1.5 Verdana; padding: 2px 30px; border-radius: 5px; border: 1px solid rgb(255, 192, 203); color: green; text-decoration: none; font-size-adjust: none; font-stretch: normal;
+}
+#bottomnext a {
+	font: 17px/1.5 times new roman; padding: 2px 20px; color: green; text-decoration: none; font-size-adjust: none; font-stretch: normal; background-color: rgb(255, 255, 255);
+}
+#bottomnext a:hover {
+	font: 17px/1.5 times new roman; padding: 2px 20px; color: rgb(255, 255, 255); text-decoration: none; font-size-adjust: none; font-stretch: normal; background-color: rgb(102, 187, 85);
+}
+#bottomnextup a {
+	font: 700 13px/1.5 times new roman; padding: 2px 10px; color: green; text-decoration: none; margin-left: 7px; float: right; font-size-adjust: none; font-stretch: normal; background-color: rgb(255, 255, 255);
+}
+#bottomnextup a:hover {
+	font: 700 13px/1.5 times new roman; padding: 2px 10px; color: rgb(255, 255, 255); text-decoration: none; margin-left: 7px; font-size-adjust: none; font-stretch: normal; background-color: rgb(102, 187, 85);
+}
+#interview123 a {
+	font: 700 13px/1.5 Verdana; padding: 3px 10px; outline: rgb(255, 192, 203) double; color: green; text-decoration: none; margin-left: 5px; font-size-adjust: none; font-stretch: normal;
+}
+#interview123 a:hover {
+	font: 700 13px/1.5 Verdana; padding: 3px 10px; outline: rgb(255, 192, 203) double; color: rgb(255, 255, 255); text-decoration: none; margin-left: 5px; font-size-adjust: none; font-stretch: normal; background-color: rgb(102, 187, 51);
+}
+.interview123 a {
+	font: 700 13px/1.5 Verdana; padding: 3px 10px; outline: rgb(255, 192, 203) double; color: green; text-decoration: none; margin-left: 5px; font-size-adjust: none; font-stretch: normal;
+}
+.interview123 a:hover {
+	font: 700 13px/1.5 Verdana; padding: 3px 10px; outline: rgb(255, 192, 203) double; color: rgb(255, 255, 255); text-decoration: none; margin-left: 5px; font-size-adjust: none; font-stretch: normal; background-color: rgb(102, 187, 51);
+}
+.selected123 {
+	background-color: rgb(255, 192, 203);
+}
+.codeblock pre {
+	margin-top: 5px; margin-bottom: 5px; margin-left: 10px;
+}
+.codeblock3 {
+	background: rgb(249, 251, 249); margin: 5px 0px 10px; padding: 0px 0px 0px 10px; border: 1px solid rgb(213, 221, 198); width: 99%; font-family: verdana;
+}
+.codeblock2 {
+	margin: 0px 30px;
+}
+.codeblock {
+	margin: 5px 0px 10px; padding: 0px; border: 1px solid rgb(213, 221, 198); width: 100%; font-family: verdana; box-shadow: 5px 3px 10px #d4d4d4; -moz-box-shadow: 8px 3px 10px #d4d4d4; -webkit-box-shadow: 8px 3px 10px #d4d4d4;
+}
+.codeblockpostanswer {
+	font: 13px/23px verdana, helvetica, arial, sans-serif; margin: 10px 0px 20px; padding: 10px; border: 1px solid rgb(213, 221, 198); width: 930px; font-size-adjust: none; font-stretch: normal; box-shadow: 5px 3px 10px #d4d4d4; -moz-box-shadow: 8px 3px 10px #d4d4d4; -webkit-box-shadow: 8px 3px 10px #d4d4d4;
+}
+#followgoogle img {
+	position: fixed;
+}
+.ddsmoothmenu {
+	font: 700 12px/normal Verdana; width: 100%; font-size-adjust: none; font-stretch: normal; background-image: url("images/men2.gif");
+}
+.ddsmoothmenu ul {
+	margin: 0px; padding: 0px; list-style-type: none; z-index: 100;
+}
+.ddsmoothmenu ul li {
+	float: left; display: inline; position: relative;
+}
+.ddsmoothmenu ul li a {
+	padding: 0.5em; color: rgb(255, 255, 255); font-weight: 700; text-decoration: none; border-right-color: rgb(255, 192, 203); border-right-width: 1px; border-right-style: solid; display: block; background-image: url("images/men2.gif");
+}
+* html .ddsmoothmenu ul li a {
+	display: inline-block;
+}
+.ddsmoothmenu ul li a:link {
+	color: rgb(97, 11, 56);
+}
+.ddsmoothmenu ul li a:visited {
+	color: rgb(97, 11, 56);
+}
+.ddsmoothmenu ul li a.selected {
+	color: rgb(97, 11, 56); border-bottom-color: orange; border-bottom-width: 3px; border-bottom-style: solid;
+}
+.ddsmoothmenu ul li a:hover {
+	color: green; text-decoration: underline; background-image: url("images/me8.gif");
+}
+.ddsmoothmenu ul li ul {
+	left: 0px; display: none; visibility: hidden; position: absolute;
+}
+.ddsmoothmenu ul li ul li {
+	float: none; display: list-item;
+}
+.ddsmoothmenu ul li ul li ul {
+	top: 0px;
+}
+.ddsmoothmenu ul li ul li a {
+	font: 400 11px/normal verdana; margin: 0px; padding: 3px; top: 0px; width: 155px; border-top-width: 0px; font-size-adjust: none; font-stretch: normal;
+}
+* html .ddsmoothmenu {
+	height: 0px;
+}
+.downarrowclass {
+	top: 9px; right: 5px; position: absolute;
+}
+.rightarrowclass {
+	top: 6px; right: 5px; position: absolute;
+}
+.ddshadow {
+	background: silver; left: 0px; top: 0px; width: 0px; height: 0px; position: absolute;
+}
+.toplevelshadow {
+	opacity: 0.8;
+}
+.leftmenu a:link {
+	background: url("images/arrowbullet.png") no-repeat 0px 4px; font: 13px/21px verdana, helvetica, arial, sans-serif; width: 100%; color: rgb(0, 0, 0); padding-left: 15px; text-decoration: none; margin-top: 2px; margin-left: 14px; float: left; display: block; font-size-adjust: none; font-stretch: normal;
+}
+.leftmenu a:visited {
+	background: url("images/arrowbullet.png") no-repeat 0px 4px; font: 13px/21px verdana, helvetica, arial, sans-serif; width: 100%; color: rgb(0, 0, 0); padding-left: 15px; text-decoration: none; margin-top: 2px; margin-left: 14px; float: left; display: block; font-size-adjust: none; font-stretch: normal;
+}
+.leftmenu a:active {
+	background: url("images/arrowbullet.png") no-repeat 0px 4px; font: 13px/21px verdana, helvetica, arial, sans-serif; width: 100%; color: green; padding-left: 15px; text-decoration: underline; margin-top: 2px; margin-left: 14px; float: left; display: block; font-size-adjust: none; font-stretch: normal;
+}
+.leftmenu a:hover {
+	background: url("images/arrowbullet.png") no-repeat 0px 4px; font: 13px/21px verdana, helvetica, arial, sans-serif; width: 100%; color: green; padding-left: 15px; text-decoration: underline; margin-top: 2px; margin-left: 14px; float: left; display: block; font-size-adjust: none; font-stretch: normal;
+}
+.leftmenu2 span {
+	background: url("images/logo/icon_bullet.png") no-repeat 0px 0px; width: 100%; color: rgb(97, 11, 56); padding-left: 23px; font-family: erdana,helvetica,arial,sans-serif; font-size: 13px; font-weight: 700; margin-top: 5px; margin-bottom: 2px; margin-left: 5px; display: block;
+}
+.leftmenu2 a:link {
+	width: 100%; color: rgb(97, 11, 56); padding-left: 0px; font-weight: 700; text-decoration: none; margin-top: 5px; margin-left: 0px; float: left; display: block;
+}
+.leftmenu2 a:hover {
+	width: 100%; color: rgb(97, 11, 56); padding-left: 0px; text-decoration: underline; margin-top: 5px; margin-left: 0px; float: left; display: block;
+}
+.leftmenu2 a:active {
+	background: url("images/logo/icon_bullet.png") no-repeat 7px 3px; width: 100%; color: rgb(97, 11, 56); padding-left: 0px; text-decoration: none; margin-top: 5px; margin-left: 0px; float: left; display: block;
+}
+.leftmenu2 a:visited {
+	background: url("images/logo/icon_bullet.png") no-repeat 7px 3px; width: 100%; color: rgb(97, 11, 56); padding-left: 0px; text-decoration: none; margin-top: 5px; margin-left: 0px; float: left; display: block;
+}
+table.alt tr:nth-child(2n+1) {
+	background-color: rgb(246, 255, 225);
+}
+table.alt tr:nth-child(2n) {
+	background-color: rgb(255, 255, 255);
+}
+table.alt tr {
+	border-color: inherit; vertical-align: inherit; display: table-row;
+}
+table.alt {
+	border: 1px solid rgb(255, 192, 203); width: 100%; display: table; border-collapse: separate; border-spacing: 0px;
+}
+table.alt td {
+	padding: 5px; border: 1px solid rgb(255, 192, 203); vertical-align: top;
+}
+table.alt th {
+	padding: 5px; text-align: left; color: black; font-family: times new roman; font-size: 17px; vertical-align: top; background-color: rgb(227, 229, 214);
+}
+fieldset {
+	border-radius: 15px; border: 1px solid pink;
+}
+#navfooter {
+	background: rgb(0, 109, 0); width: 100px; height: 200px; color: rgb(255, 255, 255); line-height: 20px; padding-bottom: 6px; padding-left: 30px; clear: both; font-family: serif; border-bottom-color: rgb(0, 138, 208); border-bottom-width: 1px; border-bottom-style: solid; box-shadow: inset 0px -40px 60px 0px #006d00;
+}
+#navfooter a {
+	color: rgb(255, 255, 255); font-family: serif; text-decoration: none;
+}
+#navfooter p {
+	padding-top: 5px; padding-bottom: 5px;
+}
+#navfooter a:hover {
+	color: rgb(255, 255, 255); font-family: serif; text-decoration: none;
+}
+#upload table tr td input {
+	border-radius: 5px; width: 200px; padding-right: 5px; padding-left: 5px;
+}
+.quizbutton {
+	background: rgb(204, 204, 153); padding: 5px 20px; border-radius: 15px; color: rgb(0, 0, 0); font-family: serif; font-size: 17px; text-decoration: none; margin-left: 10px;
+}
+.navbar-search {
+	margin-top: 0px; margin-bottom: 2px; margin-left: 20px; float: left; position: relative;
+}
+.navbar-search .search-query {
+	background: url("search-white.png") no-repeat 10px 6px rgb(255, 255, 255); padding: 5px 30px; border-radius: 15px; border: 1px solid rgb(102, 153, 204); width: 100%; height: 20px; color: gray; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; font-size: 13px; font-weight: 700; margin-top: 10px; margin-bottom: 2px; -webkit-border-radius: 15px; -moz-border-radius: 5px;
+}
+.navbar-search-m {
+	margin: 0px 25px 2px 5px; width: 90%; float: left; position: relative;
+}
+.navbar-search-m .search-query {
+	background: url("search-white.png") no-repeat 10px 6px rgb(255, 255, 255); padding: 5px 30px; border-radius: 15px; border: 1px solid rgb(102, 153, 204); width: 90%; height: 20px; color: gray; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; font-size: 13px; font-weight: 700; margin-top: 5px; margin-right: 10px; margin-bottom: 2px; -webkit-border-radius: 15px; -moz-border-radius: 5px;
+}
+#innerfooter {
+	color: rgb(255, 255, 255); padding-top: 5px;
+}
+#innerfooter div {
+	text-align: center; padding-right: 5px; padding-left: 5px; border-left-color: rgb(255, 255, 255); border-left-width: 2px; border-left-style: solid; float: left; min-height: 360px;
+}
+#innerfooter div ul li {
+	font-size: 12px;
+}
+#innerfooter div ul li a:hover {
+	color: rgb(255, 255, 255); font-family: serif; text-decoration: none;
+}
+.footer-list {
+	list-style: none; text-align: left; margin-left: -40px;
+}
+.quizsection {
+	margin: 10px; padding: 20px; border-radius: 20px; border: 2px solid rgb(255, 192, 203); width: 250px; float: left;
+}
+.quizsectionh2 {
+	color: rgb(97, 11, 56); padding-left: 10px; background-color: rgb(255, 192, 203);
+}
+div.homepagelinks a {
+	font-family: times new roman; font-weight: 400;
+}
+div.homepagelinks a:hover {
+	font-weight: 400; text-decoration: none;
+}
+fieldset {
+	border-color: rgb(255, 192, 203);
+}
+.subbutton {
+	padding: 5px 15px; border-radius: 5px; border: 0px solid red; color: rgb(255, 255, 255); margin-right: 10px; background-color: rgb(102, 153, 204);
+}
+.vinform textarea {
+	font: 13px/23px verdana, helvetica, arial, sans-serif; padding: 10px; font-size-adjust: none; font-stretch: normal; background-color: rgb(249, 251, 249);
+}
+.javacodeoutput {
+	font: 13px/23px verdana, helvetica, arial, sans-serif; padding: 10px; margin-top: 20px; font-size-adjust: none; font-stretch: normal; background-color: rgb(248, 248, 245);
+}
+.testit a {
+	font: 700 13px/1.5 Verdana; padding: 4px 30px; border-radius: 9px; color: rgb(255, 255, 255); text-decoration: none; font-size-adjust: none; font-stretch: normal; background-color: rgb(102, 153, 204);
+}
+.testit a:hover {
+	font: 700 13px/1.5 Verdana; padding: 4px 30px; border-radius: 9px; color: rgb(255, 255, 255); text-decoration: none; font-size-adjust: none; font-stretch: normal; background-color: rgb(102, 102, 204);
+}
+span.homespan {
+	font: 21px/normal times new roman; padding: 5px; float: right; font-size-adjust: none; font-stretch: normal;
+}
+.gra1 {
+	background: linear-gradient(rgb(250, 250, 229), white); border-radius: 10px; border: 1px solid rgb(255, 192, 203);
+}
+.upperhr {
+	margin: 5px; border: 0px currentColor; height: 2px; color: rgb(102, 153, 102); clear: both; background-color: orange;
+}
+#menu {
+	width: 18%; margin-top: 5px; border-right-color: pink; border-right-width: 1px; border-right-style: dashed; float: left;
+}
+.headermobile {
+	display: none; background-color: green;
+}
+h2.spanh2 {
+	margin: 0px; padding: 0px;
+}
+span.spanh2 {
+	font: 15px/normal verdana, helvetica, arial, sans-serif; color: rgb(223, 58, 1); display: inline; font-size-adjust: none; font-stretch: normal;
+}
+.inputtext {
+	padding: 8px; border-radius: 5px; border: 1px solid pink; width: 90%;
+}
+img {
+	height: auto; max-width: 100%;
+}
+#mobilemenu button {
+	background: linear-gradient(rgb(102, 187, 85), green); padding: 5px; width: 100%; color: white; font-weight: bold;
+}
+@media screen and (max-width:768px)
+{
+#right1024 {
+	display: none;
+}
+#menu {
+	display: none;
+}
+#upr {
+	display: none;
+}
+.headermobile {
+	display: inline;
+}
+.footerad1024 {
+	display: none;
+}
+#bottomnextup {
+	display: none;
+}
+#footer {
+	display: none;
+}
+#right {
+	display: none;
+}
+.header {
+	display: none;
+}
+.onlycontent {
+	width: 100%;
+}
+#link {
+	height: 25px; overflow: hidden;
+}
+.headerad {
+	display: none;
+}
+.nexttopicdiv {
+	display: none;
+}
+.nexttopictext {
+	display: none;
+}
+.nexttopiclink {
+	display: none;
+}
+table .alt {
+	width: 100%;
+}
+.headermobilead {
+	display: block;
+}
+.headershortad {
+	display: none;
+}
+}
+@media screen and (max-width:980px) and (min-width:768px)
+{
+#menu {
+	width: 23%;
+}
+#right1024 {
+	display: none;
+}
+#right {
+	display: none;
+}
+#link {
+	height: 25px; overflow: hidden;
+}
+.footerad1024 {
+	display: none;
+}
+#mobilemenu {
+	display: none;
+}
+.headerad {
+	display: none;
+}
+.headermobilead {
+	display: none;
+}
+.alt {
+	width: 100%;
+}
+}
+@media screen and (max-width:1025px) and (min-width:980px)
+{
+#menu {
+	width: 20%;
+}
+#right {
+	display: none;
+}
+#link {
+	height: 25px; overflow: hidden;
+}
+#mobilemenu {
+	display: none;
+}
+.headershortad {
+	display: none;
+}
+.headermobilead {
+	display: none;
+}
+.alt {
+	width: 100%;
+}
+}
+@media screen and (max-width:2200px) and (min-width:1025px)
+{
+#menu {
+	width: 16%;
+}
+#link {
+	overflow: hidden;
+}
+#right1024 {
+	display: none;
+}
+#mobilemenu {
+	display: none;
+}
+.headershortad {
+	display: none;
+}
+.footerad1024 {
+	display: none;
+}
+.headermobilead {
+	display: none;
+}
+.alt {
+	width: 100%;
+}
+}
+@media print
+{
+* {
+	color: rgb(0, 0, 0) !important; box-shadow: none !important; text-shadow: none !important;
+}
+tr {
+	page-break-inside: avoid;
+}
+img {
+	page-break-inside: avoid;
+}
+img {
+	max-width: 100% !important;
+}
+#menu {
+	display: none;
+}
+#upr {
+	display: none;
+}
+#bottomnextup {
+	display: none;
+}
+#upr {
+	display: none;
+}
+#footer {
+	display: none;
+}
+#right {
+	display: none;
+}
+.header {
+	display: none;
+}
+.onlycontent {
+	width: 100%;
+}
+#link {
+	display: none;
+}
+.headerad {
+	display: none;
+}
+.nexttopicdiv {
+	display: none;
+}
+.nexttopictext {
+	display: none;
+}
+.nexttopiclink {
+	display: none;
+}
+p {
+	orphans: 3; widows: 3;
+}
+h2 {
+	orphans: 3; widows: 3;
+}
+h3 {
+	orphans: 3; widows: 3;
+}
+h2 {
+	page-break-after: avoid;
+}
+h3 {
+	page-break-after: avoid;
+}
+}
+.box1 {
+	width: 50%;
+}
+.classhierarchy {
+	margin: 10px; padding: 5px; border: 1px solid pink; float: right;
+}
+ul.points {
+	list-style: circle;
+}
+ul.points li {
+	padding: 0.2em;
+}
+ol.points li {
+	padding: 0.2em;
+}

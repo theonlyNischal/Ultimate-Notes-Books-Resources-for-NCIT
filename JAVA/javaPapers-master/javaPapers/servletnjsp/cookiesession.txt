@@ -1,0 +1,34 @@
+Creating cookie and writing it to client computer:
+-------------------------------------
+-->Cookie class is used which is under javax.servlet.http package.
+-->Constructor of Cookie takes two arguments - key and value pairs.
+  eg. Cookie(String key, String value)
+-->addCookie(Cookie) is used to write cookie to users computer.
+-->setMaxAge(int seconds) is used to specify for how long cookie will be stored in user's computer.
+
+
+Reading cookie:
+-----------------
+-->getCookies() method is used to read all the cookies from client. It returns an array of Cookie.
+  eg. Cookie []cookies=request.getCookies();
+
+-->getName() and getValue() methods are used to get the cookie name(key) and cookie value.
+
+Session:
+--------------
+-->getSession() is used to create a session.
+eg. HttpSession session=request.getSession();
+-->getId() is used to get the id of session.
+   eg. pw.println(session.getId());
+-->isNew() is used to check whether session is new or not.
+-->setMaxInactiveInterval(int seconds) is used to specify how long a session can be inactive. After specified time session destroys automatically.
+
+
+Storing Data in a session:
+----------------------------
+-->setAttribute(String key, Object value) method is used.
+-->getAttribute() method is used to retrieve the value associated with a session. It returns Object.
+   eg. session.setAttribute("bimsdc","12345");
+       Object value=session.getAttribute("bimsdc");
+
+

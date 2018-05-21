@@ -1,0 +1,38 @@
+JDBC Driver Types:
+
+Type 1 JDBC Driver is called JDBC-ODBC Bridge driver (bridge driver)
+
+Type 2 JDBC Driver is referred as Native-API/partly Java driver (native driver)
+
+Type 3 JDBC Driver is called AllJava/Net-protocol driver (middleware driver)
+
+Type 4 JDBC Driver is called All Java/Native-protocol driver (Pure java driver)
+
+
+
+JDBC ODBC Bridge Driver or Type 1 JDBC driver
+
+In case of JDBC ODBC bridge driver all JDBC calls doesn't directly goes to database instead they go via ODBC driver. JDBC-ODBC driver translates JDBC calls into ODBC calls and send them to ODBC driver for passing to database. Since type 1 driver act as bridge between JDBC and ODBC and that's why its called JDBC-ODBC bridge driver. This driver is not fast and good for production use mainly because of several layer of translation on back and fourth database traffic but it has  advantage in terms of of availability and can be your last choice.
+
+
+
+
+Native-API/partly Java driver or Type 2 JDBC driver
+
+This is also called type 2 driver and its slightly better than type 1 JDBC driver. Type 2 JDBC driver convert JDBC calls into database calls by using native API provided by database. This driver is database specific so once you switch from one database to another you need to change type 2 JDBC driver. performance is better than JDBC-ODBC bridge driver since communication layer is reduced. type 2 JDBC driver requires database native library to be available on client but it poses several version and compatibility issue. This was liked by Database vendors though because they can reuse their existing native libraries.
+
+
+
+
+AllJava/Net-protocol driver or Type 3 JDBC driver
+
+Both type 1 and type 2 JDBC drivers were not written in Java so there was need for pure Java JDBC driver to resolve portability issue. type 3 JDBC driver comes with pure java implementation (that's why All Java word ) but it uses 3 tier architecture where you have a Java client and Java Server which talk with Net protocol and Server speaking to database. type 3 JDBC driver never get popular among database vendors as it was costly for them to rewrite there existing native database library which was mainly on C and C++.
+
+
+
+
+All Java/Native-protocol driver or Type 4 JDBC driver
+
+Type 4 JDBC driver is most popular among all four types of JDBC driver. it has not only implemented in Java but also incorporates all database call in single driver. It was pretty easy to use and deploy as well just include driver's jar in classpath and you are ready. It also removes 3 tier architecture of type 3 JDBC driver which makes it faster than type 3.  Major development happens on type 4 JDBC driver when database upgrade themselves, though some of them still upgrade native database library or type 2 driver.
+
+

@@ -1,0 +1,970 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0071)http://www.codejava.net/java-se/swing/jtree-basic-tutorial-and-examples -->
+<!DOCTYPE html PUBLIC "" ""><HTML lang="en-gb" lang="en-gb" dir="ltr" xml:lang="en-gb" 
+xmlns="http://www.w3.org/1999/xhtml"><HEAD><META content="IE=10.000" 
+http-equiv="X-UA-Compatible">
+
+<META name="viewport" content="width=device-width, initial-scale=1.0">
+<META http-equiv="content-type" content="text/html; charset=utf-8">
+<META name="keywords" content="Swing, JTree, tutorial, examples">
+<META name="description" content="A Swing tutorial on how to create basic JTree component to display hierarchical data.">
+<META name="GENERATOR" content="MSHTML 10.00.9200.16578"><TITLE>JTree basic 
+tutorial and examples</TITLE><LINK href="http://www.codejava.net/java-se/swing/jtree-basic-tutorial-and-examples" 
+rel="canonical"><LINK title="JTree basic tutorial and examples" href="/component/jcomments/feed/com_content/399" 
+rel="alternate" type="application/rss+xml"><LINK href="/templates/protostar/favicon.ico" 
+rel="shortcut icon" type="image/vnd.microsoft.icon"><LINK href="JTree%20basic%20tutorial%20and%20examples_files/9991959d40f54adb41e05eb23125d1cd.css" 
+rel="stylesheet" type="text/css">
+<STYLE type="text/css"></STYLE>
+ 
+<SCRIPT src="JTree%20basic%20tutorial%20and%20examples_files/6d85b141728332668d35c18f9ce474ab.js" type="text/javascript"></SCRIPT>
+ 
+<SCRIPT src="JTree%20basic%20tutorial%20and%20examples_files/recaptcha_ajax.js" type="text/javascript"></SCRIPT>
+ 
+<SCRIPT type="text/javascript">window.addEvent('load',function(){
+	var siteurl = 'http://www.codejava.net/';
+	function path(){
+	  var args = arguments,result = [];
+	  for(var i = 0; i < args.length; i++){
+	  	result.push(args[i].replace('@', [siteurl,'plugins/content/hs_highlighter/lib/scripts/'].join('')));
+	  }
+	  return result;
+	};
+	 
+	SyntaxHighlighter.autoloader.apply(null, path(
+	  'applescript            @shBrushAppleScript.js',
+	  'actionscript3 as3      @shBrushAS3.js',
+	  'bash shell             @shBrushBash.js',
+	  'coldfusion cf          @shBrushColdFusion.js',
+	  'cpp c                  @shBrushCpp.js',
+	  'c# c-sharp csharp      @shBrushCSharp.js',
+	  'css                    @shBrushCss.js',
+	  'delphi pascal          @shBrushDelphi.js',
+	  'diff patch pas         @shBrushDiff.js',
+	  'erl erlang             @shBrushErlang.js',
+	  'groovy                 @shBrushGroovy.js',
+	  'java                   @shBrushJava.js',
+	  'jfx javafx             @shBrushJavaFX.js',
+	  'js jscript javascript  @shBrushJScript.js',
+	  'perl pl                @shBrushPerl.js',
+	  'php                    @shBrushPhp.js',
+	  'text plain             @shBrushPlain.js',
+	  'py python              @shBrushPython.js',
+	  'ruby rails ror rb      @shBrushRuby.js',
+	  'sass scss              @shBrushSass.js',
+	  'scala                  @shBrushScala.js',
+	  'sql                    @shBrushSql.js',
+	  'vb vbnet               @shBrushVb.js',
+	  'xml xhtml xslt html    @shBrushXml.js'
+	  
+	));
+	
+	SyntaxHighlighter.defaults['auto-links'] = false;SyntaxHighlighter.defaults['toolbar'] = false;;
+	SyntaxHighlighter.all();	
+});
+		
+		
+jQuery( document ).ready(function()
+		{
+			Recaptcha.create("6LfhdOgSAAAAALirMXuQ4zbw-dskUeH78pRPs33D", "dynamic_recaptcha_1", {theme: "clean",lang : 'en',tabindex: 0});});
+window.addEvent('load', function() {
+				new JCaption('img.caption');
+			});
+jQuery(document).ready(function()
+				{
+					jQuery('.hasTooltip').tooltip({"container": false});
+				});</SCRIPT>
+ <LINK href="JTree%20basic%20tutorial%20and%20examples_files/css.css" rel="stylesheet" 
+type="text/css">
+<STYLE type="text/css">h1,h2,h3,h4,h5,h6,.site-title{
+        font-family: 'Open Sans', sans-serif;
+      }</STYLE>
+
+<STYLE type="text/css">.btn-primary
+    {
+      background: #0088cc;
+    }
+    .navbar-inner
+    {
+      -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, .25), inset 0 -1px 0 rgba(0, 0, 0, .1), inset 0 30px 10px rgba(0, 0, 0, .2);
+      -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, .25), inset 0 -1px 0 rgba(0, 0, 0, .1), inset 0 30px 10px rgba(0, 0, 0, .2);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, .25), inset 0 -1px 0 rgba(0, 0, 0, .1), inset 0 30px 10px rgba(0, 0, 0, .2);
+    }</STYLE>
+<!--[if lt IE 9]> <script src="/media/jui/js/html5.js"></script> <![endif]-->
+<SCRIPT src="JTree%20basic%20tutorial%20and%20examples_files/google_analytics_auto.js"></SCRIPT>
+</HEAD>
+<BODY class="site com_content view-article no-layout no-task itemid-851"><!-- Body -->
+<DIV class="body">
+<DIV class="container"> <!-- Header --> <HEADER class="header" role="banner">
+<DIV class="header-inner clearfix"><A class="brand pull-left" href="http://www.codejava.net/"><IMG 
+alt="CodeJava" src="JTree%20basic%20tutorial%20and%20examples_files/banner.png"> 
+</A>
+<DIV class="header-search pull-right">
+<DIV class="bannergroup">
+<DIV class="banneritem"><A title="DailyRazor Banner" href="http://www.codejava.net/component/banners/click/236" 
+target="_blank"><IMG alt="DailyRazor Banner" src="JTree%20basic%20tutorial%20and%20examples_files/Daily_Razor_728x90-59684.gif"> 
+</A>
+<DIV class="clr"></DIV></DIV></DIV></DIV></DIV></HEADER><NAV class="navigation" 
+role="navigation">
+<UL class="nav menu nav-pills">
+  <LI class="item-101"><A href="http://www.codejava.net/">Home</A></LI>
+  <LI class="item-465 deeper parent"><A 
+  href="http://www.codejava.net/java-core">Java Core</A>
+  <UL class="nav-child unstyled small">
+    <LI class="item-499"><A href="http://www.codejava.net/java-core/the-java-language">The 
+    Java Language</A></LI>
+    <LI class="item-856"><A 
+    href="http://www.codejava.net/java-core/collections">Collections</A></LI>
+    <LI class="item-859"><A 
+    href="http://www.codejava.net/java-core/tools">Tools</A></LI></UL></LI>
+  <LI class="item-850 active deeper parent"><A href="http://www.codejava.net/java-se">Java 
+  SE</A>
+  <UL class="nav-child unstyled small">
+    <LI class="item-851 current active"><A href="http://www.codejava.net/java-se/swing">Swing</A></LI>
+    <LI class="item-852"><A 
+    href="http://www.codejava.net/java-se/applet">Applet</A></LI>
+    <LI class="item-853"><A href="http://www.codejava.net/java-se/file-io">File 
+    I/O</A></LI>
+    <LI class="item-854"><A 
+    href="http://www.codejava.net/java-se/graphics">2D/3D Graphics</A></LI>
+    <LI class="item-855 deeper parent"><A href="http://www.codejava.net/java-se/networking">Networking</A>
+    <UL class="nav-child unstyled small">
+      <LI class="item-857"><A href="http://www.codejava.net/java-se/networking/ftp">FTP</A></LI></UL></LI>
+    <LI class="item-858"><A 
+    href="http://www.codejava.net/java-se/jdbc">JDBC</A></LI></UL></LI>
+  <LI class="item-840 deeper parent"><A 
+  href="http://www.codejava.net/java-ee">Java EE</A>
+  <UL class="nav-child unstyled small">
+    <LI class="item-848"><A 
+    href="http://www.codejava.net/java-ee/servlet">Servlet</A></LI>
+    <LI class="item-510"><A 
+    href="http://www.codejava.net/java-ee/javamail">JavaMail</A></LI>
+    <LI class="item-512"><A 
+    href="http://www.codejava.net/java-ee/web-services">Web Services</A></LI>
+    <LI class="item-849"><A 
+    href="http://www.codejava.net/java-ee/jstl">JSTL</A></LI>
+    <LI class="item-513"><A 
+    href="http://www.codejava.net/java-ee/jsp">JavaServer Pages 
+  (JSP)</A></LI></UL></LI>
+  <LI class="item-470 deeper parent"><A href="http://www.codejava.net/frameworks">Frameworks</A>
+  <UL class="nav-child unstyled small">
+    <LI class="item-515"><A 
+    href="http://www.codejava.net/frameworks/spring">Spring</A></LI>
+    <LI class="item-514"><A 
+    href="http://www.codejava.net/frameworks/hibernate">Hibernate</A></LI>
+    <LI class="item-516"><A 
+    href="http://www.codejava.net/frameworks/struts">Struts</A></LI></UL></LI>
+  <LI class="item-471 deeper parent"><A 
+  href="http://www.codejava.net/ides">IDEs</A>
+  <UL class="nav-child unstyled small">
+    <LI class="item-517"><A 
+    href="http://www.codejava.net/ides/eclipse">Eclipse</A></LI>
+    <LI class="item-954"><A 
+    href="http://www.codejava.net/ides/netbeans">NetBeans</A></LI></UL></LI>
+  <LI class="item-472 deeper parent"><A 
+  href="http://www.codejava.net/servers">Servers</A>
+  <UL class="nav-child unstyled small">
+    <LI class="item-518"><A 
+    href="http://www.codejava.net/servers/tomcat">Tomcat</A></LI></UL></LI>
+  <LI class="item-473"><A href="http://www.codejava.net/coding">Coding</A></LI>
+  <LI class="item-498"><A href="http://www.codejava.net/books">Books</A></LI>
+  <LI class="item-960"><A href="http://www.codejava.net/videos">Videos</A></LI>
+  <DIV style="margin: 3px; float: right;"><A href="http://www.codejava.net/java-se/swing/feeds"><IMG 
+  title="Stay updated via RSS Feeds" style="vertical-align: middle;" alt="RSS Feeds" 
+  src=""></A>&nbsp;<A href="http://www.facebook.com/codejava" 
+  target="_blank"><IMG title="Follow us on Facebook" style="vertical-align: middle;" 
+  alt="Facebook" src=""></A>&nbsp;	<A href="https://twitter.com/codejavadotnet" 
+  target="_blank"><IMG title="Follow us on Twitter" style="vertical-align: middle;" 
+  alt="Twitter" src=""></A>&nbsp;<A href="https://plus.google.com/+CodejavaNet" 
+  target="_blank"><IMG title="Follow us on Google+" style="vertical-align: middle;" 
+  alt="Google Plus" src=""></A>&nbsp;<A href="https://delicious.com/codejavadotnet" 
+  target="_blank"><IMG title="Follow us on Delicious" style="vertical-align: middle;" 
+  alt="Google Plus" src=""></A> </DIV></UL>
+<UL class="breadcrumb">
+  <LI class="active"><SPAN title="You are here: " class="divider icon-location hasTooltip"></SPAN></LI>
+  <LI><A class="pathway" href="http://www.codejava.net/">Home</A><SPAN class="divider"><IMG 
+  alt="" 
+  src="JTree%20basic%20tutorial%20and%20examples_files/arrow.png"></SPAN></LI>
+  <LI><A class="pathway" href="http://www.codejava.net/java-se">Java SE</A><SPAN 
+  class="divider"><IMG alt="" src="JTree%20basic%20tutorial%20and%20examples_files/arrow.png"></SPAN></LI>
+  <LI><SPAN>Swing</SPAN></LI>
+  <DIV class="moduletable_search" style="float: right;">
+  <DIV class="search_search">
+  <FORM class="form-inline" action="http://www.codejava.net/search" method="post"><LABEL 
+  class="element-invisible" for="mod-search-searchword">Search...</LABEL> <INPUT 
+  name="searchword" class="inputbox search-query" id="mod-search-searchword" 
+  onfocus="if (this.value=='Search...') this.value='';" onblur="if (this.value=='') this.value='Search...';" 
+  type="text" size="20" value="Search..." max-length="128"> <INPUT class="button" 
+  onclick="this.form.searchword.focus();" type="image" src="" value="search">    
+    <INPUT name="task" type="hidden" value="search">
+			 </FORM></DIV></DIV></UL></NAV>
+<DIV class="row-fluid">
+<STYLE>.moduletable_search{
+            margin-right: 0!important;
+          }
+          #sidebar{
+            width: 21%!important;
+            margin-left: 5px!important;
+          }
+          #content{
+            margin-left: 25px!important;
+          }</STYLE>
+<!-- Begin Sidebar -->
+<DIV class="span3" id="sidebar">
+<DIV class="sidebar-nav">
+<DIV class="moduletable">
+<DIV class="bannergroup">
+<DIV class="banneritem"> <A title="DailyRazor Side Banner" href="http://www.codejava.net/component/banners/click/237" 
+target="_blank"><IMG alt="DailyRazor Side Banner" src="JTree%20basic%20tutorial%20and%20examples_files/Daily_Razor_200x125-59679.gif"> 
+</A>
+<DIV class="clr"></DIV></DIV></DIV></DIV>
+<DIV class="moduletable">
+<DIV class="bannergroup">
+<DIV class="banneritem"><A href="http://www.codejava.net/component/banners/click/233" 
+target="_blank" rel="nofollow"><IMG src="JTree%20basic%20tutorial%20and%20examples_files/jvmhost_200x125.png" 
+border="0"></A><BR>&nbsp;<BR>
+<DIV class="clr"></DIV></DIV></DIV></DIV>
+<DIV class="moduletable">
+<DIV class="bannergroup">
+<DIV class="banneritem">
+<DIV align="center"><BR><A href="http://www.codejava.net/component/banners/click/239" 
+target="_blank"><IMG src="JTree%20basic%20tutorial%20and%20examples_files/HostSailor-120x160.png" 
+border="0"></A><BR>&nbsp;<BR></DIV>
+<DIV class="clr"></DIV></DIV></DIV></DIV>
+<DIV class="moduletable">
+<DIV class="bannergroup">
+<DIV class="banneritem">
+<DIV align="center"><A href="http://www.codejava.net/component/banners/click/243" 
+target="_blank" rel="nofollow"><IMG src="JTree%20basic%20tutorial%20and%20examples_files/DH_Banner_180x150.gif" 
+border="0"></A><BR>&nbsp;<BR></DIV>
+<DIV class="clr"></DIV></DIV></DIV></DIV>
+<DIV class="moduletable">
+<DIV class="bannergroup">
+<DIV class="banneritem"><IFRAME width="230" height="1800" src="JTree%20basic%20tutorial%20and%20examples_files/CodingCode.htm" 
+border="0" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" 
+style="border: currentColor;"></IFRAME>
+<DIV class="clr"></DIV></DIV></DIV></DIV></DIV></DIV><!-- End Sidebar --> <main 
+class="span9" id="content" role="main"><!-- Begin Content -->
+<DIV id="system-message-container">
+<DIV id="system-message"></DIV></DIV>
+<DIV class="item-page">
+<DIV class="page-header">
+<H1><A href="http://www.codejava.net/java-se/swing/jtree-basic-tutorial-and-examples"> 
+JTree basic tutorial and examples</A></H1></DIV>
+<DIV class="article-info muted">
+<DL class="article-info">
+  <DT class="article-info-term">Details</DT>
+  <DD class="modified"><SPAN class="icon-calendar"></SPAN> Last Updated on 29 
+  November 2014						&nbsp; | &nbsp; <A title="Print" onclick="window.open(this.href,'win2','status=no,toolbar=no,scrollbars=yes,titlebar=no,menubar=no,resizable=yes,width=640,height=480,directories=no,location=no'); return false;" 
+  href="http://www.codejava.net/java-se/swing/jtree-basic-tutorial-and-examples?tmpl=component&amp;print=1&amp;page=" 
+  rel="nofollow"><SPAN class="icon-print"></SPAN>&nbsp;Print&nbsp;</A> <A title="Email" 
+  onclick="window.open(this.href,'win2','width=400,height=350,menubar=yes,resizable=yes'); return false;" 
+  href="http://www.codejava.net/component/mailto/?tmpl=component&amp;template=protostar&amp;link=f0260945a12c89d99918e1b0af5e1f9a3e217a7b"><SPAN 
+  class="icon-envelope"></SPAN> Email</A></DD></DL></DIV>
+<DIV>
+<DIV id="multiad-block"><B><A href="http://www.amazon.com/gp/product/0137142528/ref=as_li_tf_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0137142528&amp;linkCode=as2&amp;tag=code0ac-20" 
+target="_blank" rel="nofollow">Java Performance</A><IMG width="1" height="1" 
+style="margin: 0px !important; border: currentColor !important;" alt="" src="JTree%20basic%20tutorial%20and%20examples_files/ir.gif" 
+border="0"> &nbsp;&nbsp;&nbsp;&nbsp; <A href="http://www.amazon.com/gp/product/0132350882/ref=as_li_tf_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0132350882&amp;linkCode=as2&amp;tag=code0ac-20" 
+target="_blank" rel="nofollow">Clean Code</A><IMG width="1" height="1" style="margin: 0px !important; border: currentColor !important;" 
+alt="" src="JTree%20basic%20tutorial%20and%20examples_files/ir(1).gif" border="0"> 
+&nbsp;&nbsp;&nbsp;&nbsp; <A href="http://www.amazon.com/gp/product/0137081073/ref=as_li_tf_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0137081073&amp;linkCode=as2&amp;tag=code0ac-20" 
+target="_blank" rel="nofollow">The Clean Coder</A><IMG width="1" height="1" 
+style="margin: 0px !important; border: currentColor !important;" alt="" src="JTree%20basic%20tutorial%20and%20examples_files/ir(2).gif" 
+border="0"> &nbsp;&nbsp;&nbsp;&nbsp; <A href="http://www.amazon.com/gp/product/020161622X/ref=as_li_tf_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=020161622X&amp;linkCode=as2&amp;tag=code0ac-20" 
+target="_blank" rel="nofollow">The Pragmatic Programmer</A><IMG width="1" 
+height="1" style="margin: 0px !important; border: currentColor !important;" alt="" 
+src="JTree%20basic%20tutorial%20and%20examples_files/ir(3).gif" border="0"> 
+</B></DIV></DIV>
+<P style="line-height: 1.15; margin-top: 0pt; margin-bottom: 0pt;" 
+dir="ltr"><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;">This article explains working with </SPAN><SPAN style='color: rgb(128, 0, 0); font-family: "Courier New"; font-size: 13px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;'>JTree</SPAN><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;"> and proceeds to show some examples.</SPAN></P><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;">We will write code to achieve a </SPAN><SPAN style='color: rgb(128, 0, 0); font-family: "Courier New"; font-size: 13px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;'>JTree</SPAN><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;"> output like:</SPAN>
+<P></P>
+<DIV><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;"><IMG width="200" height="200" style="margin-right: auto; margin-left: auto; display: block;" alt="JTree with Custom Image Icon" src="JTree%20basic%20tutorial%20and%20examples_files/JTree%2520with%2520Custom%2520Image%2520Icon.png"></SPAN></DIV>
+<DIV>
+<P style="text-align: center; line-height: 1.15; margin-top: 0pt; margin-bottom: 0pt;" 
+dir="ltr"><STRONG><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;">Output</SPAN></STRONG></P><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;"><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;"><BR></SPAN></SPAN>
+<H2 style="line-height: 1.15; margin-top: 10pt; margin-bottom: 0pt;" 
+dir="ltr"><SPAN style='font-family: "Trebuchet MS"; font-size: 17px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;'>Table of Contents:</SPAN></H2>
+<P style="font-family: Calibri; font-size: 15px; margin-left: 30px; vertical-align: baseline; list-style-type: decimal; background-color: transparent;" 
+dir="ltr"><A style="line-height: 1.15; font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 16px;" 
+href="http://www.codejava.net/java-se/swing/jtree-basic-tutorial-and-examples#Introduction">1.Introduction</A></P>
+<P style="font-family: Calibri; font-size: 15px; margin-left: 30px; vertical-align: baseline; list-style-type: decimal; background-color: transparent;" 
+dir="ltr"><A style="line-height: 1.15; font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 16px;" 
+href="http://www.codejava.net/java-se/swing/jtree-basic-tutorial-and-examples#Developing">2.Developing 
+a Simple JTree</A></P>
+<P style="font-family: Calibri; font-size: 15px; margin-left: 30px; vertical-align: baseline; list-style-type: decimal; background-color: transparent;" 
+dir="ltr"><A style="line-height: 1.15; font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 16px;" 
+href="http://www.codejava.net/java-se/swing/jtree-basic-tutorial-and-examples#Adding_More_Children">3.Adding 
+More Children</A></P>
+<P style="margin-left: 30px;"><A style="line-height: 1.15; font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 16px;" 
+href="http://www.codejava.net/java-se/swing/jtree-basic-tutorial-and-examples#Customizing_Tree_Display:">4.Customizing 
+Tree's Display</A></P>
+<P style="font-family: Calibri; font-size: 15px; margin-left: 30px; vertical-align: baseline; list-style-type: decimal; background-color: transparent;" 
+dir="ltr"><A style="line-height: 1.15; font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 16px;" 
+href="http://www.codejava.net/java-se/swing/jtree-basic-tutorial-and-examples#Adding_a_Scrollpane:">5.Adding 
+a Scrollpane</A></P>
+<P style="font-family: Calibri; font-size: 15px; margin-left: 30px; vertical-align: baseline; list-style-type: decimal; background-color: transparent;" 
+dir="ltr"><A style="line-height: 1.15; font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 16px;" 
+href="http://www.codejava.net/java-se/swing/jtree-basic-tutorial-and-examples#Showing_Root_Handles">6.Showing 
+Root Handles</A></P>
+<P style="font-family: Calibri; font-size: 15px; margin-left: 30px; vertical-align: baseline; list-style-type: decimal; background-color: transparent;" 
+dir="ltr"><A style="line-height: 1.15; font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 16px;" 
+href="http://www.codejava.net/java-se/swing/jtree-basic-tutorial-and-examples#Hiding_Root_Node">7.Hiding 
+Root Node</A></P>
+<P style="font-family: Calibri; font-size: 15px; margin-left: 30px; vertical-align: baseline; list-style-type: decimal; background-color: transparent;" 
+dir="ltr"><A style="line-height: 1.15; font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 16px;" 
+href="http://www.codejava.net/java-se/swing/jtree-basic-tutorial-and-examples#Changing_the_Visual_Icons">8.Changing 
+Visual Icons</A></P>
+<P style="font-family: Calibri; font-size: 15px; margin-left: 30px; vertical-align: baseline; list-style-type: decimal; background-color: transparent;" 
+dir="ltr"><A style="line-height: 1.15; font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 16px;" 
+href="http://www.codejava.net/java-se/swing/jtree-basic-tutorial-and-examples#Event_Handlers">9.Event 
+Handlers</A></P>
+<DIV style="margin-left: 30px;"><SPAN 
+style="line-height: 18px;">&nbsp;</SPAN></DIV>
+<H1><A name="Introduction" id="Introduction"></A>1. 
+Introduction:</H1><SPAN style='color: rgb(128, 0, 0); font-family: "Courier New"; font-size: 13px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;'>JTree</SPAN><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;"> is a </SPAN><SPAN style='color: rgb(128, 0, 0); font-family: "Courier New"; font-size: 13px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;'>Swing</SPAN><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;"> component with which we can display hierarchical data. </SPAN><SPAN style='color: rgb(128, 0, 0); font-family: "Courier New"; font-size: 13px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;'>JTree</SPAN><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;"> is quite a complex component. A </SPAN><SPAN style='color: rgb(128, 0, 0); font-family: "Courier New"; font-size: 13px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;'>JTree</SPAN><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;"> has a 'root node' which is the top-most parent for all nodes in the tree. A node is an item in a tree. A node can have many children nodes. These children nodes themselves can have further children nodes. If a node doesn't have any children node, it is called a leaf node.</SPAN>
+<P></P><SPAN style="line-height: 1.15; font-family: Calibri; font-size: 15px; white-space: pre-wrap; background-color: transparent;">The leaf node is displayed with a different visual indicator. The nodes with children are displayed with a different visual indicator along with a visual 'handle' which can be used to expand or collapse that node. Expanding a node displays the children and collapsing hides them.</SPAN>&nbsp;
+<P></P>
+<H1><A name="Developing" id="Developing"></A>2. Developing a Simple JTree:</H1> 
+&nbsp;<SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;">Let us now attempt to build a simple </SPAN><SPAN style='font-family: "Courier New"; font-size: 13px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;'><SPAN style="color: rgb(128, 0, 0);">JTree</SPAN>.</SPAN><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;"> Let us say we want to display the list of vegetables and fruits hierarchically.</SPAN>
+<P></P><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;">The node is represented in </SPAN><SPAN style='color: rgb(128, 0, 0); font-family: "Courier New"; font-size: 13px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;'>Swing</SPAN><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;"> API as </SPAN><SPAN style='color: rgb(128, 0, 0); font-family: "Courier New"; font-size: 13px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;'>TreeNode</SPAN><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;"> which is an interface. The interface </SPAN><SPAN style='color: rgb(128, 0, 0); font-family: "Courier New"; font-size: 13px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;'>MutableTreeNode</SPAN><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;"> extends this interface which represents a mutable node. </SPAN><SPAN style='color: rgb(128, 0, 0); font-family: "Courier New"; font-size: 13px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;'>Swing</SPAN><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;"> API provides an implementation of this interface in the form of </SPAN><SPAN style='color: rgb(128, 0, 0); font-family: "Courier New"; font-size: 13px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;'>DefaultMutableTreeNode</SPAN><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;"> class.</SPAN>
+<P></P><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;">We will be using the </SPAN><SPAN style='color: rgb(128, 0, 0); font-family: "Courier New"; font-size: 13px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;'>DefaultMutableTreeNode</SPAN><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;"> class to represent our node. This class is provided in the </SPAN><SPAN style='font-family: "Courier New"; font-size: 13px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;'>Swing</SPAN><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;"> API and we can use it to represent our nodes. This class has a handy </SPAN><SPAN style='color: rgb(128, 0, 0); font-family: "Courier New"; font-size: 13px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;'>add()</SPAN><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;"> method which takes in an instance of </SPAN><SPAN style='font-family: "Courier New"; font-size: 13px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;'><SPAN style="color: rgb(128, 0, 0);">MutableTreeNode</SPAN>.</SPAN>
+<P></P><SPAN style='font-family: "Trebuchet MS"; font-size: 17px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;'><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;">So, we will first create the root node. And then we can recursively add nodes to that root. Let us start with a simple root with just 2 nodes:</SPAN></SPAN>
+<P></P>
+<PRE class="brush:java;toolbar:false">package net.codejava.swing;
+
+import javax.swing.JFrame;
+import javax.swing.JTree;
+import javax.swing.SwingUtilities;
+import javax.swing.tree.DefaultMutableTreeNode;
+
+public class TreeExample extends JFrame
+{
+    private JTree tree;
+    public TreeExample()
+    {
+        //create the root node
+        DefaultMutableTreeNode root = new DefaultMutableTreeNode("Root");
+        //create the child nodes
+        DefaultMutableTreeNode vegetableNode = new DefaultMutableTreeNode("Vegetables");
+        DefaultMutableTreeNode fruitNode = new DefaultMutableTreeNode("Fruits");
+
+        //add the child nodes to the root node
+        root.add(vegetableNode);
+        root.add(fruitNode);
+        
+        //create the tree by passing in the root node
+        tree = new JTree(root);
+        add(tree);
+        
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setTitle("JTree Example");        
+        this.pack();
+        this.setVisible(true);
+    }
+    
+    public static void main(String[] args)
+    {
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new TreeExample();
+            }
+        });
+    }        
+}
+</PRE><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;">As explained earlier, we create a root node and add child nodes to it. Note that, when we create the </SPAN><SPAN style='color: rgb(128, 0, 0); font-family: "Courier New"; font-size: 13px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;'>JTree</SPAN><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;"> instance, we just pass the root node instance. This is because, the root node contains all the information including the children.</SPAN>
+<P></P><SPAN style="line-height: 1.15; font-family: Calibri; font-size: 15px; white-space: pre-wrap; background-color: transparent;">Let us now run the program:</SPAN>
+<P></P></DIV>
+<DIV><IMG width="204" height="135" style="margin-right: auto; margin-left: auto; display: block;" 
+alt="JTree Output with 2 children" src="JTree%20basic%20tutorial%20and%20examples_files/JTree%2520Output%2520with%25202%2520children.png"></DIV>
+<DIV>
+<P style="text-align: center; line-height: 1.15; margin-top: 0pt; margin-bottom: 0pt;" 
+dir="ltr"><STRONG><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;">Initial Output with two Children</SPAN></STRONG></P><BR>
+<P style="line-height: 1.15; margin-top: 0pt; margin-bottom: 0pt;" 
+dir="ltr"><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;">The output shows the root node and the two children. Note the difference in the icon that is displayed prior to the text. The nodes which have children are indicated with a folder icon and the leaf nodes are displayed with a different icon.</SPAN></P>
+<P style="line-height: 1.15; margin-top: 0pt; margin-bottom: 0pt;" 
+dir="ltr"><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;">&nbsp;</SPAN></P>
+<P style="line-height: 1.15; margin-top: 0pt; margin-bottom: 0pt;" 
+dir="ltr"><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;"><STRONG><A href="http://www.amazon.com/gp/product/013708160X/ref=as_li_qf_sp_asin_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=013708160X&amp;linkCode=as2&amp;tag=code0ac-20" target="_blank">Learn Advanced Swing techniques in Core Java, Volume II--Advanced Features (9th Edition)</A><IMG width="1" height="1" style="margin: 0px !important; border: currentColor !important;" alt="" src="JTree%20basic%20tutorial%20and%20examples_files/ir(4).gif" border="0"></STRONG></SPAN></P><BR>
+<H1><A name="Adding_More_Children" id="Adding_More_Children"></A>3. Adding More 
+Children:</H1>
+<P style="line-height: 1.15; margin-top: 0pt; margin-bottom: 0pt;" 
+dir="ltr"><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;">Let us now add more children to the vegetable and fruits node. This is very simple. We just need to add </SPAN><SPAN style='color: rgb(128, 0, 0); font-family: "Courier New"; font-size: 13px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;'>DefaultMutableTreeNode</SPAN><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;"> instances to the <SPAN style='color: rgb(128, 0, 0); font-family: "courier new", courier; font-size: 10pt;'>vegetableNode</SPAN> and the <SPAN style='color: rgb(128, 0, 0); font-family: "courier new", courier; font-size: 10pt;'>fruitNode</SPAN> instance, like:</SPAN></P>
+<DIV>
+<PRE class="brush:java;toolbar:false">DefaultMutableTreeNode vegetableNode = new DefaultMutableTreeNode("Vegetables");
+vegetableNode.add(new DefaultMutableTreeNode("Capsicum"));
+vegetableNode.add(new DefaultMutableTreeNode("Carrot"));
+vegetableNode.add(new DefaultMutableTreeNode("Tomato"));
+vegetableNode.add(new DefaultMutableTreeNode("Potato"));
+
+DefaultMutableTreeNode fruitNode = new DefaultMutableTreeNode("Fruits");
+fruitNode.add(new DefaultMutableTreeNode("Banana"));
+fruitNode.add(new DefaultMutableTreeNode("Mango"));
+fruitNode.add(new DefaultMutableTreeNode("Apple"));
+fruitNode.add(new DefaultMutableTreeNode("Grapes"));
+fruitNode.add(new DefaultMutableTreeNode("Orange"));</PRE>
+<P style="line-height: 1.15; margin-top: 0pt; margin-bottom: 0pt;" 
+dir="ltr"><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;">When we run the program, we get the following output:</SPAN></P></DIV>
+<DIV><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;"><BR></SPAN><IMG 
+width="201" height="106" style="margin-right: auto; margin-left: auto; display: block;" 
+alt="JTree Collapsed Parent Nodes" src="JTree%20basic%20tutorial%20and%20examples_files/JTree%2520Collapsed%2520Parent%2520Nodes.png"></DIV>
+<DIV>
+<P style="text-align: center; line-height: 1.15; margin-top: 0pt; margin-bottom: 0pt;" 
+dir="ltr"><STRONG><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;">More Children Added</SPAN></STRONG></P><BR>
+<P style="line-height: 1.15; margin-top: 0pt; margin-bottom: 0pt;" 
+dir="ltr"><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;">We can see that the icon displayed for the 'Vegetables' and 'Fruits' node has changed from a leaf icon to a folder icon. This indicates that these nodes have children themselves now. Also, note the handler icon (the one that looks like a key) that is displayed besides these nodes. These can be clicked on to expand the nodes.</SPAN></P><BR>
+<P style="line-height: 1.15; margin-top: 0pt; margin-bottom: 0pt;" 
+dir="ltr"><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;">Let us now run the program again and click on both these handles to expand them. We get the following output:</SPAN></P></DIV>
+<DIV><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;"><BR></SPAN><IMG 
+width="202" height="277" style="margin-right: auto; margin-left: auto; display: block;" 
+alt="JTree Expanded Parent Nodes" src="JTree%20basic%20tutorial%20and%20examples_files/JTree%2520Expanded%2520Parent%2520Nodes.png"></DIV>
+<DIV>
+<P style="text-align: center; line-height: 1.15; margin-top: 0pt; margin-bottom: 0pt;" 
+dir="ltr"><STRONG><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;">Expanded Tree</SPAN></STRONG></P><BR>
+<P style="line-height: 1.15; margin-top: 0pt; margin-bottom: 0pt;" 
+dir="ltr"><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;">Once we expand the nodes, we can see all the items in the tree displayed in a nice hierarchical structure. Also note that the handler is shown with a different indicator icon.</SPAN></P>
+<P style="line-height: 1.15; margin-top: 0pt; margin-bottom: 0pt;" 
+dir="ltr"><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;">&nbsp;</SPAN></P>
+<P style="line-height: 1.15; margin-top: 0pt; margin-bottom: 0pt;" 
+dir="ltr"><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;">&nbsp;</SPAN></P>
+<P style="text-align: center; line-height: 1.15; margin-top: 0pt; margin-bottom: 0pt;" 
+dir="ltr"><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;"><A href="http://click.linksynergy.com/link?id=d1Fh24*EiQI&amp;offerid=323058.18237&amp;type=2&amp;murl=https%3A%2F%2Fwww.udemy.com%2Fjava-swing-complete%2F" target="new" rel="nofollow"><IMG src="JTree%20basic%20tutorial%20and%20examples_files/18237_c39e_7.jpg" border="0"></A><IMG width="1" height="1" src="JTree%20basic%20tutorial%20and%20examples_files/show.gif" border="0"></SPAN></P>
+<P style="line-height: 1.15; margin-top: 0pt; margin-bottom: 0pt;" 
+dir="ltr"><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;">&nbsp;</SPAN></P>
+<DIV>
+<H1><A name="Customizing_Tree_Display:" id="Customizing_Tree_Display:"></A>4. 
+Customizing Tree's Display:</H1>
+<P style="line-height: 1.15; margin-top: 0pt; margin-bottom: 0pt;" 
+dir="ltr"><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;">Let us now try and customize a JTree's display. Let us now run the program again and click on the handles. Then, resize the frame to use less height. We will get the following output:</SPAN></P></DIV>
+<DIV><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;"><BR></SPAN><IMG 
+width="200" height="200" style="margin-right: auto; margin-left: auto; display: block;" 
+alt="JTree without Scrollpane" src="JTree%20basic%20tutorial%20and%20examples_files/JTree%2520without%2520Scrollpane.png"></DIV>
+<DIV>
+<P style="text-align: center; line-height: 1.15; margin-top: 0pt; margin-bottom: 0pt;" 
+dir="ltr"><STRONG><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;">Tree without Scrollbars</SPAN></STRONG></P><BR>
+<P style="line-height: 1.15; margin-top: 0pt; margin-bottom: 0pt;" 
+dir="ltr"><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;">As we can see, when the frame is resized, the items are hidden. Instead, we would</SPAN></P>
+<P style="line-height: 1.15; margin-top: 0pt; margin-bottom: 0pt;" 
+dir="ltr"><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;">want to display a scrollbar and allow the user to scroll up and down to see the entire tree data.</SPAN></P>
+<DIV><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;"><BR></SPAN>
+<H1><A name="Adding_a_Scrollpane:" id="Adding_a_Scrollpane:"></A>5. Adding a 
+Scrollpane:</H1>
+<P style="line-height: 1.15; margin-top: 0pt; margin-bottom: 0pt;" 
+dir="ltr"><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;">Doing this is very simple. Like many other </SPAN><SPAN style='color: rgb(128, 0, 0); font-family: "Courier New"; font-size: 13px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;'>Swing</SPAN><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;"> components, we just need to wrap our tree within a </SPAN><SPAN style='color: rgb(128, 0, 0); font-family: "Courier New"; font-size: 13px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;'>JScrollPane</SPAN><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;"> and add it to the frame. Instead of adding the tree to the frame, we add the scrollpane, like:</SPAN></P><BR>
+<P style="line-height: 1.15; margin-top: 0pt; margin-bottom: 0pt;" 
+dir="ltr"><SPAN style='color: rgb(128, 0, 0); font-family: "Courier New"; font-size: 13px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;'>add(new JScrollPane(tree));</SPAN></P><BR>
+<P style="line-height: 1.15; margin-top: 0pt; margin-bottom: 0pt;" 
+dir="ltr"><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;">Let us now run the program again, click on the handler icons to expand the nodes and resize the frame. We will get an output like this:</SPAN></P></DIV>
+<DIV><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;"><BR></SPAN><IMG 
+width="200" height="200" style="margin-right: auto; margin-left: auto; display: block;" 
+alt="JTree with Scrollpane" src="JTree%20basic%20tutorial%20and%20examples_files/JTree%2520with%2520Scrollpane.png"></DIV>
+<DIV>
+<P style="text-align: center; line-height: 1.15; margin-top: 0pt; margin-bottom: 0pt;" 
+dir="ltr"><STRONG><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;">Tree with Scrollbars</SPAN></STRONG></P><BR>
+<P style="line-height: 1.15; margin-top: 0pt; margin-bottom: 0pt;" 
+dir="ltr"><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;">We can see that now a scrollbar is added and we can scroll to see the nodes. Now, try and collapse one of the nodes. We can see that the scrollbar disappears. The scroll bar appears when it has items beyond the display area.</SPAN></P>
+<DIV><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;"><BR></SPAN>
+<H1><A name="Showing_Root_Handles" id="Showing_Root_Handles"></A>6. Showing Root 
+Handles:</H1>
+<P style="line-height: 1.15; margin-top: 0pt; margin-bottom: 0pt;" 
+dir="ltr"><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;">When you have a close look at the output again, we see that the 'Vegetables' and 'Fruits' nodes have the 'handler' icon, but the 'Root' node doesn't. The root node is the parent of all nodes, so, it would be possible for us to expand and collapse this too. If you double-click on the root node, you can actually collapse and expand it. However, this is not very convenient and consistent with the rest of the tree.</SPAN></P><BR>
+<P style="line-height: 1.15; margin-top: 0pt; margin-bottom: 0pt;" 
+dir="ltr"><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;">So, let us now try and display the handle for the root node. This can be done with a simple API call such as:</SPAN></P><BR>
+<P style="line-height: 1.15; margin-top: 0pt; margin-bottom: 0pt;" 
+dir="ltr"><SPAN style='color: rgb(128, 0, 0); font-family: "Courier New"; font-size: 13px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;'>tree.setShowsRootHandles(true);</SPAN></P><BR>
+<P style="line-height: 1.15; margin-top: 0pt; margin-bottom: 0pt;" 
+dir="ltr"><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;">Let us now run the program again. We can see that the root handle is shown:</SPAN></P></DIV>
+<DIV><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;"><BR></SPAN><IMG 
+width="201" height="284" style="margin-right: auto; margin-left: auto; display: block;" 
+alt="JTree with Root Handles" src="JTree%20basic%20tutorial%20and%20examples_files/JTree%2520with%2520Root%2520Handles.png"></DIV>
+<DIV>
+<P style="text-align: center; line-height: 1.15; margin-top: 0pt; margin-bottom: 0pt;" 
+dir="ltr"><STRONG><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;">Tree with Root Handles Displayed</SPAN></STRONG></P><BR>
+<H1><A name="Hiding_Root_Node" id="Hiding_Root_Node"></A>7. Hiding Root 
+Node:</H1>
+<P style="line-height: 1.15; margin-top: 0pt; margin-bottom: 0pt;" 
+dir="ltr"><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;">The root node is the topmost in the hierarchy. However, the display of root node may not be needed in some cases. For example, we have been using a root node displayed with the text 'Root'. This is not very useful. So, what if we want to hide it? This is possible with a simple API call:</SPAN></P><BR>
+<P style="line-height: 1.15; margin-top: 0pt; margin-bottom: 0pt;" 
+dir="ltr"><SPAN style='color: rgb(128, 0, 0); font-family: "Courier New"; font-size: 13px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;'>tree.setRootVisible(false);</SPAN></P><BR>
+<P style="line-height: 1.15; margin-top: 0pt; margin-bottom: 0pt;" 
+dir="ltr"><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;">Let us now run the program. We get the following when the trees are expanded:</SPAN></P></DIV>
+<DIV><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;"><BR></SPAN><IMG 
+width="198" height="261" style="margin-right: auto; margin-left: auto; display: block;" 
+alt="JTree Root Node Hidden" src="JTree%20basic%20tutorial%20and%20examples_files/JTree%2520Root%2520Node%2520Hidden.png"></DIV>
+<DIV>
+<P style="text-align: center; line-height: 1.15; margin-top: 0pt; margin-bottom: 0pt;" 
+dir="ltr"><STRONG><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;">Tree with Root Node Hidden</SPAN></STRONG></P>
+<P style="line-height: 1.15; margin-top: 0pt; margin-bottom: 0pt;" 
+dir="ltr"><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;">Note that we still make the call to </SPAN><SPAN style='color: rgb(128, 0, 0); font-family: "Courier New"; font-size: 13px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;'>tree.setShowsRootHandles(true) </SPAN><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;">as otherwise we will not see the root handles for the 'Vegetables' and 'Fruits' node.</SPAN></P>
+<P style="line-height: 1.15; margin-top: 0pt; margin-bottom: 0pt;" 
+dir="ltr"><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;">&nbsp;</SPAN></P>
+<P style="line-height: 1.15; margin-top: 0pt; margin-bottom: 0pt;" 
+dir="ltr"><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;">&nbsp;</SPAN></P>
+<P style="line-height: 1.15; margin-top: 0pt; margin-bottom: 0pt;" 
+dir="ltr"><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;"><A href="http://www.amazon.com/gp/product/0072263148/ref=as_li_tf_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0072263148&amp;linkCode=as2&amp;tag=code0ac-20" target="_blank">Learn Swing in <STRONG>Swing: A Beginner's Guide</STRONG></A><IMG width="1" height="1" style="margin: 0px !important; border: currentColor !important;" alt="" src="JTree%20basic%20tutorial%20and%20examples_files/ir(5).gif" border="0"></SPAN></P>
+<P style="line-height: 1.15; margin-top: 0pt; margin-bottom: 0pt;" 
+dir="ltr"><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;">&nbsp;</SPAN></P>
+<DIV>
+<H1><A name="Changing_the_Visual_Icons" id="Changing_the_Visual_Icons"></A>8. 
+Changing the Visual Icons:</H1>
+<P style="line-height: 1.15; margin-top: 0pt; margin-bottom: 0pt;" 
+dir="ltr"><SPAN style='color: rgb(128, 0, 0); font-family: "Courier New"; font-size: 13px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;'>JTree</SPAN><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;"> uses different icons to represent leaf node and nodes with children as we have seen above. What if we need to provide our own icons for this purpose? It is very much possible. We need to make use of the renderer to do this.</SPAN></P><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;"><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;"><BR></SPAN></SPAN>
+<H3 style="line-height: 1.15; margin-top: 8pt; margin-bottom: 0pt;" 
+dir="ltr"><SPAN style='color: rgb(102, 102, 102); font-family: "Trebuchet MS"; font-size: 16px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;'><A name="JTree_Rendering" id="JTree_Rendering"></A>JTree Rendering:</SPAN></H3>
+<P style="line-height: 1.15; margin-top: 0pt; margin-bottom: 0pt;" 
+dir="ltr"><SPAN style='color: rgb(128, 0, 0); font-family: "Courier New"; font-size: 13px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;'>JTree</SPAN><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;"> delegates the display of its items to Renderers. By default, a renderer is automatically created for a </SPAN><SPAN style='color: rgb(128, 0, 0); font-family: "Courier New"; font-size: 13px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;'>JTree</SPAN><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;"> to display all its items. The rendering is represented by an interface called </SPAN><SPAN style='color: rgb(128, 0, 0); font-family: "Courier New"; font-size: 13px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;'>TreeCellRenderer</SPAN><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;">. The </SPAN><SPAN style='font-family: "Courier New"; font-size: 13px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;'>Swing</SPAN><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;"> API provides a default implementation of this interface known as </SPAN><SPAN style='color: rgb(128, 0, 0); font-family: "Courier New"; font-size: 13px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;'>DefaultTreeCellRenderer</SPAN><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;">. This class has some handy methods which we can use to customize the display.</SPAN></P><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;"><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;"><BR></SPAN></SPAN>
+<H3 style="line-height: 1.15; margin-top: 8pt; margin-bottom: 0pt;" 
+dir="ltr"><SPAN style='color: rgb(102, 102, 102); font-family: "Trebuchet MS"; font-size: 16px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;'><A name="Using_the_DefaultTreeCellRenderer" id="Using_the_DefaultTreeCellRenderer"></A>Using the DefaultTreeCellRenderer:</SPAN></H3>
+<P style="line-height: 1.15; margin-top: 0pt; margin-bottom: 0pt;" 
+dir="ltr"><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;">We will be creating an instance of </SPAN><SPAN style='color: rgb(128, 0, 0); font-family: "Courier New"; font-size: 13px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;'>DefaultTreeCellRenderer</SPAN><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;"> class and using the method </SPAN><SPAN style='color: rgb(128, 0, 0); font-family: "Courier New"; font-size: 13px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;'>setLeafIcon()</SPAN><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;"> to set the icon for all our leaf nodes. This method takes an instance of </SPAN><SPAN style='color: rgb(128, 0, 0); font-family: "Courier New"; font-size: 13px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;'>ImageIcon</SPAN><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;"> class. The </SPAN><SPAN style='color: rgb(128, 0, 0); font-family: "Courier New"; font-size: 13px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;'>ImageIcon</SPAN><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;"> class is used to handle the display of images. So, we will first create an </SPAN><SPAN style='color: rgb(128, 0, 0); font-family: "Courier New"; font-size: 13px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;'>ImageIcon</SPAN><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;"> instance and then use it with the renderer:</SPAN></P>
+<P style="line-height: 1.15; margin-top: 0pt; margin-bottom: 0pt;" 
+dir="ltr">&nbsp;</P>
+<PRE class="brush:java;toolbar:false">ImageIcon imageIcon = new ImageIcon(TreeExample.class.getResource("/leaf.jpg"));
+DefaultTreeCellRenderer renderer = new DefaultTreeCellRenderer();
+renderer.setLeafIcon(imageIcon);
+</PRE>
+<DIV>
+<SCRIPT src="JTree%20basic%20tutorial%20and%20examples_files/fCAKRUH34.txt" async=""></SCRIPT>
+ <!-- Codejava.net 728x90 --> <INS class="adsbygoogle" style="width: 728px; height: 90px; display: inline-block;" 
+data-ad-slot="9479274950" data-ad-client="ca-pub-8129714482020982"></INS> 
+<SCRIPT>(adsbygoogle = window.adsbygoogle || []).push({});</SCRIPT>
+</DIV>&nbsp;
+<P></P>
+<P style="line-height: 1.15; margin-top: 0pt; margin-bottom: 0pt;" 
+dir="ltr"><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;">The first line uses the standard mechanism to load images where the image is part of the application (packaged within the jar). Then we create a </SPAN><SPAN style='color: rgb(128, 0, 0); font-family: "Courier New"; font-size: 13px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;'>DefaultTreeCellRenderer</SPAN><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;"> instance and call the </SPAN><SPAN style='color: rgb(128, 0, 0); font-family: "Courier New"; font-size: 13px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;'>setLeafIcon()</SPAN><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;"> method by passing in this </SPAN><SPAN style='color: rgb(128, 0, 0); font-family: "Courier New"; font-size: 13px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;'>ImageIcon</SPAN><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;"> instance. Let us now run the program and expand the nodes to see the image being used for the leaf nodes.</SPAN></P>
+<DIV><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;"><IMG width="200" height="200" style="margin-right: auto; margin-left: auto; display: block;" alt="JTree with Custom Image Icon" src="JTree%20basic%20tutorial%20and%20examples_files/JTree%2520with%2520Custom%2520Image%2520Icon.png"></SPAN></DIV>
+<DIV>
+<P style="text-align: center; line-height: 1.15; margin-top: 0pt; margin-bottom: 0pt;" 
+dir="ltr"><STRONG><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;">Tree with Custom Image Icon for Leaf Nodes</SPAN></STRONG></P>
+<P style="text-align: center; line-height: 1.15; margin-top: 0pt; margin-bottom: 0pt;" 
+dir="ltr"><STRONG><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;">&nbsp;</SPAN></STRONG></P>
+<P style="text-align: center; line-height: 1.15; margin-top: 0pt; margin-bottom: 0pt;" 
+dir="ltr"><STRONG><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;">&nbsp;</SPAN></STRONG></P>
+<P style="text-align: center; line-height: 1.15; margin-top: 0pt; margin-bottom: 0pt;" 
+dir="ltr"><STRONG><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;">Related Course: <B><A href="http://click.linksynergy.com/link?id=d1Fh24*EiQI&amp;offerid=323058.18237&amp;type=2&amp;murl=https%3A%2F%2Fwww.udemy.com%2Fjava-swing-complete%2F" target="new" rel="nofollow">Java Swing (GUI) Programming: From Beginner to Expert</A><IMG width="1" height="1" src="JTree%20basic%20tutorial%20and%20examples_files/show.gif" border="0"></B></SPAN></STRONG></P>
+<P style="text-align: center; line-height: 1.15; margin-top: 0pt; margin-bottom: 0pt;" 
+dir="ltr"><STRONG><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;">&nbsp;</SPAN></STRONG></P>
+<P style="text-align: center; line-height: 1.15; margin-top: 0pt; margin-bottom: 0pt;" 
+dir="ltr"><STRONG><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;">&nbsp;</SPAN></STRONG></P>
+<H1><A name="Event_Handlers" id="Event_Handlers"></A>9. Event Handlers:</H1>
+<P style="line-height: 1.15; margin-top: 0pt; margin-bottom: 0pt;" 
+dir="ltr"><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;">Let us now try and develop event handlers for tree. Knowing the currently selected node will be one of the most useful events to know. Event handling in </SPAN><SPAN style='color: rgb(128, 0, 0); font-family: "Courier New"; font-size: 13px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;'>JTree</SPAN><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;"> is very similar to that of other </SPAN><SPAN style='color: rgb(128, 0, 0); font-family: "Courier New"; font-size: 13px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;'>Swing</SPAN><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;"> components. We register an event listener and are notified when the event happens.</SPAN></P>
+<H3 style="line-height: 1.15; margin-top: 8pt; margin-bottom: 0pt;" 
+dir="ltr"><SPAN style='color: rgb(102, 102, 102); font-family: "Trebuchet MS"; font-size: 16px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;'><A name="Developing_a_SelectionListener" id="Developing_a_SelectionListener"></A>Developing a SelectionListener:</SPAN></H3>
+<P style="line-height: 1.15; margin-top: 0pt; margin-bottom: 0pt;" 
+dir="ltr"><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;">We need to add a </SPAN><SPAN style='color: rgb(128, 0, 0); font-family: "Courier New"; font-size: 13px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;'>TreeSelectionListener</SPAN><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;"> to listen for selection events. This is an interface defined in Swing API and we need to implement the </SPAN><SPAN style='color: rgb(128, 0, 0); font-family: "Courier New"; font-size: 13px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;'>valueChanged()</SPAN><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;"> method. The source of the selection is passed as a parameter to this method.</SPAN></P>
+<DIV><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;"><BR></SPAN>
+<P style="line-height: 1.15; margin-top: 0pt; margin-bottom: 0pt;" 
+dir="ltr"><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;">The selection in </SPAN><SPAN style='color: rgb(128, 0, 0); font-family: "Courier New"; font-size: 13px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;'>JTree</SPAN><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;"> is handled by a class called </SPAN><SPAN style='color: rgb(128, 0, 0); font-family: "Courier New"; font-size: 13px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;'>TreeSelectionModel</SPAN><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;">. So, the </SPAN><SPAN style='color: rgb(128, 0, 0); font-family: "Courier New"; font-size: 13px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;'>JTree</SPAN><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;"> delegates all the selection related work to this class.</SPAN></P><BR>
+<P style="line-height: 1.15; margin-top: 0pt; margin-bottom: 0pt;" 
+dir="ltr"><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;">We will first add a </SPAN><SPAN style='color: rgb(128, 0, 0); font-family: "Courier New"; font-size: 13px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;'>JLabel</SPAN><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;"> to be displayed at the bottom. Whenever a node in the tree is selected, we will display the path of the selected node.</SPAN></P><BR>
+<P style="line-height: 1.15; margin-top: 0pt; margin-bottom: 0pt;" 
+dir="ltr"><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;">Let us first declare a </SPAN><SPAN style='color: rgb(128, 0, 0); font-family: "Courier New"; font-size: 13px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;'>JLabel</SPAN><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;"> instance variable:</SPAN></P>
+<P style="line-height: 1.15; margin-top: 0pt; margin-bottom: 0pt;" 
+dir="ltr"><SPAN style='color: rgb(128, 0, 0); font-family: "Courier New"; font-size: 13px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;'>private JLabel selectedLabel;</SPAN></P><BR>
+<P style="line-height: 1.15; margin-top: 0pt; margin-bottom: 0pt;" 
+dir="ltr"><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;">We will then add it to the bottom of the frame:</SPAN></P>
+<P style="line-height: 1.15; margin-top: 0pt; margin-bottom: 0pt;" 
+dir="ltr"><SPAN style='color: rgb(128, 0, 0); font-family: "Courier New"; font-size: 13px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;'>selectedLabel = new JLabel();</SPAN></P>
+<P style="line-height: 1.15; margin-top: 0pt; margin-bottom: 0pt;" 
+dir="ltr"><SPAN style='color: rgb(128, 0, 0); font-family: "Courier New"; font-size: 13px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;'>add(selectedLabel, BorderLayout.SOUTH);</SPAN></P><BR>
+<P style="line-height: 1.15; margin-top: 0pt; margin-bottom: 0pt;" 
+dir="ltr"><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;">We will then add the selection listener as follows:</SPAN></P>
+<P style="line-height: 1.15; margin-top: 0pt; margin-bottom: 0pt;" 
+dir="ltr">&nbsp;</P>
+<PRE class="brush:java;toolbar:false">tree.getSelectionModel().addTreeSelectionListener(new TreeSelectionListener() {
+    @Override
+    public void valueChanged(TreeSelectionEvent e) {
+        selectedLabel.setText(e.getPath().toString());
+    }
+});
+</PRE>&nbsp;
+<P></P>
+<P style="line-height: 1.15; margin-top: 0pt; margin-bottom: 0pt;" 
+dir="ltr"><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;">We add a selection listener to the tree selection model. The </SPAN><SPAN style='color: rgb(128, 0, 0); font-family: "Courier New"; font-size: 13px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;'>TreeSelectionListener</SPAN><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;"> has one method which we implement. We use the event source to invoke the </SPAN><SPAN style='color: rgb(128, 0, 0); font-family: "Courier New"; font-size: 13px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;'>getPath()</SPAN><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;"> method and set it to the label that we added earlier. When we run the program, we get the following output:</SPAN></P></DIV>
+<DIV><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;"><BR></SPAN><IMG 
+width="200" height="200" style="margin-right: auto; margin-left: auto; display: block;" 
+alt="JTree Selection Path" src="JTree%20basic%20tutorial%20and%20examples_files/JTree%2520Selection%2520Path.png"></DIV>
+<DIV>
+<P style="text-align: center; line-height: 1.15; margin-top: 0pt; margin-bottom: 0pt;" 
+dir="ltr"><STRONG><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;">&nbsp;</SPAN></STRONG></P>
+<P style="text-align: center; line-height: 1.15; margin-top: 0pt; margin-bottom: 0pt;" 
+dir="ltr"><STRONG><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;">Adding a Selection Listener</SPAN></STRONG></P><BR>
+<P style="line-height: 1.15; margin-top: 0pt; margin-bottom: 0pt;" 
+dir="ltr"><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;">An even better usage of the selection listener would be to get the selected node and make use of it. To get the selected node, we can make use of the </SPAN><SPAN style='color: rgb(128, 0, 0); font-family: "Courier New"; font-size: 13px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;'>getLastSelectedPathComponent()</SPAN><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;"> method of </SPAN><SPAN style='color: rgb(128, 0, 0); font-family: "Courier New"; font-size: 13px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;'>JTree</SPAN><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;">. This method returns the selected node. We can then invoke the </SPAN><SPAN style='color: rgb(128, 0, 0); font-family: "Courier New"; font-size: 13px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;'>getUserObject()</SPAN><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;"> method on the </SPAN><SPAN style='color: rgb(128, 0, 0); font-family: "Courier New"; font-size: 13px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;'>DefaultMutableTreeNode</SPAN><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;"> class which returns the actual object we added. Since this method returns an </SPAN><SPAN style='font-family: "Courier New"; font-size: 13px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;'>Object</SPAN><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;"> instance, we need to call the </SPAN><SPAN style='color: rgb(128, 0, 0); font-family: "Courier New"; font-size: 13px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;'>toString()</SPAN><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;"> method on it and add it to the label. We can modify the code as follows:</SPAN></P>
+<P style="line-height: 1.15; margin-top: 0pt; margin-bottom: 0pt;" 
+dir="ltr">&nbsp;</P>
+<PRE class="brush:java;toolbar:false">tree.getSelectionModel().addTreeSelectionListener(new TreeSelectionListener() {
+    @Override
+    public void valueChanged(TreeSelectionEvent e) {
+        DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) tree.getLastSelectedPathComponent();
+        selectedLabel.setText(selectedNode.getUserObject().toString());
+    }
+});
+
+</PRE>&nbsp;
+<P></P>
+<DIV>
+<P style="line-height: 1.15; margin-top: 0pt; margin-bottom: 0pt;" 
+dir="ltr"><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;">When we run the program and select a leaf node, we get the following output:</SPAN></P>
+<DIV><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;"><IMG width="200" height="200" style="margin-right: auto; margin-left: auto; display: block;" alt="JTree Selected Node" src="JTree%20basic%20tutorial%20and%20examples_files/JTree%2520Selected%2520Node.png"></SPAN></DIV>
+<DIV><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;"><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;"></SPAN></SPAN>
+<P style="text-align: center; line-height: 1.15; margin-top: 0pt; margin-bottom: 0pt;" 
+dir="ltr"><STRONG><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;">&nbsp;</SPAN></STRONG></P>
+<P style="text-align: center; line-height: 1.15; margin-top: 0pt; margin-bottom: 0pt;" 
+dir="ltr"><STRONG><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;">Selection Listener to get the Selected Node</SPAN></STRONG></P></DIV>
+<DIV><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;"><BR><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;"></SPAN><SPAN style="font-family: Calibri; font-size: 15px; vertical-align: baseline; white-space: pre-wrap; background-color: transparent;">Here is the full source code of our GUI:</SPAN></SPAN></DIV>
+<DIV>
+<PRE class="brush:java;toolbar:false">package net.codejava.swing;
+
+import java.awt.BorderLayout;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JScrollPane;
+import javax.swing.JTree;
+import javax.swing.SwingUtilities;
+import javax.swing.event.TreeSelectionEvent;
+import javax.swing.event.TreeSelectionListener;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeCellRenderer; 
+
+/**
+ * JTree basic tutorial and example
+ * @author wwww.codejava.net
+ */
+
+public class TreeExample extends JFrame
+{
+    private JTree tree;
+    private JLabel selectedLabel;
+    
+    public TreeExample()
+    {
+        //create the root node
+        DefaultMutableTreeNode root = new DefaultMutableTreeNode("Root");
+        //create the child nodes
+        DefaultMutableTreeNode vegetableNode = new DefaultMutableTreeNode("Vegetables");
+        vegetableNode.add(new DefaultMutableTreeNode("Capsicum"));
+        vegetableNode.add(new DefaultMutableTreeNode("Carrot"));
+        vegetableNode.add(new DefaultMutableTreeNode("Tomato"));
+        vegetableNode.add(new DefaultMutableTreeNode("Potato"));
+        
+        DefaultMutableTreeNode fruitNode = new DefaultMutableTreeNode("Fruits");
+        fruitNode.add(new DefaultMutableTreeNode("Banana"));
+        fruitNode.add(new DefaultMutableTreeNode("Mango"));
+        fruitNode.add(new DefaultMutableTreeNode("Apple"));
+        fruitNode.add(new DefaultMutableTreeNode("Grapes"));
+        fruitNode.add(new DefaultMutableTreeNode("Orange"));
+
+        //add the child nodes to the root node
+        root.add(vegetableNode);
+        root.add(fruitNode);
+        
+        //create the tree by passing in the root node
+        tree = new JTree(root);
+
+        ImageIcon imageIcon = new ImageIcon(TreeExample.class.getResource("/leaf.jpg"));
+        DefaultTreeCellRenderer renderer = new DefaultTreeCellRenderer();        
+        renderer.setLeafIcon(imageIcon);
+        
+        tree.setCellRenderer(renderer);
+        tree.setShowsRootHandles(true);
+        tree.setRootVisible(false);
+        add(new JScrollPane(tree));
+        
+        selectedLabel = new JLabel();
+        add(selectedLabel, BorderLayout.SOUTH);
+
+        tree.getSelectionModel().addTreeSelectionListener(new TreeSelectionListener() {
+            @Override
+            public void valueChanged(TreeSelectionEvent e) {
+                DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) tree.getLastSelectedPathComponent();
+                selectedLabel.setText(selectedNode.getUserObject().toString());
+            }
+        });
+        
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setTitle("JTree Example");        
+        this.setSize(200, 200);
+        this.setVisible(true);
+    }
+    
+    public static void main(String[] args)
+    {
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new TreeExample();
+            }
+        });
+    }        
+}</PRE></DIV></DIV></DIV></DIV></DIV></DIV></DIV></DIV></DIV></DIV>
+<DIV>
+<SCRIPT src="JTree%20basic%20tutorial%20and%20examples_files/fCAKRUH34.txt" async=""></SCRIPT>
+ <!-- Codejava.net 728x90 --> <INS class="adsbygoogle" style="width: 728px; height: 90px; display: inline-block;" 
+data-ad-slot="9479274950" data-ad-client="ca-pub-8129714482020982"></INS> 
+<SCRIPT>(adsbygoogle = window.adsbygoogle || []).push({});</SCRIPT>
+ <BR><BR>
+<DIV class="note"><B>Do you want to be expert in Java programming?</B> If you 
+do, why not join our mailing list to get advices from the professionals 
+everyday? Just click here: <A href="http://newsletter.codejava.net/" target="_blank">http://newsletter.codejava.net/</A> 
+- It's FREE, Quick and Awesome!</DIV></DIV>
+<DIV class="attachmentsContainer">
+<DIV class="attachmentsList" id="attachmentsList_com_content_article_399">
+<TABLE>
+  <CAPTION>Attachments:</CAPTION>
+  <TBODY>
+  <TR class="odd">
+    <TD class="at_filename"><A title="Download this file (JTree_Sample.zip)" 
+      class="at_icon" href="http://www.codejava.net/download-attachment?fid=230" 
+      target="_blank"><IMG alt="Download this file (JTree_Sample.zip)" src="JTree%20basic%20tutorial%20and%20examples_files/zip.gif"></A><A 
+      title="Download this file (JTree_Sample.zip)" class="at_url" href="http://www.codejava.net/download-attachment?fid=230" 
+      target="_blank">JTree_Sample.zip</A></TD>
+    <TD class="at_description">[Source code and executable jar file]</TD>
+    <TD class="at_file_size">5 kB</TD></TR></TBODY></TABLE></DIV></DIV>
+<SCRIPT type="text/javascript">var jcomments = new JComments(399, 'com_content', '/component/jcomments/');
+                jcomments.setList('comments-list');</SCRIPT>
+ 
+<DIV id="jc">
+<H4>Add comment</H4><A id="addcomments" href="http://www.codejava.net/java-se/swing/jtree-basic-tutorial-and-examples#addcomments"></A>
+<FORM name="comments-form" id="comments-form" action="javascript:void(null);">
+<P> <SPAN><INPUT name="name" tabindex="1" id="comments-form-name" required="" 
+type="text" size="22" maxlength="20" placeholder="Name" value=""> <INPUT name="email" 
+tabindex="2" id="comments-form-email" required="" type="text" size="22" 
+placeholder="E-mail" value=""> </SPAN></P>
+<P><SPAN><TEXTAREA name="comment" tabindex="5" id="comments-form-comment" required="" placeholder="comment" rows="6" cols="50">comment</TEXTAREA></SPAN></P>
+<P><SPAN><INPUT name="subscribe" tabindex="5" class="checkbox" id="comments-form-subscribe" 
+type="checkbox" value="1"> <LABEL for="comments-form-subscribe">Notify me of 
+follow-up comments</LABEL><BR></SPAN></P>
+<P><SPAN></SPAN>
+<DIV id="dynamic_recaptcha_1"></DIV>
+<P></P>
+<DIV id="comments-form-buttons">
+<DIV class="btn" id="comments-form-send"><BUTTON title="Send (Ctrl+Enter)" 
+onclick="jcomments.saveComment();&#10;return false;">Send</BUTTON></DIV>
+<DIV class="btn" id="comments-form-cancel" style="display: none;">
+<DIV><A tabindex="8" title="Cancel" onclick="return false;" href="http://www.codejava.net/java-se/swing/jtree-basic-tutorial-and-examples#">Cancel</A></DIV></DIV>
+<DIV style="clear: both;"></DIV></DIV>
+<DIV><INPUT name="object_id" type="hidden" value="399"> <INPUT name="object_group" 
+type="hidden" value="com_content"></DIV></FORM>
+<SCRIPT type="text/javascript">function JCommentsInitializeForm()
+            {
+                var jcEditor = new JCommentsEditor('comments-form-comment', true);
+                                    jcEditor.addButton('b', 'Bold', 'Enter text');
+                                                jcEditor.addButton('i', 'Italic', 'Enter text');
+                                                jcEditor.addButton('u', 'Underlined', 'Enter text');
+                                                jcEditor.addButton('s', 'Striked', 'Enter text');
+                                                jcEditor.addButton('img', 'Image', 'Enter full URL to the image');
+                                                jcEditor.addButton('url', 'Link', 'Enter full URL');
+                                                jcEditor.addButton('quote', 'Quote', 'Enter text to quote');
+                                                jcEditor.addButton('list', 'List', 'Enter list item text');
+                                        jcEditor.addCounter(1000, '', ' symbols left', 'counter');
+                            jcomments.setForm(new JCommentsForm('comments-form', jcEditor));
+            }
+
+                        if (window.addEventListener) {
+                    window.addEventListener('load', JCommentsInitializeForm, false);
+                }
+                else if (document.addEventListener) {
+                    document.addEventListener('load', JCommentsInitializeForm, false);
+                }
+                else if (window.attachEvent) {
+                    window.attachEvent('onload', JCommentsInitializeForm);
+                }
+                else {
+                    if (typeof window.onload == 'function') {
+                        var oldload = window.onload;
+                        window.onload = function() {
+                            oldload();
+                            JCommentsInitializeForm();
+                        }
+                    } else
+                        window.onload = JCommentsInitializeForm;
+                }</SCRIPT>
+ 
+<DIV id="comments">
+<H4><A name="comment" id="comment">Comments</A><A title="RSS feed for comments to this post" 
+class="rss" href="http://www.codejava.net/component/jcomments/feed/com_content/399" 
+target="_blank">&nbsp;</A><A title="Refresh comments list" class="refresh" 
+onclick="jcomments.showPage(399,'com_content',0);return false;" href="http://www.codejava.net/java-se/swing/jtree-basic-tutorial-and-examples#">&nbsp;</A></H4>
+<DIV class="comments-list" id="comments-list">
+<DIV class="even" id="comment-item-1779">
+<DIV class="rbox">
+<DIV class="comment-box"><SPAN class="comments-vote"><SPAN id="comment-vote-holder-1779"><A 
+title="Good comment!" class="vote-good" onclick="jcomments.voteComment(1779, 1);&#10;return false;" 
+href="http://www.codejava.net/java-se/swing/jtree-basic-tutorial-and-examples#"></A><A 
+title="Bad comment!" class="vote-poor" onclick="jcomments.voteComment(1779, -1);&#10;return false;" 
+href="http://www.codejava.net/java-se/swing/jtree-basic-tutorial-and-examples#"></A><SPAN 
+class="vote-none">0</SPAN> </SPAN> </SPAN> <A class="comment-anchor" id="comment-1779" 
+href="http://www.codejava.net/java-se/swing/jtree-basic-tutorial-and-examples#comment-1779">#5</A> 
+<SPAN class="comment-author">shravan dube</SPAN> <SPAN 
+class="comment-date">2015-03-05 03:02</SPAN>
+<DIV class="comment-body" id="comment-body-1779">when we select any node and I 
+want to get the information of that node in the same frame on the right side 
+what code we have to write?</DIV><SPAN class="comments-buttons"><A onclick="jcomments.quoteComment(1779);&#10;return false;" 
+href="http://www.codejava.net/java-se/swing/jtree-basic-tutorial-and-examples#">Quote</A> 
+</SPAN></DIV>
+<DIV class="clear"></DIV></DIV></DIV>
+<DIV class="odd" id="comment-item-1501">
+<DIV class="rbox">
+<DIV class="comment-box"><SPAN class="comments-vote"><SPAN id="comment-vote-holder-1501"><A 
+title="Good comment!" class="vote-good" onclick="jcomments.voteComment(1501, 1);&#10;return false;" 
+href="http://www.codejava.net/java-se/swing/jtree-basic-tutorial-and-examples#"></A><A 
+title="Bad comment!" class="vote-poor" onclick="jcomments.voteComment(1501, -1);&#10;return false;" 
+href="http://www.codejava.net/java-se/swing/jtree-basic-tutorial-and-examples#"></A><SPAN 
+class="vote-good">+1</SPAN> </SPAN> </SPAN> <A class="comment-anchor" id="comment-1501" 
+href="http://www.codejava.net/java-se/swing/jtree-basic-tutorial-and-examples#comment-1501">#4</A> 
+<SPAN class="comment-author">Leftie80126</SPAN> <SPAN 
+class="comment-date">2015-01-05 08:05</SPAN>
+<DIV class="comment-body" id="comment-body-1501">@justin - Check out the Oracle 
+Java demo: <A href="http://https//docs.oracle.com/javase/tutorial/uiswing/examples/components/index.html#DynamicTreeDemo" 
+target="_blank" rel="external nofollow"><A href="https://docs.oracle.com/javase/tutorial/uiswing/examples/components/index.html#DynamicTreeDemo" 
+target="_blank" 
+rel="external nofollow">docs.oracle.com/.../index.html#DynamicTreeDemo</A></DIV><SPAN 
+class="comments-buttons"><A onclick="jcomments.quoteComment(1501);&#10;return false;" 
+href="http://www.codejava.net/java-se/swing/jtree-basic-tutorial-and-examples#">Quote</A> 
+</SPAN></DIV>
+<DIV class="clear"></DIV></DIV></DIV>
+<DIV class="even" id="comment-item-976">
+<DIV class="rbox">
+<DIV class="comment-box"><SPAN class="comments-vote"><SPAN id="comment-vote-holder-976"><A 
+title="Good comment!" class="vote-good" onclick="jcomments.voteComment(976, 1);&#10;return false;" 
+href="http://www.codejava.net/java-se/swing/jtree-basic-tutorial-and-examples#"></A><A 
+title="Bad comment!" class="vote-poor" onclick="jcomments.voteComment(976, -1);&#10;return false;" 
+href="http://www.codejava.net/java-se/swing/jtree-basic-tutorial-and-examples#"></A><SPAN 
+class="vote-none">0</SPAN> </SPAN> </SPAN> <A class="comment-anchor" id="comment-976" 
+href="http://www.codejava.net/java-se/swing/jtree-basic-tutorial-and-examples#comment-976">#3</A> 
+<SPAN class="comment-author">justin</SPAN> <SPAN class="comment-date">2014-07-13 
+17:14</SPAN>
+<DIV class="comment-body" id="comment-body-976">Any chance of going into detail 
+on how you can get a tree to refresh? I'm trying to do a tree that users can add 
+and remove things from..</DIV><SPAN class="comments-buttons"><A onclick="jcomments.quoteComment(976);&#10;return false;" 
+href="http://www.codejava.net/java-se/swing/jtree-basic-tutorial-and-examples#">Quote</A> 
+</SPAN></DIV>
+<DIV class="clear"></DIV></DIV></DIV>
+<DIV class="odd" id="comment-item-784">
+<DIV class="rbox">
+<DIV class="comment-box"><SPAN class="comments-vote"><SPAN id="comment-vote-holder-784"><A 
+title="Good comment!" class="vote-good" onclick="jcomments.voteComment(784, 1);&#10;return false;" 
+href="http://www.codejava.net/java-se/swing/jtree-basic-tutorial-and-examples#"></A><A 
+title="Bad comment!" class="vote-poor" onclick="jcomments.voteComment(784, -1);&#10;return false;" 
+href="http://www.codejava.net/java-se/swing/jtree-basic-tutorial-and-examples#"></A><SPAN 
+class="vote-good">+2</SPAN> </SPAN> </SPAN> <A class="comment-anchor" id="comment-784" 
+href="http://www.codejava.net/java-se/swing/jtree-basic-tutorial-and-examples#comment-784">#2</A> 
+<SPAN class="comment-author">yusf</SPAN> <SPAN class="comment-date">2014-03-12 
+05:17</SPAN>
+<DIV class="comment-body" id="comment-body-784">Great..step by 
+step..thnx</DIV><SPAN class="comments-buttons"><A onclick="jcomments.quoteComment(784);&#10;return false;" 
+href="http://www.codejava.net/java-se/swing/jtree-basic-tutorial-and-examples#">Quote</A> 
+</SPAN></DIV>
+<DIV class="clear"></DIV></DIV></DIV>
+<DIV class="even" id="comment-item-678">
+<DIV class="rbox">
+<DIV class="comment-box"><SPAN class="comments-vote"><SPAN id="comment-vote-holder-678"><A 
+title="Good comment!" class="vote-good" onclick="jcomments.voteComment(678, 1);&#10;return false;" 
+href="http://www.codejava.net/java-se/swing/jtree-basic-tutorial-and-examples#"></A><A 
+title="Bad comment!" class="vote-poor" onclick="jcomments.voteComment(678, -1);&#10;return false;" 
+href="http://www.codejava.net/java-se/swing/jtree-basic-tutorial-and-examples#"></A><SPAN 
+class="vote-good">+1</SPAN> </SPAN> </SPAN> <A class="comment-anchor" id="comment-678" 
+href="http://www.codejava.net/java-se/swing/jtree-basic-tutorial-and-examples#comment-678">#1</A> 
+<SPAN class="comment-author">Anthony Scaife</SPAN> <SPAN 
+class="comment-date">2014-01-06 09:25</SPAN>
+<DIV class="comment-body" id="comment-body-678">Java newbie. Fantastic article. 
+All other examples I found have been incredibly overcomplicated. I only 
+continued on to this webpage because I could not believe using JTrees would be 
+so difficult. Thank you for proving me right.</DIV><SPAN class="comments-buttons"><A 
+onclick="jcomments.quoteComment(678);&#10;return false;" href="http://www.codejava.net/java-se/swing/jtree-basic-tutorial-and-examples#">Quote</A> 
+</SPAN></DIV>
+<DIV class="clear"></DIV></DIV></DIV></DIV>
+<DIV id="comments-list-footer"><A title="Refresh comments list" class="refresh" 
+onclick="jcomments.showPage(399,'com_content',0);return false;" href="http://www.codejava.net/java-se/swing/jtree-basic-tutorial-and-examples#">Refresh 
+comments list</A><BR><A title="RSS feed for comments to this post" class="rss" 
+href="http://www.codejava.net/component/jcomments/feed/com_content/399" target="_blank">RSS 
+feed for comments to this post</A></DIV></DIV>
+<DIV align="center" id="comments-footer"><A title="JComments" href="http://www.joomlatune.com/" 
+target="_blank">JComments</A></DIV>
+<SCRIPT type="text/javascript">jcomments.setAntiCache(1,0,0);</SCRIPT>
+ </DIV></DIV><!-- End Content --> </main></DIV></DIV></DIV><!-- Footer --> 
+<FOOTER class="footer" role="contentinfo">
+<DIV class="container"><!-- Start JT Popup Balloon Module -->
+<DIV id="popup_wrap" style="width: 380px; height: 18px; right: 2px; bottom: 2px; max-height: 378px;">
+<DIV id="popup_inner" style="border-radius: 5px; border: 1px solid rgb(9, 81, 151); -moz-border-radius: 5px; -webkit-border-radius: 5px; -khtml-border-radius: 5px;">
+<DIV id="popup_toolbar" style="background: rgb(9, 81, 151); height: 17px;">
+<DIV id="title" style="width: 336px;">
+<MARQUEE style="height: 17px;" scrolldelay="100" direction="left" scrollamount="2"><A 
+title=" " style="color: rgb(255, 255, 255);" href="http://www.codejava.net/java-se/swing/" 
+target="_blank" alt=" "> </A></MARQUEE></DIV>
+<UL id="popup_button">
+  <LI id="popup_hide"><A title="Hide" class="popup_min" href="javascript:clickhide();"></A></LI>
+  <LI id="popup_show" style="display: none;"><A title="Show" class="popup_max" 
+  href="javascript:clickshow();"></A></LI>
+  <LI id="popup_close"><A title="Close" class="popup_close" href="javascript:clickclose();"></A></LI></UL></DIV>
+<DIV id="popup_content" style="background: rgb(255, 255, 255); width: 380px; height: 360px;">
+<DIV class="bannergroup">
+<DIV class="banneritem">
+<SCRIPT src="JTree%20basic%20tutorial%20and%20examples_files/view_webform.js" type="text/javascript"></SCRIPT>
+				
+<DIV class="clr"></DIV></DIV></DIV></DIV></DIV></DIV>
+<SCRIPT type="text/javascript">
+var popupBalloon = document.getElementById('popup_wrap');
+var popupContent = document.getElementById('popup_content');
+var autoHidePop;
+var IntervalId = 0;
+var maxHeight = 376;
+var minHeight = 18;
+var curHeight = 0;
+var popSpeed = 1;
+var timeOut = 5000;
+var autoHide = 0;
+var popupDelay = 10000;
+var popupShow = 0;
+</SCRIPT>
+
+<SCRIPT src="JTree%20basic%20tutorial%20and%20examples_files/mod_jt_popup_balloon.js" type="text/javascript"></SCRIPT>
+<!-- End JT Popup Balloon Module -->
+<P> <A href="http://www.codejava.net/site/about">About</A>&nbsp; <A href="http://www.codejava.net/advertise">Advertise</A>&nbsp; 
+<A href="http://www.codejava.net/site/contribute">Contribute</A>&nbsp; <A href="http://www.codejava.net/contactus">Contact</A>&nbsp; 
+<A href="http://www.codejava.net/site/terms">Terms of Use</A>&nbsp; <A href="http://www.codejava.net/site/privacy-policy">Privacy 
+Policy</A>&nbsp; <A href="http://www.codejava.net/site/site-map">Site 
+Map</A>&nbsp; <A href="http://newsletter.codejava.net/">Newsletter</A>&nbsp; <A 
+href="http://www.codejava.net/feeds"><IMG title="Stay updated via RSS Feeds" 
+style="vertical-align: middle;" alt="RSS Feeds" src="JTree%20basic%20tutorial%20and%20examples_files/dat9467(1).tmp"></A>&nbsp; 
+<A href="http://www.facebook.com/codejava" target="_blank"><IMG title="Follow us on Facebook" 
+style="vertical-align: middle;" alt="Facebook" src="JTree%20basic%20tutorial%20and%20examples_files/dat9468(1).tmp"></A>&nbsp; 
+<A href="https://twitter.com/codejavadotnet" target="_blank"><IMG title="Follow us on Twitter" 
+style="vertical-align: middle;" alt="Twitter" src="JTree%20basic%20tutorial%20and%20examples_files/dat9469(1).tmp"></A>&nbsp; 
+<A href="https://plus.google.com/+CodejavaNet" target="_blank"><IMG title="Follow us on Google+" 
+style="vertical-align: middle;" alt="Google Plus" src="JTree%20basic%20tutorial%20and%20examples_files/dat947A(1).tmp"></A>&nbsp; 
+<A href="https://delicious.com/codejavadotnet" target="_blank"><IMG title="Follow us on Delicious" 
+style="vertical-align: middle;" alt="Google Plus" src="JTree%20basic%20tutorial%20and%20examples_files/dat947B(1).tmp"></A>&nbsp; 
+<BR><FONT size="-3">Copyright © 2012 - 2015 by 
+www.codejava.net</FONT></P></DIV></FOOTER>
+<SCRIPT type="text/javascript">jQuery(document).ready(function($){
+      $(function() {
+
+      // add dropdown to the list element that contains first dropdown list
+      $('ul.nav.menu > li.parent').addClass('dropdown');
+      // add dropdown-toggle, data-toggle and disabled to the main dropdown <a> (allows it to work correctly on the ipad, requiring a rollover to show the menu
+      $('ul.nav.menu > li.parent > a').addClass('dropdown-toggle').attr('data-toggle', 'dropdown').attr('disabled', '');
+      // adds dropdown-menu to the first dropdown (basically the whole first menu)
+      $('ul.nav.menu > li.parent > ul.nav-child').addClass('dropdown-menu');
+      // add dropdown-submenu to the list element that contains the submenu (this adds the arrow to the element)
+      $('ul.nav-child > li.parent').addClass('dropdown-submenu');
+      // add dropdown menu to the submenu ul (basically the whole other menu) and style it with nav-child-sub
+      $('ul.nav-child > li.parent > ul.nav-child').addClass('dropdown-menu').removeClass('nav-child').addClass('nav-child-sub');
+      // var anchor_id = window.location.hash;
+      // anchor_id = '#cccomment-' + anchor_id.match(/[0-9][0-9]/img).toString();
+      // $(anchor_id).on('create', function(){
+      //   alert("create");
+      // });
+      // if (anchor_id != "") {
+      //   //var new_position = $('#cccomment-77').offset();
+      //   //console.log(new_position);
+      //   //window.scrollTo(new_position.left,new_position.top);
+      // }
+    })
+   });</SCRIPT>
+ <NOSCRIPT>&lt;strong&gt;JavaScript is currently disabled.&lt;/strong&gt;Please 
+enable it for a better experience of &lt;a 
+href="http://2glux.com/projects/jumi"&gt;Jumi&lt;/a&gt;.</NOSCRIPT></BODY></HTML>

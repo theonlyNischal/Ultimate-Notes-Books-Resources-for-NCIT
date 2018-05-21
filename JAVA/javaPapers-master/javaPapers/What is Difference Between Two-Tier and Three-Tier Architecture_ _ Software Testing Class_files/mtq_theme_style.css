@@ -1,0 +1,821 @@
+@charset "utf-8";
+/* CSS Document */
+/* 
+Theme Name: green
+Super Dark: #004A07
+Dark: #00930E
+Medium: #40AE4B
+Light: #BFE4C3
+Super Light: #E6F5E7
+*/
+.mtq_color_green .mtq_css_button, .mtq_color_green .mtq_css_letter_button { /* Dark Button with white text*/
+	color:#fff;
+	background:#00930E;
+}
+.mtq_color_green .mtq_quiz_results_bubble, .mtq_color_green .mtq_list_item_complete, .mtq_color_green .mtq_shaded_item_msg, .mtq_color_green .mtq_hint, .mtq_color_green .mtq_hint_label, .mtq_color_green .mtq_hint_text { /*Super Dark Text with Light background*/
+	color:#004A07;
+	background:#BFE4C3!important;
+	border-color:#00930E !important;
+}
+.mtq_color_green .mtq_css_button:hover, .mtq_color_green .mtq_css_letter_button:hover { /*Medium Button with white text */
+	color:#fff;
+	background:#40AE4B;
+}
+.mtq_color_green .mtq_question_list_container tr td { /*White background with Super Dark Text and border */
+	background:#FFF;
+	color:#004A07;
+	border-color:#004A07 !important;
+}
+.mtq_color_green .mtq_question_heading_table { /* Dark color underline */
+	border-bottom:.1em solid #00930E !important;
+}
+.mtq_color_green .mtq_oce_first /* Light Background */ {
+	background:#BFE4C3;
+}
+.mtq_color_green .mtq_answer_table tr:hover td { /* Super light background, black text */
+	color:#000;
+	background:#E6F5E7;
+}
+.mtq_color_green .mtq_css_next_button, .mtq_color_green .mtq_css_back_button {
+	color:#004A07;
+}
+/* 
+Theme Name: red
+Super Dark: #6C0C18
+Dark: #D81830
+Medium: #E25264
+Light: #F5C5CB
+Super Light: #FCE8EB
+*/
+.mtq_color_red .mtq_css_button, .mtq_color_red .mtq_css_letter_button { /* Dark Button with white text*/
+	color:#fff;
+	background:#D81830;
+}
+.mtq_color_red .mtq_quiz_results_bubble, .mtq_color_red .mtq_list_item_complete, .mtq_color_red .mtq_shaded_item_msg, .mtq_color_red .mtq_hint, .mtq_color_red .mtq_hint_label, .mtq_color_red .mtq_hint_text { /*Super Dark Text with Light background*/
+	color:#6C0C18;
+	background:#F5C5CB!important;
+	border-color:#D81830 !important;
+}
+.mtq_color_red .mtq_css_button:hover, .mtq_color_red .mtq_css_letter_button:hover { /*Medium Button with white text */
+	color:#fff;
+	background:#E25264;
+}
+.mtq_color_red .mtq_question_list_container tr td { /*White background with Super Dark Text and border */
+	background:#FFF;
+	color:#6C0C18;
+	border-color:#6C0C18 !important;
+}
+.mtq_color_red .mtq_question_heading_table { /* Dark color underline */
+	border-bottom:.1em solid #D81830 !important;
+}
+.mtq_color_red .mtq_oce_first /* Light Background */ {
+	background:#F5C5CB;
+}
+.mtq_color_red .mtq_answer_table tr:hover td { /* Super light background, black text */
+	color:#000;
+	background:#FCE8EB;
+}
+.mtq_color_red .mtq_css_next_button, .mtq_color_red .mtq_css_back_button {
+	color:#6C0C18;
+}
+/* 
+Theme Name: orange
+Super Dark: #D95700
+Dark: #FF6600
+Medium: #FF8D40
+Light: #FFD9BF
+Super Light: #FFF0E6
+*/
+.mtq_color_orange .mtq_css_button, .mtq_color_orange .mtq_css_letter_button { /* Dark Button with white text*/
+	color:#fff;
+	background:#FF6600;
+}
+.mtq_color_orange .mtq_quiz_results_bubble, .mtq_color_orange .mtq_list_item_complete, .mtq_color_orange .mtq_shaded_item_msg, .mtq_color_orange .mtq_hint, .mtq_color_orange .mtq_hint_label, .mtq_color_orange .mtq_hint_text { /*Super Dark Text with Light background*/
+	color:#D95700;
+	background:#FFD9BF!important;
+	border-color:#FF6600 !important;
+}
+.mtq_color_orange .mtq_css_button:hover, .mtq_color_orange .mtq_css_letter_button:hover { /*Medium Button with white text */
+	color:#fff;
+	background:#FF8D40;
+}
+.mtq_color_orange .mtq_question_list_container tr td { /*White background with Super Dark Text and border */
+	background:#FFF;
+	color:#D95700;
+	border-color:#D95700 !important;
+}
+.mtq_color_orange .mtq_question_heading_table { /* Dark color underline */
+	border-bottom:.1em solid #FF6600 !important;
+}
+.mtq_color_orange .mtq_oce_first /* Light Background */ {
+	background:#FFD9BF;
+}
+.mtq_color_orange .mtq_answer_table tr:hover td { /* Super light background, black text */
+	color:#000;
+	background:#FFF0E6;
+}
+.mtq_color_orange .mtq_css_next_button, .mtq_color_orange .mtq_css_back_button {
+	color:#D95700;
+}
+/* 
+Theme Name: yellow
+Super Dark: #D9D900
+Dark: #FFD700
+Medium: #FFFF7E
+Light: #FFFFBF
+Super Light: #FFFFE6
+*/
+.mtq_color_yellow .mtq_css_button, .mtq_color_yellow .mtq_css_letter_button { /* Dark Button with white text*/
+	color:#fff;
+	background:#FFD700;
+}
+.mtq_color_yellow .mtq_quiz_results_bubble, .mtq_color_yellow .mtq_list_item_complete, .mtq_color_yellow .mtq_shaded_item_msg, .mtq_color_yellow .mtq_hint, .mtq_color_yellow .mtq_hint_label, .mtq_color_yellow .mtq_hint_text { /*Super Dark Text with Light background*/
+	color:#D9D900;
+	background:#FFFFBF!important;
+	border-color:#FFD700 !important;
+}
+.mtq_color_yellow .mtq_css_button:hover, .mtq_color_yellow .mtq_css_letter_button:hover { /*Medium Button with white text */
+	color:#fff;
+	background:#FFFF7E;
+}
+.mtq_color_yellow .mtq_question_list_container tr td { /*White background with Super Dark Text and border */
+	background:#FFF;
+	color:#D9D900;
+	border-color:#D9D900 !important;
+}
+.mtq_color_yellow .mtq_question_heading_table { /* Dark color underline */
+	border-bottom:.1em solid #FFD700 !important;
+}
+.mtq_color_yellow .mtq_oce_first /* Light Background */ {
+	background:#FFFFBF;
+}
+.mtq_color_yellow .mtq_answer_table tr:hover td { /* Super light background, black text */
+	color:#000;
+	background:#FFFFE6;
+}
+.mtq_color_yellow .mtq_css_next_button, .mtq_color_yellow .mtq_css_back_button {
+	color:#D9D900;
+}
+/* 
+Theme Name: blue
+Super Dark: #339
+Dark: #06F
+Medium: #09F
+Light: #d0dafd
+Super Light: #eff2ff
+*/
+.mtq_color_blue .mtq_css_button, .mtq_color_blue .mtq_css_letter_button { /* Dark Button with white text*/
+	color:#fff;
+	background:#06F;
+}
+.mtq_color_blue .mtq_quiz_results_bubble, .mtq_color_blue .mtq_list_item_complete, .mtq_color_blue .mtq_shaded_item_msg, .mtq_color_blue .mtq_hint, .mtq_color_blue .mtq_hint_label, .mtq_color_blue .mtq_hint_text { /*Super Dark Text with Light background*/
+	color:#339;
+	background:#d0dafd!important;
+	border-color:#06F !important;
+}
+.mtq_color_blue .mtq_css_button:hover, .mtq_color_blue .mtq_css_letter_button:hover { /*Medium Button with white text */
+	color:#fff;
+	background:#09F;
+}
+.mtq_color_blue .mtq_question_list_container tr td { /*White background with Super Dark Text and border */
+	background:#FFF;
+	color:#339;
+	border-color:#339 !important;
+}
+.mtq_color_blue .mtq_question_heading_table { /* Dark color underline */
+	border-bottom:.1em solid #06F !important;
+}
+.mtq_color_blue .mtq_oce_first /* Light Background */ {
+	background:#d0dafd;
+}
+.mtq_color_blue .mtq_answer_table tr:hover td { /* Super light background, black text */
+	color:#000;
+	background:#eff2ff;
+}
+.mtq_color_blue .mtq_css_next_button, .mtq_color_blue .mtq_css_back_button {
+	color:#339;
+}
+/* 
+Theme Name: indigo
+Super Dark: #270747
+Dark: #2E0854
+Medium: #63467F
+Light: #CBC1D4
+Super Light: #EBE7EE
+*/
+.mtq_color_indigo .mtq_css_button, .mtq_color_indigo .mtq_css_letter_button { /* Dark Button with white text*/
+	color:#fff;
+	background:#2E0854;
+}
+.mtq_color_indigo .mtq_quiz_results_bubble, .mtq_color_indigo .mtq_list_item_complete, .mtq_color_indigo .mtq_shaded_item_msg, .mtq_color_indigo .mtq_hint, .mtq_color_indigo .mtq_hint_label, .mtq_color_indigo .mtq_hint_text { /*Super Dark Text with Light background*/
+	color:#270747;
+	background:#CBC1D4!important;
+	border-color:#2E0854 !important;
+}
+.mtq_color_indigo .mtq_css_button:hover, .mtq_color_indigo .mtq_css_letter_button:hover { /*Medium Button with white text */
+	color:#fff;
+	background:#63467F;
+}
+.mtq_color_indigo .mtq_question_list_container tr td { /*White background with Super Dark Text and border */
+	background:#FFF;
+	color:#270747;
+	border-color:#270747 !important;
+}
+.mtq_color_indigo .mtq_question_heading_table { /* Dark color underline */
+	border-bottom:.1em solid #2E0854 !important;
+}
+.mtq_color_indigo .mtq_oce_first /* Light Background */ {
+	background:#CBC1D4;
+}
+.mtq_color_indigo .mtq_answer_table tr:hover td { /* Super light background, black text */
+	color:#000;
+	background:#EBE7EE;
+}
+.mtq_color_indigo .mtq_css_next_button, .mtq_color_indigo .mtq_css_back_button {
+	color:#270747;
+}
+/* 
+Theme Name: violet
+Super Dark: #4F2F4F
+Dark: #7B637B
+Medium: #A898A8
+Light: #D3CBD3
+Super Light: #EEEBEE
+*/
+.mtq_color_violet .mtq_css_button, .mtq_color_violet .mtq_css_letter_button { /* Dark Button with white text*/
+	color:#fff;
+	background:#7B637B;
+}
+.mtq_color_violet .mtq_quiz_results_bubble, .mtq_color_violet .mtq_list_item_complete, .mtq_color_violet .mtq_shaded_item_msg, .mtq_color_violet .mtq_hint, .mtq_color_violet .mtq_hint_label, .mtq_color_violet .mtq_hint_text { /*Super Dark Text with Light background*/
+	color:#4F2F4F;
+	background:#D3CBD3!important;
+	border-color:#7B637B !important;
+}
+.mtq_color_violet .mtq_css_button:hover, .mtq_color_violet .mtq_css_letter_button:hover { /*Medium Button with white text */
+	color:#fff;
+	background:#A898A8;
+}
+.mtq_color_violet .mtq_question_list_container tr td { /*White background with Super Dark Text and border */
+	background:#FFF;
+	color:#4F2F4F;
+	border-color:#4F2F4F !important;
+}
+.mtq_color_violet .mtq_question_heading_table { /* Dark color underline */
+	border-bottom:.1em solid #7B637B !important;
+}
+.mtq_color_violet .mtq_oce_first /* Light Background */ {
+	background:#D3CBD3;
+}
+.mtq_color_violet .mtq_answer_table tr:hover td { /* Super light background, black text */
+	color:#000;
+	background:#EEEBEE;
+}
+.mtq_color_violet .mtq_css_next_button, .mtq_color_violet .mtq_css_back_button {
+	color:#4F2F4F;
+}
+/* 
+Theme Name: fuchsia
+Super Dark: #D900D9
+Dark: #FF40FF
+Medium: #FF80FF
+Light: #FFBFFF
+Super Light: #FFE6FF
+*/
+.mtq_color_fuchsia .mtq_css_button, .mtq_color_fuchsia .mtq_css_letter_button { /* Dark Button with white text*/
+	color:#fff;
+	background:#FF40FF;
+}
+.mtq_color_fuchsia .mtq_quiz_results_bubble, .mtq_color_fuchsia .mtq_list_item_complete, .mtq_color_fuchsia .mtq_shaded_item_msg, .mtq_color_fuchsia .mtq_hint, .mtq_color_fuchsia .mtq_hint_label, .mtq_color_fuchsia .mtq_hint_text { /*Super Dark Text with Light background*/
+	color:#D900D9;
+	background:#FFBFFF!important;
+	border-color:#FF40FF !important;
+}
+.mtq_color_fuchsia .mtq_css_button:hover, .mtq_color_fuchsia .mtq_css_letter_button:hover { /*Medium Button with white text */
+	color:#fff;
+	background:#FF80FF;
+}
+.mtq_color_fuchsia .mtq_question_list_container tr td { /*White background with Super Dark Text and border */
+	background:#FFF;
+	color:#D900D9;
+	border-color:#D900D9 !important;
+}
+.mtq_color_fuchsia .mtq_question_heading_table { /* Dark color underline */
+	border-bottom:.1em solid #FF40FF !important;
+}
+.mtq_color_fuchsia .mtq_oce_first /* Light Background */ {
+	background:#FFBFFF;
+}
+.mtq_color_fuchsia .mtq_answer_table tr:hover td { /* Super light background, black text */
+	color:#000;
+	background:#FFE6FF;
+}
+.mtq_color_fuchsia .mtq_css_next_button, .mtq_color_fuchsia .mtq_css_back_button {
+	color:#D900D9;
+}
+/* 
+Theme Name: khaki
+Super Dark: #5C3317
+Dark: #9F9F5F
+Medium: #E2E2CF
+Light: #ECECE0
+Super Light: #F5F5EF
+*/
+.mtq_color_khaki .mtq_css_button, .mtq_color_khaki .mtq_css_letter_button { /* Dark Button with white text*/
+	color:#fff;
+	background:#9F9F5F;
+}
+.mtq_color_khaki .mtq_quiz_results_bubble, .mtq_color_khaki .mtq_list_item_complete, .mtq_color_khaki .mtq_shaded_item_msg, .mtq_color_khaki .mtq_hint, .mtq_color_khaki .mtq_hint_label, .mtq_color_khaki .mtq_hint_text { /*Super Dark Text with Light background*/
+	color:#5C3317;
+	background:#ECECE0!important;
+	border-color:#9F9F5F !important;
+}
+.mtq_color_khaki .mtq_css_button:hover, .mtq_color_khaki .mtq_css_letter_button:hover { /*Medium Button with white text */
+	color:#fff;
+	background:#E2E2CF;
+}
+.mtq_color_khaki .mtq_question_list_container tr td { /*White background with Super Dark Text and border */
+	background:#FFF;
+	color:#5C3317;
+	border-color:#5C3317 !important;
+}
+.mtq_color_khaki .mtq_question_heading_table { /* Dark color underline */
+	border-bottom:.1em solid #9F9F5F !important;
+}
+.mtq_color_khaki .mtq_oce_first /* Light Background */ {
+	background:#ECECE0;
+}
+.mtq_color_khaki .mtq_answer_table tr:hover td { /* Super light background, black text */
+	color:#000;
+	background:#F5F5EF;
+}
+.mtq_color_khaki .mtq_css_next_button, .mtq_color_khaki .mtq_css_back_button {
+	color:#5C3317;
+}
+/* 
+Theme Name: burgundy
+Super Dark: #4F0304
+Dark: #9E0508
+Medium: #B74446
+Light: #CF8384
+Super Light: #E7C0C1
+*/
+.mtq_color_burgundy .mtq_css_button, .mtq_color_burgundy .mtq_css_letter_button { /* Dark Button with white text*/
+	color:#fff;
+	background:#9E0508;
+}
+.mtq_color_burgundy .mtq_quiz_results_bubble, .mtq_color_burgundy .mtq_list_item_complete, .mtq_color_burgundy .mtq_shaded_item_msg, .mtq_color_burgundy .mtq_hint, .mtq_color_burgundy .mtq_hint_label, .mtq_color_burgundy .mtq_hint_text { /*Super Dark Text with Light background*/
+	color:#4F0304;
+	background:#CF8384!important;
+	border-color:#9E0508 !important;
+}
+.mtq_color_burgundy .mtq_css_button:hover, .mtq_color_burgundy .mtq_css_letter_button:hover { /*Medium Button with white text */
+	color:#fff;
+	background:#B74446;
+}
+.mtq_color_burgundy .mtq_question_list_container tr td { /*White background with Super Dark Text and border */
+	background:#FFF;
+	color:#4F0304;
+	border-color:#4F0304 !important;
+}
+.mtq_color_burgundy .mtq_question_heading_table { /* Dark color underline */
+	border-bottom:.1em solid #9E0508 !important;
+}
+.mtq_color_burgundy .mtq_oce_first /* Light Background */ {
+	background:#CF8384;
+}
+.mtq_color_burgundy .mtq_answer_table tr:hover td { /* Super light background, black text */
+	color:#000;
+	background:#E7C0C1;
+}
+.mtq_color_burgundy .mtq_css_next_button, .mtq_color_burgundy .mtq_css_back_button {
+	color:#4F0304;
+}
+/* 
+Theme Name: black
+Super Dark: #000000
+Dark: #000000
+Medium: #808080
+Light: #BFBFBF
+Super Light: #E6E6E6
+*/
+.mtq_color_black .mtq_css_button, .mtq_color_black .mtq_css_letter_button { /* Dark Button with white text*/
+	color:#fff;
+	background:#000000;
+}
+.mtq_color_black .mtq_quiz_results_bubble, .mtq_color_black .mtq_list_item_complete, .mtq_color_black .mtq_shaded_item_msg, .mtq_color_black .mtq_hint, .mtq_color_black .mtq_hint_label, .mtq_color_black .mtq_hint_text { /*Super Dark Text with Light background*/
+	color:#000000;
+	background:#BFBFBF!important;
+	border-color:#000000 !important;
+}
+.mtq_color_black .mtq_css_button:hover, .mtq_color_black .mtq_css_letter_button:hover { /*Medium Button with white text */
+	color:#fff;
+	background:#808080;
+}
+.mtq_color_black .mtq_question_list_container tr td { /*White background with Super Dark Text and border */
+	background:#FFF;
+	color:#000000;
+	border-color:#000000 !important;
+}
+.mtq_color_black .mtq_question_heading_table { /* Dark color underline */
+	border-bottom:.1em solid #000000 !important;
+}
+.mtq_color_black .mtq_oce_first /* Light Background */ {
+	background:#BFBFBF;
+}
+.mtq_color_black .mtq_answer_table tr:hover td { /* Super light background, black text */
+	color:#000;
+	background:#E6E6E6;
+}
+.mtq_color_black .mtq_css_next_button, .mtq_color_black .mtq_css_back_button {
+	color:#000000;
+}
+/* 
+Theme Name: lightblue
+Super Dark: #0147FA
+Dark: #ADD8E6
+Medium: #C2E2ED
+Light: #D7ECF3
+Super Light: #EAF5F9
+*/
+.mtq_color_lightblue .mtq_css_button, .mtq_color_lightblue .mtq_css_letter_button { /* Dark Button with white text*/
+	color:#fff;
+	background:#ADD8E6;
+}
+.mtq_color_lightblue .mtq_quiz_results_bubble, .mtq_color_lightblue .mtq_list_item_complete, .mtq_color_lightblue .mtq_shaded_item_msg, .mtq_color_lightblue .mtq_hint, .mtq_color_lightblue .mtq_hint_label, .mtq_color_lightblue .mtq_hint_text { /*Super Dark Text with Light background*/
+	color:#0147FA;
+	background:#D7ECF3!important;
+	border-color:#ADD8E6 !important;
+}
+.mtq_color_lightblue .mtq_css_button:hover, .mtq_color_lightblue .mtq_css_letter_button:hover { /*Medium Button with white text */
+	color:#fff;
+	background:#C2E2ED;
+}
+.mtq_color_lightblue .mtq_question_list_container tr td { /*White background with Super Dark Text and border */
+	background:#FFF;
+	color:#0147FA;
+	border-color:#0147FA !important;
+}
+.mtq_color_lightblue .mtq_question_heading_table { /* Dark color underline */
+	border-bottom:.1em solid #ADD8E6 !important;
+}
+.mtq_color_lightblue .mtq_oce_first /* Light Background */ {
+	background:#D7ECF3;
+}
+.mtq_color_lightblue .mtq_answer_table tr:hover td { /* Super light background, black text */
+	color:#000;
+	background:#EAF5F9;
+}
+.mtq_color_lightblue .mtq_css_next_button, .mtq_color_lightblue .mtq_css_back_button {
+	color:#0147FA;
+}
+/* 
+Theme Name: teal
+Super Dark: #004040
+Dark: #008080
+Medium: #40A0A0
+Light: #80C0C0
+Super Light: #BFDFDF
+*/
+.mtq_color_teal .mtq_css_button, .mtq_color_teal .mtq_css_letter_button { /* Dark Button with white text*/
+	color:#fff;
+	background:#008080;
+}
+.mtq_color_teal .mtq_quiz_results_bubble, .mtq_color_teal .mtq_list_item_complete, .mtq_color_teal .mtq_shaded_item_msg, .mtq_color_teal .mtq_hint, .mtq_color_teal .mtq_hint_label, .mtq_color_teal .mtq_hint_text { /*Super Dark Text with Light background*/
+	color:#004040;
+	background:#80C0C0!important;
+	border-color:#008080 !important;
+}
+.mtq_color_teal .mtq_css_button:hover, .mtq_color_teal .mtq_css_letter_button:hover { /*Medium Button with white text */
+	color:#fff;
+	background:#40A0A0;
+}
+.mtq_color_teal .mtq_question_list_container tr td { /*White background with Super Dark Text and border */
+	background:#FFF;
+	color:#004040;
+	border-color:#004040 !important;
+}
+.mtq_color_teal .mtq_question_heading_table { /* Dark color underline */
+	border-bottom:.1em solid #008080 !important;
+}
+.mtq_color_teal .mtq_oce_first /* Light Background */ {
+	background:#80C0C0;
+}
+.mtq_color_teal .mtq_answer_table tr:hover td { /* Super light background, black text */
+	color:#000;
+	background:#BFDFDF;
+}
+.mtq_color_teal .mtq_css_next_button, .mtq_color_teal .mtq_css_back_button {
+	color:#004040;
+}
+/* 
+Theme Name: lightgreen
+Super Dark: #002600
+Dark: #90EE90
+Medium: #ACF3AC
+Light: #C8F7C8
+Super Light: #E3FBE3
+*/
+.mtq_color_lightgreen .mtq_css_button, .mtq_color_lightgreen .mtq_css_letter_button { /* Dark Button with white text*/
+	color:#fff;
+	background:#90EE90;
+}
+.mtq_color_lightgreen .mtq_quiz_results_bubble, .mtq_color_lightgreen .mtq_list_item_complete, .mtq_color_lightgreen .mtq_shaded_item_msg, .mtq_color_lightgreen .mtq_hint, .mtq_color_lightgreen .mtq_hint_label, .mtq_color_lightgreen .mtq_hint_text { /*Super Dark Text with Light background*/
+	color:#002600;
+	background:#C8F7C8!important;
+	border-color:#90EE90 !important;
+}
+.mtq_color_lightgreen .mtq_css_button:hover, .mtq_color_lightgreen .mtq_css_letter_button:hover { /*Medium Button with white text */
+	color:#fff;
+	background:#ACF3AC;
+}
+.mtq_color_lightgreen .mtq_question_list_container tr td { /*White background with Super Dark Text and border */
+	background:#FFF;
+	color:#002600;
+	border-color:#002600 !important;
+}
+.mtq_color_lightgreen .mtq_question_heading_table { /* Dark color underline */
+	border-bottom:.1em solid #90EE90 !important;
+}
+.mtq_color_lightgreen .mtq_oce_first /* Light Background */ {
+	background:#C8F7C8;
+}
+.mtq_color_lightgreen .mtq_answer_table tr:hover td { /* Super light background, black text */
+	color:#000;
+	background:#E3FBE3;
+}
+.mtq_color_lightgreen .mtq_css_next_button, .mtq_color_lightgreen .mtq_css_back_button {
+	color:#002600;
+}
+/* 
+Theme Name: lightpink
+Super Dark: #BF8991
+Dark: #FFB6C1
+Medium: #FFC9D1
+Light: #FFDBE1
+Super Light: #FFEDEF
+*/
+.mtq_color_lightpink .mtq_css_button, .mtq_color_lightpink .mtq_css_letter_button { /* Dark Button with white text*/
+	color:#fff;
+	background:#FFB6C1;
+}
+.mtq_color_lightpink .mtq_quiz_results_bubble, .mtq_color_lightpink .mtq_list_item_complete, .mtq_color_lightpink .mtq_shaded_item_msg, .mtq_color_lightpink .mtq_hint, .mtq_color_lightpink .mtq_hint_label, .mtq_color_lightpink .mtq_hint_text { /*Super Dark Text with Light background*/
+	color:#BF8991;
+	background:#FFDBE1!important;
+	border-color:#FFB6C1 !important;
+}
+.mtq_color_lightpink .mtq_css_button:hover, .mtq_color_lightpink .mtq_css_letter_button:hover { /*Medium Button with white text */
+	color:#fff;
+	background:#FFC9D1;
+}
+.mtq_color_lightpink .mtq_question_list_container tr td { /*White background with Super Dark Text and border */
+	background:#FFF;
+	color:#BF8991;
+	border-color:#BF8991 !important;
+}
+.mtq_color_lightpink .mtq_question_heading_table { /* Dark color underline */
+	border-bottom:.1em solid #FFB6C1 !important;
+}
+.mtq_color_lightpink .mtq_oce_first /* Light Background */ {
+	background:#FFDBE1;
+}
+.mtq_color_lightpink .mtq_answer_table tr:hover td { /* Super light background, black text */
+	color:#000;
+	background:#FFEDEF;
+}
+.mtq_color_lightpink .mtq_css_next_button, .mtq_color_lightpink .mtq_css_back_button {
+	color:#BF8991;
+}
+/* 
+Theme Name: darkgreen
+Super Dark: #002600
+Dark: #003300
+Medium: #406640
+Light: #809A80
+Super Light: #BFCCBF
+*/
+.mtq_color_darkgreen .mtq_css_button, .mtq_color_darkgreen .mtq_css_letter_button { /* Dark Button with white text*/
+	color:#fff;
+	background:#003300;
+}
+.mtq_color_darkgreen .mtq_quiz_results_bubble, .mtq_color_darkgreen .mtq_list_item_complete, .mtq_color_darkgreen .mtq_shaded_item_msg, .mtq_color_darkgreen .mtq_hint, .mtq_color_darkgreen .mtq_hint_label, .mtq_color_darkgreen .mtq_hint_text { /*Super Dark Text with Light background*/
+	color:#002600;
+	background:#809A80!important;
+	border-color:#003300 !important;
+}
+.mtq_color_darkgreen .mtq_css_button:hover, .mtq_color_darkgreen .mtq_css_letter_button:hover { /*Medium Button with white text */
+	color:#fff;
+	background:#406640;
+}
+.mtq_color_darkgreen .mtq_question_list_container tr td { /*White background with Super Dark Text and border */
+	background:#FFF;
+	color:#002600;
+	border-color:#002600 !important;
+}
+.mtq_color_darkgreen .mtq_question_heading_table { /* Dark color underline */
+	border-bottom:.1em solid #003300 !important;
+}
+.mtq_color_darkgreen .mtq_oce_first /* Light Background */ {
+	background:#809A80;
+}
+.mtq_color_darkgreen .mtq_answer_table tr:hover td { /* Super light background, black text */
+	color:#000;
+	background:#BFCCBF;
+}
+.mtq_color_darkgreen .mtq_css_next_button, .mtq_color_darkgreen .mtq_css_back_button {
+	color:#002600;
+}
+/* 
+Theme Name: brown
+Super Dark: #442110
+Dark: #87421F
+Medium: #A57257
+Light: #C4A190
+Super Light: #E1D0C7
+*/
+.mtq_color_brown .mtq_css_button, .mtq_color_brown .mtq_css_letter_button { /* Dark Button with white text*/
+	color:#fff;
+	background:#87421F;
+}
+.mtq_color_brown .mtq_quiz_results_bubble, .mtq_color_brown .mtq_list_item_complete, .mtq_color_brown .mtq_shaded_item_msg, .mtq_color_brown .mtq_hint, .mtq_color_brown .mtq_hint_label, .mtq_color_brown .mtq_hint_text { /*Super Dark Text with Light background*/
+	color:#442110;
+	background:#C4A190!important;
+	border-color:#87421F !important;
+}
+.mtq_color_brown .mtq_css_button:hover, .mtq_color_brown .mtq_css_letter_button:hover { /*Medium Button with white text */
+	color:#fff;
+	background:#A57257;
+}
+.mtq_color_brown .mtq_question_list_container tr td { /*White background with Super Dark Text and border */
+	background:#FFF;
+	color:#442110;
+	border-color:#442110 !important;
+}
+.mtq_color_brown .mtq_question_heading_table { /* Dark color underline */
+	border-bottom:.1em solid #87421F !important;
+}
+.mtq_color_brown .mtq_oce_first /* Light Background */ {
+	background:#C4A190;
+}
+.mtq_color_brown .mtq_answer_table tr:hover td { /* Super light background, black text */
+	color:#000;
+	background:#E1D0C7;
+}
+.mtq_color_brown .mtq_css_next_button, .mtq_color_brown .mtq_css_back_button {
+	color:#442110;
+}
+/* 
+Theme Name: purple
+Super Dark: #400040
+Dark: #800080
+Medium: #A040A0
+Light: #C080C0
+Super Light: #DFBFDF
+*/
+.mtq_color_purple .mtq_css_button, .mtq_color_purple .mtq_css_letter_button { /* Dark Button with white text*/
+	color:#fff;
+	background:#800080;
+}
+.mtq_color_purple .mtq_quiz_results_bubble, .mtq_color_purple .mtq_list_item_complete, .mtq_color_purple .mtq_shaded_item_msg, .mtq_color_purple .mtq_hint, .mtq_color_purple .mtq_hint_label, .mtq_color_purple .mtq_hint_text { /*Super Dark Text with Light background*/
+	color:#400040;
+	background:#C080C0!important;
+	border-color:#800080 !important;
+}
+.mtq_color_purple .mtq_css_button:hover, .mtq_color_purple .mtq_css_letter_button:hover { /*Medium Button with white text */
+	color:#fff;
+	background:#A040A0;
+}
+.mtq_color_purple .mtq_question_list_container tr td { /*White background with Super Dark Text and border */
+	background:#FFF;
+	color:#400040;
+	border-color:#400040 !important;
+}
+.mtq_color_purple .mtq_question_heading_table { /* Dark color underline */
+	border-bottom:.1em solid #800080 !important;
+}
+.mtq_color_purple .mtq_oce_first /* Light Background */ {
+	background:#C080C0;
+}
+.mtq_color_purple .mtq_answer_table tr:hover td { /* Super light background, black text */
+	color:#000;
+	background:#DFBFDF;
+}
+.mtq_color_purple .mtq_css_next_button, .mtq_color_purple .mtq_css_back_button {
+	color:#400040;
+}
+/* 
+Theme Name: navy
+Super Dark: #121247
+Dark: #23238E
+Medium: #5A5AAB
+Light: #9292C7
+Super Light: #C8C8E3
+*/
+.mtq_color_navy .mtq_css_button, .mtq_color_navy .mtq_css_letter_button { /* Dark Button with white text*/
+	color:#fff;
+	background:#23238E;
+}
+.mtq_color_navy .mtq_quiz_results_bubble, .mtq_color_navy .mtq_list_item_complete, .mtq_color_navy .mtq_shaded_item_msg, .mtq_color_navy .mtq_hint, .mtq_color_navy .mtq_hint_label, .mtq_color_navy .mtq_hint_text { /*Super Dark Text with Light background*/
+	color:#121247;
+	background:#9292C7!important;
+	border-color:#23238E !important;
+}
+.mtq_color_navy .mtq_css_button:hover, .mtq_color_navy .mtq_css_letter_button:hover { /*Medium Button with white text */
+	color:#fff;
+	background:#5A5AAB;
+}
+.mtq_color_navy .mtq_question_list_container tr td { /*White background with Super Dark Text and border */
+	background:#FFF;
+	color:#121247;
+	border-color:#121247 !important;
+}
+.mtq_color_navy .mtq_question_heading_table { /* Dark color underline */
+	border-bottom:.1em solid #23238E !important;
+}
+.mtq_color_navy .mtq_oce_first /* Light Background */ {
+	background:#9292C7;
+}
+.mtq_color_navy .mtq_answer_table tr:hover td { /* Super light background, black text */
+	color:#000;
+	background:#C8C8E3;
+}
+.mtq_color_navy .mtq_css_next_button, .mtq_color_navy .mtq_css_back_button {
+	color:#121247;
+}
+/* 
+Theme Name: darkpink
+Super Dark: #67083B
+Dark: #CD1076
+Medium: #DA4C99
+Light: #E788BB
+Super Light: #F2C3DD
+*/
+.mtq_color_darkpink .mtq_css_button, .mtq_color_darkpink .mtq_css_letter_button { /* Dark Button with white text*/
+	color:#fff;
+	background:#CD1076;
+}
+.mtq_color_darkpink .mtq_quiz_results_bubble, .mtq_color_darkpink .mtq_list_item_complete, .mtq_color_darkpink .mtq_shaded_item_msg, .mtq_color_darkpink .mtq_hint, .mtq_color_darkpink .mtq_hint_label, .mtq_color_darkpink .mtq_hint_text { /*Super Dark Text with Light background*/
+	color:#67083B;
+	background:#E788BB!important;
+	border-color:#CD1076 !important;
+}
+.mtq_color_darkpink .mtq_css_button:hover, .mtq_color_darkpink .mtq_css_letter_button:hover { /*Medium Button with white text */
+	color:#fff;
+	background:#DA4C99;
+}
+.mtq_color_darkpink .mtq_question_list_container tr td { /*White background with Super Dark Text and border */
+	background:#FFF;
+	color:#67083B;
+	border-color:#67083B !important;
+}
+.mtq_color_darkpink .mtq_question_heading_table { /* Dark color underline */
+	border-bottom:.1em solid #CD1076 !important;
+}
+.mtq_color_darkpink .mtq_oce_first /* Light Background */ {
+	background:#E788BB;
+}
+.mtq_color_darkpink .mtq_answer_table tr:hover td { /* Super light background, black text */
+	color:#000;
+	background:#F2C3DD;
+}
+.mtq_color_darkpink .mtq_css_next_button, .mtq_color_darkpink .mtq_css_back_button {
+	color:#67083B;
+}
+/* 
+Theme Name: lavender
+Super Dark: #664D66
+Dark: #CC99CC
+Medium: #D9B3D9
+Light: #E6CDE6
+Super Light: #F2E5F2
+*/
+.mtq_color_lavender .mtq_css_button, .mtq_color_lavender .mtq_css_letter_button { /* Dark Button with white text*/
+	color:#fff;
+	background:#CC99CC;
+}
+.mtq_color_lavender .mtq_quiz_results_bubble, .mtq_color_lavender .mtq_list_item_complete, .mtq_color_lavender .mtq_shaded_item_msg, .mtq_color_lavender .mtq_hint, .mtq_color_lavender .mtq_hint_label, .mtq_color_lavender .mtq_hint_text { /*Super Dark Text with Light background*/
+	color:#664D66;
+	background:#E6CDE6!important;
+	border-color:#CC99CC !important;
+}
+.mtq_color_lavender .mtq_css_button:hover, .mtq_color_lavender .mtq_css_letter_button:hover { /*Medium Button with white text */
+	color:#fff;
+	background:#D9B3D9;
+}
+.mtq_color_lavender .mtq_question_list_container tr td { /*White background with Super Dark Text and border */
+	background:#FFF;
+	color:#664D66;
+	border-color:#664D66 !important;
+}
+.mtq_color_lavender .mtq_question_heading_table { /* Dark color underline */
+	border-bottom:.1em solid #CC99CC !important;
+}
+.mtq_color_lavender .mtq_oce_first /* Light Background */ {
+	background:#E6CDE6;
+}
+.mtq_color_lavender .mtq_answer_table tr:hover td { /* Super light background, black text */
+	color:#000;
+	background:#F2E5F2;
+}
+.mtq_color_lavender .mtq_css_next_button, .mtq_color_lavender .mtq_css_back_button {
+	color:#664D66;
+}

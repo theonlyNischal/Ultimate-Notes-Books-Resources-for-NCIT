@@ -1,0 +1,20 @@
+package mypack;
+class Person
+{
+  String name,address;
+  double balance;
+  
+  void setInfo(String n,String a, double b)
+  {
+    name=n;
+    address=a;
+    balance=b;
+  }
+  void showInfo()
+  {
+    System.out.println("Name: "+name);
+    System.out.println("Address: "+address);
+    System.out.println("Balance: "+balance);
+  }
+}
+  

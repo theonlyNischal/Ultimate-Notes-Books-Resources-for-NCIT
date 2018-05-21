@@ -1,0 +1,19 @@
+JDBC: (Java Database Connectivity)
+java.sql package
+
+classes:
+
+1. DriverManager: to establish connection to the database.
+2. ClassNotFoundException: generated when the specified database driver is not found.
+3. SQLException: generated when there is error in sql statement.
+
+
+interfaces:
+
+1. Connection: holds the connection to the database
+2. Statement: to execute static sql statements.
+3. PreparedStatement: to execute precompiled sql statements
+4. CallableStatement: to execute stored procedures
+5. ResultSet: used to hold the tabular data of database in memory during program execution.
+6. ResultSetMetaData: used to get additional information from a result set object like no. of columns, name of columns.
+

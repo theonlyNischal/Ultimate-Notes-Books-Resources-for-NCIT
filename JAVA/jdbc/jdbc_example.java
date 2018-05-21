@@ -1,0 +1,86 @@
+// 1. Import the packages
+
+import java.sql.*;
+
+public class JDBCExample{
+    
+    // JDBC Database URL and Driver
+    
+    static final String driver = "com.mysql.jdbc.Driver";
+    static final String url    = "jdbc:mysql://localhost/";
+    
+    // Database Credentials
+    
+    static final String username = "username";
+    static final String password = "passworld";
+    
+    public static void main(String[] args){
+    
+    try{
+    
+        // 2. Load and Register the Driver
+        
+        Class.forName(driver);
+        
+        // 3. Establish The Connection
+            
+        Connection con = DriverManager(url, username, password);
+        
+        // 4. Create the statement
+        
+        Statement st = con.createStatement();
+        
+        // For PreparedStatement
+        
+        PreparedStatement st = con.preparedStatement();
+        
+        String query = "CREATE TABLE REGISTRATION" +
+                       "(id INTEGER not Null," +
+                       "first VARCHAR(255)," +
+                       "age Integer," +
+                       "PRIMARY KEY (id))";
+        // 5. Execute the Query
+        
+        st.executeUpdate(query);
+        S.o.p("Created Table");
+        
+        // Create statement/s and add to database
+        
+        st = con.createStatement();
+        query = "Insert INTO REGISTRATION VALUES(...)";
+        .....
+        
+      
+        
+        
+        
+        
+    
+    } // End of Try
+    
+    catch (SQLException se){
+        // Handle Error
+        se.printStackTrace();
+
+    }finally{
+    
+    // Close the connection
+        st.close();
+    }
+    
+   } // End of Main
+
+
+} // End of Class
+
+
+
+
+
+
+
+
+
+
+
+

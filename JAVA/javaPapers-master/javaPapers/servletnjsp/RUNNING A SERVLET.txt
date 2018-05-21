@@ -1,0 +1,91 @@
+Steps to create and run a servlet:
+
+set the environment variables:
+CLASSPATH	C:\Program Files\Apache Software Foundation\Tomcat 6.0\lib                \servlet-api.jar
+PATH		C:\Program files\java\jdk1.6.0\bin
+CATALINA_HOME	C:\Program Files\Apache Software Foundation\Tomcat 6.0
+JAVA_HOME	C:\Program files\java\jdk1.6.0
+
+
+
+
+*******************************
+
+LET THE SERVLET IS THIS:
+import java.io.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
+
+public class FirstServlet extends HttpServlet
+{
+	public void doGet(HttpServletRequest req, HttpServletResponse res)throws IOException,ServletException
+	{
+		res.setContentType("text/html");
+		PrintWriter out=res.getWriter();
+		out.println("<html>");
+		out.println("<body>");
+		out.println("<h1>Welcome to Servlet</h1>");
+		out.println("</body>");
+		out.println("</html>");
+		out.close();
+	
+	}
+}
+
+******************************
+
+NOW SAVE THE SERVLET AS FirstServlet in any directory let it be inside d drive and java folder
+compile the servlet from dos
+d:\javac FirstServlet.java
+******************************
+then you will get a FirstServlet.class file inside the same folder of d drive.
+*******************************
+inside tomcat 6.0 inside the web-inf which is inside the root folder make a folder called classes and copy the FirstServlet.class file here.
+*******************************
+
+create a deployment descriptor file for the above servlet like this:
+
+<web-app>
+<servlet>
+<servlet-name>First</servlet-name>
+<servlet-class>FirstServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+<servlet-name>First</servlet-name>
+<url-pattern>/Welcome</url-pattern>
+</servlet-mapping>
+</web-app>
+
+
+*********************************
+save it as web.xml inside the web-inf folder. note there must be classes folder here.
+*********************************
+
+start tomcat from bin
+*********************************
+
+launch internet explorer
+type http://localhost:8080/Welcome
+*********************************
+
+Finally you will see the output.
+
+
+****************************************************
+import java.io.*;
+import javax.servlet.*;
+
+public class HelloServlet extends GenericServlet
+{
+	public void service(ServletRequest request,ServletResponse response)
+	throws ServletException,IOException
+	{
+		response.setContentType("text/html");
+		PrintWriter pw=response.getWriter();
+		pw.println("<b>hello");
+		pw.close();
+	}
+
+	
+}

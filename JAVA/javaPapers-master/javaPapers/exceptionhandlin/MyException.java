@@ -1,0 +1,25 @@
+class MyException extends Exception
+{
+  MyException(String msg)
+  {
+    super(msg);
+  }
+}
+class Test
+{
+  public static void main(String args[])
+  {
+    double a=5,b=100000,c;
+    try
+    {
+      c=a/b;
+      if(c<0.005)
+        throw new MyException("Number is too small");
+    }
+    catch(MyException e)
+    {
+      System.out.println(e.getMessage());
+    }
+  }
+}
+      

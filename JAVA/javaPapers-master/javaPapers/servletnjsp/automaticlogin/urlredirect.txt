@@ -1,0 +1,5 @@
+	if(!username.equals("") && !password.equals(""))
+		{RequestDispatcher rd = request.getRequestDispatcher("/Session");
+                    rd.forward(request, response);
+		}
+//direct login 

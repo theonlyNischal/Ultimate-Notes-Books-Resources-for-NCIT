@@ -1,0 +1,120 @@
+body {
+	background: rgb(51, 51, 51); text-align: center; line-height: 1.6em; font-family: georgia; font-size: 1em; margin-top: 10px; margin-bottom: 30px;
+}
+h1 {
+	margin: 25px 0px; font-family: serif;
+}
+h2 {
+	margin: 25px 0px; font-family: serif;
+}
+h4 {
+	margin: 15px 0px;
+}
+a {
+	color: rgb(0, 153, 247);
+}
+.explanation {
+	background: rgb(237, 239, 244); padding: 5px 0px 5px 10px; line-height: 1.5;
+}
+.definition {
+	background: rgb(141, 255, 135); padding-top: 10px; padding-bottom: 10px; margin-top: 25px;
+}
+.container {
+	width: 1100px; margin-right: auto; margin-left: auto;
+}
+.container2 {
+	width: 1120px; margin-right: auto; margin-left: auto;
+}
+.content {
+	background: white; padding: 35px 25px 5px; width: 690px; text-align: left; margin-right: auto; margin-left: auto;
+}
+.content2 {
+	background: white; padding: 35px 20px 5px; width: 705px; text-align: left; margin-right: auto; margin-left: auto;
+}
+.figure {
+	color: rgb(123, 112, 112); font-family: Verdana; margin-top: 15px;
+}
+.figure_right {
+	color: rgb(123, 112, 112); font-family: Verdana; margin-top: -25px; margin-left: 375px;
+}
+.table {
+	color: rgb(123, 112, 112); font-family: Verdana; margin-top: 15px; margin-bottom: 20px;
+}
+.footer {
+	
+}
+.signature {
+	color: rgb(99, 99, 99); font-size: 0.8em; margin-top: 35px; display: inline;
+}
+.copyright {
+	margin-left: 15px;
+}
+.botNav {
+	padding-top: 10px;
+}
+.botNavItem {
+	padding: 0px 7px; height: 18px; color: rgb(97, 0, 97); font-size: 1em;
+}
+.bookmarks {
+	right: 17%; display: inline; position: absolute;
+}
+.code {
+	background: rgb(241, 241, 241); border: 1px solid rgb(189, 189, 189); color: black; line-height: 1.4; padding-top: 10px; padding-bottom: 10px; padding-left: 10px; margin-top: 0px;
+}
+.codehead {
+	background: rgb(189, 189, 189); padding-left: 15px; font-family: "courier pitch 10"; margin-bottom: 0px;
+}
+.center {
+	text-align: center;
+}
+hr.btm {
+	width: 550px; margin-top: 35px; margin-bottom: 35px;
+}
+.gray {
+	background-color: rgb(239, 239, 239);
+}
+table {
+	border-top-color: rgb(153, 153, 153); border-left-color: rgb(153, 153, 153); border-top-width: 1px; border-left-width: 1px; border-top-style: solid; border-left-style: solid; border-collapse: collapse;
+}
+td {
+	border-right-color: rgb(153, 153, 153); border-bottom-color: rgb(153, 153, 153); border-right-width: 1px; border-bottom-width: 1px; border-right-style: solid; border-bottom-style: solid;
+}
+th {
+	border-right-color: rgb(153, 153, 153); border-bottom-color: rgb(153, 153, 153); border-right-width: 1px; border-bottom-width: 1px; border-right-style: solid; border-bottom-style: solid;
+}
+th {
+	background: url("/img/cmn/stripe.jpg"); padding: 8px; letter-spacing: 1px; font-family: Georia; font-size: 12px; font-weight: bolder;
+}
+td {
+	padding: 4px 15px; font-family: helvetica,"Courier New"; font-size: 13px;
+}
+.keyword {
+	color: rgb(7, 70, 133);
+}
+.section {
+	background: rgb(255, 131, 15); padding: 3px; width: 280px; text-align: center; color: white; letter-spacing: 2px; font-family: arial; font-variant: small-caps; font-weight: 900; margin-left: -100px; border-right-color: gray; border-bottom-color: gray; border-right-width: 1px; border-bottom-width: 1px; border-right-style: solid; border-bottom-style: solid;
+}
+.ltow {
+	float: left;
+}
+.big_hor {
+	left: -11px; position: relative;
+}
+.hor {
+	text-align: center;
+}
+.large_rec {
+	
+}
+.med_rec {
+	
+}
+.social {
+	
+}
+.fb-like {
+	top: -8px; padding-right: 1em;
+}
+.twitter {
+	display: inline-block;
+}

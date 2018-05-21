@@ -1,0 +1,26 @@
+import java.io.*;
+class RandomDemo
+{
+  public static void main(String args[])throws IOException
+  {
+    File f1=new File("hello.txt");
+    RandomAccessFile rFile=new RandomAccessFile(f1,"rw");
+    rFile.seek(f1.length());
+    rFile.writeInt(10);
+    rFile.writeDouble(10.5);
+    long pos=rFile.getFilePointer();
+    rFile.writeChar('A');
+    rFile.seek(0);
+    System.out.println(rFile.readInt());
+    System.out.println(rFile.readDouble());
+    rFile.seek(f1.length());
+    rFile.writeBoolean(true);
+    rFile.seek(pos);
+    System.out.println(rFile.readChar());
+    System.out.println(rFile.readBoolean());
+    
+    
+    rFile.close();
+      
+  }
+}

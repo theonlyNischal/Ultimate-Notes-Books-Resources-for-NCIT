@@ -1,0 +1,439 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0065)https://www3.ntu.edu.sg/home/ehchua/programming/java/J9d_Jar.html -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><HTML 
+xmlns="http://www.w3.org/1999/xhtml"><HEAD><META content="IE=10.000" 
+http-equiv="X-UA-Compatible">
+ 
+<META http-equiv="Content-Type" content="text/html; charset=utf-8"> <TITLE>JAR 
+(Java Archive) - Java Tutorial</TITLE> <LINK href="creating%20jar%20files_files/programming_notes_v1.css" 
+rel="stylesheet" type="text/css"> 
+<SCRIPT src="creating%20jar%20files_files/programming_notes_v1.js" type="text/javascript"></SCRIPT>
+ <LINK href="../favicon.ico" rel="shortcut icon" type="image/x-icon">
+<META name="GENERATOR" content="MSHTML 10.00.9200.16578"></HEAD> 
+<BODY>
+<DIV id="wrap-outer"><!-- header filled by JavaScript --> 
+<DIV class="header-footer" id="header">
+<P>&nbsp;</P></DIV>
+<DIV id="wrap-inner">
+<DIV id="wrap-toc">
+<H5>TABLE OF CONTENTS <A id="show-toc" href="https://www3.ntu.edu.sg/home/ehchua/programming/java/J9d_Jar.html#show-toc">(HIDE)</A></H5>
+<DIV id="toc"></DIV><!-- for showing the "Table of Content" --> </DIV>
+<DIV id="content-header">
+<H1>Java Programming Tutorial</H1>
+<H2>Java Archive (Jar)</H2></DIV>
+<DIV id="content-main">
+<H3>Java Archive (JAR) Files</H3>
+<P>Java Archive (JAR) is a platform-independent file format that allow you to 
+compress and bundle multiple files associated with a Java application, applet, 
+or WebStart application into a single file.  JAR is based on the popular ZIP 
+algorithm,  and mimic the Unix's tar (or tape archive) file format (e.g., 
+<CODE>jar</CODE> and <CODE>tar</CODE> tools have the same command-line 
+options).</P>
+<P>JAR files provide the following functions:</P>
+<OL>
+  <LI>Data compression (using the ZIP algorithm).</LI>
+  <LI>Ease in distribution: All files in a Java package can be placed in a 
+  single file to facilitate distribution.  Furthermore, transfer one big file 
+  over the network instead of many small files is faster and more efficient 
+  because it involves less overhead.</LI>
+  <LI>Authentication: JAR file can be digitally signed by its author.  You can 
+  authenticate the author of the JAR file by checking the signature and the 
+  author's digital certificate.</LI></OL>
+<P>The Java Runtime (JRE) (or Java applications) can load classes from the JAR 
+file directly, without un-jarring the file. Furthermore, the JAR files use the 
+same file format as ZIP files, and can be opened and manipulated via ZIP 
+programs such as WinZIP or WinRAR.</P>
+<H3 id="jarcreate">Creating JAR File</H3>
+<P>There are a few ways that you can create a JAR file:</P>
+<OL>
+  <LI>Via the command-line <CODE>jar</CODE> tool: JDK provides a command-line 
+  tool called "<CODE>jar.exe</CODE>", to create, manage and manipulate JAR 
+  files. The <CODE>jar</CODE> tool reference  is available at <A href="http://docs.oracle.com/javase/7/docs/technotes/tools/windows/jar.html">http://docs.oracle.com/javase/7/docs/technotes/tools/windows/jar.html</A>.</LI>
+  <LI>Via the "export" option of IDE such as Eclipse or NetBeans, in 
+  practice.</LI></OL>
+<P>Needless to say, using IDE to create a JAR file is much more easier than the 
+command-line <CODE>jar</CODE> tool. </P>
+<H4 id="createjar_jartool">Create JAR File using Command-Line "jar" Tool</H4>
+<P>Creating JAR file using command-line jar <CODE>tool</CODE> is clumpy! It is 
+presented here for your basic understanding and completeness. In practice, you 
+should use your IDE (such as Eclipse/NetBeans) to create JAR file instead (which 
+are presented in the following sections).</P>
+<H5>Syntax</H5>
+<P>To create a JAR file using the <CODE>jar</CODE> tool, issue the 
+<CODE>jar</CODE> command (on CMD shell) with <CODE>'c'</CODE> option:</P>
+<PRE class="color-command">&gt; jar cvf <EM>jarFile</EM> <EM>inputFileDir1 inputFileDir2 ...</EM></PRE>
+<P>where:</P>
+<UL>
+  <LI><CODE>'c'</CODE> option indicates that you want to create a new JAR 
+  file;</LI>
+  <LI><CODE>'v'</CODE> option asks for <EM>verbose</EM> mode, which displays 
+  information messages;</LI>
+  <LI><CODE>'f'</CODE> specifies that the output go to a file specified in 
+  <CODE><EM>jarfile</EM></CODE> (instead of the standard output by default). 
+  Option <CODE>'f'</CODE> and <CODE><EM>jarfile</EM></CODE> are a pair.</LI>
+  <LI><CODE><EM>inputFileDir</EM></CODE> give the input filenames or directory 
+  names for the files to be jarred. Multiple names are separated by space. The 
+  name may contain wildcard <CODE>'*'</CODE>.</LI></UL>
+<H5>Example</H5>
+<P>For example, suppose that "<CODE>images</CODE>" is an sub-directory under the 
+current directory, the following command jar-up all the "<CODE>.class</CODE>" 
+files of the current directory and the entire "<CODE>images</CODE>" 
+sub-directory into "<CODE>hello.jar</CODE>". The <CODE>'v'</CODE> option 
+instructs the tool to produce the information messages.</P>
+<PRE class="color-example">&gt; <STRONG>jar cvf hello.jar *.class images</STRONG>
+added manifest
+adding: HelloJar$1.class(in = 893) (out= 520)(deflated 41%)
+adding: HelloJar$2.class(in = 393) (out= 284)(deflated 27%)
+adding: HelloJar.class(in = 1808) (out= 1014)(deflated 43%)
+adding: images/(in = 0) (out= 0)(stored 0%)
+adding: images/high.png(in = 978) (out= 983)(deflated 0%)
+adding: images/muted.png(in = 839) (out= 844)(deflated 0%)</PRE>
+<H5>Jarring-Up Files in Packages</H5>
+<P>Java classes are often placed in packages. To jar up all the classes of a 
+package, you must provide the proper sub-directory structure (as depicted by the 
+package name). Recall that package name with '.' are mapped to sub-directory, 
+e.g., the class file <CODE>com.test.MyClass</CODE> is stored as 
+<CODE>com\test\MyClass.class</CODE>.</P>
+<P>For example, the following command jar-up all the classes in 
+<CODE>mypackage</CODE> and the image sub-directory. Take note that the 
+<CODE>jar</CODE> command should be issued from the project root directory, i.e., 
+the base directory of the packages.</P>
+<PRE class="color-example">&gt; <STRONG>jar cvf hello.jar mypackage\*.class images</STRONG>
+added manifest
+adding: mypackage/HelloJarInPackage$1.class(in = 1016) (out= 536)(deflated 47%)
+adding: mypackage/HelloJarInPackage$2.class(in = 440) (out= 303)(deflated 31%)
+adding: mypackage/HelloJarInPackage.class(in = 1931) (out= 1034)(deflated 46%)
+adding: images/(in = 0) (out= 0)(stored 0%)
+adding: images/high.png(in = 978) (out= 983)(deflated 0%)
+adding: images/muted.png(in = 839) (out= 844)(deflated 0%)</PRE>
+<P>Creating JAR file using <CODE>jar</CODE> tool with package is clumsy! I shall 
+describe how to create a JAR file via an IDE (such as Eclipse/NetBeans) in the 
+following sections.</P>
+<P>You can use the <CODE>jar</CODE> tool to inspect and manipulate JAR file. 
+However, it is much easier to use a graphical ZIP program (such as WinZIP or 
+WinRAR) to inspect and manipulate JAR file. Try opening a JAR file using WinZIP 
+or WinRAR or any ZIP tool.</P>
+<H4>Manifest</H4>
+<P>Many of the JAR functions, such as main-class specification, digital signing, 
+version control, package sealing, are supported though a file called 
+<EM>manifest</EM>.  The manifest is a special file, called 
+"<CODE>MANIFEST.MF</CODE>" under the "<CODE>META-INF</CODE>" sub-directory, that 
+contains information about the files contained in a JAR file.</P>
+<P>When you create a JAR file without an input manifest, it automatically 
+receives a default manifest file (called <CODE>"META-INF\MANIFEST.MF"</CODE>) 
+which contains the following. Try opening a JAR file created in the previous 
+section via WinZIP or WinRAR to view the manifest.</P>
+<PRE class="output">Manifest-Version: 1.0
+Created-By: 1.7.0_03 (Oracle Corporation)</PRE>
+<P>The entries in manifest take the form of "<CODE>name: values</CODE>" pair.  
+The name and value are separated by a colon <CODE>':'</CODE>.  The name is also 
+called the attribute.</P>
+<P>Refer to JDK API Specification on the JAR for detailed syntax on the manifest 
+[@ <A href="http://docs.oracle.com/javase/7/docs/technotes/guides/jar/jar.html#JAR_Manifest">http://docs.oracle.com/javase/7/docs/technotes/guides/jar/jar.html#JAR_Manifest</A>].</P>
+<H4>Creating an Executable JAR File with Manifest using "<SPAN 
+class="font-code">jar</SPAN>" tool</H4>
+<P>As mentioned, JRE can load classes from a JAR file directly without 
+un-jarring the file.  In fact, you can run a Java application directly from a 
+JAR file.  The JAR file, however, must contain a manifest with a header called 
+<CODE>Main-Class</CODE> which  specifies the main-class that contains the entry 
+<CODE>main()</CODE> method. (Otherwise, which class to launch the 
+application?)</P>
+<H5>Example</H5>
+<P>Let's create an executable JAR file.</P>
+<P>First, prepare the following text file (to be used as input manifest) called 
+<CODE>"hello.mf"</CODE> (using a text editor). This file specifies the 
+main-class that contains the entry <CODE>main()</CODE> method for launching the 
+application. Take note that the file MUST BE terminated with a blank line as 
+shown.</P>
+<PRE class="color-example">Manifest-Version: 1.0
+Main-Class: mypackage.HelloJarInPackage
+ </PRE>
+<P>Next, create the JAR file with the input manifest using the command-line 
+<CODE>jar</CODE> tool:</P>
+<PRE class="color-command">&gt; <STRONG>jar cvfm hello.jar hello.mf mypackage\*.class images</STRONG>
+added manifest
+adding: mypackage/HelloJarInPackage$1.class(in = 1016) (out= 536)(deflated 47%)
+adding: mypackage/HelloJarInPackage$2.class(in = 440) (out= 303)(deflated 31%)
+adding: mypackage/HelloJarInPackage.class(in = 1931) (out= 1034)(deflated 46%)
+adding: images/(in = 0) (out= 0)(stored 0%)
+adding: images/high.png(in = 978) (out= 983)(deflated 0%)
+adding: images/muted.png(in = 839) (out= 844)(deflated 0%)</PRE>
+<P>where option <CODE>'m'</CODE> specifies the inclusion of an input manifest. 
+Take note that the <CODE>'m'</CODE> option comes after the <CODE>'f'</CODE> 
+option, hence, the manifest file shall be placed after the output JAR file.</P>
+<P>Use WinZIP or WinRAR to inspect the manifest 
+<CODE>"META-INF\MANIFEST.MF"</CODE> created:</P>
+<PRE class="color-example">Manifest-Version: 1.0
+Created-By: 1.7.0_03 (Oracle Corporation)
+Main-Class: mypackage.HelloJarInPackage</PRE>
+<P>To run the application directly from JAR file, invoke the JRE with option 
+"-jar":</P>
+<PRE class="color-command">&gt; <STRONG>java -jar Hello.jar</STRONG>
+</PRE>
+<P>In windows, you can also double-click the JAR file to launch the application, 
+provided that the file type "<CODE>.jar</CODE>" is associated with the JRE 
+"<CODE>java.exe</CODE>".</P>
+<H4 id="createjar_eclipse">Creating JAR File in Eclipse 3.7</H4>
+<P>You can create a JAR file easily in Eclipse via the "Export" option.</P>
+<OL>
+  <LI>Right-click on the project ⇒ "Export..." ⇒ Select "Java", "JAR File" ⇒ 
+  Next.</LI>
+  <LI>In the "JAR File Specification" dialog, "Select the resources to export"  
+  ⇒ in "Select the export destination", set the output jar-file's path and name  
+  ⇒ Next.</LI>
+  <LI>In the "JAR Packaging Options" dialog ⇒ Next.</LI>
+  <LI>In the "JAR Manifest Specification" dialog ⇒ If you wish to create an 
+  executable JAR, you can specify the main-class (which contains the entry 
+  <CODE>main()</CODE> method) by setting the "Main Class" field  ⇒ 
+Finish.</LI></OL>
+<P>Try opening the JAR file created using ZIP tool such as WinZIP or WinRAR. 
+Inspect the manifest at "<CODE>META-INF\MANIFEST.MF</CODE>".</P>
+<H4 id="createjar_netbeans">Creating JAR File in NetBeans 7</H4>
+<P>Simply "build" your project (Right-click on the project ⇒ "Build"), a JAR 
+file for the project is created under the "<CODE>dist</CODE>" directory. Try 
+opening the JAR file with a ZIP tool (such as WinZIP or WinRAR to inspect its 
+content),</P>
+<P>To set the main-class for an executable JAR file: Right-click on the project 
+⇒ "Properties" ⇒ Select "Run" ⇒ Set the "Main Class" field.</P>
+<P>To include additional JAR files and Libraries: See article below.</P>
+<P><STRONG>Reference</STRONG>: Packaging and Deploying Desktop Java Applications 
+@ <A 
+href="http://netbeans.org/kb/articles/javase-deploy.html">http://netbeans.org/kb/articles/javase-deploy.html</A>[TODO]</P>
+<H4>Creating JAR File with 3rd-Party Packages</H4>
+<P>A JAR file may contain other JAR files or Native Libraries, typically contain 
+third-party API which you used in your program (e.g., JOGL, LWJGL etc), in a 
+sub-directory "<CODE>lib</CODE>". This task can be easily managed from IDE such 
+as Eclipse/NetBeans.</P>
+<P>You need to include attribute "<CODE>Class-Path</CODE>" in the manifest to 
+provide proper classpath to these JAR files.</P>
+<P>[TODO]</P>
+<H3 id="jardeploy">Using JAR File for Deployment</H3>
+<H4 id="jardeploy_app">Deploy as an Application</H4>
+<P>To deploy an application in JAR file, you need to create the JAR file with a 
+manifest specifying its main-class, which contains the entry main() method to 
+launch the application. Refer to "<A href="https://www3.ntu.edu.sg/home/ehchua/programming/java/J9d_Jar.html#jarcreate">Creating 
+JAR File</A>" on how to include a <CODE>Main-Class</CODE> attribute into the JAR 
+file.</P>
+<H4 id="jardeploy_applet">Deploy as an Applet</H4>
+<P>To deploy an applet in JAR file, simply jar-up all the classes and the 
+relevant resources, and provide an HTML file with an &lt;applet&gt; tag. For 
+example,</P>
+<PRE class="color-example">&lt;applet code="YourAppletMainClass"
+        width="640"
+        height="480"
+        archive="YourJarFile"&gt;
+&lt;/applet&gt;</PRE>
+<P>where attribute "<CODE>code</CODE>" specifies the applet class; and 
+"<CODE>archive</CODE>" specifies the JAR file.</P>
+<P>No "<CODE>Main-Class</CODE>" attribute is needed in the JAR file, as the 
+main-class is identified in the <CODE>&lt;applet&gt;</CODE> tag's 
+"<CODE>code</CODE>" attribute.</P>
+<P>Read "<A href="https://www3.ntu.edu.sg/home/ehchua/programming/java/J4c_AppletWebstart.html">Java 
+Applet and WebStart App</A>" for more details.</P>
+<H4 id="jardeploy_webstart">Deploy as a WebStart App (JDK 1.4)</H4>
+<P>To deploy your application as a Java WebStart application, jar-up all the 
+classes and relevant resource and provide an JNLP launching file. For example, 
+suppose your JNLP file is called "<CODE>hello.jnlp</CODE>":</P>
+<TABLE class="table-program">
+  <COLGROUP>
+  <COL class="col-line-number">
+  <COL class="col-program">
+  <TBODY>
+  <TR>
+    <TD>
+<PRE class="text-right">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16</PRE></TD>
+    <TD>
+<PRE>&lt;?xml version="1.0" encoding="utf-8"?&gt;
+<SPAN class="color-comment">&lt;!-- JNLP File for WebStart Application --&gt;</SPAN>
+&lt;jnlp spec="1.0+" codebase="." href="hello.jnlp"&gt;
+  &lt;information&gt;
+    &lt;title&gt;Your title&lt;/title&gt;
+    &lt;vendor&gt;Your company&lt;/vendor&gt;
+    &lt;description&gt;Your description&lt;/description&gt;
+  &lt;/information&gt;
+ 
+  &lt;resources&gt;
+    &lt;j2se version="1.4+" /&gt;
+    &lt;jar href="<SPAN class="color-new">YourJarFile.jar</SPAN>" /&gt;
+  &lt;/resources&gt;
+ 
+  &lt;application-desc main-class="<SPAN class="color-new">YourAppMainClass</SPAN>" /&gt;
+&lt;/jnlp&gt;</PRE></TD></TR></TBODY></TABLE>
+<P>Again, no "<CODE>Main-Class</CODE>" attribute is needed in the JAR file, as 
+the main-class is identified in the <CODE>&lt;application-desc&gt;</CODE> tag's 
+"<CODE>main-class</CODE>" attribute.</P>
+<P>Read "<A href="https://www3.ntu.edu.sg/home/ehchua/programming/java/J4c_AppletWebstart.html">Java 
+Applet and WebStart App</A>" for more details.</P>
+<H4>Deploy as a JNLP Applet (JDK 1.6u14)</H4>
+<P>[TODO]</P>
+<H3 id="jarsign">Signing and Verifying a JAR file</H3>
+<P>A JAR file author can digitally sign the JAR file for ownership 
+authentication. The integrity of the files are also ensured by signing the hash 
+of each of the files.</P>
+<P>Public Key Infrastructure (PKI) is used for digital signature.  PKI uses a 
+pair of keys - a private key, which should be kept privately and securely by the 
+owner, and a public key, which can be made available publicly.  The private key 
+is used to encrypt the file, which can be decrypted using the corresponding 
+public key.  Suppose that you manage to decrypt using Alice's public key, the 
+information must have been encrypted using Alice's private key.  Since only 
+Alice (but no one else) has the private key, the signer must be Alice, the file 
+must have come from Alice, and Alice cannot deny the ownership.</P>
+<P>There is a problem though: How to be certain that the public key belongs to 
+Alice?  A Certification Authority (CA) issues a digital certificate to Alice, 
+which contains the public key of Alice.  This digital certificate is in turns 
+signed using the CA's private key, and requires CA's public key to verify and 
+authenticate.  CA's public key is usually pre-configured into the operating 
+systems (or browsers), and can be trusted.</P>
+<P>When you sign a JAR file, your certificate (contains the public key) is 
+placed inside the JAR file, so that anyone can verify your signature.</P>
+<P>The digest (or hash) is computed for every file in the JAR and included 
+inside the manifest, e.g.,</P>
+<PRE class="color-example">Name: Hello.class
+SHA1-Digest: (a 160-bit hash value for the file)</PRE>
+<P>When the JAR file is signed, a signature file with extension 
+<CODE>".SF"</CODE> is created in the directory <CODE>META-INF</CODE>.  The 
+digest value of each file is signed (or encrypted) using the signer's private 
+key. e.g.,</P>
+<PRE class="color-example">Name: Hello.class
+SHA1-Digest: (digest value encrypted using signer's private key)</PRE>
+<P>In addition to the signature file, a signature block file (with extension 
+"<CODE>.DSA</CODE>" for the default Digital Signature Algorithm) is created in 
+directory <CODE>META-INF</CODE>.  This file includes the digital signature for 
+the JAR file, and the digital certificate and the public key of the signer.</P>
+<H5>Signing JAR files with a Self-Signed (Test) Certificate</H5>
+<P>JDK provides utilities "<CODE>keytool</CODE>" for managing public/private 
+keys and digital certificates; and "<CODE>jarsigner</CODE>" for signing the JAR 
+files.  The step for signing a JAR file with a self-signed (test) certificate is 
+as follows:</P>
+<OL>
+  <LI>Use <CODE>keytool</CODE> to generate a pair of public and private keys 
+  (<CODE>-genkey</CODE> option) for a certain <EM><CODE>providerName</CODE></EM> 
+  (<CODE>–alias</CODE> option) and keep in a "<CODE>keystore</CODE>" called 
+  <EM><CODE>keyStoreName</CODE></EM> (<CODE>–keystore</CODE> option) as follows. 
+  A new keystore will be created if it does not exist.  The keystore is 
+  typically called "<CODE>.keystore</CODE>" and placed in the user's home 
+  directory (denoted as <CODE>~</CODE> in Unix).   
+<PRE class="color-command">cd <EM>keystore-directory</EM>
+  <SPAN class="color-comment">// e.g. cd ~      (for Ubuntu/Mac)</SPAN>
+keytool -genkey -alias <EM>providerName</EM> -keystore <EM>keyStoreName</EM> -validity <EM>days</EM>
+  <SPAN class="color-comment">// e.g. keytool –genkey –alias alice –keystore .keyStore</SPAN></PRE> 
+   The <CODE>-validity</CODE> specifies the number of days the key-pair is 
+  valid, with default of 180. You need to provide the keystore's password, and 
+  the particulars of the provider name.</LI>
+  <LI>For production, you need to pay a CA (Certificate Authority) to issue you 
+  a digital certificate (by signing your public key with the CA's private key) 
+  in X.509 format (Read "keytool" manual @ JDK doc on how to create 
+  certificate). <BR>  For testing, you could create a "self-signed" certificate, 
+  by signing your public key with your private key into a X.509 certificate. A 
+  self-signed certificate cannot be authenicated.<BR>To create a self-signed 
+  certificate, use <CODE>keytool</CODE> with <CODE>-selfcert</CODE> option for 
+  the person <EM><CODE>providerName</CODE></EM> (<CODE>–alias</CODE> option), 
+  whose public and private keys are kept in the 
+  <EM><CODE>keyStoreName</CODE></EM> (<CODE>-keystore</CODE> option), for 
+  validity period (of the certificate) in days as follows.   
+<PRE class="color-command">cd <EM>keystore-directory</EM>
+keytool -selfcert -alias <EM>providerName</EM> -keystore <EM>keyStoreName</EM> -validity <EM>days</EM></PRE>
+  <P>To list the contents of keystore, you can issue:</P>
+<PRE class="color-command">keytool -list -keystore <EM>keyStoreName</EM></PRE></LI>
+  <LI>Finally, use the "<CODE>jarsigner</CODE>" utility to sign a JAR file 
+  "<EM><CODE>fileName</CODE></EM><CODE>.jar</CODE>" with the self-signed 
+  certificate of <CODE><EM>providerName</EM></CODE>, which is kept in 
+  <EM><CODE>keyStore</CODE></EM> (<CODE>-keystore</CODE>) as follows:   
+<PRE class="color-command">jarsigner –keystore <EM>keyStoreName</EM> <EM>fileName</EM>.jar <EM>providerName</EM></PRE></LI>
+  <LI>To verify a JAR file, you can use <CODE>–verify</CODE> option of 
+  <CODE>jarsigner</CODE>: 
+<PRE class="color-command">jarsiger –verify <EM>fileName.jar</EM>
+</PRE></LI></OL>
+<H3>More on  <SPAN class="font-code">jar</SPAN> Tool</H3>
+<P>As mentioned, you can easily inspect JAR files using ZIP programs such as 
+WinZIP or WinRAR. Nonetheless, you can also use the command-line jar tool, which 
+is pretty clumpy, but described here for completeness!</P>
+<H5>List Table of Content of JAR File (<SPAN class="font-code">t</SPAN>)</H5>
+<P>To <EM>list</EM> the table of contents of a jar file, use option 
+<CODE>'t'</CODE>, as shown:</P>
+<PRE class="color-command">&gt; jar tvf <EM>jarFile</EM>
+</PRE>
+<P>The <CODE>'v'</CODE> (verbose) option displays the information messages; the 
+<CODE>'f'</CODE> (file) option specifies the name of the jar-file.</P>
+<H5>Extract JAR file (<SPAN class="font-code">x</SPAN>)</H5>
+<P>To <EM>extract</EM> the contents an entire JAR file, use option 
+<CODE>'x'</CODE>:</P>
+<PRE class="color-command">&gt; jar xvf <EM>jarFile</EM>
+</PRE>
+<P>To <EM>extract specific file(s)</EM> from a JAR file, use option 
+<CODE>'x'</CODE> and specify the file(s) to be extracted:</P>
+<PRE class="color-command">&gt; jar xvf <EM>jarFile</EM> <EM>filesToExtract</EM>
+</PRE>
+<H5>Update JAR File (<SPAN class="font-code">u</SPAN>)</H5>
+<P>To update JAR file, use <CODE>'u'</CODE> option::</P>
+<PRE class="color-command">&gt; jar uvf <EM>jarFile</EM> <EM>inputFiles</EM></PRE>
+<H5>Add Index to JAR File (<SPAN class="font-code">i</SPAN>)</H5>
+<P>Use option <CODE>'i'</CODE> to generate index information in a file called 
+<CODE>INDEX.LIST</CODE> inside the specified <EM>jarfile</EM>, which contains 
+location information for each package in JAR file and all the JAR files 
+specified in the <CODE>Class-Path</CODE> attribute.</P>
+<PRE class="color-command">&gt; jar i <EM>jarFile</EM></PRE>
+<H3>Processing JAR Files and JAR API</H3>
+<P>The API reference for "Java Archive (JAR) Files" is available @ <A href="http://docs.oracle.com/javase/7/docs/technotes/guides/jar/index.html">http://docs.oracle.com/javase/7/docs/technotes/guides/jar/index.html</A>.</P>
+<H4 id="jarread">Reading Resources from JAR File - <SPAN 
+class="font-code">ClassLoader</SPAN>'s <SPAN 
+class="font-code">getResource()</SPAN> and <SPAN 
+class="font-code">getResourceAsStream()</SPAN></H4>
+<P>Your programs often require reading resources (such as images, data files, 
+native libraries, <CODE>ResourceBundle</CODE> and properties-files) bundled in a 
+JAR file.  You can use <CODE>ClassLoader</CODE>'s method 
+<CODE>getResource()</CODE> or <CODE>getResourceAsStream()</CODE> to access the 
+JAR (as well as the regular file sytem). <CODE>getResource()</CODE> returns a 
+<CODE>java.net.URL</CODE>; while <CODE>getResourceAsStream()</CODE> returns an 
+<CODE>java.io.InputStream</CODE>.</P>
+<P>For example,</P>
+<PRE class="color-example">String filename = "images/duke.gif";
+java.net.URL imgURL = this.getClass().getClassLoader().getResource(filename);  <SPAN class="color-comment">// 1</SPAN>
+<SPAN class="color-comment">// or</SPAN>
+java.net.URL imgURL = this.getClass().getResource(filename);  <SPAN class="color-comment">// 2</SPAN></PRE>
+<P>The difference is [1] and [2] is that the <EM>filename</EM> in [1] is 
+relative to the project root; while [2] is relative to the current class-file. 
+Suppose that this class is <CODE>mypackage.myClass</CODE> and stored as 
+<CODE>somepath\mypackage\myClass.class</CODE>. [1] asks for 
+<CODE>somepath\images\duke.gif</CODE>, while [2] asks for 
+<CODE>somepath\mypackage\image\duke.gif</CODE>.</P>
+<H4>Package <SPAN class="font-code">java.util.jar</SPAN></H4>
+<UL>
+  <LI>Class <CODE>JarFile</CODE>: used to read the contents of a jar file from 
+  any file that can be opened with <CODE>java.io.RandomAccessFile</CODE>.</LI>
+  <LI>Class <CODE>JarEntry</CODE>: represent an entry in a JAR file.</LI>
+  <LI>Class <CODE>Manifest</CODE>: used to maintain manifest entries of 
+  "<CODE>name: value</CODE>" pairs.</LI>
+  <LI>Class <CODE>Attributes</CODE>: maps manifest attribute names to their 
+  values.</LI>
+  <LI>Class <CODE>Attributes.Name</CODE>:  inner class of Attributes, 
+  representing the attribute names.</LI></UL>
+<P>Example:</P>
+<PRE class="color-example">JarFile jarfile = new JarFile(jarFileName);
+Manifest mf = jarfile.getManifestI();
+Attributes attrs = mf.getMainAttributes();
+String mainClassName = attrs.getValue(Attributes.Name.MAIN_CLASS);</PRE>
+<P class="references">REFERENCES &amp; RESOURCES</P>
+<OL>
+  <LI><CODE>jar</CODE> - The Java Archive Tool @ <A href="http://docs.oracle.com/javase/7/docs/technotes/tools/windows/jar.html">http://docs.oracle.com/javase/7/docs/technotes/tools/windows/jar.html</A>.</LI>
+  <LI>Java Archive (JAR) Files @ <A href="http://docs.oracle.com/javase/7/docs/technotes/guides/jar/index.html">http://docs.oracle.com/javase/7/docs/technotes/guides/jar/index.html</A>.</LI>
+  <LI>JAR Manifest Format @ <A href="http://docs.oracle.com/javase/7/docs/technotes/guides/jar/jar.html#JAR_Manifest">http://docs.oracle.com/javase/7/docs/technotes/guides/jar/jar.html#JAR_Manifest</A>.</LI></OL></DIV><!-- End the content-main division --> 
+<DIV id="content-footer">
+<P>Latest version tested: JDK 1.7.3<BR>Last modified: May, 2012</P></DIV></DIV><!-- End the wrap-inner division --> <!-- footer filled by JavaScript --> 
+<DIV class="header-footer" id="footer">
+<P>&nbsp;</P></DIV></DIV><!-- End the wrap-outer division --> </BODY></HTML>

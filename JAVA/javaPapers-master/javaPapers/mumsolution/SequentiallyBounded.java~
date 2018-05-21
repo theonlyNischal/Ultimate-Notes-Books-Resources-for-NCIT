@@ -1,0 +1,13 @@
+class SequentiallyBounded
+{
+  static int isSequentiallyBounded(int []a)
+  {
+    
+  }
+  public static void main(String args[])
+  {
+    int []a={2,3,3};
+    int x=isSequentiallyBounded(a);
+    System.out.println(x);
+  }
+}

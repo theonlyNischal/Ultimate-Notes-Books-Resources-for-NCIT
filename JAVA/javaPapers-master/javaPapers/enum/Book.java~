@@ -1,0 +1,21 @@
+enum Book
+{
+  Java(1000),VB(300),C++(400);
+  private int price;
+  public void setPrice(int p)
+  {
+    price=p;
+  }
+  public int getPrice()
+  {
+    return price;
+  }
+}
+class EnumTest
+{
+  public static void main(String args[])
+  {
+    Book b1=Book.Java;
+    System.out.println(b1.getPrice());
+  }
+}

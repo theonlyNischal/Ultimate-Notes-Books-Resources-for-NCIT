@@ -1,0 +1,30 @@
+The Model-View-Controller Architecture 
+(Swing MVC connection)
+----------------------------------------------
+Swing uses the model-view-controller architecture (MVC) as the fundamental design behind each of its components. Essentially, MVC breaks GUI components into three elements. Each of these elements plays a crucial role in how the component behaves.
+
+Model
+------
+--> The model encompasses the state data for each component.There are different models for different types of components. For example, the model of a scrollbar component might contain information about the current position of its adjustable “thumb,” its minimum and maximum values. A menu, on the other hand, may simply contain a list of the menu items     the user can select from. Note that this information remains the same no matter how the component is painted on the screen; model data always exists independent of the component’s visual representation.
+
+View
+------
+--> The view refers to how you see the component on the screen.     For eg. how views can differ,we can look at an     application window on two different GUI platforms. Almost     all window frames will have a titlebar spanning the top of the window. However, the titlebar may have a close box on the left side (MacOS platform), or it may have the close box on the right side (as in the Windows platform). 
+
+Controller
+-----------
+--> The controller is the portion of the user interface that     dictates how the component interacts with events. Events     come in many forms — a mouse click, gaining or losing focus, a keyboard event that triggers a specific menu command. 
+    The controller decides how each component will react to the event.
+
+
+
+
+
+
+Note:
+ 
+--> Swing actually makes use of a simplified variant of the MVC      design called the "model-delegate".
+-->This design combines the view and the controller object into    a single element that draws the component to the screen and    handles GUI events known as the UI delegate.
+
+-->The model is responsible for maintaining information about    the component’s state. 
+-->The UI delegate is responsible for maintaining information    about how to draw the component on the screen. In addition,      the UI delegate reacts to various events that propagate    through the component. 

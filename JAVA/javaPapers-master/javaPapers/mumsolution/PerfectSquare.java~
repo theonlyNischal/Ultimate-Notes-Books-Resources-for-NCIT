@@ -1,0 +1,21 @@
+class PerfectSquare
+{
+  static int nextPerfectSquare(int n)
+  {
+    int c=++n; boolean flag=true;
+    int i=0;
+    while(flag)
+    {
+      if(c==i*i)
+      {flag=false;
+        break;}
+      i++;
+    }
+    return c;
+  }
+  public static void main(String args[])
+  {
+    int check=nextPerfectSquare(1);
+    System.out.println(check);
+  }
+}

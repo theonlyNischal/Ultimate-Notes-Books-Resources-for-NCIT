@@ -1,0 +1,9 @@
+Using isAlive() and join()
+--------------------------------------
+isAlive()--> returns true if the thread upon which it is called is alive otherwise it returns false.
+Its method signature is:
+		final boolean isAlive()
+
+join()--> waits until the thread upon which it is called terminates.
+Its method signature is:
+	final void join() throws InterruptedException

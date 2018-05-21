@@ -1,0 +1,16 @@
+import java.awt.*;
+import java.applet.*;
+
+class PassParam extends Applet
+{
+  String color="";
+  public void start()
+  {
+    color=getParameter("color");
+  }
+  public void paint(Graphics g)
+  {
+    g.setBackground(Color.color);
+  }
+    
+}

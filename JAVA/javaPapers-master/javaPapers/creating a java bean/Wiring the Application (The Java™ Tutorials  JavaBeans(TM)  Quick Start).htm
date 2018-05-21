@@ -1,0 +1,559 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<!-- saved from url=(0066)http://docs.oracle.com/javase/tutorial/javabeans/quick/wiring.html -->
+<!--?xml version="1.0" encoding="utf-8"?--><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><HTML 
+lang="en-US" xmlns="http://www.w3.org/1999/xhtml"><HEAD><META 
+content="IE=10.000" http-equiv="X-UA-Compatible">
+         <TITLE>Wiring the Application (The Java™ Tutorials &gt;                 
+   JavaBeans(TM) &gt; Quick Start) </TITLE> 
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META http-equiv="X-UA-Compatible" content="IE=edge">      
+<META name="description" content="This JavaBean Java tutorial describes using the JavaBeans API to develop JavaBean components"> 
+     
+<META name="keywords" content="java programming, learn java, java sample code, javabean, bean persistence, java introspection, beancontext"> 
+        
+<STYLE type="text/css">
+    body {
+        margin-left:10px;
+        margin-right:10px;
+        line-height: 1.5;
+        FONT-FAMILY: Arial, Helvetica, sans-serif; 
+        font-size: 0.8em;
+    }
+    
+    a:link{text-decoration:none; color:#09569d;}
+    a:visited{text-decoration:none; color: #3a87cf;}
+    a:hover{text-decoration:underline; }
+        
+    code{
+        font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .header-container {
+        background-color: #fff;
+        border-bottom: 1px solid #C1CFDA;
+        -webkit-box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+        box-shadow: 0 2px 2px rgba(117, 163, 231, 0.1);
+    }
+    
+    .bookwrapper {
+        width: auto;
+        margin: auto;
+    }
+    
+    .clearfix {
+    }
+    
+    .clearfloat {
+        clear: both;
+        overflow: auto;
+        height: 0px;
+        font-size: 1px;
+        line-height: 0px;
+    }
+    
+    #brandProdName {
+        width: auto;
+        height: auto;
+    }
+    
+    #logocover {
+        display: block;
+        background: transparent url(../../images/oracle-java-logo.png) 0px 0px no-repeat;
+        height: 50px;
+        width: 229px;
+        float: left;
+    }
+    
+    #productName {
+        font-size: 16px;
+        position: relative;
+        top: 19px;
+        padding-left: 3px;
+        color: #457798;
+        white-space: nowrap;
+        width: 340px;
+    }
+
+
+    .FigureCaption   { 
+        font-family: sans-serif; 
+        text-align: center;
+    }
+    
+    #TopBar_bl {        
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        margin-left: -110px;
+        margin-right: -100px;       
+		align: left;
+        height: 60px;
+    }
+    #TopBar_tr {
+        width: 100%;
+        height: 60px;
+    }
+    
+    #TopBar {
+        min-width:700px;
+        padding:25px 100px 10px;
+        margin-bottom:25px;
+        clear:both;
+        
+        border-bottom:1px solid #d2dde5;
+        border-radius: 3px;
+    
+        background:#efefef; /* Old browsers */
+        /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMmVmZjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: -moz-linear-gradient(top,  #ffffff 0%, #e2eff9 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e2eff9)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #ffffff 0%,#e2eff9 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #ffffff 0%,#e2eff9 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2eff9',GradientType=0 ); /* IE6-8 */
+        
+    }
+    
+    #TopBar_left {
+        line-height: 14px;
+        position: absolute;
+        padding-top: 30px;
+        padding-right: 30px;
+        padding-left: 30px;
+        text-align: left;
+        font: 13px/20px Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        color: #333;
+    }
+    
+    #TopBar_right {
+        line-height: 12px;
+        float: right;
+        padding-top: 10px;
+        padding-right: 30px;
+        text-align: left;
+    }
+    
+
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    
+     
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 10px;
+        margin: 3px;
+        padding: 0;
+    }
+ 
+    #BreadCrumbs {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    
+    #BreadCrumbs a {
+        color:#09569d;
+    }
+    
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #F90000;
+    }
+    
+    #PageContent{
+        margin: 0 5px 0 20px;
+    }
+    
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+    }
+    
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    
+    .LeftBar_hidden {
+        display: none;
+    }
+    
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;       
+    }
+    
+    .footertext {
+        font-size: 10px;
+        font-family: sans-serif; 
+        margin-top: 1px;
+    }
+
+    .NavBit  {
+        padding: 15px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    
+    #TagNotes {
+        text-align: right;        
+    }
+    
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    
+    #Contents a, .NavBit a, #TagNotes a {
+        color:#09569d;
+    }
+    
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em;
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #333;
+		
+		
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+	
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h1, h2, h3, h4, h5 {
+        color: #333;
+        
+    }
+
+    h1 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+
+    #ToggleLeft {
+        display: none;
+    }
+    
+    .note {
+        margin: 0 30px 0px 30px;
+    }
+    
+    .codeblock {
+        margin: 0 30px 0px 30px;
+		font-size:12px;
+		font-family:Monaco,Courier,"Courier New";
+    }
+    
+    .tocli {
+        list-style-type:none;
+    }
+
+    .betadraft {
+        color: red;
+    }
+</STYLE>
+ 
+<SCRIPT type="text/javascript">
+/* <![CDATA[ */
+    function leftBar() {
+        var nameq = 'tutorial_showLeftBar='
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookieString = cookies[i];
+            while (cookieString.charAt(0) == ' ') {
+                cookieString = cookieString.substring(1, cookieString.length);
+            }
+            if (cookieString.indexOf(nameq) == 0) {
+                cookieValue =  cookieString.substring(nameq.length,
+                        cookieString.length);
+                return cookieValue == 'yes';
+            }
+        }
+        return true;
+    }
+
+    function showLeft(b) {
+        var contents = document.getElementById("LeftBar");
+        var main = document.getElementById("MainFlow");
+        var toggle = document.getElementById("ToggleLeft");
+        if (b) {
+            contents.className = "LeftBar_shown";
+            main.className = "MainFlow_indented";
+            toggle.innerHTML = "Hide TOC";
+            document.cookie = 'tutorial_showLeftBar=yes; path=/';
+        } else {
+            contents.className = "LeftBar_hidden";
+            main.className = "MainFlow_wide";
+            toggle.innerHTML = "Show the TOC";
+            document.cookie = 'tutorial_showLeftBar=no; path=/';
+        }
+    }
+
+    function toggleLeft() {
+        showLeft(document.getElementById("LeftBar").className ==
+                "LeftBar_hidden");
+        document.getElementById("ToggleLeft").blur();
+    }
+
+    function load() {
+        showLeft(leftBar());
+        document.getElementById("ToggleLeft").style.display="inline";
+    }
+
+    function showCode(displayCodePage, codePath) {
+        var codePathEls = codePath.split("/");
+        var currDocPathEls = location.href.split("/");
+        //alert ("codePathEls = " + codePathEls + "\n" + "currDocPathEls = " + currDocPathEls);
+        currDocPathEls.pop(); // remove file name at the end
+        while (codePathEls.length > 0) {
+            if (codePathEls[0] == "..") {
+                codePathEls.shift();
+                currDocPathEls.pop();
+            } else {
+                break;
+            }
+        }
+        var fullCodePath = currDocPathEls.join("/") + "/" + codePathEls.join("/");
+        //alert ("fullCodePath = " + fullCodePath );
+        if (codePath.indexOf(".java") != -1 || codePath.indexOf(".jnlp") != -1) {
+            window.location.href = displayCodePage + "?code=" + encodeURI(fullCodePath);
+        } else {
+            window.location.href = fullCodePath;
+        }
+    }
+/* ]]> */    
+</SCRIPT>
+     
+<META name="GENERATOR" content="MSHTML 10.00.9200.16578"></HEAD> 
+<BODY onload="load()"><NOSCRIPT>        A browser with JavaScript enabled is 
+required for this page to operate properly.     </NOSCRIPT>         <!-- header --> 
+    
+<DIV class="header-container">
+<DIV class="bookwrapper  clearfix">
+<DIV id="brandProdName">
+<DIV id="logocover"></DIV>
+<DIV id="productName">Documentation</DIV></DIV><BR 
+class="clearfloat"></DIV></DIV>
+<DIV id="TopBar">
+<DIV id="TopBar_tr">
+<DIV id="TopBar_tl">
+<DIV id="TopBar_br">
+<DIV id="TopBar_bl">
+<DIV id="TopBar_left">                            The Java™ Tutorials            
+             </DIV>
+<DIV id="TopBar_right"><A href="http://www.oracle.com/technetwork/java/javase/downloads/java-se-7-tutorial-2012-02-28-1536013.html" 
+target="_blank">Download Ebooks</A><BR><A href="http://www.oracle.com/technetwork/java/javase/downloads/index.html" 
+target="_blank">Download JDK</A>                             <BR><A href="http://docs.oracle.com/javase/tutorial/search.html" 
+target="_blank">Search Java Tutorials</A>                             <BR><A id="ToggleLeft" 
+href="javascript:toggleLeft()">Hide TOC</A>                         
+</DIV></DIV></DIV></DIV></DIV></DIV>
+<DIV class="LeftBar_shown" id="LeftBar">
+<DIV id="Contents">
+<DIV class="linkLESSON"><A href="http://docs.oracle.com/javase/tutorial/javabeans/quick/index.html">Quick 
+Start</A></DIV>
+<DIV class="linkAHEAD"><A href="http://docs.oracle.com/javase/tutorial/javabeans/quick/project.html">Creating 
+a Project</A></DIV>
+<DIV class="linkAHEAD"><A href="http://docs.oracle.com/javase/tutorial/javabeans/quick/button.html">A 
+Button is a Bean</A></DIV>
+<DIV class="nolinkAHEAD">Wiring the Application</DIV>
+<DIV class="linkAHEAD"><A href="http://docs.oracle.com/javase/tutorial/javabeans/quick/addbean.html">Using 
+a Third-Party Bean</A></DIV></DIV></DIV>
+<DIV class="MainFlow_indented" id="MainFlow">
+<DIV class="PrintHeaders"><B>Trail:</B> JavaBeans(TM)         <BR><B>Lesson:</B> 
+Quick Start     </DIV>
+<DIV id="BreadCrumbs"><A href="http://docs.oracle.com/javase/tutorial/index.html" 
+target="_top">Home Page</A>                &gt;                 <A href="http://docs.oracle.com/javase/tutorial/javabeans/index.html" 
+target="_top">JavaBeans(TM)</A>                &gt;                 <A href="http://docs.oracle.com/javase/tutorial/javabeans/quick/index.html" 
+target="_top">Quick Start</A>             </DIV>
+<DIV class="NavBit"><A href="http://docs.oracle.com/javase/tutorial/javabeans/quick/button.html" 
+target="_top">«&nbsp;Previous</A>&nbsp;•&nbsp;<A href="http://docs.oracle.com/javase/tutorial/javabeans/TOC.html" 
+target="_top">Trail</A>&nbsp;•&nbsp;<A href="http://docs.oracle.com/javase/tutorial/javabeans/quick/addbean.html" 
+target="_top">Next&nbsp;»</A>             </DIV>
+<DIV id="PageTitle">
+<H1>Wiring the Application</H1></DIV>
+<DIV id="PageContent">
+<P>To wire the button and the label together, click on the <B>Connection 
+Mode</B> button in the visual designer toolbar.</P>
+<CENTER><IMG width="301" height="212" align="bottom" alt="Connection mode button in the visual designer toolbar" 
+src="Wiring%20the%20Application%20(The%20Java™%20Tutorials%20%20JavaBeans(TM)%20%20Quick%20Start)_files/connection-mode.png"></CENTER>
+<P>Click on the button in the <CODE>SnapFrame</CODE> form. NetBeans outlines the 
+button in red to show that it is the component that will be generating an 
+event.</P>
+<CENTER><IMG width="236" height="194" align="bottom" alt="NetBeans outlines the event-producing component" 
+src="Wiring%20the%20Application%20(The%20Java™%20Tutorials%20%20JavaBeans(TM)%20%20Quick%20Start)_files/SnapFrame-button-red.png"></CENTER>
+<P>Click on the label. NetBeans' <B>Connection Wizard</B> pops up. First you 
+will choose the event you wish to respond to. For the button, this is the 
+<B>action</B> event. Click on the <B>+</B> next to <B>action</B> and select 
+<B>actionPerformed</B>. Click <B>Next &gt;</B>.</P>
+<CENTER><IMG width="500" height="338" align="bottom" alt="Choose the source event" 
+src="Wiring%20the%20Application%20(The%20Java™%20Tutorials%20%20JavaBeans(TM)%20%20Quick%20Start)_files/SnapFrame-connection-1.png"></CENTER>
+<P>Now you get to choose what happens when the button fires its <B>action</B> 
+event. The <B>Connection Wizard</B> lists all the properites in the label bean. 
+Select <B>text</B> in the list and click <B>Next</B>.</P>
+<CENTER><IMG width="500" height="338" align="bottom" alt="Choose the destination property" 
+src="Wiring%20the%20Application%20(The%20Java™%20Tutorials%20%20JavaBeans(TM)%20%20Quick%20Start)_files/SnapFrame-connection-2.png"></CENTER>
+<P>In the final screen of the <B>Connection Wizard</B>, fill in the value you 
+wish to set for the <B>text</B> property. Click on <B>Value</B>, then type 
+<B>You pressed the button!</B> or something just as eloquent. Click 
+<B>Finish</B>.</P>
+<CENTER><IMG width="500" height="338" align="bottom" alt="Fill in a value" src="Wiring%20the%20Application%20(The%20Java™%20Tutorials%20%20JavaBeans(TM)%20%20Quick%20Start)_files/SnapFrame-connection-3.png"></CENTER>
+<P>NetBeans wires the components together and shows you its handiwork in the 
+source code editor.</P>
+<CENTER><IMG width="500" height="110" align="bottom" alt="The code for the connection" 
+src="Wiring%20the%20Application%20(The%20Java™%20Tutorials%20%20JavaBeans(TM)%20%20Quick%20Start)_files/SnapFrame-wired-code.png"></CENTER>
+<P>Click on the <B>Design</B> button in the source code toolbar to return to the 
+UI designer. Click <B>Run Main Project</B> or press <B>F6</B> to build and run 
+your project.</P>
+<CENTER><IMG width="346" height="284" align="bottom" alt="The Run Main Project button" 
+src="Wiring%20the%20Application%20(The%20Java™%20Tutorials%20%20JavaBeans(TM)%20%20Quick%20Start)_files/run-main-project.png"></CENTER>
+<P>NetBeans builds and runs the project. It asks you to identify the main class, 
+which is <CODE>SnapFrame</CODE>. When the application window pops up, click on 
+the button. You'll see your immortal prose in the label.</P>
+<CENTER><IMG width="422" height="340" align="bottom" alt="Look ma, no code!" 
+src="Wiring%20the%20Application%20(The%20Java™%20Tutorials%20%20JavaBeans(TM)%20%20Quick%20Start)_files/SnapFrame.png"></CENTER>
+<P>Notice that you did not write any code. This is the real power of JavaBeans — 
+with a good builder tool like NetBeans, you can quickly wire together components 
+to create a running application.</P></DIV>
+<DIV class="NavBit"><A href="http://docs.oracle.com/javase/tutorial/javabeans/quick/button.html" 
+target="_top">« Previous</A>             •             <A href="http://docs.oracle.com/javase/tutorial/javabeans/TOC.html" 
+target="_top">Trail</A>             •             <A href="http://docs.oracle.com/javase/tutorial/javabeans/quick/addbean.html" 
+target="_top">Next »</A>         </DIV></DIV>
+<HR class="clearfloat">
+
+<DIV id="Footer">
+<TABLE width="100%" border="0" cellspacing="0" cellpadding="5" summary="">
+  <TBODY>
+  <TR>
+    <TD>
+      <P class="footertext"><A name="license_info">Your use of this</A> page and 
+      all the material on pages under "The Java Tutorials" banner          is 
+      subject to these <A href="http://docs.oracle.com/javase/tutorial/information/cpyr.html">legal 
+      notices</A>.          </P>
+      <P class="footertext">Copyright © 1995, 2014 Oracle and/or its affiliates. 
+      All rights reserved.</P></TD>
+    <TD align="right">
+      <P class="footertext">Problems with the examples? Try <A href="http://docs.oracle.com/javase/tutorial/information/run-examples.html" 
+      target="_blank">Compiling and Running        the Examples: FAQs</A>.       
+        </P>
+      <P class="footertext">        Complaints? Compliments? Suggestions? <A 
+      href="http://docs.oracle.com/javase/feedback.html" target="_blank">Give    
+          us your feedback</A>.                </P></TD></TR></TBODY></TABLE></DIV>
+<DIV class="PrintHeaders"><B>Previous page:</B> A Button is a Bean         
+<BR><B>Next page:</B> Using a Third-Party Bean     </DIV><!-- Start SiteCatalyst code   --> 
+<SCRIPT language="JavaScript" src="Wiring%20the%20Application%20(The%20Java™%20Tutorials%20%20JavaBeans(TM)%20%20Quick%20Start)_files/s_code_download.js" type="text/javascript"></SCRIPT>
+ 
+<SCRIPT language="JavaScript" src="Wiring%20the%20Application%20(The%20Java™%20Tutorials%20%20JavaBeans(TM)%20%20Quick%20Start)_files/s_code.js" type="text/javascript"></SCRIPT>
+ <NOSCRIPT>A browser with JavaScript enabled is required for this page to 
+operate properly. </NOSCRIPT> <!-- ********** DO NOT ALTER ANYTHING BELOW THIS LINE ! *********** --> <!--  Below code will send the info to Omniture server --> 
+<SCRIPT language="javascript" type="text/javascript">var s_code=s.t();if(s_code)document.write(s_code)</SCRIPT>
+ <!-- End SiteCatalyst code -->  </BODY></HTML>

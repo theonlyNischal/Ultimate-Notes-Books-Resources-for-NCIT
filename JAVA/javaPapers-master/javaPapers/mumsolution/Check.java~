@@ -1,0 +1,26 @@
+class Check
+{
+  int nextPerfectSquare(int n)
+  {
+    int c;
+    boolean flag=true;
+    while(flag)
+    {
+      c=n+1;
+      for(int i=1;i<=c/2;i++)
+      {
+        if(i*i=c)
+        {
+          flag=false;
+          break;
+        }
+    }
+      if(flag==false)
+        return c;
+  }
+  public static void main(String args[])
+  {
+    int check=nextPerfectSquare(3);
+    System.out.println(check);
+  }
+}

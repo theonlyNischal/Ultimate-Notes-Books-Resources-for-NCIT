@@ -1,0 +1,12 @@
+Servlet Life Cycle:
+-->Three methods init(), service() and destroy()make up the servlet life cycle.
+-->When we give a URL on a browser, then the browser generates a HTTP request and sends it to the server.
+
+-->That HTTP request is received by the web server. The server maps this request to a particular servlet.
+
+-->The servlet is dynamically loaded into the address space of server.
+-->Then the servlet invokes init() method. init() is invoked only when the servlet is first loaded into memory. The initialization parameters are passed to the servlet via this method.
+
+-->After init(), service() method is invoked. It is called to process the HTTP request and formulate a HTTP response for the client. service() method is called for each HTTP request.
+-->If a server wants to unload the servlet from its memory, it calls destroy() method to free up any resources such as file handles that are allocated by the servlet. Important data may be saved to persistent store.
+

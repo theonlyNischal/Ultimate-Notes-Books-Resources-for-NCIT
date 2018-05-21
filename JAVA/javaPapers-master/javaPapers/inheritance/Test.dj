@@ -1,0 +1,14 @@
+//reading from console and displaying the output
+
+import java.io.*;
+class Test
+{
+  public static void main(String args[])throws Exception
+  {
+    BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+    System.out.println("Enter name: ");
+    String name=br.readLine();
+    System.out.println("Your name is: "+name);
+  }
+}
+    

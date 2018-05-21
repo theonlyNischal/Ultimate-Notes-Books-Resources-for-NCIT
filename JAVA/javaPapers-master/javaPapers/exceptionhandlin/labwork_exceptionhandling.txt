@@ -1,0 +1,7 @@
+1. Create your own exception class InsufficientBalanceException
+
+2. Create a class Customer with 
+    int id;String name;String acno;double amount;
+  create constructor to initialize the variables.
+   
+   Create a method void withdraw(double amt). check if    exception occurs.

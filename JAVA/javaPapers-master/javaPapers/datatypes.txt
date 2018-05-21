@@ -1,0 +1,24 @@
+1. Why java is strongly typed language?
+-->Java is a strongly typed programming language because every variable must be declared with a data type. A variable cannot start off life without knowing the range of values it can hold, and once it is declared, the data type of the variable cannot change.
+
+Primitive Types:
+-->byte, short, int, long, char, float, double and boolean
+Integers: byte, short, int and long
+Floating Point: float and double
+Character: char
+Boolean: boolean
+
+byte: 1 byte	-128 to 127
+short: 2 bytes	-32768 to 32767
+int: 4 bytes	-2147483648 to 2147483647
+long: 8 bytes	-9223372036854775808 to 9223372036854775807
+
+float: 4 bytes	1.4x10 -45 to 3.4x10 38
+double: 8 bytes	 4.9x10 -324 to 1.8x10 308
+
+char: 2 bytes   0 to 65536
+boolean: true or false value.
+
+Token:
+-->A token is the smallest element of a program that is meaningful to the compiler. 
+  whitespace, keywords, identifiers, literals, comments, separators(punctuators)

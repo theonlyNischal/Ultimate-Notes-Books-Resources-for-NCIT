@@ -1,0 +1,8 @@
+Serialization and De-Serialization:
+--------------------------------------
+-->The process of writing the state of an object into a persistent store i.e. file is called serialization.
+-->A class must implement Serializable interface (java.io package) so that its object can be stored in a file.
+
+-->The process of restoring the state of an object from a persistent store is called de-serialization.
+
+-->ObjectOutputStream class is used to write object to a file and ObjectInputStream is used to read object from a file.

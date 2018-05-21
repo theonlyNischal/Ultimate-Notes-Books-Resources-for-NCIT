@@ -1,0 +1,19 @@
+import java.awt.*;
+import javax.swing.*;
+
+class GridDemo
+{
+  public static void main(String args[])
+  {
+    JFrame frame=new JFrame();
+    frame.setLayout(new GridLayout(2,2,5,10));
+    
+    for(int i=1;i<=2;i++)
+    {
+      frame.add(new JButton("Button"+i));
+      frame.add(new JButton("Button"+i));
+    }
+    frame.setVisible(true);
+    frame.setSize(200,200);
+  }
+}

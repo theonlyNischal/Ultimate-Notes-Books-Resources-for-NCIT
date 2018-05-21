@@ -1,0 +1,69 @@
+import java.io.*;
+import java.net.*;
+
+class GUIServer extends JFrame implements ActionListener
+{
+  JTextField t1;
+  JTextArea ta;
+  JButton b1;
+  ServerSocket ss;
+  Socket s;
+  BufferedReader clientInput;
+  PrintWriter serverOutput;
+  GUIServer()
+  {
+    setLayout(new BorderLayout());
+    setTitle("Chat Server");
+    
+    ta=new JTextArea();
+    add(ta,BorderLayout.CENTER);
+    
+    JPanel p=new JPanel();
+    t1=new JTextField(20);
+    p.add(t1);
+    b1=new JButton("Send");
+    p.add(b1);
+    add(p,BorderLayout.SOUTH);
+    
+    b1.addActionListener(this);
+    setSize(300,300);
+    setVisible(true);
+  }
+  public static void main(String args[])
+  {
+    java.awt.EventQueue.invokeLater(new Runnable(){
+      public void run(){   
+      new GUIServer();
+      }
+    });
+    String msgin="";
+    try{
+      ss=new ServerSocket(9876);
+      s=ss.accept();
+      clientInput=new BufferedReader(new InputStreamReader(s.getInputStream()));
+      serverOutput=new PrintWriter(s.getOutputStream());
+      
+      while(!msg.equals("exit")){
+      msgin=clientInput.readLine();
+      ta.setText(ta.getText().trim()+"\n"+msgin);
+      }
+      ss.close();
+      s.close();
+      clientInput.close();
+      serverOutput.close();
+    }
+    catch(Exception e)
+    {
+      System.out.println(e);
+    }
+  }
+  public void actionPerformed(ActionEvent e)
+  {
+    String userInput=t1.getText();
+    if(e.getSource()==b1)
+    {
+      serverOutput.println(userInput);
+    }
+     
+  }
+  }

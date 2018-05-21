@@ -1,0 +1,315 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<!-- saved from url=(0049)http://www.javacamp.org/moreclasses/rmi/rmi6.html -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"><HTML 
+lang="en"><HEAD><META content="IE=5.0000" http-equiv="X-UA-Compatible">
+ 
+<META http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+<META name="author" value="Judy XU"> 
+<META name="email" value="webmaster@javacamp.org"> 
+<META name="keywords" content="SCJP,SCJD,Java,Web design,webmaster,scwcd,Certification,training,course,Java programmer,assessment,test engine,study notes,Learning kits,study companion"> 
+
+<META name="description" content="How to create RMI application. Level I instruction: deploy and run"> 
+<TITLE>Remote Method Invocation (RMI) </TITLE> 
+<META name="GENERATOR" content="MSHTML 10.00.9200.16578"></HEAD> <!-- header --> 
+<BODY>
+<CENTER>
+<TABLE width="100%" border="0" cellspacing="0" cellpadding="0">
+  <TBODY>
+  <TR>
+    <TD width="33" align="RIGHT" valign="MIDDLE"><A href="http://www.javacamp.org/moreclasses/rmi/rmi5.html"><IMG 
+      width="33" height="13" alt="Previous lesson 5/6" src="Remote%20Method%20Invocation%20(RMI)_files/lefthand.gif" 
+      border="0"></A></TD>
+    <TD width="39" align="CENTER" valign="MIDDLE"><A href="http://www.javacamp.org/moreclasses/rmi/rmi.html">|home|</A></TD>
+    <TD width="33" align="left" valign="MIDDLE"><A href="http://www.javacamp.org/moreclasses/rmi/rmi21.html"><IMG 
+      width="33" height="13" alt="Next lesson RMI level 2" src="Remote%20Method%20Invocation%20(RMI)_files/righthand.gif" 
+      border="0"></A></TD>
+    <TD width="90%" align="CENTER" valign="MIDDLE">
+      <H1 align="center">Remote Method Invocation (Level I)</H1>
+      <H4 align="center">Compilation and 
+Execution</H4></TD></TR></TBODY></TABLE></CENTER>
+<P>Till now, you have created 4 classes: 
+<OL>
+  <LI><A 
+  href="http://www.javacamp.org/moreclasses/rmi/Payment.java">Payment.java</A>-- 
+  a remote interface  
+  <LI><A 
+  href="http://www.javacamp.org/moreclasses/rmi/PaymentImpl.java">PaymentImpl.java</A>-- 
+  a remote object class  
+  <LI><A 
+  href="http://www.javacamp.org/moreclasses/rmi/Server.java">Server.java</A>-- 
+  an RMI server  
+  <LI><A 
+  href="http://www.javacamp.org/moreclasses/rmi/Client.java">Client.java</A>-- 
+  an RMI client </LI></OL>
+<P>Make sure that you put these four files in one subdirectory. In this case, 
+ we put in C:\myrmi\ subdirectory. 
+<P>
+<TABLE width="100%" bgcolor="#ccccff" border="1">
+  <TBODY>
+  <TR>
+    <TD width="100%">
+<PRE> 
+C:\myrmi\Payment.java
+	 PaymentImpl.java
+         Server.java
+	 Client.java
+</PRE></TD></TR></TBODY></TABLE>
+<P>Compile them using the following commands: 
+<P>&nbsp;<FONT color="white" size="-2">C:\</FONT>&nbsp;&nbsp;&nbsp;<FONT color="white">Command 
+Prompt</FONT>
+<TABLE width="100%" bgcolor="#000000" border="1">
+  <THEAD bgcolor="blue"></THEAD>
+  <TBODY>
+  <TR>
+    <TD width="100%">
+<PRE> 
+<FONT color="white">
+C:\myrmi\javac -d . Payment.java PaymentImpl.java Server.java Client.java
+</FONT>
+</PRE></TD></TR></TBODY></TABLE>
+<P>Note that the switch "-d ." means "put the compiled files into the current 
+directory". If you want to put the compiled files to some specific directory for 
+example, c:\myrmi\mortgage, you will  use command instead: 
+<PRE>javac -d mortgage Payment.java .... etc.
+</PRE>
+<P>Now, you can try the client\server system on your own computer.  You may be 
+wondering how it could be to use one computer to try a client\server system. 
+ Remember that, you can start different command-line windows to try it.  Because 
+every command-line window will get one distinguished Java Virtual Machine(JVM) 
+instance,  and the communication between two JVMs can be established in one 
+computer.  We will use localhost as a host for the server. 
+<P>Betty checked the RMI specification, found that a new feature for running an 
+RMI server is available. 
+<H4>New feature: you don't need to generate a stub class before you start the 
+server. The stub class will  be generated on the fly if you use jdk 1.5.0 
+version or above.</H4>
+<P>If you use jdk version below 1.5.0, you cannot run the examples listed here. 
+You must  use <B>rmic</B> utility to generate a stub class. If so, use the 
+following command to generate a stub class: 
+<PRE>set classpath=
+rmic -v1.2 Server
+</PRE>
+<P>A file with name Server_stub.class is generated for JVM communication. Now 
+you can go to the next step  to start rmiregistry and server. 
+<H4>You need to follow the steps below to run the server:</H4>
+<OL>
+  <LI>Start rmiregistry utility   
+  <LI>Start a server </LI></OL>
+<P>Let's start rmiregistry. First make sure the classpath is empty, then use 
+command as follows: 
+<P>&nbsp;<FONT color="white" size="-2">C:\</FONT>&nbsp;&nbsp;&nbsp;<FONT color="white">Command 
+Prompt</FONT>
+<TABLE width="100%" bgcolor="#000000" border="1">
+  <THEAD bgcolor="blue"></THEAD>
+  <TBODY>
+  <TR>
+    <TD width="100%">
+<PRE> 
+<FONT color="white">
+C:\myrmi\set classpath=
+C:\myrmi\start rmiregistry
+</FONT>
+</PRE></TD></TR></TBODY></TABLE>
+<P>Note that an empty command-line window will pop-up. Don't close it, minimize 
+it if you want. That window is for rmiregistry.exe program. 
+<P>&nbsp;<FONT color="white" size="-2">C:\</FONT>&nbsp;&nbsp;&nbsp;<FONT color="white">Command 
+Prompt</FONT>
+<TABLE width="100%" bgcolor="#000000" border="1">
+  <THEAD bgcolor="blue"></THEAD>
+  <TBODY>
+  <TR>
+    <TD width="100%">
+<PRE> 
+<FONT color="white">
+
+</FONT>
+</PRE></TD></TR></TBODY></TABLE>
+<P>Then, you can start a server window in the following command: 
+<P>&nbsp;<FONT color="white" size="-2">C:\</FONT>&nbsp;&nbsp;&nbsp;<FONT color="white">Command 
+Prompt</FONT>
+<TABLE width="100%" bgcolor="#000000" border="1">
+  <THEAD bgcolor="blue"></THEAD>
+  <TBODY>
+  <TR>
+    <TD width="100%">
+<PRE> 
+<FONT color="white">
+C:\myrmi\start java Server
+</FONT>
+</PRE></TD></TR></TBODY></TABLE>
+<P>The pop-up window will have the following printout which  indicates the 
+server is started successfully and ready to accept client connection.  
+<P>&nbsp;<FONT color="white" size="-2">C:\</FONT>&nbsp;&nbsp;&nbsp;<FONT color="white">Command 
+Prompt</FONT>
+<TABLE width="100%" bgcolor="#000000" border="1">
+  <THEAD bgcolor="blue"></THEAD>
+  <TBODY>
+  <TR>
+    <TD width="100%">
+<PRE> 
+<FONT color="white">
+Mortgage server is ready to listen...
+</FONT>
+</PRE></TD></TR></TBODY></TABLE>
+<P>Note that the RMI server we designed is not for one client connection.  It 
+can accept many-client connections simultaneously. 
+<H4>Start a client</H4>
+<P>When the server starts, you are ready to start a client. Please issue the 
+following command: 
+<P>&nbsp;<FONT color="white" size="-2">C:\</FONT>&nbsp;&nbsp;&nbsp;<FONT color="white">Command 
+Prompt</FONT>
+<TABLE width="100%" bgcolor="#000000" border="1">
+  <THEAD bgcolor="blue"></THEAD>
+  <TBODY>
+  <TR>
+    <TD width="100%">
+<PRE> 
+<FONT color="white">
+C:\myrmi\java Client
+</FONT>
+</PRE></TD></TR></TBODY></TABLE>
+<P>When the client starts, the <I>LocateRegistry.getRegistry("localhost")</I> 
+sends information to  the RMI registry which is held by the localhost(the Server 
+command-line window)  and asks to look for a remote object named  "Mortgage". 
+Since the server has such remote object, so the server sends an instance of stub 
+class back,  or we can say the client downloads the stub class from the 
+localhost server. When the client  gets the reference to the remote object, it 
+can use such reference to call remote method  <I>calculatePayment()</I> just 
+like to call a local method. This is the most beautiful thing we mentioned 
+earlier  for RMI technology. 
+<P>The following shows all commands and printout when you start the RMI server 
+and client system. 
+<P>&nbsp;<FONT color="white" size="-2">C:\</FONT>&nbsp;&nbsp;&nbsp;<FONT color="white">Command 
+Prompt</FONT>
+<TABLE width="100%" bgcolor="#000000" border="1">
+  <THEAD bgcolor="blue"></THEAD>
+  <TBODY>
+  <TR>
+    <TD width="100%">
+<PRE> 
+<FONT color="white">
+C:\myrmi&gt;javac -d . Payment.java PaymentImpl.java Server.java Client.java
+
+C:\myrmi&gt;set classpath=
+
+C:\myrmi&gt;start rmiregistry
+
+C:\myrmi&gt;start java Server
+
+C:\myrmi&gt;java Client
+Usage: java Client principal annualInterest years
+
+For example: java Client 80000 .065 15
+
+You will get the output like the following:
+
+The principal is $80000
+The annual interest rate is 6.5%
+The term is 15 years
+Your monthly payment is $696.89
+
+C:\myrmi&gt;java Client 150000 .060 15
+The principal is $150000
+The annual interest rate is 6.0%
+The term is 15 years
+Your monthly payment is $1265.79
+
+C:\myrmi&gt;
+</FONT>
+</PRE></TD></TR></TBODY></TABLE>
+<P>Congratulations!  You have successfully designed a simple RMI server\client 
+system.  
+<P>It is time for you to recap the process of designing an RMI server and client 
+system: 
+<OL>
+  <LI><A href="http://www.javacamp.org/moreclasses/rmi/rmi2.html">Design a 
+  remote interface.</A> 
+  <LI><A href="http://www.javacamp.org/moreclasses/rmi/rmi3.html">Design a 
+  remote object.</A> 
+  <LI><A href="http://www.javacamp.org/moreclasses/rmi/rmi4.html">Design an RMI 
+  server.</A> 
+  <LI><A href="http://www.javacamp.org/moreclasses/rmi/rmi5.html">Design an RMI 
+  client.</A> </LI></OL>
+<P>Betty felt so happy. She said to her colleague. <BR>"It's great to see 
+something actually work. I am going to use RMI server to publish the mortgage 
+calculator." 
+<P>Betty still has some doubts in her mind, like how to get the remote object 
+run at a specific TCP port, why the server is running all the time if no client 
+to connect it, it seems wasting resource? All these  issues will be discussed in 
+RMI level 2 tutorial. 
+<P>Note: if you follow the examples exactly, you will get same result. If you 
+use different subdirectory, or create  your own package, the commands used to 
+run server and client may be different. You are recommended to  use exact code 
+and commands to try the sample code if you are brand new to the RMI technology. 
+ If you did so, but failed to run, please  send your information to <A href="http://www.javacamp.org/contactus.html">javacamp.org</A>. 
+ Javacamp.org will try its best to help you run the sample programs 
+successfully. 
+<P>Any comments for the RMI (level I) tutorial? please feel free to fill <A 
+href="http://www.javacamp.org/moreclasses/rmi/rmifeedback.html">this form</A> 
+<H2>Check your skill</H2>
+<P>Compile and run the client/server system you created in the previous 
+sections.  
+<P>A possible solution: 
+<P>&nbsp;<FONT color="white" size="-2">C:\</FONT>&nbsp;&nbsp;&nbsp;<FONT color="white">Command 
+Prompt</FONT>
+<TABLE width="100%" bgcolor="#000000" border="1">
+  <THEAD bgcolor="blue"></THEAD>
+  <TBODY>
+  <TR>
+    <TD width="100%">
+<PRE> 
+<FONT color="white">
+C:\myrmi&gt;javac -d . Hello.java HelloImpl.java HelloServer.java HelloClient.java
+
+C:\myrmi&gt;set classpath=
+
+C:\myrmi&gt;start rmiregistry
+
+C:\myrmi&gt;start java HelloServer
+
+C:\myrmi&gt;java HelloClient
+Got info from server: Hello, Betty
+
+C:\myrmi&gt;
+</FONT>
+</PRE></TD></TR></TBODY></TABLE>
+<P>Note that: you will have two more command-line windows: One is for 
+rmiregistry which has nothing to  print out. The other window is for 
+HelloServer. The message from the server printed out  like the following. 
+<P>&nbsp;<FONT color="white" size="-2">C:\</FONT>&nbsp;&nbsp;&nbsp;<FONT color="white">Command 
+Prompt</FONT>
+<TABLE width="100%" bgcolor="#000000" border="1">
+  <THEAD bgcolor="blue"></THEAD>
+  <TBODY>
+  <TR>
+    <TD width="100%">
+<PRE> 
+<FONT color="white">Hello Server is ready to listen...</FONT>
+</PRE></TD></TR></TBODY></TABLE>
+<P>Note: you have to start HelloServer first before  you start the HelloClient. 
+<P>If you use Java 5 and got exception, please make a batch file to run all 
+commands at one time. Copy the following code to a notepad and save it as 
+run.bat. 
+<PRE>javac -d . Hello.java HelloImpl.java HelloServer.java HelloClient.java
+
+set classpath=
+
+start rmiregistry
+
+start java HelloServer
+
+java HelloClient
+</PRE>
+<P>At command line, type c:\run 
+<P align="right"><A href="http://www.javacamp.org/moreclasses/rmi/rmi.html">page 
+1&nbsp;</A> <A href="http://www.javacamp.org/moreclasses/rmi/rmi2.html">page 
+2&nbsp;</A> <A href="http://www.javacamp.org/moreclasses/rmi/rmi3.html">page 
+3&nbsp;</A> <A href="http://www.javacamp.org/moreclasses/rmi/rmi4.html">page 
+4&nbsp;</A> <A href="http://www.javacamp.org/moreclasses/rmi/rmi5.html">page 
+5&nbsp;</A> <A href="http://www.javacamp.org/moreclasses/rmi/rmi6.html">page 
+6&nbsp;</A> <A href="http://www.javacamp.org/moreclasses/rmi/rmi2.html"><A href="http://www.javacamp.org/moreclasses/rmi/rmi5.html"><IMG 
+width="33" height="13" alt="Previous lesson 5/6" src="Remote%20Method%20Invocation%20(RMI)_files/lefthand.gif" 
+border="0"></A> <A 
+href="http://www.javacamp.org/moreclasses/rmi/rmi.html">|home|</A> <A href="http://www.javacamp.org/moreclasses/rmi/rmi21.html"><IMG 
+width="33" height="13" alt="Next lesson RMI level 2" src="Remote%20Method%20Invocation%20(RMI)_files/righthand.gif" 
+border="0"></A> </P></BODY></HTML>

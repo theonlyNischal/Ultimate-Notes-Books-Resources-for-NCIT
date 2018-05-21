@@ -1,0 +1,528 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0057)http://www.tutorialspoint.com/java/java_sending_email.htm -->
+<!DOCTYPE html PUBLIC "" ""><!--[if lt IE 7 ]> <html lang="en" class="no-js ie6"> <![endif]--><!--[if IE 7 ]> <html lang="en" class="no-js ie7"> <![endif]--><!--[if IE 8 ]> <html lang="en" class="no-js ie8"> <![endif]--><!--[if IE 9 ]> <html lang="en" class="no-js ie9"> <![endif]--><!--[if (gt IE 9)|!(IE)]><!--><HTML 
+lang="en"><!--<![endif]--><HEAD><META content="IE=10.000" 
+http-equiv="X-UA-Compatible">
+ 
+<META charset="utf-8"> <TITLE>Java - Sending Email using JavaMail API</TITLE> 
+<LINK href="/favicon.ico" rel="shortcut icon" type="image/x-icon"> 
+<META name="description" content="Java Sending Email - Learning Java in simple and easy steps : A beginner's tutorial containing complete knowledge of Java Syntax Object Oriented Language, Methods, Overriding, Inheritance, Polymorphism, Interfaces, Packages, Collections, Networking, Multithreading, Generics, Multimedia, Serialization, GUI"> 
+<META name="Keywords" content="Java, Tutorials, Learning, Beginners, Basics, Object Oriented Language, Methods, Overriding, Inheritance, Polymorphism, Interfaces, Packages, Collections, Networking, Multithreading, Generics, Multimedia, Serialization, GUI"> 
+<META name="viewport" content="width=device-width,initial-scale=1,user-scalable=yes"> 
+<SCRIPT src="Java%20-%20Sending%20Email%20using%20JavaMail%20API_files/jquery.min.js" type="text/javascript"></SCRIPT>
+ 
+<SCRIPT src="Java%20-%20Sending%20Email%20using%20JavaMail%20API_files/mobile.js" type="text/javascript"></SCRIPT>
+ <LINK href="Java%20-%20Sending%20Email%20using%20JavaMail%20API_files/style.css" 
+rel="stylesheet" type="text/css"> <LINK href="Java%20-%20Sending%20Email%20using%20JavaMail%20API_files/prettify.css" 
+rel="stylesheet" type="text/css"> 
+<SCRIPT src="Java%20-%20Sending%20Email%20using%20JavaMail%20API_files/prettify.js" type="text/javascript"></SCRIPT>
+ 
+<STYLE type="text/css" media="screen">
+/* Java Scheme */
+#header{ 
+background:#F3943D !important;
+}
+#topmenu
+{
+background-color:#5382A1 !important;
+}
+#leftcol ul.menu li.heading 
+{
+background:#F3943D !important;
+border:1px solid #964800 !important;
+}
+#middlecol  {min-height:1520px; padding:0px;}
+</STYLE>
+ 
+<SCRIPT src="Java%20-%20Sending%20Email%20using%20JavaMail%20API_files/urchin.js" type="text/javascript"></SCRIPT>
+ 
+<SCRIPT type="text/javascript">
+_uacct = "UA-232293-6";
+urchinTracker();
+</SCRIPT>
+ 
+<META name="GENERATOR" content="MSHTML 10.00.9200.16578"></HEAD> 
+<BODY onload="prettyPrint()">
+<DIV id="header">
+<DIV class="wrapper">
+<H1 class="logo"><A href="http://www.tutorialspoint.com/index.htm">Tutorials 
+Point - Simply Easy Learning</A></H1>
+<DIV id="search">
+<FORM name="searchform" id="searchform" action="http://www.google.com/search" 
+method="get" target="_blank"><INPUT name="sitesearch" type="hidden" value="www.tutorialspoint.com"> 
+<INPUT name="as_q" id="s" onfocus="if (this.value == 'Search this site...') {this.value = '';}" 
+onblur="if (this.value == '') {this.value = 'Search this site...';}" type="text" 
+value="Search this site..."> <INPUT name="cof" type="hidden" value="FORID:11"> 
+<INPUT name="ie" type="hidden" value="ISO-8859-1"> <INPUT class="submit btn" 
+type="image" alt="Go" src="Java%20-%20Sending%20Email%20using%20JavaMail%20API_files/icon-search.png"> 
+</FORM></DIV></DIV></DIV>
+<DIV id="topmenu">
+<DIV class="wrapper">
+<DIV id="mobileleft"><A id="home" 
+href="http://www.tutorialspoint.com/index.htm"><IMG src="Java%20-%20Sending%20Email%20using%20JavaMail%20API_files/home-icon.png"></A> 
+</DIV>
+<DIV id="left"><A href="http://www.tutorialspoint.com/index.htm" 
+target="_top">Home </A> <A href="http://www.tutorialspoint.com/computer_programming_tutorials.htm">Programming 
+</A> <A href="http://www.tutorialspoint.com/java_technology_tutorials.htm">Java 
+</A> <A href="http://www.tutorialspoint.com/web_development_tutorials.htm">Web 
+</A> <A href="http://www.tutorialspoint.com/database_tutorials.htm">Databases 
+</A> <A href="http://www.tutorialspoint.com/academic_tutorials.htm">Academic</A> 
+<A title="Management Tutorials" href="http://www.tutorialspoint.com/management_tutorials.htm">Management</A> 
+<A title="Software Quality Tutorials" href="http://www.tutorialspoint.com/software_quality_tutorials.htm">Quality</A> 
+<A title="Telecom Tutorials" href="http://www.tutorialspoint.com/telecom_tutorials.htm">Telecom</A> 
+<A href="http://www.tutorialspoint.com/misc_tutorials.htm">More...</A> </DIV>
+<DIV id="mobileright"><A id="pull" href="http://www.tutorialspoint.com/#"><IMG 
+src="Java%20-%20Sending%20Email%20using%20JavaMail%20API_files/nav-icon.png"></A> 
+</DIV>
+<DIV id="right"><A href="http://www.tutorialspoint.com/references.htm" target="_top">REFERENCES</A> 
+| <A href="http://www.tutorialspoint.com/forums/index.php" 
+target="_top">FORUM</A> | <A href="http://www.tutorialspoint.com/about/index.htm" 
+target="_top">ABOUT</A> | <A href="http://www.tutorialspoint.com/about/contact_us.htm" 
+target="_top">CONTACT</A> </DIV></DIV></DIV>
+<DIV class="wrapper">
+<DIV id="leftcol">
+<DIV class="mini-logo"><IMG alt="Java Tutorial" src="Java%20-%20Sending%20Email%20using%20JavaMail%20API_files/java-mini-logo.png"></DIV>
+<UL class="menu">
+  <LI class="heading">Java Basics</LI>
+  <LI><A href="http://www.tutorialspoint.com/java/index.htm" target="_top">Java 
+  - Home</A></LI>
+  <LI><A href="http://www.tutorialspoint.com/java/java_overview.htm" target="_top">Java 
+  - Overview</A></LI>
+  <LI><A href="http://www.tutorialspoint.com/java/java_environment_setup.htm" 
+  target="_top">Java - Environment Setup</A></LI>
+  <LI><A href="http://www.tutorialspoint.com/java/java_basic_syntax.htm" target="_top">Java 
+  - Basic Syntax</A></LI>
+  <LI><A href="http://www.tutorialspoint.com/java/java_object_classes.htm" 
+  target="_top">Java - Object &amp; Classes</A></LI>
+  <LI><A href="http://www.tutorialspoint.com/java/java_basic_datatypes.htm" 
+  target="_top">Java - Basic Datatypes</A></LI>
+  <LI><A href="http://www.tutorialspoint.com/java/java_variable_types.htm" 
+  target="_top">Java - Variable Types</A></LI>
+  <LI><A href="http://www.tutorialspoint.com/java/java_modifier_types.htm" 
+  target="_top">Java - Modifier Types</A></LI>
+  <LI><A href="http://www.tutorialspoint.com/java/java_basic_operators.htm" 
+  target="_top">Java - Basic Operators</A></LI>
+  <LI><A href="http://www.tutorialspoint.com/java/java_loop_control.htm" target="_top">Java 
+  - Loop Control</A></LI>
+  <LI><A href="http://www.tutorialspoint.com/java/java_decision_making.htm" 
+  target="_top">Java - Decision Making</A></LI>
+  <LI><A href="http://www.tutorialspoint.com/java/java_numbers.htm" target="_top">Java 
+  - Numbers</A></LI>
+  <LI><A href="http://www.tutorialspoint.com/java/java_characters.htm" target="_top">Java 
+  - Characters</A></LI>
+  <LI><A href="http://www.tutorialspoint.com/java/java_strings.htm" target="_top">Java 
+  - Strings</A></LI>
+  <LI><A href="http://www.tutorialspoint.com/java/java_arrays.htm" 
+  target="_top">Java - Arrays</A></LI>
+  <LI><A href="http://www.tutorialspoint.com/java/java_date_time.htm" target="_top">Java 
+  - Date &amp; Time</A></LI>
+  <LI><A href="http://www.tutorialspoint.com/java/java_regular_expressions.htm" 
+  target="_top">Java - Regular Expressions</A></LI>
+  <LI><A href="http://www.tutorialspoint.com/java/java_methods.htm" target="_top">Java 
+  - Methods</A></LI>
+  <LI><A href="http://www.tutorialspoint.com/java/java_files_io.htm" target="_top">Java 
+  - Files and I/O</A></LI>
+  <LI><A href="http://www.tutorialspoint.com/java/java_exceptions.htm" target="_top">Java 
+  - Exceptions</A></LI></UL>
+<UL class="menu">
+  <LI class="heading">Java Object Oriented</LI>
+  <LI><A href="http://www.tutorialspoint.com/java/java_inheritance.htm" target="_top">Java 
+  - Inheritance</A></LI>
+  <LI><A href="http://www.tutorialspoint.com/java/java_overriding.htm" target="_top">Java 
+  - Overriding</A></LI>
+  <LI><A href="http://www.tutorialspoint.com/java/java_polymorphism.htm" target="_top">Java 
+  - Polymorphism</A></LI>
+  <LI><A href="http://www.tutorialspoint.com/java/java_abstraction.htm" target="_top">Java 
+  - Abstraction</A></LI>
+  <LI><A href="http://www.tutorialspoint.com/java/java_encapsulation.htm" 
+  target="_top">Java - Encapsulation</A></LI>
+  <LI><A href="http://www.tutorialspoint.com/java/java_interfaces.htm" target="_top">Java 
+  - Interfaces</A></LI>
+  <LI><A href="http://www.tutorialspoint.com/java/java_packages.htm" target="_top">Java 
+  - Packages</A></LI></UL>
+<UL class="menu">
+  <LI class="heading">Java Advanced</LI>
+  <LI><A href="http://www.tutorialspoint.com/java/java_data_structures.htm" 
+  target="_top">Java - Data Structures</A></LI>
+  <LI><A href="http://www.tutorialspoint.com/java/java_collections.htm" target="_top">Java 
+  - Collections</A></LI>
+  <LI><A href="http://www.tutorialspoint.com/java/java_generics.htm" target="_top">Java 
+  - Generics</A></LI>
+  <LI><A href="http://www.tutorialspoint.com/java/java_serialization.htm" 
+  target="_top">Java - Serialization</A></LI>
+  <LI><A href="http://www.tutorialspoint.com/java/java_networking.htm" target="_top">Java 
+  - Networking</A></LI>
+  <LI><A href="http://www.tutorialspoint.com/java/java_sending_email.htm" 
+  target="_top"><B>Java - Sending Email</B></A></LI>
+  <LI><A href="http://www.tutorialspoint.com/java/java_multithreading.htm" 
+  target="_top">Java - Multithreading</A></LI>
+  <LI><A href="http://www.tutorialspoint.com/java/java_applet_basics.htm" 
+  target="_top">Java - Applet Basics</A></LI>
+  <LI><A href="http://www.tutorialspoint.com/java/java_documentation.htm" 
+  target="_top">Java - Documentation</A></LI></UL>
+<UL class="menu">
+  <LI class="heading">Java Useful Resources</LI>
+  <LI><A href="http://www.tutorialspoint.com/java/java_quick_guide.htm" target="_top">Java 
+  - Quick Guide</A></LI>
+  <LI><A href="http://www.tutorialspoint.com/java/java_library_classes.htm" 
+  target="_top">Java - Library Classes</A></LI>
+  <LI><A href="http://www.tutorialspoint.com/java/java_useful_resources.htm" 
+  target="_top">Java Useful Resources</A></LI>
+  <LI><A href="http://www.tutorialspoint.com/javaexamples/index.htm" target="_top">Java 
+  - Examples</A></LI></UL>
+<UL class="menu">
+  <LI class="sreading">Selected Reading</LI>
+  <LI><A href="http://www.tutorialspoint.com/developers_best_practices/index.htm" 
+  target="_top">Developer's Best Practices</A></LI>
+  <LI><A href="http://www.tutorialspoint.com/effective_resume_writing.htm" 
+  target="_top">Effective Resume Writing</A></LI>
+  <LI><A href="http://www.tutorialspoint.com/computer_glossary.htm" target="_top">Computer 
+  Glossary</A></LI>
+  <LI><A href="http://www.tutorialspoint.com/computer_whoiswho.htm" target="_top">Who 
+  is Who</A></LI></UL></DIV><!-- leftcol --> 
+<DIV id="middlecol"><!-- PRINTING STARTS HERE --> 
+<DIV class="content">
+<H1>Java - Sending Email</H1>
+<DIV class="topgooglead">
+<DIV class="topadtag">Advertisements</DIV>
+<SCRIPT src="Java%20-%20Sending%20Email%20using%20JavaMail%20API_files/fCAD337WR.txt" async=""></SCRIPT>
+ <INS class="adsbygoogle top_ad_slot" style="display: inline-block;" 
+data-ad-slot="2813390526" data-ad-client="ca-pub-7133395778201029"></INS> 
+<SCRIPT>(adsbygoogle = window.adsbygoogle || []).push({});</SCRIPT>
+ </DIV>
+<HR>
+
+<DIV class="pre-btn"><A href="http://www.tutorialspoint.com/java/java_networking.htm">Previous 
+Page</A> </DIV>
+<DIV class="nxt-btn"><A href="http://www.tutorialspoint.com/java/java_multithreading.htm">Next 
+Page</A> </DIV>
+<DIV class="clearer"></DIV>
+<HR>
+
+<P>To send an e-mail using your Java Application is simple enough but to start 
+with you should have <B>JavaMail API</B> and <B>Java Activation Framework 
+(JAF)</B> installed on your machine.</P>
+<UL class="list">
+  <LI>
+  <P>You can download  latest version of <A href="http://java.sun.com/products/javamail/" 
+  target="_blank">JavaMail (Version 1.2)</A> from Java's standard 
+  website.</P></LI>
+  <LI>
+  <P>You can download  latest version of <A href="http://java.sun.com/products/javabeans/glasgow/jaf.html" 
+  target="_blank">JAF (Version 1.1.1)</A> from Java's standard 
+website.</P></LI></UL>
+<P>Download and unzip these files, in the newly created top level directories 
+you will find a number of jar files for both the applications.  You need to add 
+<B>mail.jar</B> and <B>activation.jar</B> files in your CLASSPATH.</P>
+<H2>Send a Simple E-mail:</H2>
+<P>Here is an example to send a simple e-mail from your machine. Here it is 
+assumed that your <B>localhost </B> is connected to the internet and capable 
+enough to send an email.</P>
+<PRE class="prettyprint">// File Name SendEmail.java
+
+import java.util.*;
+import javax.mail.*;
+import javax.mail.internet.*;
+import javax.activation.*;
+
+public class SendEmail
+{
+   public static void main(String [] args)
+   {    
+      // Recipient's email ID needs to be mentioned.
+      String to = "abcd@gmail.com";
+
+      // Sender's email ID needs to be mentioned
+      String from = "web@gmail.com";
+
+      // Assuming you are sending email from localhost
+      String host = "localhost";
+
+      // Get system properties
+      Properties properties = System.getProperties();
+
+      // Setup mail server
+      properties.setProperty("mail.smtp.host", host);
+
+      // Get the default Session object.
+      Session session = Session.getDefaultInstance(properties);
+
+      try{
+         // Create a default MimeMessage object.
+         MimeMessage message = new MimeMessage(session);
+
+         // Set From: header field of the header.
+         message.setFrom(new InternetAddress(from));
+
+         // Set To: header field of the header.
+         message.addRecipient(Message.RecipientType.TO,
+                                  new InternetAddress(to));
+
+         // Set Subject: header field
+         message.setSubject("This is the Subject Line!");
+
+         // Now set the actual message
+         message.setText("This is actual message");
+
+         // Send message
+         Transport.send(message);
+         System.out.println("Sent message successfully....");
+      }catch (MessagingException mex) {
+         mex.printStackTrace();
+      }
+   }
+}
+</PRE>
+<P>Compile and run this program to send a simple e-mail:</P>
+<PRE class="prettyprint">$ java SendEmail
+Sent message successfully....
+</PRE>
+<P>If you want to send an e-mail to multiple recipients then following methods 
+would be used to specify multiple e-mail IDs:</P>
+<PRE class="prettyprint">void addRecipients(Message.RecipientType type, 
+                   Address[] addresses)
+throws MessagingException
+</PRE>
+<P>Here is the description of the parameters:</P>
+<UL class="list">
+  <LI>
+  <P><B>type:</B> This would be set to TO, CC or BCC. Here CC represents Carbon 
+  Copy and BCC represents Black Carbon Copy. Example 
+  <I>Message.RecipientType.TO</I></P></LI>
+  <LI>
+  <P><B>addresses:</B> This is the array of email ID. You would need to use 
+  InternetAddress() method while specifying email IDs</P></LI></UL>
+<H2>Send an HTML E-mail:</H2>
+<P>Here is an example to send an HTML email from your machine. Here it is 
+assumed that your <B>localhost </B> is connected to the internet and capable 
+enough to send an email.</P>
+<P>This example is very similar to previous one, except here we are using 
+setContent() method to set content whose second argument is "text/html" to 
+specify that the HTML content is included in the message.</P>
+<P>Using this example, you can send as big as HTML content you like.</P>
+<PRE class="prettyprint">// File Name SendHTMLEmail.java
+
+import java.util.*;
+import javax.mail.*;
+import javax.mail.internet.*;
+import javax.activation.*;
+
+public class SendHTMLEmail
+{
+   public static void main(String [] args)
+   {
+      
+      // Recipient's email ID needs to be mentioned.
+      String to = "abcd@gmail.com";
+
+      // Sender's email ID needs to be mentioned
+      String from = "web@gmail.com";
+
+      // Assuming you are sending email from localhost
+      String host = "localhost";
+
+      // Get system properties
+      Properties properties = System.getProperties();
+
+      // Setup mail server
+      properties.setProperty("mail.smtp.host", host);
+
+      // Get the default Session object.
+      Session session = Session.getDefaultInstance(properties);
+
+      try{
+         // Create a default MimeMessage object.
+         MimeMessage message = new MimeMessage(session);
+
+         // Set From: header field of the header.
+         message.setFrom(new InternetAddress(from));
+
+         // Set To: header field of the header.
+         message.addRecipient(Message.RecipientType.TO,
+                                  new InternetAddress(to));
+
+         // Set Subject: header field
+         message.setSubject("This is the Subject Line!");
+
+         // Send the actual HTML message, as big as you like
+         message.setContent("&lt;h1&gt;This is actual message&lt;/h1&gt;",
+                            "text/html" );
+
+         // Send message
+         Transport.send(message);
+         System.out.println("Sent message successfully....");
+      }catch (MessagingException mex) {
+         mex.printStackTrace();
+      }
+   }
+}
+</PRE>
+<P>Compile and run this program to send an HTML e-mail:</P>
+<PRE class="prettyprint">$ java SendHTMLEmail
+Sent message successfully....
+</PRE>
+<H2>Send Attachment in E-mail:</H2>
+<P>Here is an example to send an email with attachment from your machine. Here 
+it is assumed that your <B>localhost </B> is connected to the internet and 
+capable enough to send an email.</P>
+<PRE class="prettyprint">// File Name SendFileEmail.java
+
+import java.util.*;
+import javax.mail.*;
+import javax.mail.internet.*;
+import javax.activation.*;
+
+public class SendFileEmail
+{
+   public static void main(String [] args)
+   {
+      
+      // Recipient's email ID needs to be mentioned.
+      String to = "abcd@gmail.com";
+
+      // Sender's email ID needs to be mentioned
+      String from = "web@gmail.com";
+
+      // Assuming you are sending email from localhost
+      String host = "localhost";
+
+      // Get system properties
+      Properties properties = System.getProperties();
+
+      // Setup mail server
+      properties.setProperty("mail.smtp.host", host);
+
+      // Get the default Session object.
+      Session session = Session.getDefaultInstance(properties);
+
+      try{
+         // Create a default MimeMessage object.
+         MimeMessage message = new MimeMessage(session);
+
+         // Set From: header field of the header.
+         message.setFrom(new InternetAddress(from));
+
+         // Set To: header field of the header.
+         message.addRecipient(Message.RecipientType.TO,
+                                  new InternetAddress(to));
+
+         // Set Subject: header field
+         message.setSubject("This is the Subject Line!");
+
+         // Create the message part 
+         BodyPart messageBodyPart = new MimeBodyPart();
+
+         // Fill the message
+         messageBodyPart.setText("This is message body");
+         
+         // Create a multipar message
+         Multipart multipart = new MimeMultipart();
+
+         // Set text message part
+         multipart.addBodyPart(messageBodyPart);
+
+         // Part two is attachment
+         messageBodyPart = new MimeBodyPart();
+         String filename = "file.txt";
+         DataSource source = new FileDataSource(filename);
+         messageBodyPart.setDataHandler(new DataHandler(source));
+         messageBodyPart.setFileName(filename);
+         multipart.addBodyPart(messageBodyPart);
+
+         // Send the complete message parts
+         message.setContent(multipart );
+
+         // Send message
+         Transport.send(message);
+         System.out.println("Sent message successfully....");
+      }catch (MessagingException mex) {
+         mex.printStackTrace();
+      }
+   }
+}
+</PRE>
+<P>Compile and run this program to send an HTML e-mail:</P>
+<PRE class="prettyprint">$ java SendFileEmail
+Sent message successfully....
+</PRE>
+<H2>User Authentication Part:</H2>
+<P>If it is required to provide user ID and Password to the e-mail server for 
+authentication purpose then you can set these properties as follows:</P>
+<PRE class="prettyprint"> props.setProperty("mail.user", "myuser");
+ props.setProperty("mail.password", "mypwd");
+</PRE>
+<P>Rest of the e-mail sending mechanism would remain as explained above.</P><BR>
+<HR>
+
+<DIV class="pre-btn"><A href="http://www.tutorialspoint.com/java/java_networking.htm">Previous 
+Page</A> </DIV>
+<DIV class="print-btn"><A href="http://www.tutorialspoint.com/cgi-bin/printpage.cgi" 
+target="_blank">Print Version</A> </DIV>
+<DIV class="pdf-btn"><A href="http://www.tutorialspoint.com/java/pdf/java_sending_email.pdf" 
+target="_blank" alt="Java - Sending Email using JavaMail API">PDF Version</A> 
+</DIV>
+<DIV class="nxt-btn"><A href="http://www.tutorialspoint.com/java/java_multithreading.htm">Next 
+Page</A> </DIV>
+<DIV class="clearer"></DIV>
+<HR>
+</DIV><!-- PRINTING ENDS HERE --> 
+<DIV class="bottomgooglead">
+<DIV class="bottomadtag">Advertisements</DIV>
+<SCRIPT src="Java%20-%20Sending%20Email%20using%20JavaMail%20API_files/fCAD337WR.txt" async=""></SCRIPT>
+ <INS class="adsbygoogle bottom_ad_slot" style="display: inline-block;" 
+data-ad-slot="2952991323" data-ad-client="ca-pub-7133395778201029"></INS> 
+<SCRIPT>(adsbygoogle = window.adsbygoogle || []).push({});</SCRIPT>
+ </DIV></DIV><!-- middlecol --> 
+<DIV id="rightcol"><!-- AddThis Button BEGIN --> 
+<DIV class="addthis">
+<DIV class="addthis_toolbox addthis_default_style"><A class="addthis_button_facebook"></A> 
+<A class="addthis_button_twitter"></A> 
+<SCRIPT type="text/javascript">
+<!--
+ document.write('<a class="addthis_button_google_plusone" g:plusone:count="false"></a>');
+//-->
+</SCRIPT>
+ <A class="addthis_button_linkedin"></A> <A class="addthis_button_email"></A> <A 
+class="addthis_button_compact"></A> </DIV>
+<SCRIPT src="Java%20-%20Sending%20Email%20using%20JavaMail%20API_files/addthis_widget.js" type="text/javascript"></SCRIPT>
+ </DIV><!-- AddThis Button END --> 
+<DIV class="localad"><A title="Modern Baby Names" href="http://www.modernindianbabynames.com/" 
+target="_blank" rel="nofollow">Modern Baby Names</A> </DIV>
+<DIV class="localad"><A title="Online Photo Editing" href="http://www.photofuntoos.com/" 
+target="_blank" rel="nofollow">Online Photo Editing</A> </DIV>
+<DIV class="rightgooglead">
+<DIV style="padding-bottom: 5px; padding-left: 10px;">Advertisements</DIV>
+<SCRIPT type="text/javascript"><!--
+google_ad_client = "pub-7133395778201029";
+google_ad_width = 160;
+google_ad_height = 600;
+google_ad_format = "160x600_as";
+google_ad_type = "image";
+google_ad_channel ="";
+//--></SCRIPT>
+ 
+<SCRIPT src="Java%20-%20Sending%20Email%20using%20JavaMail%20API_files/fCALKKY4B.txt" type="text/javascript"></SCRIPT>
+ </DIV></DIV><!-- rightcol --> 
+<DIV style="clear: both;"></DIV></DIV><!-- wrapper --> 
+<DIV id="footer">
+<DIV class="wrapper">
+<DIV id="bottommenu"><A href="http://www.tutorialspoint.com/asp.net/index.htm" 
+target="_top">ASP.NET </A> | <A href="http://www.tutorialspoint.com/jquery/index.htm" 
+target="_top">jQuery </A> | <A href="http://www.tutorialspoint.com/ajax/index.htm" 
+target="_top">AJAX </A> | <A href="http://www.tutorialspoint.com/ant/index.htm" 
+target="_top">ANT</A> | <A href="http://www.tutorialspoint.com/jsp/index.htm" 
+target="_top">JSP </A> | <A href="http://www.tutorialspoint.com/servlets/index.htm" 
+target="_top">Servlets </A> | <A href="http://www.tutorialspoint.com/log4j/index.htm" 
+target="_top">log4j </A> | <A href="http://www.tutorialspoint.com/ibatis/index.htm" 
+target="_top">iBATIS </A> | <A href="http://www.tutorialspoint.com/hibernate/index.htm" 
+target="_top">Hibernate </A> | <A href="http://www.tutorialspoint.com/jdbc/index.htm" 
+target="_top">JDBC </A> | <A href="http://www.tutorialspoint.com/struts_2/index.htm" 
+target="_top">Struts </A> | <A href="http://www.tutorialspoint.com/html5/index.htm" 
+target="_top">HTML5 </A> | <A href="http://www.tutorialspoint.com/sql/index.htm" 
+target="_top">SQL </A> | <A href="http://www.tutorialspoint.com/mysql/index.htm" 
+target="_top">MySQL </A> | <A href="http://www.tutorialspoint.com/cplusplus/index.htm" 
+target="_top">C++ </A> | <A href="http://www.tutorialspoint.com/unix/index.htm" 
+target="_top">UNIX </A> </DIV>
+<DIV id="copyright">
+<P>Copyright © 2014 by tutorialspoint. All Rights 
+Reserved.</P></DIV></DIV></DIV></BODY></HTML>

@@ -1,0 +1,21 @@
+#RightModule {
+	width: 212px; align: center;
+}
+#RightModule table {
+	margin: 0px; padding: 0px; border: 1px solid rgb(204, 204, 204); color: rgb(9, 81, 151); line-height: 18px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 14px; cellspacing: 0px;
+}
+.RowHeader {
+	margin: 0px; padding: 0px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 15px; background-color: rgb(32, 107, 162); cellspacing: 0px;
+}
+a:link {
+	color: rgb(9, 81, 151); text-decoration: none;
+}
+a:visited {
+	color: rgb(9, 81, 151); text-decoration: none;
+}
+a:active {
+	color: rgb(9, 81, 151); text-decoration: none;
+}
+a:hover {
+	color: rgb(9, 81, 151); text-decoration: underline;
+}

@@ -1,0 +1,11 @@
+Thread Priority:
+------------------------
+--> A thread priority is a number between 1 to 10 that represents priority of a thread.
+--> setPriority(int priority) can be used to set the priority of a thread. 
+--> priority can be integer value (1 to 10) or any of these constants:
+		Thread.MIN_PRIORITY
+		Thread.MAX_PRIORITY
+		Thread.NORM_PRIORITY
+-->getPriority() is used to return an integer that represents the priority of given thread.
+--> Note: It does not mean that higher priority thread will finish first than lower priority thread. It only means that CPU will switch to the higher priority thread most often.
+--> By default all threads have a normal priority. 

@@ -1,0 +1,18 @@
+interface AAA
+{
+  String item="Computer";
+  double price;
+  
+  void show();
+}
+
+class CCC implements AAA
+{
+  void showInfo()
+  {
+    System.out.println("Item: "+item);
+    System.out.println("Price: "+price);
+  }
+}
+  
+  

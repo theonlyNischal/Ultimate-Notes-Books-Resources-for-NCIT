@@ -1,0 +1,18 @@
+import javax.swing.*;
+public class SwingDemo {
+    SwingDemo(){
+        JFrame f1=new JFrame("alal");
+        f1.setSize(200,200);
+        f1.setVisible(true);
+        f1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+    }
+    public static void main(String args[]){
+        SwingUtilities.invokeLater(new Runnable(){
+            public void run(){
+                new SwingDemo();
+            }
+        });
+        
+  }
+}

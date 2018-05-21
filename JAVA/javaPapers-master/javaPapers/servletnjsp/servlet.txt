@@ -1,0 +1,33 @@
+Web Server: 
+----------------
+-->The web server is a program running on the server that waits for incoming requests and responds to those requests. 
+-->Web servers perform operations in the background and are always waiting to fulfill any valid incoming request. 
+-->Web servers generally cannot talk to databases. Hence a web server alone cannot dynamically create web page content using data held in a database table. 
+-->Apache Web server and Microsoft IIS are the leading web servers.
+
+Servlet:
+-------------
+-->A servlet is a java program that executes on the server side of a web connection. 
+-->servlets dynamically extend the functionality of a web server.
+-->Servlets can communicate with the database.
+-->Servlets are entirely written in java and hence platform independent.
+
+Web Container:-
+----------------
+A web container (also known as a servlet container) is the component of a web server that interacts with Java servlets. A web container is responsible for managing the lifecycle of servlets, mapping a URL to a particular servlet and ensuring that the URL requester has the correct access-rights. 
+-->Tomcat, Glassfish and JBoss are some examples of web container.
+
+CGI:(Common Gateway Interface)
+--> written in C, C++ and Perl.
+-->In the early days of web, web server would communicate with the database using CGI.
+-->However for each client request a separate process is started which is expensive in terms of processor and memory resources.
+-->CGI programs are not platform independent.
+
+
+Advantages of Servlet over CGI:
+-->Java Servlets are more efficient, easier to use, more powerful, more portable and cheaper than traditional CGI.
+-->With CGI, a process is started for each HTTP request. The initialization process of CGI program takes a longer time than its execution time.
+With servlets, the JVM stays up in the memory between the requests and is handled by a light weight java thread not a heavy weight process.
+-->If there are N simultaneous requests to the same CGI program then the code for the CGI program is loaded into memory N times. 
+With servlets however there are N threads but only a single copy of the Servlet class.
+

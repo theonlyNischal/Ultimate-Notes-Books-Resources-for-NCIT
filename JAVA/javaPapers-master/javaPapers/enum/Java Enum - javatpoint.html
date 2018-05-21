@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<!-- saved from url=(0038)http://www.javatpoint.com/enum-in-java -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Java Enum - javatpoint</title><link rel="SHORTCUT ICON" href="http://www.javatpoint.com/images/logo/icon.png"><link rel="stylesheet" type="text/css" href="./Java Enum - javatpoint_files/link.css"><meta name="keywords" content=" java enum data type , example of java enum"><meta name="description" content="java enum is a data type which contains fixed set of constants. It can be used for days of the week (SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY and SATURDAY) , directions (NORTH, SOUTH, EAST and WEST) etc. The enum constants are static and final implicitely. It is available from Java 5. Enums can be thought of as classes that have fixed set of constants."><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="canonical" href="http://www.javatpoint.com/enum-in-java"><meta property="og:locale" content="en_US"><meta property="og:type" content="article"><meta name="twitter:title" property="og:title" content="Java Enum - javatpoint"><meta name="twitter:description" property="og:description" content="java enum is a data type which contains fixed set of constants. It can be used for days of the week (SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY and SATURDAY) , directions (NORTH, SOUTH, EAST and WEST) etc. The enum constants are static and final implicitely. It is available from Java 5. Enums can be thought of as classes that have fixed set of constants."><meta property="og:url" content="http://www.javatpoint.com/enum-in-java"><meta property="og:site_name" content="www.javatpoint.com"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@pagejavatpoint"><meta name="twitter:domain" content="www.javatpoint.com"><meta name="twitter:creator" content="@pagejavatpoint"><style type="text/css">.dp-j .annotation { color: #646464; }.dp-j .number { color: #C00000; }</style><style type="text/css">.dp-j .annotation { color: #646464; }.dp-j .number { color: #C00000; }</style><style type="text/css">.dp-j .annotation { color: #646464; }.dp-j .number { color: #C00000; }</style><style type="text/css">.dp-j .annotation { color: #646464; }.dp-j .number { color: #C00000; }</style><style type="text/css">.dp-j .annotation { color: #646464; }.dp-j .number { color: #C00000; }</style><style type="text/css">.dp-j .annotation { color: #646464; }.dp-j .number { color: #C00000; }</style><style type="text/css">.dp-j .annotation { color: #646464; }.dp-j .number { color: #C00000; }</style><style type="text/css">.dp-j .annotation { color: #646464; }.dp-j .number { color: #C00000; }</style><style type="text/css">.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:"lucida grande", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}.fb_link img{border:none}@keyframes fb_transform{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}
+.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_reset .fb_dialog_legacy{overflow:visible}.fb_dialog_advanced{padding:10px;-moz-border-radius:8px;-webkit-border-radius:8px;border-radius:8px}.fb_dialog_content{background:#fff;color:#333}.fb_dialog_close_icon{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;_background-image:url(https://static.xx.fbcdn.net/rsrc.php/v3/yL/r/s816eWC-2sl.gif);cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent;_background-image:url(https://static.xx.fbcdn.net/rsrc.php/v3/yL/r/s816eWC-2sl.gif)}.fb_dialog_close_icon:active{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent;_background-image:url(https://static.xx.fbcdn.net/rsrc.php/v3/yL/r/s816eWC-2sl.gif)}.fb_dialog_loader{background-color:#f6f7f9;border:1px solid #606060;font-size:24px;padding:20px}.fb_dialog_top_left,.fb_dialog_top_right,.fb_dialog_bottom_left,.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}.fb_dialog_top_left{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}.fb_dialog_top_right{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}.fb_dialog_bottom_left{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}.fb_dialog_bottom_right{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}.fb_dialog_vert_left,.fb_dialog_vert_right,.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}.fb_dialog_vert_left,.fb_dialog_vert_right{width:10px;height:100%}.fb_dialog_vert_left{margin-left:-10px}.fb_dialog_vert_right{right:0;margin-right:-10px}.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{width:100%;height:10px}.fb_dialog_horiz_top{margin-top:-10px}.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50%;float:left;padding:5px 0 7px 26px}body.fb_hidden{-webkit-transform:none;height:100%;margin:0;overflow:visible;position:absolute;top:-10000px;left:0;width:100%}.fb_dialog.fb_dialog_mobile.loading{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ya/r/3rhSv5V8j3o.gif) white no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{width:auto;height:auto;min-height:initial;min-width:initial;background:none}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100%}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{color:#fff;display:block;padding-top:20px;clear:both;font-size:18px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;bottom:0;left:0;right:0;top:0;width:100%;min-height:100%;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_content .dialog_header{-webkit-box-shadow:white 0 1px 1px -1px inset;background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#738ABA), to(#2C4987));border-bottom:1px solid;border-color:#1d4088;color:#fff;font:14px Helvetica, sans-serif;font-weight:bold;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{-webkit-font-smoothing:subpixel-antialiased;height:43px;width:100%}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#4966A6), color-stop(.5, #355492), to(#2A4887));border:1px solid #29487d;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset, rgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #555;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f6f7f9;border:1px solid #555;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https://static.xx.fbcdn.net/rsrc.php/v3/yD/r/t-wz8gw1xG1.png);background-repeat:no-repeat;background-position:50% 50%;height:24px;width:24px}@keyframes rotateSpinner{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100%}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_hide_iframes iframe{position:relative;left:-10000px}.fb_iframe_widget_loader{position:relative;display:inline-block}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100%}.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}.fb_iframe_widget_loader .FB_Loader{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/y9/r/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50%;z-index:4}</style></head> <body onload="highlightlink()"> <div id="page" style="margin-top:-8px;background-color:#f5f5f4;"><div id="container"> <div class="header"><!--<p style="font-weight:bold;padding:7px;color:white;background-color:gray;margin:0px"><marquee>JavaTpoint will be down for 2 to 4 hours tonight. Sorry for inconvenience.</marquee></p>-->
+
+<table style="width:100%"><tbody><tr><td><div id="headerlink" style="padding:0px;margin:0px"><span style="margin-right:20px;width:45%px"></span><span style="float:right;margin-right:5px;width:45%"><a href="http://www.javatpoint.com/contact-us" style="text-decoration:none;color:#6666CC">Contact Us</a>  | <a href="http://www.javatpoint.com/asknewquestion.jsp" style="text-decoration:none;color:#6666CC">Ask Question</a> | <a href="http://www.javatpoint.com/login.jsp" style="text-decoration:none;color:#6666CC">login</a> <a target="_blank" href="http://feeds.feedburner.com/javatpointsonoo"><img src="./Java Enum - javatpoint_files/r.png" alt="RSS Feed"></a>&nbsp;<a target="_blank" href="http://feedburner.google.com/fb/a/mailverify?uri=javatpointsonoo"><img src="./Java Enum - javatpoint_files/m.png" alt="Subscribe to Get Email Alerts"></a>&nbsp;<a target="_blank" href="https://www.facebook.com/javatpoint"><img src="./Java Enum - javatpoint_files/f.png" alt="Facebook Page"></a>&nbsp;<a target="_blank" href="https://plus.google.com/u/0/113973042385691981314/posts"><img src="./Java Enum - javatpoint_files/g.png" alt="Google Page"></a>&nbsp;<a target="_blank" href="https://twitter.com/pagejavatpoint"><img src="./Java Enum - javatpoint_files/t.png" alt="Twitter Page"></a></span><hr class="upperhr"></div> </td></tr><tr><td>
+<div style="float:left;width:230px;"><a href="http://www.javatpoint.com/"><img src="./Java Enum - javatpoint_files/jtp_logo.png" alt="Javatpoint Logo"></a></div>
+<!--<div style="margin:0px;padding:0px;float:left;width:23%;margin-left:10px;margin-bottom:0px"><a href="http://www.javatpoint.com" style="text-decoration:none;"><span style="color:orange;font-size:28px;font-weight:bold;">Java</span><span style="color:#666600;font-size:40px;font-weight:bold;">T</span><span style="color:red;font-size:28px;font-weight:bold;">point</span></a></div>-->
+
+<div style="float:left;width:50%;"><form class="navbar-search" method="get" action="http://www.google.com/search" target="_blank"> <input type="text" name="q" class="search-query span2" placeholder="Search on javatpoint..." title="Search on Javatpoint"><input type="hidden" name="sitesearch" value="www.javatpoint.com"></form><!--<span style="margin-left:100px;color:orange;font-size:20px;font-weight:bold;">Happy </span><span style="color:red;font-size:20px;font-weight:bold;">New </span><span style="color:#666600;font-size:20px;font-weight:bold;">Year</span><span style="color:#666600;font-size:30px;font-weight:bold;"> 2015</span>--></div><div style="width:25%;float:right"><div style="padding:0px;margin:0px;margin-right:10px;margin-top:10px;float:right"><a target="_blank" style="background-color:#6699CC;text-decoration:none;color:white;border-radius:2px;font-weight:bold;padding:6px 10px 6px 10px;" href="http://www.javatpoint.com/subscribe.jsp">Subscribe Us</a></div><div style="padding:0px;margin:0px;margin-right:10px;float:right"><p style="padding:0px;margin:0px;margin-top:5px;color:#983688;font-weight:bold;">91-9990449935</p><p style="padding:0px;margin:0px;color:#983688;font-weight:bold;">&nbsp;0120-4256464</p></div></div></td></tr></tbody></table> </div>
+<div class="headermobile">
+<div style="margin-top:10px;padding:0px;text-align:left;">
+<span style="float:left"><input type="image" src="./Java Enum - javatpoint_files/menuhome64.png" onclick="showmenu()"></span>
+<span style="float:left"><a href="http://www.javatpoint.com/"><img src="./Java Enum - javatpoint_files/jtp_logo.png" alt="Javatpoint Logo"></a></span>
+</div>
+<div style="margin:0px;padding:0px;clear:both"><form class="navbar-search-m" method="get" action="http://www.google.com/search" target="_blank"> <input type="text" name="q" class="search-query span2-m" placeholder="Search on javatpoint..." title="Search on Javatpoint"><input type="hidden" name="sitesearch" value="www.javatpoint.com"></form></div></div><div id="link" style="clear:both"> <div id="smoothmenu1" class="ddsmoothmenu">
+<ul>
+<li><a href="http://www.javatpoint.com/">Home</a></li>
+<li><a href="http://www.javatpoint.com/c-programming-language-tutorial">C</a></li>
+<li><a href="http://www.javatpoint.com/cpp-tutorial">C++</a></li>
+<li><a href="http://www.javatpoint.com/c-sharp-tutorial">C#</a></li>
+<li><a href="http://www.javatpoint.com/java-tutorial" class="selected">Java</a></li>
+<li><a href="http://www.javatpoint.com/servlet-tutorial">Servlet</a></li>
+<li><a href="http://www.javatpoint.com/jsp-tutorial">JSP</a></li>
+<li><a href="http://www.javatpoint.com/ejb-tutorial">EJB</a></li>
+<li><a href="http://www.javatpoint.com/struts-2-tutorial">Struts2</a></li>
+<li><a href="http://www.javatpoint.com/java-mail-api-tutorial">Mail</a></li>
+<li><a href="http://www.javatpoint.com/hibernate-tutorial">Hibernate</a></li>
+<li><a href="http://www.javatpoint.com/spring-tutorial">Spring</a></li>
+<li><a href="http://www.javatpoint.com/android-tutorial">Android</a></li>
+<li><a href="http://www.javatpoint.com/design-patterns-in-java">Design P</a></li>
+<li><a href="http://www.javatpoint.com/examaccess">Quiz</a></li>
+<li><a href="http://www.javatpoint.com/free-java-projects">Projects</a></li>
+<li><a href="http://www.javatpoint.com/corejava-interview-questions">Interview Q</a>
+</li><li><a href="http://www.javatpoint.com/comment.jsp">Comment</a>
+</li><li><a href="http://www.javatpoint.com/forum">Forum</a>
+</li><li><a href="http://www.javatpoint.com/training">Training</a>
+</li>
+</ul>
+<br style="clear: left">
+</div>
+</div><div class="mobilemenu" style="clear:both"> </div>
+
+<div id="menu"><div class="leftmenu2">
+<a href="http://www.javatpoint.com/java-tutorial"><span>Basics of Java </span></a>
+<a href="http://www.javatpoint.com/java-oops-concepts"><span>OOPs Concepts</span></a>
+<a href="http://www.javatpoint.com/java-string"><span>Java String</span></a>
+<a href="http://www.javatpoint.com/java-regex"><span>Java Regex</span></a>
+<a href="http://www.javatpoint.com/exception-handling-in-java"><span>Exception Handling</span></a>
+<a href="http://www.javatpoint.com/java-inner-class"><span>Java Inner classes</span></a>
+<a href="http://www.javatpoint.com/multithreading-in-java"><span>Java Multithreading</span></a>
+<a href="http://www.javatpoint.com/java-io"><span>Java I/O</span></a>
+<a href="http://www.javatpoint.com/java-networking"><span>Java Networking</span></a>
+<a href="http://www.javatpoint.com/java-awt"><span>Java AWT</span></a>
+<a href="http://www.javatpoint.com/java-swing"><span>Java Swing</span></a>
+<a href="http://www.javatpoint.com/java-applet"><span>Java Applet</span></a>
+<a href="http://www.javatpoint.com/java-reflection"><span>Java Reflection</span></a>
+<a href="http://www.javatpoint.com/java-date"><span>Java Date</span></a>
+<a href="http://www.javatpoint.com/java-string-to-int"><span>Java Conversion</span></a>
+<a href="http://www.javatpoint.com/collections-in-java"><span>Java Collection</span></a>
+<a href="http://www.javatpoint.com/java-jdbc"><span>Java JDBC</span></a>
+</div>
+<div class="leftmenu2">
+<h2 class="spanh2"><span class="spanh2">Java New Features</span></h2>
+</div>
+<div class="leftmenu">
+<a href="http://www.javatpoint.com/assertion-in-java" class="l1">Assertion</a>
+<a href="http://www.javatpoint.com/for-each-loop" class="l1">For-each loop</a>
+<a href="http://www.javatpoint.com/varargs" class="l1">Varargs</a>
+<a href="http://www.javatpoint.com/static-import-in-java" class="l1">Static Import</a>
+<a href="http://www.javatpoint.com/autoboxing-and-unboxing" class="l1">Autoboxing and Unboxing</a>
+<a href="http://www.javatpoint.com/enum-in-java" class="l1" style="color: black;"><strong>Enum Type</strong> <img src="./Java Enum - javatpoint_files/open-12.png" alt="open link"></a>
+<a href="http://www.javatpoint.com/java-annotation" class="l1">Annotation</a>
+<a href="http://www.javatpoint.com/custom-annotation" class="l1">Custom Annotation</a>
+<a href="http://www.javatpoint.com/generics-in-java" class="l1">Generics</a>
+</div>
+<div class="leftmenu2">
+<h2 class="spanh2"><span class="spanh2">Java 8 Features</span></h2>
+</div>
+<div class="leftmenu">
+<a href="http://www.javatpoint.com/java-lambda-expressions" class="l1">Lambda Expressions</a>
+</div>
+<div class="leftmenu2">
+<a href="http://www.javatpoint.com/RMI"><span>RMI</span></a>
+<a href="http://www.javatpoint.com/internationalization-in-java"><span>Internationalization</span></a>
+</div>
+
+
+<table id="leftad" style="display: none !important;"><tbody><tr><td><img src="./Java Enum - javatpoint_files/wh.JPG" alt="space"></td></tr><tr><td>
+<script src="http://script.crazyegg.com/pages/scripts/0027/3605.js?413199" async="" type="text/javascript" style="display: none !important;"></script><script type="text/javascript" async="" src="./Java Enum - javatpoint_files/ga.js.download"></script><script id="facebook-jssdk" src="./Java Enum - javatpoint_files/sdk.js.download"></script><script async="" src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" style="display: none !important;"></script> <ins class="adsbygoogle" style="display: none !important; width: 160px; height: 600px;" data-ad-client="ca-pub-4699858549023382" data-ad-slot="4476401222"></ins> <script> (adsbygoogle = window.adsbygoogle || []).push({}); </script>
+</td></tr></tbody></table>
+
+</div><div class="onlycontent">
+
+
+<script async="" src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" style="display: none !important;"></script>
+<!-- CM_JTP_Leaderbaord -->
+<ins class="adsbygoogle cm_jtp_leaderbaord" style="display: none !important;" data-ad-client="ca-pub-4699858549023382" data-ad-slot="9201901915"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<div style="margin-left:0px;">
+<div id="city">
+<table>
+<tbody><tr><td>
+
+<div id="bottomnextup">
+<a class="next" href="http://www.javatpoint.com/java-annotation">next →</a>
+<a class="next" href="http://www.javatpoint.com/autoboxing-and-unboxing">← prev</a>
+
+</div>
+
+<h1 class="h1">Java Enum</h1>
+<p><strong>Enum in java</strong> is a data type that contains fixed set of constants.</p>
+<p>It can be used for days of the week (SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY and SATURDAY) , directions (NORTH, SOUTH, EAST and WEST) etc. The java enum constants are static and final implicitly. It is available from JDK 1.5.</p>
+<p>Java Enums can be thought of as classes that have fixed set of constants.</p>
+
+<h2 class="h2">Points to remember for Java Enum</h2>
+
+<ul class="points">
+<li>enum improves type safety</li>
+<li>enum can be easily used in switch</li>
+<li>enum can be traversed</li>
+<li>enum can have fields, constructors and methods</li>
+<li>enum may implement many interfaces but cannot extend any class because it internally extends Enum class</li>
+</ul>
+
+
+<hr>
+
+<h3 class="h2">Simple example of java enum</h3>
+<div class="codeblock"><div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.javatpoint.com/enum-in-java#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;"></a><a href="http://www.javatpoint.com/enum-in-java#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;"></a><a href="http://www.javatpoint.com/enum-in-java#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;"></a></div></div><ol start="1" class="dp-j"><li class="alt"><span><span class="keyword">class</span><span>&nbsp;EnumExample1{&nbsp;&nbsp;</span></span></li><li class=""><span><span class="keyword">public</span><span>&nbsp;</span><span class="keyword">enum</span><span>&nbsp;Season&nbsp;{&nbsp;WINTER,&nbsp;SPRING,&nbsp;SUMMER,&nbsp;FALL&nbsp;}&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span><span class="keyword">public</span><span>&nbsp;</span><span class="keyword">static</span><span>&nbsp;</span><span class="keyword">void</span><span>&nbsp;main(String[]&nbsp;args)&nbsp;{&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="keyword">for</span><span>&nbsp;(Season&nbsp;s&nbsp;:&nbsp;Season.values())&nbsp;&nbsp;</span></span></li><li class=""><span>System.out.println(s);&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>}}&nbsp;&nbsp;</span></li></ol></div><textarea name="code" class="java" style="display: none;">class EnumExample1{
+public enum Season { WINTER, SPRING, SUMMER, FALL }
+
+public static void main(String[] args) {
+for (Season s : Season.values())
+System.out.println(s);
+
+}}
+</textarea></div>
+
+<span class="testit"><a href="http://www.javatpoint.com/opr/test.jsp?filename=EnumExample1" target="_blank">Test it Now</a></span>
+<div class="codeblock3"><pre>Output:WINTER
+       SPRING
+       SUMMER
+       FALL
+</pre></div>
+<div class="download">
+<a href="http://www.javatpoint.com/src/newjdk/enum.zip">download this enum example</a>
+</div>
+
+<h3 class="h3">What is the purpose of values() method in enum?</h3>
+<p>The java compiler internally adds the values() method when it creates an enum. The values() method returns an array containing all the values of the enum.</p>
+
+<hr>
+<h3 class="h3">Internal code generated by the compiler for the above example of enum type</h3>
+<p>The java compiler internally creates a static and final class that extends the Enum class as shown in the below example:</p>
+<div class="codeblock"><div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.javatpoint.com/enum-in-java#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;"></a><a href="http://www.javatpoint.com/enum-in-java#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;"></a><a href="http://www.javatpoint.com/enum-in-java#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;"></a></div></div><ol start="1" class="dp-j"><li class="alt"><span><span class="keyword">public</span><span>&nbsp;</span><span class="keyword">static</span><span>&nbsp;</span><span class="keyword">final</span><span>&nbsp;</span><span class="keyword">class</span><span>&nbsp;EnumExample1$Season&nbsp;</span><span class="keyword">extends</span><span>&nbsp;Enum&nbsp;&nbsp;</span></span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;<span class="keyword">private</span><span>&nbsp;EnumExample1$Season(String&nbsp;s,&nbsp;</span><span class="keyword">int</span><span>&nbsp;i)&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">super</span><span>(s,&nbsp;i);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;</span><span class="keyword">static</span><span>&nbsp;EnumExample1$Season[]&nbsp;values()&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>&nbsp;(EnumExample1$Season[])$VALUES.clone();&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;</span><span class="keyword">static</span><span>&nbsp;EnumExample1$Season&nbsp;valueOf(String&nbsp;s)&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>&nbsp;(EnumExample1$Season)Enum.valueOf(EnumExample1$Season,&nbsp;s);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;</span><span class="keyword">static</span><span>&nbsp;</span><span class="keyword">final</span><span>&nbsp;EnumExample1$Season&nbsp;WINTER;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;</span><span class="keyword">static</span><span>&nbsp;</span><span class="keyword">final</span><span>&nbsp;EnumExample1$Season&nbsp;SPRING;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;</span><span class="keyword">static</span><span>&nbsp;</span><span class="keyword">final</span><span>&nbsp;EnumExample1$Season&nbsp;SUMMER;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;</span><span class="keyword">static</span><span>&nbsp;</span><span class="keyword">final</span><span>&nbsp;EnumExample1$Season&nbsp;FALL;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">private</span><span>&nbsp;</span><span class="keyword">static</span><span>&nbsp;</span><span class="keyword">final</span><span>&nbsp;EnumExample1$Season&nbsp;$VALUES[];&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">static</span><span>&nbsp;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WINTER&nbsp;=&nbsp;<span class="keyword">new</span><span>&nbsp;EnumExample1$Season(</span><span class="string">"WINTER"</span><span>,&nbsp;</span><span class="number">0</span><span>);&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SPRING&nbsp;=&nbsp;<span class="keyword">new</span><span>&nbsp;EnumExample1$Season(</span><span class="string">"SPRING"</span><span>,&nbsp;</span><span class="number">1</span><span>);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SUMMER&nbsp;=&nbsp;<span class="keyword">new</span><span>&nbsp;EnumExample1$Season(</span><span class="string">"SUMMER"</span><span>,&nbsp;</span><span class="number">2</span><span>);&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FALL&nbsp;=&nbsp;<span class="keyword">new</span><span>&nbsp;EnumExample1$Season(</span><span class="string">"FALL"</span><span>,&nbsp;</span><span class="number">3</span><span>);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$VALUES&nbsp;=&nbsp;(<span class="keyword">new</span><span>&nbsp;EnumExample1$Season[]&nbsp;{&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WINTER,&nbsp;SPRING,&nbsp;SUMMER,&nbsp;FALL&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>}&nbsp;&nbsp;</span></li></ol></div><textarea name="code" class="java" style="display: none;">
+public static final class EnumExample1$Season extends Enum
+{
+  private EnumExample1$Season(String s, int i)
+    {
+        super(s, i);
+    }
+
+    public static EnumExample1$Season[] values()
+    {
+        return (EnumExample1$Season[])$VALUES.clone();
+    }
+
+    public static EnumExample1$Season valueOf(String s)
+    {
+        return (EnumExample1$Season)Enum.valueOf(EnumExample1$Season, s);
+    }
+
+    public static final EnumExample1$Season WINTER;
+    public static final EnumExample1$Season SPRING;
+    public static final EnumExample1$Season SUMMER;
+    public static final EnumExample1$Season FALL;
+    private static final EnumExample1$Season $VALUES[];
+
+    static 
+    {
+        WINTER = new EnumExample1$Season("WINTER", 0);
+        SPRING = new EnumExample1$Season("SPRING", 1);
+        SUMMER = new EnumExample1$Season("SUMMER", 2);
+        FALL = new EnumExample1$Season("FALL", 3);
+        $VALUES = (new EnumExample1$Season[] {
+            WINTER, SPRING, SUMMER, FALL
+        });
+    }
+
+}
+</textarea></div>
+
+<hr>
+
+<h2 class="h2">Defining Java enum</h2>
+<p>The enum can be defined within or outside the class because it is similar to a class.</p>
+
+<h3 class="h3">Java enum example: defined outside class</h3>
+<div class="codeblock"><div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.javatpoint.com/enum-in-java#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;"></a><a href="http://www.javatpoint.com/enum-in-java#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;"></a><a href="http://www.javatpoint.com/enum-in-java#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;"></a></div></div><ol start="1" class="dp-j"><li class="alt"><span><span class="keyword">enum</span><span>&nbsp;Season&nbsp;{&nbsp;WINTER,&nbsp;SPRING,&nbsp;SUMMER,&nbsp;FALL&nbsp;}&nbsp;&nbsp;</span></span></li><li class=""><span><span class="keyword">class</span><span>&nbsp;EnumExample2{&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="keyword">public</span><span>&nbsp;</span><span class="keyword">static</span><span>&nbsp;</span><span class="keyword">void</span><span>&nbsp;main(String[]&nbsp;args)&nbsp;{&nbsp;&nbsp;</span></span></li><li class=""><span>Season&nbsp;s=Season.WINTER;&nbsp;&nbsp;</span></li><li class="alt"><span>System.out.println(s);&nbsp;&nbsp;</span></li><li class=""><span>}}&nbsp;&nbsp;&nbsp;</span></li></ol></div><textarea name="code" class="java" style="display: none;">enum Season { WINTER, SPRING, SUMMER, FALL }
+class EnumExample2{
+public static void main(String[] args) {
+Season s=Season.WINTER;
+System.out.println(s);
+}} 
+</textarea></div>
+
+<span class="testit"><a href="http://www.javatpoint.com/opr/test.jsp?filename=EnumExample2" target="_blank">Test it Now</a></span>
+
+<div class="codeblock3"><pre>Output:WINTER
+</pre></div>
+
+<h3 class="h3">Java enum example: defined inside class</h3>
+<div class="codeblock"><div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.javatpoint.com/enum-in-java#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;"></a><a href="http://www.javatpoint.com/enum-in-java#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;"></a><a href="http://www.javatpoint.com/enum-in-java#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;"></a></div></div><ol start="1" class="dp-j"><li class="alt"><span><span class="keyword">class</span><span>&nbsp;EnumExample3{&nbsp;&nbsp;</span></span></li><li class=""><span><span class="keyword">enum</span><span>&nbsp;Season&nbsp;{&nbsp;WINTER,&nbsp;SPRING,&nbsp;SUMMER,&nbsp;FALL;&nbsp;}</span><span class="comment">//semicolon(;)&nbsp;is&nbsp;optional&nbsp;here</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="keyword">public</span><span>&nbsp;</span><span class="keyword">static</span><span>&nbsp;</span><span class="keyword">void</span><span>&nbsp;main(String[]&nbsp;args)&nbsp;{&nbsp;&nbsp;</span></span></li><li class=""><span>Season&nbsp;s=Season.WINTER;<span class="comment">//enum&nbsp;type&nbsp;is&nbsp;required&nbsp;to&nbsp;access&nbsp;WINTER</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>System.out.println(s);&nbsp;&nbsp;</span></li><li class=""><span>}}&nbsp;&nbsp;</span></li></ol></div><textarea name="code" class="java" style="display: none;">class EnumExample3{
+enum Season { WINTER, SPRING, SUMMER, FALL; }//semicolon(;) is optional here
+public static void main(String[] args) {
+Season s=Season.WINTER;//enum type is required to access WINTER
+System.out.println(s);
+}}
+</textarea></div>
+
+<span class="testit"><a href="http://www.javatpoint.com/opr/test.jsp?filename=EnumExample3" target="_blank">Test it Now</a></span>
+<div class="codeblock3"><pre>Output:WINTER
+</pre></div>
+<hr>
+
+<h3 class="h2">Initializing specific values to the enum constants</h3>
+<p>The enum constants have initial value that starts from 0, 1, 2, 3 and so on. But we can initialize the specific value to the enum constants by defining fields and constructors. As specified earlier, Enum can have fields, constructors and methods.</p>
+
+<h3 class="h3">Example of specifying initial value to the enum constants</h3>
+<div class="codeblock"><div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.javatpoint.com/enum-in-java#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;"></a><a href="http://www.javatpoint.com/enum-in-java#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;"></a><a href="http://www.javatpoint.com/enum-in-java#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;"></a></div></div><ol start="1" class="dp-j"><li class="alt"><span><span class="keyword">class</span><span>&nbsp;EnumExample4{&nbsp;&nbsp;</span></span></li><li class=""><span><span class="keyword">enum</span><span>&nbsp;Season{&nbsp;&nbsp;&nbsp;</span></span></li><li class="alt"><span>WINTER(<span class="number">5</span><span>),&nbsp;SPRING(</span><span class="number">10</span><span>),&nbsp;SUMMER(</span><span class="number">15</span><span>),&nbsp;FALL(</span><span class="number">20</span><span>);&nbsp;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span><span class="keyword">private</span><span>&nbsp;</span><span class="keyword">int</span><span>&nbsp;value;&nbsp;&nbsp;</span></span></li><li class=""><span><span class="keyword">private</span><span>&nbsp;Season(</span><span class="keyword">int</span><span>&nbsp;value){&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="keyword">this</span><span>.value=value;&nbsp;&nbsp;</span></span></li><li class=""><span>}&nbsp;&nbsp;</span></li><li class="alt"><span>}&nbsp;&nbsp;</span></li><li class=""><span><span class="keyword">public</span><span>&nbsp;</span><span class="keyword">static</span><span>&nbsp;</span><span class="keyword">void</span><span>&nbsp;main(String&nbsp;args[]){&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="keyword">for</span><span>&nbsp;(Season&nbsp;s&nbsp;:&nbsp;Season.values())&nbsp;&nbsp;</span></span></li><li class=""><span>System.out.println(s+<span class="string">"&nbsp;"</span><span>+s.value);&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>}}&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li></ol></div><textarea name="code" class="java" style="display: none;">
+class EnumExample4{
+enum Season{ 
+WINTER(5), SPRING(10), SUMMER(15), FALL(20); 
+
+private int value;
+private Season(int value){
+this.value=value;
+}
+}
+public static void main(String args[]){
+for (Season s : Season.values())
+System.out.println(s+" "+s.value);
+
+}}
+    
+</textarea></div>
+
+<span class="testit"><a href="http://www.javatpoint.com/opr/test.jsp?filename=EnumExample4" target="_blank">Test it Now</a></span>
+
+<div class="download">
+<a href="http://www.javatpoint.com/src/newjdk/enum4.zip">download this enum example</a>
+</div>
+
+<div class="codeblock3"><pre>Output:WINTER 5
+       SPRING 10
+       SUMMER 15
+       FALL 20
+</pre></div>
+
+<hr>
+<h4 class="n">Constructor of enum type is private. If you don't declare private compiler internally creates private constructor.</h4>
+<div class="codeblock"><div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.javatpoint.com/enum-in-java#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;"></a><a href="http://www.javatpoint.com/enum-in-java#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;"></a><a href="http://www.javatpoint.com/enum-in-java#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;"></a></div></div><ol start="1" class="dp-j"><li class="alt"><span><span class="keyword">enum</span><span>&nbsp;Season{&nbsp;&nbsp;</span></span></li><li class=""><span>WINTER(<span class="number">10</span><span>),SUMMER(</span><span class="number">20</span><span>);&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="keyword">private</span><span>&nbsp;</span><span class="keyword">int</span><span>&nbsp;value;&nbsp;&nbsp;</span></span></li><li class=""><span>Season(<span class="keyword">int</span><span>&nbsp;value){&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="keyword">this</span><span>.value=value;&nbsp;&nbsp;</span></span></li><li class=""><span>}&nbsp;&nbsp;</span></li><li class="alt"><span>}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li></ol></div><textarea name="code" class="java" style="display: none;">enum Season{
+WINTER(10),SUMMER(20);
+private int value;
+Season(int value){
+this.value=value;
+}
+}    
+</textarea></div>
+
+<h3 class="h3">Internal code generated by the compiler for the above example of enum type</h3>
+<div class="codeblock"><div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.javatpoint.com/enum-in-java#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;"></a><a href="http://www.javatpoint.com/enum-in-java#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;"></a><a href="http://www.javatpoint.com/enum-in-java#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;"></a></div></div><ol start="1" class="dp-j"><li class="alt"><span><span class="keyword">final</span><span>&nbsp;</span><span class="keyword">class</span><span>&nbsp;Season&nbsp;</span><span class="keyword">extends</span><span>&nbsp;Enum&nbsp;&nbsp;</span></span></li><li class=""><span>{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;</span><span class="keyword">static</span><span>&nbsp;Season[]&nbsp;values()&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>&nbsp;(Season[])$VALUES.clone();&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;</span><span class="keyword">static</span><span>&nbsp;Season&nbsp;valueOf(String&nbsp;s)&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>&nbsp;(Season)Enum.valueOf(Season,&nbsp;s);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">private</span><span>&nbsp;Season(String&nbsp;s,&nbsp;</span><span class="keyword">int</span><span>&nbsp;i,&nbsp;</span><span class="keyword">int</span><span>&nbsp;j)&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">super</span><span>(s,&nbsp;i);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value&nbsp;=&nbsp;j;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;</span><span class="keyword">static</span><span>&nbsp;</span><span class="keyword">final</span><span>&nbsp;Season&nbsp;WINTER;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;</span><span class="keyword">static</span><span>&nbsp;</span><span class="keyword">final</span><span>&nbsp;Season&nbsp;SUMMER;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">private</span><span>&nbsp;</span><span class="keyword">int</span><span>&nbsp;value;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">private</span><span>&nbsp;</span><span class="keyword">static</span><span>&nbsp;</span><span class="keyword">final</span><span>&nbsp;Season&nbsp;$VALUES[];&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">static</span><span>&nbsp;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WINTER&nbsp;=&nbsp;<span class="keyword">new</span><span>&nbsp;Season(</span><span class="string">"WINTER"</span><span>,&nbsp;</span><span class="number">0</span><span>,&nbsp;</span><span class="number">10</span><span>);&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SUMMER&nbsp;=&nbsp;<span class="keyword">new</span><span>&nbsp;Season(</span><span class="string">"SUMMER"</span><span>,&nbsp;</span><span class="number">1</span><span>,&nbsp;</span><span class="number">20</span><span>);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$VALUES&nbsp;=&nbsp;(<span class="keyword">new</span><span>&nbsp;Season[]&nbsp;{&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WINTER,&nbsp;SUMMER&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class=""><span>}&nbsp;&nbsp;</span></li></ol></div><textarea name="code" class="java" style="display: none;">final class Season extends Enum
+{
+    public static Season[] values()
+    {
+        return (Season[])$VALUES.clone();
+    }
+    public static Season valueOf(String s)
+    {
+        return (Season)Enum.valueOf(Season, s);
+    }
+    private Season(String s, int i, int j)
+    {
+        super(s, i);
+        value = j;
+    }
+    public static final Season WINTER;
+    public static final Season SUMMER;
+    private int value;
+    private static final Season $VALUES[];
+    static 
+    {
+        WINTER = new Season("WINTER", 0, 10);
+        SUMMER = new Season("SUMMER", 1, 20);
+        $VALUES = (new Season[] {
+            WINTER, SUMMER
+        });
+    }
+}
+</textarea></div>
+<hr>
+<h3 class="h3">Can we create the instance of enum by new keyword?</h3>
+<table>
+<tbody><tr><td>No, because it contains private constructors only.</td></tr>
+</tbody></table>
+
+<hr>
+<h3 class="h3">Can we have abstract method in enum?</h3>
+<p>Yes, ofcourse! we can have abstract methods and can provide the implementation of these methods.</p>
+<hr>
+<h2 class="h2">Java enum in switch statement</h2>
+<p>We can apply enum on switch statement as in the given example:</p>
+
+<h3 class="h3">Example of applying enum on switch statement</h3>
+<div class="codeblock"><div class="dp-highlighter"><div class="bar"><div class="tools"><a href="http://www.javatpoint.com/enum-in-java#" onclick="dp.sh.Toolbar.Command(&#39;ViewSource&#39;,this);return false;"></a><a href="http://www.javatpoint.com/enum-in-java#" onclick="dp.sh.Toolbar.Command(&#39;PrintSource&#39;,this);return false;"></a><a href="http://www.javatpoint.com/enum-in-java#" onclick="dp.sh.Toolbar.Command(&#39;About&#39;,this);return false;"></a></div></div><ol start="1" class="dp-j"><li class="alt"><span><span class="keyword">class</span><span>&nbsp;EnumExample5{&nbsp;&nbsp;</span></span></li><li class=""><span><span class="keyword">enum</span><span>&nbsp;Day{&nbsp;SUNDAY,&nbsp;MONDAY,&nbsp;TUESDAY,&nbsp;WEDNESDAY,&nbsp;THURSDAY,&nbsp;FRIDAY,&nbsp;SATURDAY}&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="keyword">public</span><span>&nbsp;</span><span class="keyword">static</span><span>&nbsp;</span><span class="keyword">void</span><span>&nbsp;main(String&nbsp;args[]){&nbsp;&nbsp;</span></span></li><li class=""><span>Day&nbsp;day=Day.MONDAY;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span><span class="keyword">switch</span><span>(day){&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="keyword">case</span><span>&nbsp;SUNDAY:&nbsp;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;System.out.println(<span class="string">"sunday"</span><span>);&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;<span class="keyword">break</span><span>;&nbsp;&nbsp;</span></span></li><li class=""><span><span class="keyword">case</span><span>&nbsp;MONDAY:&nbsp;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;System.out.println(<span class="string">"monday"</span><span>);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;<span class="keyword">break</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="keyword">default</span><span>:&nbsp;&nbsp;</span></span></li><li class=""><span>System.out.println(<span class="string">"other&nbsp;day"</span><span>);&nbsp;&nbsp;</span></span></li><li class="alt"><span>}&nbsp;&nbsp;</span></li><li class=""><span>}}&nbsp;&nbsp;</span></li></ol></div><textarea name="code" class="java" style="display: none;">
+class EnumExample5{
+enum Day{ SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY}
+public static void main(String args[]){
+Day day=Day.MONDAY;
+
+switch(day){
+case SUNDAY: 
+ System.out.println("sunday");
+ break;
+case MONDAY: 
+ System.out.println("monday");
+ break;
+default:
+System.out.println("other day");
+}
+}}
+</textarea></div>
+
+<span class="testit"><a href="http://www.javatpoint.com/opr/test.jsp?filename=EnumExample5" target="_blank">Test it Now</a></span>
+
+<div id="download">
+<a href="http://www.javatpoint.com/src/newjdk/enum5.zip">download this enum example</a>
+</div>
+
+<div class="codeblock3"><pre>Output:monday
+</pre></div>
+
+<div class="nexttopicdiv">
+<span class="nexttopictext">Next Topic</span><span class="nexttopiclink"><a href="http://www.javatpoint.com/java-annotation">Java Annotation</a></span>
+</div>
+
+<!-- link -->
+<br><br>
+
+<div id="bottomnext">
+<a style="float:left" class="next" href="http://www.javatpoint.com/autoboxing-and-unboxing">← prev</a>
+<a style="float:right" class="next" href="http://www.javatpoint.com/java-annotation">next →</a>
+</div>
+
+<br><br>
+
+</td></tr>
+</tbody></table>
+</div>
+
+
+
+<!-- latest tutorials start -->
+<fieldset class="gra1footer">
+<h2 class="h2">Latest 4 Tutorials on JavaTpoint</h2>
+<div class="firsthomecontent">
+<a href="http://www.javatpoint.com/java-date">
+<div class="homecontent">
+<img src="./Java Enum - javatpoint_files/java-date-time.png" alt="Java Date and Time"><span class="homespan">Java Date</span>
+</div>
+</a>
+<a href="http://www.javatpoint.com/collections-in-java">
+<div class="homecontent">
+<img src="./Java Enum - javatpoint_files/java-collections-tutorial.png" alt="Java Collections tutorial"><span class="homespan">Collections</span>
+</div>
+</a>
+<a href="http://www.javatpoint.com/ms-word-tutorial">
+<div class="homecontent">
+<img src="./Java Enum - javatpoint_files/word-home.png" alt="Word tutorial"><span class="homespan">MS Word</span>
+</div>
+</a>
+<a href="http://www.javatpoint.com/scala-tutorial">
+<div class="homecontent">
+<img src="./Java Enum - javatpoint_files/scala-home.png" alt="Scala tutorial"><span class="homespan">Scala</span>
+</div>
+</a>
+
+</div>
+</fieldset>
+<!-- latest tutorial end -->
+<br>
+<!-- social sharing buttons -->
+<!--facebook-->
+<span id="fb-root" class=" fb_reset"><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div><iframe name="fb_xdm_frame_http" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" id="fb_xdm_frame_http" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tabindex="-1" src="./Java Enum - javatpoint_files/ao6eUeuGXQq.html" style="border: none;"></iframe><iframe name="fb_xdm_frame_https" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" id="fb_xdm_frame_https" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tabindex="-1" src="./Java Enum - javatpoint_files/ao6eUeuGXQq(1).html" style="border: none;"></iframe></div></div><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div></div></div></span>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5&appId=151763741599302";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<span class="fb-share-button fb_iframe_widget" data-href="http://www.javatpoint.com/enum-in-java" data-layout="button_count" fb-xfbml-state="rendered" fb-iframe-plugin-query="app_id=151763741599302&amp;container_width=0&amp;href=http%3A%2F%2Fwww.javatpoint.com%2Fenum-in-java&amp;layout=button_count&amp;locale=en_US&amp;sdk=joey"><span style="vertical-align: bottom; width: 86px; height: 20px;"><iframe name="f1c54c9ae70025" width="1000px" height="1000px" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" title="fb:share_button Facebook Social Plugin" src="./Java Enum - javatpoint_files/share_button.html" style="border: none; visibility: visible; width: 86px; height: 20px;" class=""></iframe></span></span>
+
+</div>
+
+
+<br><div class="mobilemenu" style="clear:both">
+<script async="" src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" style="display: none !important;"></script><!-- responsivemobilefooter --><ins class="adsbygoogle" style="display: none !important;" data-ad-client="ca-pub-4699858549023382" data-ad-slot="8222866318" data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div></div>
+<div id="right" style="width:15%;float:left;margin-left:10px;margin-top:10px;">
+<script async="" src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" style="display: none !important;"></script>
+<ins class="adsbygoogle" style="display: none !important; width: 160px; height: 600px;" data-ad-client="ca-pub-4699858549023382" data-ad-slot="3155368314"></ins>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script><br><br><br>
+
+
+
+
+</div>
+<div class="right1024" style="float:left;margin-left:10px;margin-top:120px;"><script async="" src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" style="display: none !important;"></script><!-- right1024only --><ins class="adsbygoogle" style="display: none !important; width: 120px; height: 600px;" data-ad-client="ca-pub-4699858549023382" data-ad-slot="2180118716"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+<br><br>
+</div>
+
+<div id="footer" style="clear:both;width:100%">
+
+<script type="text/javascript"> var _gaq = _gaq || []; _gaq.push(['_setAccount', 'UA-24880427-1']); _gaq.push(['_trackPageview']); (function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true; ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s); })();</script><hr>
+
+<div style="padding:0px;margin:0px;text-align:center"><sup style="font:16px arial;">Like/Subscribe us for latest updates or newsletter </sup><a target="_blank" href="http://feeds.feedburner.com/javatpointsonoo"><img src="./Java Enum - javatpoint_files/rss1.png" alt="RSS Feed"></a><a target="_blank" href="http://feedburner.google.com/fb/a/mailverify?uri=javatpointsonoo"><img src="./Java Enum - javatpoint_files/mail1.png" alt="Subscribe to Get Email Alerts"></a><a target="_blank" href="https://www.facebook.com/javatpoint"><img src="./Java Enum - javatpoint_files/facebook1.jpg" alt="Facebook Page"></a><a target="_blank" rel="author" href="https://plus.google.com/u/0/113973042385691981314/posts"><img src="./Java Enum - javatpoint_files/google1.png" alt="Google Page"></a><a target="_blank" href="https://twitter.com/pagejavatpoint"><img src="./Java Enum - javatpoint_files/twitter1.png" alt="Twitter Page"></a><a target="_blank" href="http://javatpoint.blogspot.com/"><img src="./Java Enum - javatpoint_files/blog.png" alt="Blog Page"></a><a href="http://www.javatpoint.com/enum-in-java#" style="font:bold 18px arial;text-decoration:none;"><sup>↑Top</sup></a></div><div style="margin:auto 0px;line-height:20px;padding:0px 40px;font-size:12px;height:390px;background:#6699CC;color: white; font-family:serif; border-bottom: solid 1px #A3AE7E;"> <div id="innerfooter"> <div><span style="text-decoration:none;font-size:larger;font-family:serif;color:white;font-weight:bolder;">Tutorials</span> <hr><ul class="footer-list"> <li><a style="text-decoration: none;font-family:serif;color:white;" href="http://www.javatpoint.com/java-tutorial">» Core Java Tutorial</a></li><li><a style="text-decoration: none;font-family:serif;color:white;" href="http://www.javatpoint.com/servlet-tutorial">» Servlet Tutorial</a></li><li><a style="text-decoration: none;font-family:serif;color:white;" href="http://www.javatpoint.com/jsp-tutorial">» JSP Tutorial</a></li><li><a style="text-decoration: none;font-family:serif;color:white;" href="http://www.javatpoint.com/java-mail-api-tutorial">» Mail API Tutorial</a></li><li><a style="text-decoration: none;font-family:serif;color:white;" href="http://www.javatpoint.com/design-patterns-in-java">» Design Pattern Tutorial</a></li><li><a style="text-decoration: none;font-family:serif;color:white;" href="http://www.javatpoint.com/struts-2-tutorial">» Struts Tutorial</a></li><li><a style="text-decoration: none;font-family:serif;color:white;" href="http://www.javatpoint.com/spring-tutorial">» Spring Tutorial</a></li><li><a style="text-decoration: none;font-family:serif;color:white;" href="http://www.javatpoint.com/hibernate-tutorial">» Hibernate Tutorial</a></li><li><a style="text-decoration: none;font-family:serif;color:white;" href="http://www.javatpoint.com/android-tutorial">» Android Tutorial</a></li><li><a style="text-decoration: none;font-family:serif;color:white;" href="http://www.javatpoint.com/javascript-tutorial">» JavaScript Tutorial</a></li><li><a style="text-decoration: none;font-family:serif;color:white;" href="http://www.javatpoint.com/sql-tutorial">» SQL Tutorial</a></li><li><a style="text-decoration: none;font-family:serif;color:white;" href="http://www.javatpoint.com/c-programming-language-tutorial">» C Tutorial</a></li> <li><a style="text-decoration: none;font-family:serif;color:white;" href="http://www.javatpoint.com/ajax-tutorial">» AJAX Tutorial</a></li> <li><a style="text-decoration: none;font-family:serif;color:white;" href="http://www.javatpoint.com/junit-tutorial">» JUnit Tutorial</a></li> <li><a style="text-decoration: none;font-family:serif;color:white;" href="http://www.javatpoint.com/jaxb-tutorial">» JAXB Tutorial</a></li> <li><a style="text-decoration: none;font-family:serif;color:white;" href="http://www.javatpoint.com/maven-tutorial">» Maven Tutorial</a></li></ul> </div> <div><span style="text-decoration:none;font-size:larger;font-family:serif;color:white;font-weight:bolder;">Interview Questions</span> <hr><ul class="footer-list"> <li><a style="text-decoration: none;font-family:serif;color:white;" href="http://www.javatpoint.com/corejava-interview-questions">» Java Interview</a></li><li><a style="text-decoration: none;font-family:serif;color:white;" href="http://www.javatpoint.com/servletinterview">» Servlet Interview</a></li><li><a style="text-decoration: none;font-family:serif;color:white;" href="http://www.javatpoint.com/jspinterview">» JSP Interview</a></li><li><a style="text-decoration: none;font-family:serif;color:white;" href="http://www.javatpoint.com/hibernate-interview-questions">» Hibernate Interview</a></li><li><a style="text-decoration: none;font-family:serif;color:white;" href="http://www.javatpoint.com/spring-interview-questions">» Spring Interview</a></li><li><a style="text-decoration: none;font-family:serif;color:white;" href="http://www.javatpoint.com/android-interview-questions">» Android Interview</a></li><li><a style="text-decoration: none;font-family:serif;color:white;" href="http://www.javatpoint.com/sql-interview-questions">» SQL Interview</a></li><li><a style="text-decoration: none;font-family:serif;color:white;" href="http://www.javatpoint.com/pl-sql-interview-questions">» PL/SQL Interview</a></li><li><a style="text-decoration: none;font-family:serif;color:white;" href="http://www.javatpoint.com/oracle-interview-questions">» Oracle Interview</a></li><li><a style="text-decoration: none;font-family:serif;color:white;" href="http://www.javatpoint.com/mysql-interview-questions">» MySQL Interview</a></li><li><a style="text-decoration: none;font-family:serif;color:white;" href="http://www.javatpoint.com/sql-server-interview-questions">» SQL Server Interview</a></li><li><a style="text-decoration: none;font-family:serif;color:white;" href="http://www.javatpoint.com/mongodb-interview-questions">» MongoDB Interview</a></li> <li><a style="text-decoration: none;font-family:serif;color:white;" href="http://www.javatpoint.com/cloud-computing-interview-questions">» Cloud Interview</a></li> </ul> </div><div><a style="font-weight:bolder;text-decoration: none;text-align:center;font-size:larger;font-family:serif;color:white;" target="_blank" href="http://www.javatpoint.com/examaccess">Quizzes</a><hr><ul class="footer-list"><li><a target="_blank" href="http://www.javatpoint.com/core-java-quiz" style="text-decoration: none;font-family:serif;color:white;">» Core Java quiz</a></li><li><a target="_blank" href="http://www.javatpoint.com/servlet-quiz" style="text-decoration: none;font-family:serif;color:white;">» Servlet quiz</a></li><li><a target="_blank" href="http://www.javatpoint.com/jsp-quiz" style="text-decoration: none;font-family:serif;color:white;">» JSP quiz</a></li><li><a target="_blank" href="http://www.javatpoint.com/struts-quiz" style="text-decoration: none;font-family:serif;color:white;">» Struts2 quiz</a></li><li><a target="_blank" href="http://www.javatpoint.com/android-quiz" style="text-decoration: none;font-family:serif;color:white;">» Android quiz</a></li><li><a target="_blank" href="http://www.javatpoint.com/scjp-quiz" style="text-decoration: none;font-family:serif;color:white;">» OCJP quiz</a></li><li><a target="_blank" href="http://www.javatpoint.com/scwcd-quiz" style="text-decoration: none;font-family:serif;color:white;">» OCWCD quiz</a></li><li><a target="_blank" href="http://www.javatpoint.com/hibernate-quiz" style="text-decoration: none;font-family:serif;color:white;">» Hibernate quiz</a></li><li><a target="_blank" href="http://www.javatpoint.com/spring-quiz" style="text-decoration: none;font-family:serif;color:white;">» Spring quiz</a></li><li><a target="_blank" href="http://www.javatpoint.com/c-quiz" style="text-decoration: none;font-family:serif;color:white;">» C quiz</a></li><li><a target="_blank" href="http://www.javatpoint.com/cloud-computing-quiz" style="text-decoration: none;font-family:serif;color:white;">» Cloud Computing quiz</a></li><li><a target="_blank" href="http://www.javatpoint.com/javascript-quiz" style="text-decoration: none;font-family:serif;color:white;">» JavaScript quiz</a></li><li><a target="_blank" href="http://www.javatpoint.com/sql-quiz" style="text-decoration: none;font-family:serif;color:white;">» SQL quiz</a></li></ul></div><div><a style="font-weight:bolder;text-decoration: none;font-size:larger;font-family:serif;color:white;text-align:center;" target="_blank" href="http://www.javatpoint.com/forum">Forum</a><hr><ul class="footer-list"><li><a style="text-decoration: none;font-family:serif;color:white;" href="http://www.javatpoint.com/forum.jsp?category=corejava">» Core Java Ques.</a></li><li><a style="text-decoration: none;font-family:serif;color:white;" href="http://www.javatpoint.com/forum.jsp?category=servlet">» Servlet Ques.</a></li><li><a style="text-decoration: none;font-family:serif;color:white;" href="http://www.javatpoint.com/forum.jsp?category=jsp">» JSP Ques.</a></li><li><a style="text-decoration: none;font-family:serif;color:white;" href="http://www.javatpoint.com/forum.jsp?category=struts">» Struts Ques.</a></li><li><a style="text-decoration: none;font-family:serif;color:white;" href="http://www.javatpoint.com/forum.jsp?category=spring">» Spring Ques.</a></li><li><a style="text-decoration: none;font-family:serif;color:white;" href="http://www.javatpoint.com/forum.jsp?category=hibernate">» Hibernate Ques.</a></li><li><a style="text-decoration: none;font-family:serif;color:white;" href="http://www.javatpoint.com/forum.jsp?category=android">» Android Ques.</a></li></ul><hr><a style="font-weight:bolder;text-decoration: none;text-align:center;font-size:larger;font-family:serif;color:white;" href="http://www.javatpoint.com/free-java-projects">Projects</a><hr><a style="font-weight:bolder;text-decoration: none;font-size:larger;font-family:serif;text-align:center;color:white;" href="http://www.sssit.org/" rel="nofollow">SSS IT PVT LTD</a><hr><ul class="footer-list"><li><a rel="nofollow" href="http://www.sssit.org/development" style="text-decoration: none;font-family:serif;color:white;">» Development</a></li><li><a href="http://www.javatpoint.com/training" style="text-decoration: none;font-family:serif;color:white;">» Training</a></li><li><a rel="nofollow" href="http://www.sssit.org/seo" style="text-decoration: none;font-family:serif;color:white;">» SEO</a></li><li><a rel="nofollow" href="http://www.sssit.org/consultancy" style="text-decoration: none;font-family:serif;color:white;">» Consultancy</a></li></ul></div><div style="border-right:2px solid white;"><span style="font-weight:bolder;text-decoration: none;font-size:larger;font-family:serif;color:white;float:right;padding-right:16px;">CONTACT US</span><br><hr><p style="text-align:center;border-bottom:1px solid white;padding-bottom:30px;">Tel. : 0120-4256464<br>Mob. : +91 9990449935<br>Email : enquiry@sssit.org<br>Address: 2nd Floor, G-13,<br> (Near 16 Metro Station),<br>Sec - 3, Noida, <br>201301, UP, India<br><a href="http://www.javatpoint.com/contact-us" style="text-decoration: none;font-family:serif;color:white;">» Contact Us</a><br><a href="http://www.javatpoint.com/privacy-policy" style="text-decoration: none;font-family:serif;color:white;">» Privacy Policy</a></p><p style="text-align:center;border-bottom:1px solid white;padding-bottom:30px;padding-left:none;"><br>© 2011-2017 Javatpoint.<br> All Rights Reserved.<br><a href="http://www.dmca.com/Protection/Status.aspx?ID=e8b533d5-7356-47f5-820b-72c890f03a4e" rel="nofollow" title="DMCA"> <img src="./Java Enum - javatpoint_files/dmca_protected_sml_120c.png" alt="DMCA.com"></a></p></div></div></div>
+
+</div></div></div><script src="./Java Enum - javatpoint_files/shcoreandbrush.js.download"></script><script type="text/javascript"> dp.SyntaxHighlighter.HighlightAll('code'); </script>
+<script type="text/javascript">
+setTimeout(function(){var a=document.createElement("script");
+var b=document.getElementsByTagName("script")[0];
+a.src=document.location.protocol+"//script.crazyegg.com/pages/scripts/0027/3605.js?"+Math.floor(new Date().getTime()/3600000);
+a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+</script>
+  </body></html>
