@@ -1,0 +1,20 @@
+body
+{
+width: 1010px;
+background-color: white;
+padding: 50 200 50 150;
+}
+.classwork
+{
+width: 100%;
+background-color: #AF542F;
+height: 450px;
+}
+.classwork h1
+{
+padding-top: 30px;
+}
+.classwork input
+{
+margin-left: 15px;
+}

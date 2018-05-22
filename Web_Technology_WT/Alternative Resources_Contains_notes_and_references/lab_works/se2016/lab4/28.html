@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+ <head> 
+ <title> Javascript </title>
+<script>
+ 
+ function show(){
+var el=document.getElementById('bx');
+el.style.visibility="visible";
+ }
+
+ function hide(){
+var el=document.getElementById('bx');
+el.style.visibility="hidden";
+ }
+
+function red(){
+var el=document.getElementById('bx');
+el.style.backgroundColor="red";
+ }
+
+function blue(){
+var el=document.getElementById('bx');
+el.style.backgroundColor="blue";
+ }
+
+function green(){
+var el=document.getElementById('bx');
+el.style.backgroundColor="green";
+ }
+
+function move(){
+var el=document.getElementById('bx');
+el.style.marginLeft="240px";
+ }
+
+function reset(){
+var el=document.getElementById('bx');
+el.style.backgroundColor="grey";
+el.style.margin="0px";
+ }
+ </script>
+<style>
+ .box{
+background-color:grey;
+width:200px;
+height:200px;
+ }
+ </style>
+</head>
+
+<body>
+<div class="box" id="bx">
+</div>
+ <button onClick="show();"> Show </button>
+
+<button onClick="hide();"> Hide </button>
+
+<button onClick="red();"> Red </button>
+
+<button onClick="blue();"> Blue </button>
+
+<button onClick="green();"> Green </button>
+
+<button onClick="move();"> Move </button>
+
+<button onClick="reset();"> Reset </button>
+
+
+</body>
+</html>

@@ -1,0 +1,73 @@
+<html>
+<head>
+<title>javascript</title>
+<link href="desktop.css" rel="stylesheet" type="text/css"/>
+<script>
+
+
+
+function show()
+{
+		var x=document.getElementById('box');
+		x.style.visibility= "visible";
+}
+function hidebox()
+{
+		var x=document.getElementById('box');
+		x.style.visibility= "hidden";
+}
+
+function redbox()
+{
+		var x=document.getElementById('box');
+		x.style.backgroundColor="red";
+}
+function greenbox()
+{
+		var x=document.getElementById('box');
+		x.style.backgroundColor="green";
+}
+
+function bluebox()
+{
+		var x=document.getElementById('box');
+		x.style.backgroundColor="blue";
+}
+
+function movebox()
+{
+		var x=document.getElementById('box');
+		x.style.marginleft="10px";
+}
+
+function resetbox()
+{
+		var x=document.getElementById('box');
+		x.style.marginleft="0";
+}
+
+
+
+</script>
+
+</head>
+<body>
+
+<div class="body" id="box">
+<h4><center>Hello World<center></h4>
+</div>
+<br/>
+		<button onclick="show();">show</button>
+
+		<button onclick="hidebox();">hide</button>
+		<button onclick="redbox();">red</button>
+		<button onclick="greenbox();">green</button>
+
+		<button onclick="bluebox();">blue</button>
+		<button onclick="movebox();">move</button>
+
+		<button onclick="resetbox();">reset</button>
+</body>
+</html>
+
+
