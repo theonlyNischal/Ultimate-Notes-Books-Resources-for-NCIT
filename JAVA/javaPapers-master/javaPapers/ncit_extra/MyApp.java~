@@ -1,9 +1,0 @@
-import java.applet.*;
-import java.awt.*;
-public class MyApp extends Applet
-{
-  public void paint(Graphics g)
-  {
- g.drawString("Welcome to Applet",10,10);
-  }
-}

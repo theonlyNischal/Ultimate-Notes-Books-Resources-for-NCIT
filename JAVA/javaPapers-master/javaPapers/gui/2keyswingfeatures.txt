@@ -1,9 +1,0 @@
-Two Key Swing Features:
-----------------------------------
-1. Swing Components Are Lightweight
---> Swing components are lightweight. This means that they are     written entirely in Java and do not map directly to platform-specific     peers. Because lightweight components are rendered using graphics primitives, they can be transparent, which enables non-rectangular shapes. Thus, lightweight components are more efficient and more flexible.Furthermore, because lightweight components do not translate into native peers, the look and feel of each component is determined by Swing, not by the underlying operating system. This means that each component will work in a consistent manner across all platforms.
-
-
-
-2. Swing Supports a Pluggable Look and Feel
---> Swing supports a pluggable look and feel (PLAF). Because each Swing component is rendered by Java code rather than by native peers, the look and feel of a component is under the control of Swing. This fact means that it is possible to separate the look and feel of a component from the logic of the component, and this is what Swing does. Separating out the look and feel provides a significant advantage: it becomes possible to change the way that a component is rendered without affecting any of its other aspects. In other words,     it is possible to "plug in" a new look and feel for any given     component without creating any side effects in the code that uses that component. 
