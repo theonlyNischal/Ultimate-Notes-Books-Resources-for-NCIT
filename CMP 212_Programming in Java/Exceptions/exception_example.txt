@@ -1,0 +1,22 @@
+public class Main {
+
+    public static void main(String[] args) {
+
+        try {
+            int a = 5;
+            int b = 10;
+            int c = b/a;
+            System.out.print("Survived the ArithmeticException.\n");
+            String[] name = {"Hello"};
+            System.out.print(name[0] + "\n");
+
+        }catch (ArrayIndexOutOfBoundsException e){
+            System.out.print("ArrayIndexOutOfBounds Error Caught.");
+        }catch (ArithmeticException e){
+            System.out.print("Arithmetic Error Caught.");
+        }finally{
+            System.out.print("No Exceptions were caught. Cheers!!");
+        }
+    }
+}
+

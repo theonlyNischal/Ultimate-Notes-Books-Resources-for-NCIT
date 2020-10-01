@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+ <head>
+ 	<title>My webapge</title>
+ 	<meta charset="utf-8"/>
+ 	<script type="text/javascript">
+ 	 
+ 	 var x=prompt("What's your name,sir?");
+ 	 alert("Welcome,"+x);
+
+ 	 function hideBox()
+ 	 {
+ 	 	var x=document.getElementById("redBox");
+ 	 	x.style.visibility="hidden";
+ 	 }
+
+ 	 function showBox()
+ 	 {  
+ 	 	var x=document.getElementById("redBox")
+ 	 	x.style.visibility="visible";
+ 	 }
+
+ 	 function colBox()
+ 	 {
+ 	 	var x=document.getElementById("redBox")
+ 	 	x.style.backgroundColor="blue";
+ 	 }
+ 	  function colBoxG()
+ 	 {
+ 	 	var x=document.getElementById("redBox")
+ 	 	x.style.backgroundColor="green";
+ 	 }
+
+ 	 function movBox()
+ 	 {
+ 	 	var x=document.getElementById("redBox")
+ 	 	x.style.paddingLeft="30px";
+ 	 }
+
+ 	</script>
+ 	<style>
+ 	 img
+ 	  {
+        height:300px;
+        width:300px;
+        padding: 20px;
+ 	  }
+ 	  div
+ 	  {
+ 	  	background-color: red;
+ 	  	width:340px;
+ 	  	padding-left: 0px;
+ 	  }
+ 	
+
+
+ 	</style>
+
+
+
+ </head>
+ <body>
+ 	<div class="redBox" id="redBox">
+ 		<img src="warlus.jpg" alt="dota 2 character"/>
+ 	</div>
+ 	<button onclick="hideBox();">Hide this box!</button>
+ 	<button onclick="showBox();">Show this box!</button>
+    <button onclick="colBox();">color this box to blue!</button>
+    <button onclick="colBoxG();">color this box to green!</button>
+    <button onclick="movBox();">Move this box!</button>
+
+
+
+
+ </body>
+</html>

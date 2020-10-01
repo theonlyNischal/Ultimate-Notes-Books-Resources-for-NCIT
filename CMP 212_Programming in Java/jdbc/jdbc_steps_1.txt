@@ -1,0 +1,48 @@
+Steps Required to access Database using JDBC:
+
+1. Import the packages.
+     => import java.sql.*
+
+2. Load and Register the Driver.
+     => Class.forName("com.mysql.jdbc.Driver");
+
+3. Establish the connection.
+    String url = "";
+    String username = "";
+    String password = "";
+    
+    Connection con = DriverManager(url, username, password);
+
+4. Create the Statement.
+    Statement st = con.createStatement();
+    
+    
+    //Prepared Statement
+    PreparedStatement st = con.preparedStatement(query);
+    st.setInt(position_of_?, field_name);
+    ....
+    
+5. Execute the query
+    //Fetch the data from db
+    ResultSet = rs.executeQuery(query);
+    
+    //Insert the data to db
+    int count = rs.executeUpdate(query);
+    
+    //PreparedStatement Insert
+    int count = rs.executeUpdate();
+    
+6. Process Result
+    rs.next();
+    String name = rs.getString("username");
+    S.o.p(name);
+    
+    // Loop
+    while(rs.next()){
+        // Process the result
+    }
+    
+    
+7. Close
+    
+
