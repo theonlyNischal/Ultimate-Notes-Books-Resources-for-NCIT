@@ -1,7 +1,0 @@
-public class ClickListener extends MouseAdapter
-{
-  public void mousePressed(MouseEvent e)
-  {
-   ClickReporter.l1.setText("Mouse Clicked at"+e.getX()+","+e.getY()); 
-  }
-}
