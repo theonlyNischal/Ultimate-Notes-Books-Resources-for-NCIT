@@ -2,6 +2,8 @@
 Notes, Books, Resources for Students of NCIT, Pokhara University
 ****************************************************************
 
+All Credit Goes to the person who have created all these notes.
+
 Contribute
 ============
 
