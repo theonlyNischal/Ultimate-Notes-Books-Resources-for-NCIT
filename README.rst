@@ -7,7 +7,7 @@ All Credit Goes to the person who have created all these notes.
 Contribute
 ============
 
-This repo is too heavy, we do not recommend cloning the repo on your local device and then making a pull request.
+This repo is too heavy(~2GB), we do not recommend cloning the repo on your local device and then making a pull request.
 To add your notes on this repo, fork the repo and upload your files using the github upload functionality and then make a pull request. 
 
 
