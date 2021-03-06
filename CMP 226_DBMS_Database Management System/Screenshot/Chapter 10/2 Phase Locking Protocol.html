@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<!-- saved from url=(0050)http://scanftree.com/dbms/2-phase-locking-protocol -->
+<html lang="en"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+ 
+<meta name="keywords" content="dbms concepts, two phase locking protocol, tpl examples, thomos write rule, deadlock in 2pl, cascading rollback, locking mechanisms in database, limitations of 2 phase locking protocol, timestamp ordering protocol">
+<meta name="description" content="Database concepts">
+<title>2 Phase Locking Protocol-Database Concepts</title>
+
+<link rel="stylesheet" href="./2 Phase Locking Protocol_files/style-min.css" type="text/css" media="screen, projection">
+<script src="./2 Phase Locking Protocol_files/ca-pub-1906558370233604.js.download"></script><script async="" src="./2 Phase Locking Protocol_files/analytics.js.download"></script><script type="text/javascript" src="./2 Phase Locking Protocol_files/jq.js.download"></script>
+
+<link rel="stylesheet" type="text/css" href="./2 Phase Locking Protocol_files/prettify.css">
+<script type="text/javascript" src="./2 Phase Locking Protocol_files/prettify.js.download"></script>
+
+<link rel="icon" type="image/gif" href="http://scanftree.com/favicon.gif">
+
+<link rel="preload" href="./2 Phase Locking Protocol_files/integrator.js.download" as="script"><script type="text/javascript" src="./2 Phase Locking Protocol_files/integrator.js.download"></script><link rel="preload" href="./2 Phase Locking Protocol_files/integrator.js(1).download" as="script"><script type="text/javascript" src="./2 Phase Locking Protocol_files/integrator.js(1).download"></script></head>
+
+<body onload="prettyPrint()" style="">
+
+ <div class="container" id="container">
+<div class="header"><meta name="viewport" content="width=device-width, minimumscale=1.0, maximum-scale=1.0"><link rel="icon" type="image/gif" href="http://scanftree.com/favicon.gif">
+<script async="async" src="./2 Phase Locking Protocol_files/adsbygoogle.js.download"></script> 
+<script src="./2 Phase Locking Protocol_files/jq.js.download"></script>
+<link rel="stylesheet" async="async" href="./2 Phase Locking Protocol_files/style-min.css" type="text/css" media="screen, projection">
+<script src="./2 Phase Locking Protocol_files/bs.js.download"></script>
+
+<!--<script  src="https://code.jquery.com/jquery-1.10.2.min.js"></script> 
+
+<script type="text/javascript" src="http://scanftree.com/jq.js"></script>-->
+
+<style>
+body{font-family:Verdana,sans-serif;font-size:15px;line-height:1.5}h4,#content h3,h2{padding:5px;display:block;margin-top:10px;margin-bottom:10px;box-shadow:0 1px 3px rgba(0,0,0,0.12),0 1px 2px rgba(0,0,0,0.24);transition:all .2s ease-in-out;color:#6f0745!important}#slide-toggle-sidebar{display: block;} .sidebar-collpsed-responsive{display:none;font-family:calibri;padding:2%;background-color:white;margin-bottom:5%;box-shadow:0 0 1px #a94442}.lesson_header{box-shadow:0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);font-size:x-large;line-height:35px;padding:2%;font-weight:500}.lesson_header.blue{background-color:rgba(83,191,226,0.9)!important;color:white}.lesson_header.red{background-color:#e57373!important;color:white}.box.box-primary,.thumbnail{border-top-color:#3c8dbc}.box,.thumbnail{position:relative;background:#fff;border-top:2px solid #3c8dbc;margin-bottom:20px;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;width:100%;box-shadow:0 1px 3px rgba(0,0,0,0.1)}.box .box-header{position:relative;-webkit-border-top-left-radius:3px;-webkit-border-top-right-radius:3px;-webkit-border-bottom-right-radius:0;-webkit-border-bottom-left-radius:0;-moz-border-radius-topleft:3px;-moz-border-radius-topright:3px;-moz-border-radius-bottomright:0;-moz-border-radius-bottomleft:0;border-top-left-radius:3pxborder-top-right-radius:3px;border-bottom-right-radius:0;border-bottom-left-radius:0;border-bottom:0 solid #f4f4f4;color:#444}.box .box-body{padding:10px;-webkit-border-top-left-radius:0;-webkit-border-top-right-radius:0;-webkit-border-bottom-right-radius:3px;-webkit-border-bottom-left-radius:3px;-moz-border-radius-topleft:0;-moz-border-radius-topright:0;-moz-border-radius-bottomright:3px;-moz-border-radius-bottomleft:3px;border-top-left-radius:0;border-top-right-radius:0;border-bottom-right-radius:3px;border-bottom-left-radius:3px}.form-inline .form-group{display:flex!important;margin-bottom:1%}.topMenu{padding:0 25px 15px 15px;margin-bottom:30px}.topMenu h3{font-size:1em;cursor:pointer;color:#000;display:block;padding-top:5px}.topMenu a{color:#3b5998;font-weight:400}.topMenu .currentPage{cursor:default;font-weight:bold;right:16px}.topMenu a.currentPage:before{content:"» "}.invisible{display:none}.visible{display:block}.visible li{border-left:1px solid black;padding-top:15px;font-size:95%}.visible li:before{content:"-- "}.visible li:last-child{line-height:0;padding-top:2em}.visible{margin-bottom:30px}.indicatorHide{width:0;height:0;border-top:5px solid transparent;border-bottom:5px solid transparent;border-left:5px solid black;position:relative;top:8px;float:right}.indicatorShow{width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-top:5px solid black;position:relative;top:8px;float:right}.curChap{font-weight:bold}.garima li{border-left:1px solid #ccc;font-size:95%}.indicatorShow{width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-top:5px solid black;position:relative;top:8px;float:right}#list4 h3,#list5 h3{padding-left:0}#list4 ul,#list5 ul{list-style:none}#list4 ul li a,#list5 ul li a{text-decoration:none;color:#005987}#list4 ul li,#list5 ul li{display:block;text-decoration:none;color:#000;background-color:#FFF;line-height:30px;border-bottom-style:solid;border-bottom-width:1px;border-bottom-color:#CCC;padding-left:10px;cursor:pointer}#list4 ul li a:hover,#list5 ul li a:hover{color:#000;background-repeat:repeat-x}#list4 ul li .last,#list5 ul li .last{border-bottom:0}#top-header-container{background:#53bfe2;position:fixed;height:35px;width:100%;top:0;left:0;-moz-box-shadow:0 2px 3px 0 rgba(0,0,0,.16);-webkit-box-shadow:0 2px 3px 0 rgba(0,0,0,.16);box-shadow:0 2px 3px 0 rgba(0,0,0,.16);z-index:999}#top-header-container #top-header{color:#fff;height:35px;min-width:1000px;max-width:1200px;position:relative;margin:0 auto}#top-header-container #page_auth{display:block;line-height:35px;margin:0;position:absolute;top:0;right:0;bottom:auto;left:auto;z-index:102}#top-header-container .sitewide-navigation{display:inline;line-height:45px;margin:0;padding:0;position:relative}nav{display:block;clear:both;width:100%;margin:0}pre{-webkit-border-radius:6px;-moz-border-radius:6px;-ms-border-radius:6px;-o-border-radius:6px;border-radius:6px;-webkit-box-shadow:inset 0 0 1px 2px rgba(0,0,0,.1),inset 50px 0 0 rgba(0,0,0,.05),0 1px 0 #fff;-moz-box-shadow:inset 0 1px 2px rgba(0,0,0,.1),inset 50px 0 0 rgba(0,0,0,.05),0 1px 0 #fff;box-shadow:inset 0 1px 2px rgba(0,0,0,.1),inset 5px 0 0 rgba(0,0,0,.05),0 1px 0 #fff;margin:-1px 0 10px 0;padding:1% 2% 1%;position:relative}#top-header-container #header-logo{margin-left:-110px;margin-top:-3px;position:absolute;right:auto;left:50%}#top-header-container #search-box{display:block;float:left;margin-right:2px;position:static;top:-2px}html{height:100%}header,nav,section,article,aside,footer{display:block}body{margin:0;color:#444;font-family:'Segoe UI',Calibri,'Myriad Pro',Myriad,'Trebuchet MS',Helvetica,Arial,sans-serif;line-height:28px;font-weight:500;height:100%}img{border:0}input{vertical-align:middle}#wrapper{width:100%;min-height:100%;height:auto!important;height:100%}#header{height:50px}#middle{width:100%;padding:0 0 200px;height:1%;position:relative}#middle:after{content:'';clear:both;display:table}#container{width:99%;margin:0 auto}#content{padding:2px;width:60%;float:left;position:relative;box-shadow:0 3px 10px rgba(0,0,0,0.25);-moz-box-shadow:0 0 4px 1px #888;-webkit-box-shadow:0 0 4px 1px #888;border-color:#DDD #DDD #CCC;border-radius:4px;border-style:solid;border-width:1px;min-height:900px;margin-bottom:2%;font-size:14px;padding:0 1%}.table{margin:0 auto}.table tr{border-bottom:1px solid #f1f151!important}#sideLeft{padding-top:0;float:left;width:20%;position:relative}#sideRight{padding-top:0;float:left;width:20%;position:relative}#footer{border-top:1px solid #ddd;background-color:#f7f7f7;border-top:1px solid #ddd;clear:both;color:#999;font-size:12px;line-height:20px;position:relative;z-index:10;min-height:300px;display:block;width:100%;font-family:MuseoSans300,sans-serif}#search-form{height:35px;border:1px solid #aaa;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;background-color:#fff;-webkit-box-shadow:inset 0 0 5px #bbb;-moz-box-shadow:inset 0 0 5px #bbb;box-shadow:inset 0 0 5px #bbb;overflow:hidden}#search-button{position:absolute;width:70px;font-size:14px;color:#fff;text-align:center;line-height:40px;border-width:0;border-left:1px solid #aaa;-webkit-border-radius:0 3px 2px 0;-moz-border-radius:0 3px 2px 0;border-radius:0 3px 2px 0;background-color:#bbb;background:-moz-linear-gradient(top,#c9c9c9 0,#999);background:-webkit-gradient(linear,left top,left bottom,from(#c9c9c9),to(#999));-webkit-box-shadow:-4px 0 3px -2px #ddd;-moz-box-shadow:-4px 0 3px -2px #ddd;box-shadow:-4px 0 3px -2px #ddd;cursor:pointer}#search-text{font-size:14px;color:#ddd;border-width:0;background:transparent}#search-box input[type=text]{width:80%;padding:11px 0 12px 1em;color:#333;outline:0}#footer .footer-container{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;min-width:1000px;max-width:1200px;position:relative;padding:0 12px;margin:0 auto}.row-fluid [class*=span]{display:block;width:100%;min-height:32px;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;float:left;margin-left:2.127659574468085%}.row-fluid .span2{width:14.893617021276595%}.row-fluid .span1{width:6.382978723404255%}.row-fluid .span3{width:23.404255319148934%}#footer .handtree{position:absolute;top:auto;right:0;bottom:25px;left:auto;max-width:100px}#footer .extra-links .copyright{float:right}footer .extra-links .legal{float:left;position:relative;margin-right:30px}#footer .copyright{text-align:right}#footer .heading .heading .footer-scroll-cue{font-family:MuseoSans500,sans-serif;text-transform:uppercase;color:#2c3747;font-size:22px}#footer li{padding-right:8px;padding-bottom:8px}.footer-scroll-cue{color:#2c3747;font-size:16px}#footer .extra-links{padding:12px 0 24px}#footer .main-links,#footer .extra-links{position:relative;padding:24px 0 12px}#footer .extra-links{border-top:1px solid #ddd}#container,body{font-family:'Segoe UI',Calibri,'Myriad Pro',Myriad,'Trebuchet MS',Helvetica,Arial,sans-serif!important;line-height:28px;font-weight:500}#content{font-family:'Segoe UI',Calibri,'Myriad Pro',Myriad,'Trebuchet MS',Helvetica,Arial,sans-serif!important}table{margin:auto 0}.table th,.gen th,.bordered th{background-image:linear-gradient(to top,#ebf3fc,#dce9f9)}.table td,.table th,.gen td,.gen th,.bordered th,.bordered td{box-shadow:0 1px 1px #ccc;border:1px solid #ccc;padding:3px;text-align:left}#list5 ul{margin:0;padding:0}.op{width:100%;BORDER:4px solid #ccc;color:#fff;background-color:#000;FONT-SIZE:13px;COLOR:#fff;Font-family:Courier New}#anchorTitle{-moz-border-radius:8px;-webkit-border-radius:8px;border-radius:8px;-moz-box-shadow:2px 2px 3px #e6e6e6;-webkit-box-shadow:2px 2px 3px #e6e6e6;box-shadow:2px 2px 3px #e6e6e6;background-color:#fff;border:solid 3px #d6d6d6;color:#333;display:none;font-family:Helvetica,Arial,sans-serif;font-size:12px;line-height:1.3;max-width:500px;padding:5px 7px;position:absolute}.board-card{ margin:15px auto!important}.board-title,.board-card-title{border-bottom:#eee solid}board ul{padding-top:1%}.board li,.board a{padding:2px;padding-left:1px;font-size:14px;text-decoration:none}.board li:hover{color:#53b880}.board,.board-card{border-top:5px solid #53b880;position:relative;background:#fff;-webkit-box-shadow:0 1px 4px rgba(0,0,0,0.27),0 0 40px rgba(0,0,0,0.06) inset;-moz-box-shadow:0 1px 4px rgba(0,0,0,0.27),0 0 40px rgba(0,0,0,0.06) inset;box-shadow:0 1px 4px rgba(0,0,0,0.27),0 0 40px rgba(0,0,0,0.06) inset;-moz-border-radius:8px;border-radius:8px;padding:2em 1.5em;color:rgba(0,0,0,.8);line-height:1.5;margin:0 auto}.board-card{margin:15px auto!important}.board-card{border-top:5px solid #53bfe3}.board-card:hover{box-shadow:0 1px 0 rgba(255,255,255,0.3) inset,0 0 2px rgba(255,255,255,0.3) inset,0 0 10px rgba(0,0,0,0.1) inset,0 1px 2px rgba(0,0,0,0.1)}.board:before,.board:after{z-index:-1;position:absolute;content:"";bottom:15px;left:10px;width:50%;top:80%;max-width:300px;background:rgba(0,0,0,0.7);right:10px;left:auto}.board a{color:#43bfe3}.board ol li{list-style:decimal inside;border-bottom:solid 2px #eee}@media only screen and (max-width:1000px){.board{width:100%;padding:0!important}.board-card,.board{width:99%;margin:0;padding:2em 1%!important}#container{width:100%!important;padding-left:1%;padding-right:1%}#content,.bix-tbl-container,.main-left,.applewrap{width:100%!important;z-index:10}#sideLeft{width:100%;z-index:10}#sideRight{padding-top:5%; width:100%;z-index:10;position:relative!important}.seo-param .content3{margin-left:1%!important}
+/* hide this*/ .sidebar-collpsed-responsive{display:block}.topMenu{display:none}.sidebar-responsive{display:none}
+.hide-on-med-small{display:none}}pre{z-index:10}.sc_color{border-left-color:#53bfe2!important}.notes{padding:20px;margin:20px 0;border:1px solid #eee;border-left-width:5px;border-radius:3px}
+
+.dropdown-large{position:static!important;left:inherit!important}.dropdown-menu-large{margin-right:16px;padding:20px 0}.dropdown-menu-large>li>ul{padding:0;margin:0}.dropdown-menu-large>li>ul>li{list-style:none}.dropdown-menu-large>li>ul>li>a{display:block;padding:2px 8px;clear:both;font-weight:normal;line-height:1.428571429;color:#333;white-space:normal;white-space:nowrap}.dropdown-menu-large>li ul>li>a:hover,.dropdown-menu-large>li ul>li>a:focus{text-decoration:none;color:#262626;background-color:#f5f5f5}.dropdown-menu-large .disabled>a,.dropdown-menu-large .disabled>a:hover,.dropdown-menu-large .disabled>a:focus{color:#999}.dropdown-menu-large .disabled>a:hover,.dropdown-menu-large .disabled>a:focus{text-decoration:none;background-color:transparent;background-image:none;filter:progid:DXImageTransform.Microsoft.gradient(enabled = false);cursor:not-allowed}.dropdown-menu-large .dropdown-header{color:#428bca;font-size:18px}@media(max-width:768px){.dropdown-menu-large{margin-left:0;margin-right:0}.dropdown-menu-large>li{margin-bottom:30px}.dropdown-menu-large>li:last-child{margin-bottom:0}.dropdown-menu-large .dropdown-header{padding:3px 15px!important}}
+</style>
+    
+
+
+<div class="navbar navbar-default"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a class="navbar-brand" href="http://scanftree.com/">Scanftree.com</a></div>
+ 
+<div class="navbar-collapse collapse">
+
+
+
+<ul class="nav navbar-nav"> 
+
+
+
+
+
+
+
+
+	<li class="dropdown dropdown-large ">
+	<a href="http://scanftree.com/dbms/2-phase-locking-protocol#" class="dropdown-toggle" data-toggle="dropdown">Academic Tutorials<b class="caret"></b></a>
+		<ul class="dropdown-menu dropdown-menu-large row">
+		            <li class="col-sm-6">
+						<ul>
+ <li><a href="http://scanftree.com/automata/">Automata</a></li>
+ <li><a href="http://scanftree.com/Data_Structure/">Data Structure</a></li>
+ <li title="Operating System Tutorial"><a href="http://scanftree.com/operating-system/">OS</a></li>
+ <li><a href="http://scanftree.com/Graph-Theory/">Graph Theory</a></li>
+ <li><a href="http://scanftree.com/microprocessor/Applications-of-Microprocessors">Microprocessor</a></li>
+						</ul>
+					</li>
+					<li class="col-sm-6">
+						<ul>
+						<!--	<li class="dropdown-header">Gk/Aptitude</li><li class="divider"></li>  -->
+                        <li><a href="http://scanftree.com/cryptography/">Cryptography</a></li>
+                        <li><a href="http://scanftree.com/compiler-design/">Compiler Design</a></li>
+                        <li><a href="http://scanftree.com/computer-graphics/">Computer Graphics</a></li>
+							<li><a href="http://scanftree.com/ipv4/">IPv4</a></li>
+						    <li><a href="http://scanftree.com/Parallel-Algorithm/">Parallel Algorithm</a></li>
+						</ul>
+					</li>
+
+                    
+                   </ul>
+</li>
+
+
+
+
+
+ <li class="dropdown"><a href="http://scanftree.com/dbms/2-phase-locking-protocol#" class="dropdown-toggle" data-toggle="dropdown">Database Concept<b class="caret"></b></a><ul class="dropdown-menu"><li><a href="http://scanftree.com/dbms/">DBMS</a></li><li><a href="http://scanftree.com/sql/">SQL</a></li><li><a href="http://scanftree.com/sqlite/">SQLite</a></li></ul></li>
+
+
+
+
+<li class="dropdown dropdown-large">
+<a href="http://scanftree.com/dbms/2-phase-locking-protocol#" class="dropdown-toggle" data-toggle="dropdown">Programming <b class="caret"></b></a>
+
+		<ul class="dropdown-menu dropdown-menu-large row">
+		              	<li class="col-sm-6">
+						<ul>
+							<li class="dropdown-header">Tutorials</li><li class="divider"></li>
+                            <li><a href="http://scanftree.com/c/">C</a></li>
+                            <li><a href="http://scanftree.com/cpp/">C++</a></li>
+                            <li><a href="http://scanftree.com/java/">JAVA</a></li>
+                            <li><a href="http://scanftree.com/c-sharp/">C#</a></li>
+                            <li><a href="http://scanftree.com/python/">Python</a></li>
+                        </ul>
+                        </li>
+
+		              	<li class="col-sm-6">
+						<ul>
+							<li class="dropdown-header">Programs</li><li class="divider"></li>
+                           
+                            <li title="C programs examples"><a href="http://scanftree.com/programs/c/">C</a></li>
+                            <li title="C++ programs examples"><a href="http://scanftree.com/programs/cpp/">C++</a></li>
+                            <li title="Java programs examples"><a href="http://scanftree.com/programs/java/">JAVA</a></li> 
+                            <li title="Python programs examples"><a href="http://scanftree.com/programs/python/">Python</a></li>
+                         </ul>
+                         </li>
+
+</ul>
+</li>
+
+
+
+
+	<li class="dropdown dropdown-large ">
+	<a href="http://scanftree.com/dbms/2-phase-locking-protocol#" class="dropdown-toggle" data-toggle="dropdown">Preparation<b class="caret"></b></a>
+		<ul class="dropdown-menu dropdown-menu-large row">
+		            <li class="col-sm-4">
+						<ul>
+                        							<li class="dropdown-header">Syllabus</li><li class="divider"></li>
+                            <li><a href="http://scanftree.com/gate/">Gate</a></li><br>
+                            
+                            <li class="dropdown-header">Interview</li><li class="divider"></li>
+							<li><a href="http://studymild.com/technical/">Technical</a></li>
+							<li><a href="http://studymild.com/hr-interview/">HR/PI</a></li>
+	
+						</ul>
+					</li>
+					<li class="col-sm-4">
+						<ul>
+							<li class="dropdown-header">Gk/Aptitude</li><li class="divider"></li>
+							<li><a href="http://studymild.com/general-knowledge/">Gk</a></li>
+						    <li><a href="http://studymild.com/aptitude/">Aptitude</a></li>
+						</ul>
+					</li>
+		         	<li class="col-sm-4">
+						<ul>
+							<li class="dropdown-header">MCQ</li><li class="divider"></li>
+                            <li><a href="http://studymild.com/c-mcq/">C</a></li>
+							<li><a href="http://studymild.com/java-mcq/">JAVA</a></li>
+						    <li><a href="http://studymild.com/networking-mcq/">Networking</a></li>
+						</ul>
+					</li>
+                    
+                   </ul>
+</li>
+
+
+	<li class="dropdown dropdown-large ">
+	<a href="http://scanftree.com/dbms/2-phase-locking-protocol#" class="dropdown-toggle" data-toggle="dropdown">Miscellaneous<b class="caret"></b></a>
+		<ul class="dropdown-menu dropdown-menu-large row">
+		            <li class="col-sm-4">
+						<ul>
+                        	<li class="dropdown-header">Calculator</li><li class="divider"></li>
+                            <li><a href="http://scanftree.com/health/bmi-calculator-and-formula-used">Health</a></li>
+                            <li><a href="http://scanftree.com/math/calculator/">Math</a></li>
+
+                            
+                            				<!--		<li class="dropdown-header">Interview</li><li class="divider"></li>
+							<li><a href="http://studymild.com/technical/">Technical</a></li>
+-->
+	
+						</ul>
+					</li>
+					<li class="col-sm-4">
+						<ul>
+							<li class="dropdown-header">Developers</li><li class="divider"></li>
+							<li><a href="http://scanftree.com/css-maker/border-radius">Css/Html Maker</a></li>
+						    <li><a href="http://scanftree.com/Cheat-Sheets/">Cheat Sheets</a></li>
+                            <li><a href="http://w3seo.info/">SEO Tools</a></li>
+                     
+						</ul>
+					</li>
+		         	<li class="col-sm-4">
+						<ul>
+							<li class="dropdown-header">Other</li><li class="divider"></li>
+                            <li><a href="http://scanftree.com/math/formulas/">Math Formulas</a></li>
+							<li><a href="http://scanftree.com/ifsc-code/">IFSC Codes</a></li>
+						    
+						</ul>
+					</li>
+                    
+                   </ul>
+</li>
+
+
+
+
+
+
+
+<li title="Scanftre.com app on google play store"><a href="https://play.google.com/store/apps/details?id=com.scanftree.ankits.scanftree" target="_blank"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAQAAABKfvVzAAAAvUlEQVR4AeXLoW0CYRiA4S9Qg/uTC/PABLgLFo873XQEEiztABTHBGUChgCHuYQFnoo/pEcv1x6mpo9988aNp+jWrp4xiQ6meIl7dg7RwcEuvjN2MYmQLG2dnGwtpQhTF+NoU/qwcNV0tXBQRpuBtS5rg7hnZO8ne6No8uY3r/HFXFYpbDRtFCrZPDJDZ1mKUGgqIiTZ2TAPMzelpNJUSUo3szy862ubh6O+jnmo9VXH3/CAfzys1PqoreJxn8gSwAanmcu4AAAAAElFTkSuQmCC"></a></li>
+
+
+
+<li class="form-inline"><a> 
+<form action="http://scanftree.com/search/" class="navbar-search pull-right form-inline" id="cse-search-box">
+<input type="text" name="q" class="search-query" style="padding: 3px 10px; border: 1px solid #ccc;border-radius: 4px;" placeholder="Search">
+</form></a>
+</li>
+
+
+</ul></div></div>
+
+
+
+<!--<script  src="https://code.jquery.com/jquery-1.10.2.min.js"></script> 
+<script type="text/javascript" src="http://scanftree.com/jq.js"></script>
+<script  src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>-->
+
+
+
+
+
+<div id="navi" style="display:none;">
+<div itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"> 
+<a itemprop="url" href="http://scanftree.com/"> <span itemprop="title"><h4> : Scanftree</h4></span></a> </div> 
+
+<div itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"> <a href="http://scanftree.com/dbms" itemprop="url"> <span itemprop="title"><h4 style="color:#030">dbms  </h4></span></a> </div> 
+
+
+<div itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"> 
+<a href="http://scanftree.com/dbms/2-phase-locking-protocol" itemprop="url"><span itemprop="title"><h4 style="color:#774E46">2-phase-locking-protocol   </h4></span></a> </div> 
+
+
+
+
+
+
+</div>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-63309833-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+</div>
+<div class="sidebar" id="sideLeft"><div class="lesson_header red">DBMS</div>
+<a href="http://scanftree.com/dbms/2-phase-locking-protocol#" id="slide-toggle-sidebar"><div class="sidebar-collpsed-responsive">
+<span class="pull-right"><img src="./2 Phase Locking Protocol_files/collapsed-menu.png" alt="Menu"></span><span>SEE THE INDEX</span>
+</div></a>
+
+<div class="menu topMenu" id="list5">
+
+
+
+<h3>Concepts<span class="indicatorHide"></span></h3>
+<ul class="garima" style="display: none;">
+    <li><a href="http://scanftree.com/dbms/overview-of-dbms">Overview of DBMS</a></li>
+    <li><a href="http://scanftree.com/dbms/architecture-of-database">Database Architecture</a></li>
+    <li><a href="http://scanftree.com/dbms/database-model">Database Model</a></li>
+    <li><a href="http://scanftree.com/dbms/codd-rule">Codd's rule</a></li>
+    <li><a href="http://scanftree.com/dbms/rdbms-concept">RDBMS Concept</a></li>
+    <li><a href="http://scanftree.com/dbms/database-keys">Database key</a></li>
+    <li><a href="http://scanftree.com/dbms/database-normalization">Normalization</a></li>
+    <li><a href="http://scanftree.com/dbms/er-diagram">E-R Diagrams</a></li>
+    <li><a href="http://scanftree.com/dbms/generalization-and-specialization">Generalization and Specialization</a></li>
+    </ul>
+    
+  <h3 style="color: green;">Protocol<span class="indicatorShow" style="font-weight: bold;"></span></h3>
+<ul class="garima" style="display: block;">  
+    <li><a href="http://scanftree.com/dbms/2-phase-locking-protocol" class="act currentPage">2 Phase Locking Protocol</a></li>
+    <li><a href="http://scanftree.com/dbms/time-stamp-protocol">Time Stamp Protocol</a></li>
+    </ul>
+    
+<h3>Organization<span class="indicatorHide"></span></h3>
+<ul class="garima" style="display: none;">
+    <li><a href="http://scanftree.com/dbms/file-organization">File Organization</a></li>
+    <li><a href="http://scanftree.com/dbms/classification-of-indexing">Classification of Indexing</a></li>
+    <li><a href="http://scanftree.com/dbms/b-tree">B Tree</a></li>
+    <li><a href="http://scanftree.com/dbms/b+tree">B+ Tree</a></li>
+</ul>
+
+                      
+<br>      
+<ul>
+<li><a href="http://studymild.com/technical/dbms/">Interview Question</a></li>
+</ul>   
+      
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+<div class="content" id="content" style="min-height: 354px;"><br><center><ins class="adsbygoogle" style="display: block; height: 90px;" data-ad-client="ca-pub-1906558370233604" data-ad-slot="4726224574" data-ad-format="auto" data-adsbygoogle-status="done"><ins id="aswift_0_expand" style="display:inline-table;border:none;height:90px;margin:0;padding:0;position:relative;visibility:visible;width:845px;background-color:transparent;"><ins id="aswift_0_anchor" style="display:block;border:none;height:90px;margin:0;padding:0;position:relative;visibility:visible;width:845px;background-color:transparent;"><iframe width="845" height="90" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;width:845px;height:90px;" src="./2 Phase Locking Protocol_files/saved_resource.html"></iframe></ins></ins></ins><script>(adsbygoogle = window.adsbygoogle || []).push({})</script></center><br><hr> 
+
+
+
+<h1>Concurrency Control</h1>
+
+<h3>Lock based protocol:</h3>
+<p> 
+    This protocol requires that all the data items must be accessed in a mutually exclusive manner, 
+    i.e. when one transaction is executing then no other transaction should interrupt the same object.
+</p>
+<hr>
+<b>To implement lock based protocol we need 2 types of locks.</b>
+
+<ol type="a"> 
+    <li><p><b>Shared Lock:</b> When we take this lock we can just read the item but cannot write.</p>
+
+</li>
+<li>
+    <p><b>Exclusive Lock:</b> In this type of lock we can write as well as read the data item.</p>
+
+</li>
+</ol>
+<hr>
+<p>Below table will give clear idea about what we can do and cannot while having shared or exclusive lock.</p>
+<table width="100%" class="gen">
+<tbody><tr style="background-color: rgb(244, 244, 248);"><th></th><th style="color: rgba(0, 0, 0, 0.81);">Shared</th><th style="color: rgba(0, 0, 0, 0.81);">Exclusive</th></tr>
+<tr><td>Shared</td><td>Yes</td><td>No</td></tr>
+<tr class="alt" style="background-color: rgb(244, 244, 248);"><td>Exclusive</td><td>No</td><td>No</td></tr>
+</tbody></table>
+<hr>
+<p>Now we will discuss some of the problems because of locking:</p>
+
+<p>Below we have one schedule (set of transactions), here we have first given a serial schedule. i. e. we can either execute T1 before T2 or T2 before T1.</p>
+<table width="100%" class="gen">
+<tbody>
+<tr style="background-color: rgb(244, 244, 248);"><th style="color: rgba(0, 0, 0, 0.81);"> T1: A-&gt;B (Transferring 50 rupees to B)</th><th style="color: rgba(0, 0, 0, 0.81);">T2: Display (B+A)</th></tr>
+<tr style="background-color: rgb(244, 244, 248);"><td>Lock-x(A)</td><td>Lock-s(B)</td></tr>
+<tr class="alt" style="background-color: rgb(244, 244, 248);"><td>Read(A)</td><td>Read(B)</td></tr>
+<tr style="background-color: rgb(244, 244, 248);"><td>A=A-50</td><td>Unlock(B)</td></tr>
+<tr class="alt" style="background-color: rgb(244, 244, 248);"><td>write(A)</td><td>Lock-s(A)</td></tr>
+<tr style="background-color: rgb(244, 244, 248);"><td>Unlock(A)</td><td>Read(A)</td></tr>
+<tr class="alt" style="background-color: rgb(244, 244, 248);"><td>Lock-x(B)</td><td>Unlock(A)</td></tr>
+<tr style="background-color: rgb(244, 244, 248);"><td>Read(B)</td><td>Display(A+B)</td></tr>
+<tr class="alt" style="background-color: rgb(244, 244, 248);"><td>Lock-x(B)</td><td>Unlock(A)</td></tr>
+<tr style="background-color: rgb(244, 244, 248);"><td>B=B+50</td><td></td></tr>
+<tr class="alt" style="background-color: rgb(244, 244, 248);"><td>write(B)</td><td></td></tr>
+<tr style="background-color: rgb(244, 244, 248);"><td>Unlock(B)</td><td></td></tr>
+</tbody>
+</table>
+
+
+<hr>
+<p>As we can see that there is no problem when we execute T1-&gt;T2 or T2-&gt;T1. But if we try to interleave the transactions then we will face the problems.</p>
+
+<h3>Problem 1: Inconsistency in the database</h3>
+
+<p>Below we have one schedule (set of transactions), here we have first given a serial schedule. i. e. we can either execute T1 before T2 or T2 before T1.</p>
+<table width="100%" class="gen">
+<tbody>
+<tr style="background-color: rgb(244, 244, 248);"><th style="color: rgba(0, 0, 0, 0.81);"> T1: A-&gt;B (Transferring 50 rupees to B)</th><th style="color: rgba(0, 0, 0, 0.81);">T2: Display (B+A)</th></tr>
+<tr style="background-color: rgb(244, 244, 248);"><td>Lock-x(A)</td><td></td></tr>
+<tr class="alt" style="background-color: rgb(244, 244, 248);"><td>Read(A)</td><td></td></tr>
+<tr style="background-color: rgb(244, 244, 248);"><td>A=A-50</td><td></td></tr>
+<tr class="alt" style="background-color: rgb(244, 244, 248);"><td>write(A)</td><td></td></tr>
+<tr style="background-color: rgb(244, 244, 248);"><td>Unlock(A)</td><td></td></tr>
+
+<tr class="alt" style="background-color: rgb(244, 244, 248);"><td></td><td>Lock-s(B)</td></tr>
+<tr style="background-color: rgb(244, 244, 248);"><td></td><td>Read(B)</td></tr>
+<tr class="alt" style="background-color: rgb(244, 244, 248);"><td></td><td>Unlock(B)</td></tr>
+<tr style="background-color: rgb(244, 244, 248);"><td></td><td>Lock-s(A)</td></tr>
+<tr class="alt" style="background-color: rgb(244, 244, 248);"><td></td><td>Read(A)</td></tr>
+<tr style="background-color: rgb(244, 244, 248);"><td></td><td>Unlock(A)</td></tr>
+<tr class="alt" style="background-color: rgb(244, 244, 248);"><td></td><td>Display(A+B)</td></tr>
+
+<tr style="background-color: rgb(244, 244, 248);"><td>Read(B)</td><td></td></tr>
+<tr class="alt" style="background-color: rgb(244, 244, 248);"><td>Lock-x(B)</td><td></td></tr>
+<tr style="background-color: rgb(244, 244, 248);"><td>B=B+50</td><td></td></tr>
+<tr class="alt" style="background-color: rgb(244, 244, 248);"><td>write(B)</td><td></td></tr>
+<tr style="background-color: rgb(244, 244, 248);"><td>Unlock(B)</td><td></td></tr>
+</tbody>
+</table>
+
+<hr>
+    
+<p>So above we have shown one interleaving and we could understand the data flow by below example:</p>
+
+<h5>Output:</h5>
+
+<p>Let say in the start of the schedule A=100 and B=200 so in total we should have 300 always.</p>
+
+<p>
+        But as we see that after Till <b>Display (B+A)</b> we have A=50 and B=200 to total=250 but it should be 300 to make consistency.
+</p>
+<hr>
+<h3>Problem 2: Deadlock Problem</h3>
+
+<p>Let’s say T2 is waiting for T1 to unlock (A) and T1 is waiting for T2 to unlock (B)</p>
+<img src="./2 Phase Locking Protocol_files/deadlock.png">
+<p>Above problem could be seen from the below schedule:</p>
+<table width="100%" class="gen">
+<tbody>
+<tr style="background-color: rgb(244, 244, 248);">
+    <th style="color: rgba(0, 0, 0, 0.81);"> T1</th><th style="color: rgba(0, 0, 0, 0.81);">T2</th></tr>
+<tr style="background-color: rgb(244, 244, 248);"><td>Lock-x(A)</td><td></td></tr>
+<tr class="alt" style="background-color: rgb(244, 244, 248);"><td>Read(A)</td><td></td></tr>
+<tr style="background-color: rgb(244, 244, 248);"><td>A=A-50</td><td></td></tr>
+<tr class="alt" style="background-color: rgb(244, 244, 248);"><td>write(A)</td><td></td></tr>
+
+<tr style="background-color: rgb(244, 244, 248);"><td></td><td>Lock-s(B)</td></tr>
+<tr class="alt" style="background-color: rgb(244, 244, 248);"><td></td><td>Read(B)</td></tr>
+<tr style="background-color: rgb(244, 244, 248);"><td></td><td>Lock-s(A)</td></tr>
+<tr class="alt" style="background-color: rgb(244, 244, 248);"><td></td><td>Read(A)</td></tr>
+<tr style="background-color: rgb(244, 244, 248);"><td></td><td>Display(A+B)</td></tr>
+<tr class="alt" style="background-color: rgb(244, 244, 248);"><td></td><td>Unclock(B)</td></tr>
+<tr style="background-color: rgb(244, 244, 248);"><td></td><td>Unlock(A)</td></tr>
+
+<tr><td>Lock-x(B)</td><td></td></tr>
+<tr class="alt" style="background-color: rgb(244, 244, 248);"><td>Read(B)</td><td></td></tr>
+<tr><td>B=B+50</td><td></td></tr>
+<tr class="alt" style="background-color: rgb(244, 244, 248);"><td>write(B)</td><td></td></tr>
+<tr><td>Commit</td><td></td></tr>
+<tr class="alt" style="background-color: rgb(244, 244, 248);"><td>Unlock(B)</td><td></td></tr>
+<tr><td>Unlock(A)</td><td></td></tr>
+</tbody>
+</table>
+<hr>
+
+<h3>Two phase locking Protocol</h3>
+<p>It requires both lock and unlocks being done in two phases:</p>
+<ul>
+    <li><b>Growing Phase:</b> Obtain locks that means when we are writing something on A and B, then we will take locks on A and B like below:
+            W(A) and W(B)</li>
+    <li><b>Shrinking Phase:</b> Release locks, Unlock the objects in a row like unlock (A) and unlock (B)</li>
+</ul> 
+
+<h4>Lock Point</h4>
+<p>
+    When a transaction takes the final lock is called lock point.
+</p>
+<hr>
+<b>
+    Here growing and shrinking phase confirms serializability.
+</b>
+<hr> 
+<h3>How to create serializable schedule:</h3>
+    <p> 
+       Just find out last lock taken from the schedule and put the order, in below example we have explained that.
+    </p>
+    <img src="./2 Phase Locking Protocol_files/two-phase-lock.png">    
+<p>
+So the highlighted parts are the last locks taken, i. e. we can say that the serial schedule could be:
+T2 -&gt; T3 -&gt; T1
+</p>
+<hr>
+<h4>Note:</h4>
+<p> 
+But 2 PL won’t be able to solve other problems such as cascading rollback.
+</p>
+<hr>
+<p>
+    </p><h3>Cascading Rollback Problem</h3>
+    <b>Here</b> we could see cascading rollback by the following example:<br>
+    <img src="./2 Phase Locking Protocol_files/cascading_rollback.png">
+    So if transaction T1 rollbacks then transaction T2 and T3 has to rollback.<br>
+    <h3>DeadLock Problem Example</h3>
+    <img src="./2 Phase Locking Protocol_files/deadlock.png">
+    <br>So T1 is waiting for B and T2 is waiting for A and both A and B are held by T1 and T2 respectively.<p></p>
+ 
+<p>
+    <b>
+Note:</b>
+In 2 PL we have seen:<br>
+</p><ul>
+    <li>Serializability: It is guaranteed to happen</li>
+    <li>Cascading Rollback: It is possible which is bad.</li>
+    <li>Deadlock: It is possible.</li>
+</ul>
+
+<p>
+There are some variants cascading rollback using which we can avoid cascading rollback.
+</p><ul>
+    <li><b>Strict 2 phase locking Protocol:</b>
+         All exclusive mode locks are taken by a transaction must be unlocked after commit. However we don’t bother about shared locks.
+Using this method schedule will be recoverable and cascade less.</li>
+    <li><b>Rigorous 2 Phase Locking Protocol:</b> 
+    All locks must be hold until the transaction commit.</li>
+<br>
+<b>Note: Both of them can avoid cascading rollback but Deadlock is still possible.</b>
+
+<li><b>Conservative 2PL:</b> Obtain the lock then start the transaction otherwise don’t. So hold and wait is gone. But Concurrency is gone.
+And also requirement of locks which will be taken in future- this decision is difficult.
+
+    </li>
+</ul>
+<img src="./2 Phase Locking Protocol_files/types_2_phase_locking_protocol.png">
+<b>Note:</b>
+So when we say a schedule is conservative then it will be Rigorous as well as Strict 2 PL but vice versa is not true.<p></p>
+<p>
+    </p><hr>
+Below we have some examples:<br>
+<b>Example 1:</b>
+ 
+&gt;&gt;&gt;<table width="100%" class="gen">
+<tbody>
+<tr style="background-color: rgb(244, 244, 248);">
+    <th style="color: rgba(0, 0, 0, 0.81);"> T1</th></tr>
+<tr><td>Lock-s(A)</td></tr>
+<tr class="alt" style="background-color: rgb(244, 244, 248);"><td>Read(A)</td></tr>
+<tr><td>Lock-x(B)</td></tr>
+<tr class="alt" style="background-color: rgb(244, 244, 248);"><td>Read(B)</td></tr>
+<tr><td>Unlock(A)</td></tr>
+<tr class="alt" style="background-color: rgb(244, 244, 248);"><td>Write(B)</td></tr>
+<tr><td>Unlock(B)</td></tr>
+</tbody>
+</table>
+
+<br>
+Now we will see what is the above schedule following the properties discussed above<br>
+<b>2 PL:</b> There is growing and shrinking phase.<br>
+<b>Strict 2 PL:</b> There is Lock-x(B) and it is unlocked before commit so no strict 2 PL.<br>
+<b>Rigorous:</b> If it is not strict 2 PL then it can’t be Rigorous.<br>
+<b>Conservative:</b> If it is not strict 2 PL then it can’t be conservative.<br>
+
+<hr>
+<b>Example 2:</b><br>
+
+&gt;&gt;&gt;<table width="100%" class="gen">
+<tbody>
+<tr style="background-color: rgb(244, 244, 248);">
+    <th style="color: rgba(0, 0, 0, 0.81);"> T1</th></tr>
+<tr><td>Lock-s(A)</td></tr>
+<tr class="alt" style="background-color: rgb(244, 244, 248);"><td>Read(A)</td></tr>
+<tr><td>Lock-x(B)</td></tr>
+<tr class="alt" style="background-color: rgb(244, 244, 248);"><td>Unlock(A)</td></tr>
+<tr><td>Read(B)</td></tr>
+<tr class="alt" style="background-color: rgb(244, 244, 248);"><td>Write(B)</td></tr>
+<tr><td>commit</td></tr>
+<tr class="alt" style="background-color: rgb(244, 244, 248);"><td>Unlock(B)</td></tr>
+</tbody>
+</table>
+
+<b>2 PL:</b> There is growing and shrinking phase so it is 2 PL.<br>
+<b>Strict 2 PL:</b> Exclusive locks are unlocked after commit. So yes it is.<br>
+<b>Rigorous:</b> We have taken Lock-s(A) and we have unlocked it before commit. So no rigorous.<br>
+<b>Conservative:</b> We have not taken all the locks at first then start the transaction so no conservative.<br>
+
+<hr>
+<b>Example 3:</b><br>
+&gt;&gt;&gt;<table width="100%" class="gen">
+<tbody>
+<tr style="background-color: rgb(244, 244, 248);">
+    <th style="color: rgba(0, 0, 0, 0.81);"> T1</th></tr>
+<tr style="background-color: rgb(244, 244, 248);"><td>Lock-s(A)</td></tr>
+<tr class="alt" style="background-color: rgb(244, 244, 248);"><td>Read(A)</td></tr>
+<tr style="background-color: rgb(244, 244, 248);"><td>Lock-x(B)</td></tr>
+<tr class="alt" style="background-color: rgb(244, 244, 248);"><td>Read(B)</td></tr>
+<tr style="background-color: rgb(244, 244, 248);"><td>Write(B)</td></tr>
+<tr class="alt" style="background-color: rgb(244, 244, 248);"><td>commit</td></tr>
+<tr style="background-color: rgb(244, 244, 248);"><td>Unlock(B)</td></tr>
+<tr class="alt" style="background-color: rgb(244, 244, 248);"><td>Unlock(A)</td></tr>
+</tbody>
+</table>
+<b>2 PL:</b> There is growing and shrinking phase so it is 2 PL.<br>
+<b>Strict 2 PL:</b> Exclusive locks are unlocked after commit. So yes it is.<br>
+<b>Rigorous:</b> We have unlocked all the locks after commit so it is rigorous.<br>
+<b>Conservative:</b> We have not taken all the locks at first then start the transaction so no conservative.<br>
+
+
+<hr>
+<b>Example 4:</b><br>
+&gt;&gt;&gt;<table width="100%" class="gen">
+<tbody>
+<tr style="background-color: rgb(244, 244, 248);">
+    <th style="color: rgba(0, 0, 0, 0.81);"> T1</th></tr>
+<tr><td>Lock-s(A)</td></tr>
+<tr class="alt" style="background-color: rgb(244, 244, 248);"><td>Lock-x(B)</td></tr>
+<tr><td>Read(B)</td></tr>
+<tr class="alt" style="background-color: rgb(244, 244, 248);"><td>Write(B)</td></tr>
+<tr><td>Read(A)</td></tr>
+<tr class="alt" style="background-color: rgb(244, 244, 248);"><td>commit</td></tr>
+<tr><td>Unlock(A)</td></tr>
+<tr class="alt" style="background-color: rgb(244, 244, 248);"><td>Unlock(B)</td></tr>
+</tbody>
+</table>
+<b>2 PL:</b> There is growing and shrinking phase so it is 2 PL.<br>
+<b>Strict 2 PL:</b> Exclusive locks are unlocked after commit. So yes it is.<br>
+<b>Rigorous:</b> We have unlocked all the locks after commit so it is rigorous.<br>
+<b>Conservative:</b> We have taken all the locks at first then start the transaction so yes it is conservative.<br>
+
+<hr>
+<b>Example 5:</b><br>
+&gt;&gt;&gt;&gt;<table width="100%" class="gen">
+<tbody>
+<tr style="background-color: rgb(244, 244, 248);">
+ <th style="color: rgba(0, 0, 0, 0.81);"> T1</th></tr>
+<tr style="background-color: rgb(244, 244, 248);"><td>Lock-s(A)</td></tr>
+<tr class="alt" style="background-color: rgb(244, 244, 248);"><td>Read(A)</td></tr>
+<tr style="background-color: rgb(244, 244, 248);"><td>Unlock(A)</td></tr>
+<tr class="alt" style="background-color: rgb(244, 244, 248);"><td>Lock-x(B)</td></tr>
+<tr style="background-color: rgb(244, 244, 248);"><td>Read(B)</td></tr>
+<tr class="alt" style="background-color: rgb(244, 244, 248);"><td>Write(B)</td></tr>
+<tr style="background-color: rgb(244, 244, 248);"><td>Unlock(B)</td></tr>
+<tr class="alt" style="background-color: rgb(244, 244, 248);"><td>Unlock(A)</td></tr>
+<tr style="background-color: rgb(244, 244, 248);"><td>Commit</td></tr>
+</tbody>
+</table>
+<b>2 PL:</b> There is no growing and shrinking phase so it is not 2 PL.<br>
+<b>Strict 2 PL:</b> Because it is not 2 P L so not either of it.<br>
+<b>Rigorous:</b> Because it is not 2 P L so not either of it.<br>
+<b>Conservative:</b>Because it is not 2 P L so not either of it.<br>
+
+ <div><ul class="pager"><li class="next"><a href="http://scanftree.com/dbms/time-stamp-protocol">Next →</a></li></ul></div></div>
+ <div class="sidebar1" id="sideRight"><script>   
+  ad = document.getElementById('content');    
+    var adWidth = (typeof ad.getBoundingClientRect === 'function') ? 
+    ad.getBoundingClientRect().width : ad.offsetWidth;    
+      
+    /* replace XXX with your publisher id */
+    google_ad_client = "ca-pub-1906558370233604";
+     
+    /* replace all ad-slot#X strings with the correct ad slot IDs */
+    if ( adWidth >= 728 ) {
+        	$('#content' ).prepend('<br/><center><ins class="adsbygoogle"  style="display:block"  data-ad-client="ca-pub-1906558370233604" data-ad-slot="4726224574"  data-ad-format="auto">'+'</'+'ins><script'+'>'+'(adsbygoogle = window.adsbygoogle || []).push({})'+'</'+'script></center><br/><hr/>');
+			
+			 //google_ad_param = ["728", "15", "5056524575"];
+	}else if ( adWidth >= 468 ){
+		google_ad_param = ["468", "15", "8149591778"];
+       $('#content' ).prepend('<br/><center><ins class="adsbygoogle"  style="display:inline-block;width:'+ google_ad_param[0] + 'px; height:'+ google_ad_param[1] + 'px" data-ad-client="ca-pub-1906558370233604" data-ad-slot="'+google_ad_param[2]+'"  >'+'</'+'ins><script'+'>'+'(adsbygoogle = window.adsbygoogle || []).push({})'+'</'+'script></center><br/><hr/>');
+
+	}else { 
+	 google_ad_param = ["320", "100", "4245979693"];
+ $('#content' ).prepend('<br/><center><ins class="adsbygoogle"  style="display:inline-block;width:'+ google_ad_param[0] + 'px; height:'+ google_ad_param[1] + 'px" data-ad-client="ca-pub-1906558370233604" data-ad-slot="'+google_ad_param[2]+'"  >'+'</'+'ins><script'+'>'+'(adsbygoogle = window.adsbygoogle || []).push({})'+'</'+'script></center><br/><hr/>');
+
+	}
+ </script>
+
+<script>  
+if($('#content').height()> 1000)
+{
+ if ( adWidth >= 728 ) {
+	
+  $('#sideRight111' ).append('<br/><center><ins class="adsbygoogle"  style="display:inline-block;width:250px;height:250px" data-ad-client="ca-pub-1906558370233604"  data-ad-slot="2130118093">'+'</'+'ins><script'+'>'+'(adsbygoogle = window.adsbygoogle || []).push({})'+'</'+'script></center>');
+	
+ }
+}
+</script>
+<div class="mx-lpad-15 mx-tpad-10"><br class="hide-1 hide-2">
+        <h5>Quantitative Aptitude</h5>
+        <ul class="right-links">
+            <li><a href="http://studymild.com/aptitude/" title="Arithmetic Aptitude">Arithmetic</a> <a href="http://studymild.com/data-interpretation/">DI</a></li>
+        </ul>
+        
+        
+        <h5>Reasoning</h5>
+        <ul class="right-links">
+            <li><a href="http://studymild.com/logical-reasoning/" title="Logical Reasoning">Logical</a> <a href="http://studymild.com/verbal-reasoning/" title="Verbal Reasoning">Verbal</a> <a href="http://studymild.com/non-verbal-reasoning/" title="Nonverbal Reasoning">Nonverbal</a></li>   
+        </ul>
+        
+        <h5>Programming</h5>
+        <ul class="right-links">
+            <li><a href="http://studymild.com/c-mcq/">C </a> <a href="http://studymild.com/cpp-programming/" title="C++ Programming">C++</a> <a href="http://studymild.com/c-sharp-programming/" title="C# Programming">C#</a> <a href="http://studymild.com/java-mcq/" title="Java Programming">Java</a> <a href="http://studymild.com/computer-science/" title="Conputer Science Subjects">CSE</a></li>
+        </ul>
+        
+       <h5>Interview</h5>
+        <ul class="right-links">
+            <li><a href="http://studymild.com/hr-interview/" title="HR Interview Questions">HR</a> <a href="http://studymild.com/technical/" title="Technical Interview Questions">Technical Interview</a></li> 
+        </ul>
+        </div>
+        <br>
+
+<div class="sticky" style="position: fixed; top: 0px;">
+
+<ins class="adsbygoogle" style="display: block; height: 600px;" data-ad-client="ca-pub-1906558370233604" data-ad-slot="4726224574" data-ad-format="auto" data-adsbygoogle-status="done"><ins id="aswift_1_expand" style="display:inline-table;border:none;height:600px;margin:0;padding:0;position:relative;visibility:visible;width:292px;background-color:transparent;"><ins id="aswift_1_anchor" style="display:block;border:none;height:600px;margin:0;padding:0;position:relative;visibility:visible;width:292px;background-color:transparent;"><iframe width="292" height="600" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_1" name="aswift_1" style="left:0;position:absolute;top:0;width:292px;height:600px;" src="./2 Phase Locking Protocol_files/saved_resource(1).html"></iframe></ins></ins></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<!-- 250_250
+<center><ins class="adsbygoogle"
+     style="display:inline-block;width:250px;height:250px"
+     data-ad-client="ca-pub-1906558370233604"
+     data-ad-slot="5041677302"></ins></center>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+-------------------
+<div class="mx-lpad-15 mx-tpad-10"><br class="hide-1 hide-2">
+        <h5>Quantitative Aptitude</h5>
+        <ul class="right-links">
+            <li><a href="http://studymild.com/aptitude/" title="Arithmetic Aptitude">Arithmetic</a> <a href="http://studymild.com/data-interpretation/">DI</a></li>
+        </ul>
+        
+        
+        <h5>Reasoning</h5>
+        <ul class="right-links">
+            <li><a href="http://studymild.com/logical-reasoning/" title="Logical Reasoning">Logical</a> <a href="http://studymild.com/verbal-reasoning/" title="Verbal Reasoning">Verbal</a> <a href="http://studymild.com/non-verbal-reasoning/" title="Nonverbal Reasoning">Nonverbal</a></li>   
+        </ul>
+        
+        <h5>Programming</h5>
+        <ul class="right-links">
+            <li><a href="http://studymild.com/c-mcq/">C </a> <a href="http://studymild.com/cpp-programming/" title="C++ Programming">C++</a> <a href="http://studymild.com/c-sharp-programming/" title="C# Programming">C#</a> <a href="http://studymild.com/java-mcq/" title="Java Programming">Java</a> <a href="http://studymild.com/computer-science/" title="Conputer Science Subjects">CSE</a></li>
+        </ul>
+        
+       <h5>Interview</h5>
+        <ul class="right-links">
+            <li><a href="http://studymild.com/hr-interview/" title="HR Interview Questions">HR</a> <a href="http://studymild.com/technical/" title="Technical Interview Questions">Technical Interview</a></li> 
+        </ul>
+        
+
+        </div>
+-->
+</div>
+
+<style>
+.mx-lpad-15 { 
+    padding-left: 2%;
+}
+ul.right-links {
+	padding-left: 10%;
+    margin: auto;
+    list-style-type: square;
+    color: #858585;
+    list-style-image: url(/zarrow.gif);
+}
+ul.right-links a {
+    padding-right: 3%;
+}
+</style>
+
+
+
+<script>
+$(document).ready(function() {
+
+$(function(){ // document ready
+  if (!!$('.sticky').offset()) { // make sure ".sticky" element exists
+    var stickyTop = $('.sticky').offset().top; // returns number 
+    $(window).scroll(function(){ // scroll event
+      var windowTop = $(window).scrollTop(); // returns number  
+      if ((stickyTop < windowTop) && ($( document ).width()>1000)){
+        $('.sticky').css({ position: 'fixed', top: 0 });
+      }
+      else {
+        $('.sticky').css('position','static');
+      }
+    });
+ }
+});
+
+});
+</script>
+	
+   </div><div class="footer"><br>
+
+
+<div id="google-linkads-1"></div>
+
+
+
+
+     
+<script>    
+
+
+    ad = document.getElementById('content11');    
+    var adWidth = (typeof ad.getBoundingClientRect === 'function') ? 
+    ad.getBoundingClientRect().width : ad.offsetWidth;    
+      
+    /* replace XXX with your publisher id */
+    google_ad_client = "ca-pub-1906558370233604";
+     
+    /* replace all ad-slot#X strings with the correct ad slot IDs */
+    if ( adWidth >= 728 )      google_ad_param = ["728", "15", "5056524575"];
+    else if ( adWidth >= 468 ) google_ad_param = ["468", "15", "8149591778"];
+  //  else if ( adWidth >= 200 ) google_ad_param = ["200", "90", "8009990975"];
+   // else if ( adWidth >= 180 ) google_ad_param = ["180", "90", "ad-slot#4"];
+   // else if ( adWidth >= 160 ) google_ad_param = ["160", "90", "ad-slot#5"];
+    else                       google_ad_param = ["200", "90", "8009990975"];
+ 
+// $('#content11' ).append('<ins class="adsbygoogle"  style="display:inline-block;width:'+ google_ad_param[0] + 'px; height:'+ google_ad_param[1] + 'px" data-ad-client="ca-pub-1906558370233604" data-ad-slot="'+google_ad_param[2]+'"  >'+'</'+'ins><script'+'>'+'(adsbygoogle = window.adsbygoogle || []).push({})'+'</'+'script>');
+ </script>
+
+<script>
+var toggle = true;
+  $(".sidebar-icon").click(function() {                
+  if (toggle){
+    $(".page-container").addClass("sidebar-collapsed").removeClass("sidebar-collapsed-back");
+    $("#menu span").css({"position":"absolute"});
+  }
+  else {
+    $(".page-container").removeClass("sidebar-collapsed").addClass("sidebar-collapsed-back");
+    setTimeout(function() {
+      $("#menu span").css({"position":"relative"});
+    }, 400);
+  }              
+toggle = !toggle;
+});
+</script>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'scanftree';    
+    /* * * DON'T EDIT BELOW THIS LINE * * 
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();*/
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+//	$("#content11").append("<br/><hr/><div id='disqus_thread'></div>");
+$("#back-top").hide();
+$(function () {
+		$(window).scroll(function () {if ($(this).scrollTop() > 100) {$('#back-top').fadeIn();} 
+		else {$('#back-top').fadeOut();}
+		});
+
+		$('#back-top a').click(function () {$('body,html').animate({scrollTop: 0}, 1500);return false; });  });
+     //    $('.content' ).css( "min-height", $( '.sidebar1').height() );		
+		  });
+
+$(".gen tr:even").css("background-color", "#F4F4F8");
+$('#toggle-button').toggle(function() {
+             $('#toggle').animate({width: 750});
+            $('#toggle').animate({height: 500});     
+			 }, function() {
+              $('#toggle').animate({width: 620});
+			 $('#toggle').animate({height: 250});
+      });
+	  	  
+$(function(){
+         var url = window.location.pathname, 
+         urlRegExp = new RegExp(url.replace(/\/$/,'') + "$"); 
+         $('#sideLeft .menu .garima li  a').each(function(){
+            if(urlRegExp.test(this.href.replace(/\/$/,''))){
+                $(this).addClass('act currentPage');
+				$(this).parent().parent(".garima").css('display','block');
+				$(this).parent().parent(".garima").prev("h3").find("span").removeClass("indicatorHide").addClass("indicatorShow").css('font-weight','bold');
+					$(this).parent().parent(".garima").prev("h3").css('color','green' );
+					 $('#content' ).css( "min-height", $( '#sideLeft').height() );	
+					
+				var $next_link="";
+			var $tot_string ='<div><ul class="pager">';		
+	if(jQuery.type($(this).parent().next("li").children("a").attr("href") ) === "undefined")
+	  {
+	 if(jQuery.type($(this).parent().parent().next().next().children().first("li").children("a").attr("href") ) !== "undefined")
+	    {  $next_link = ($(this).parent().parent().next().next().children().first("li").children("a").attr("href")  );
+				 if($next_link.slice(-1) =='/') { $next_link = $next_link.slice(0,-1); }
+		   $tot_string = $tot_string.concat('<li class="next"><a href='  + escape($next_link)  +'>Next &rarr;</a></li>');
+		}
+	  }else
+		{
+		 $next_link  = $(this).parent().next("li").children("a").attr("href") ;
+		 if($next_link.slice(-1) =='/') { $next_link = $next_link.slice(0,-1); }
+		 
+		 $tot_string = $tot_string.concat('<li class="next"><a  href= '  + escape($next_link)  +'>Next &rarr;</a></li>');
+	     }
+
+$tot_string = $tot_string.concat('</ul></div>');
+    //$('#content' ).prepend($tot_string);
+	    $('#content' ).append($tot_string);
+		
+		// $('#content' ).append('<br/><center><h4><a rel="nofollow"  href="http://tracking.vcommission.com/aff_c?offer_id=577&aff_id=64210">Register Now to get Hired</a></h4></center>');
+//	 $('.content' ).css( "min-height", $( '.sidebar1').height() );		
+   //              asdfg=$(this).next();
+
+} }); }); 
+
+
+
+</script>
+
+
+
+
+<span id="back-top" style="display: inline;"><a><span></span></a></span>
+<div id="bottommenu">
+
+<div class="row">
+
+  <div class="col-sm-12 col-md-12 amezon_ads">
+   <!-- <center><h4><a rel="nofollow"  href="http://tracking.vcommission.com/aff_c?offer_id=577&aff_id=64210">Register Now to get Hired</a></h4></center>
+  <br/>
+ 
+
+<center><a target="_blank"  href="https://www.amazon.in/ref=as_li_ss_tl?ie=UTF8&linkCode=sl2&tag=scanftree-21&linkId=3f27da81883a48856592db70844b8f9e"><img border="0" src="/amezon.JPG" ></a></center>
+
+<p>scanftree is optimized for learning, testing. Examples might be simplified to improve reading and basic understanding. Tutorials, references, and examples are constantly reviewed to avoid errors, but we cannot warrant full correctness of all content. </p> <p>©Copyright 2017 scanftree.com</p>
+-->
+</div>
+</div></div></div>
+
+<script type="text/javascript"> 
+$(".menu h3").append("<span class='indicatorHide'></span>");
+  $(".garima").css('display','none');
+			
+      $(".menu h3").click(function() {
+		 if(  $(this).find("span").hasClass( "indicatorHide" )   )
+		 {	
+		  $(this).find("span").removeClass("indicatorHide").addClass("indicatorShow");
+		 }else
+		 {
+		  $(this).find("span").removeClass("indicatorShow").addClass("indicatorHide");
+		 }
+		 
+    $(this).next('.garima').toggle();
+	   $('#content' ).css( "min-height", $( '#sideLeft').height() );	
+    });
+	
+	
+	
+	
+$(document).ready(function(){
+$('#slide-toggle-sidebar').on('click', function(e){
+        $('.topMenu').css('width','100%');
+    	$('.topMenu').slideToggle();
+     	return false;
+     });
+});
+	
+
+</script>
+</div></body></html>
