@@ -1,0 +1,1 @@
+(function(){var iframe=document.getElementsByTagName("iframe")[0],ctp=null;try{ctp=window.CREATIVE_TOOLSET_PARAMS}catch(error$$2){}var message={ctp:ctp,seed:window.Creative.seed};iframe.contentWindow.postMessage(message,window.Creative.targetOrigin);})();
