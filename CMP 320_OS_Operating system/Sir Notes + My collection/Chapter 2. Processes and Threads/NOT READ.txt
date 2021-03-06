@@ -1,0 +1,6 @@
+NOT READ
+/*/*/*/*/*/*/*/*
+
+
+Semaphores
+Mutex
