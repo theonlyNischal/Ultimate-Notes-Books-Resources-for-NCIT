@@ -1,0 +1,27 @@
+Write a program for 8085 for performing following addition:
+1^2 + 2^2 + ..... 9^2
+
+
+Solution:-
+
+mvi b,09h
+mvi a,00h ;store 8 bit result
+mvi e,00h ;store carry
+
+addloop: mov c,b
+mulloop: add b
+	jnc skip
+	mov d,a
+	mov a,e
+	adi 01h  ;add 1 to carry
+	mov e,a
+	mov a,d
+	skip: dcr c
+	jnz mulloop
+dcr b
+jnz addloop
+
+out 00h
+mov a,e
+out 01h
+hlt
