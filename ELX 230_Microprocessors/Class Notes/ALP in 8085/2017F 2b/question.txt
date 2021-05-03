@@ -1,0 +1,1 @@
+Write an 8085 ALP that checks an array of ten memory locations starting from c000h for odd numbers including zero and transfers the odd numbers in memory locations starting from c00eh.

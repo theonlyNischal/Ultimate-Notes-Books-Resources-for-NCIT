@@ -1,0 +1,5 @@
+Write an ALP in 8085 to find whether a given number is palindrome or not.
+
+lxi h, 
+c000h ;assuming that the input is in c000h.
+

@@ -1,0 +1,369 @@
+
+Racing Condition:
+	When two or more processes are reading and writing some shared data and the final result depends upon who runs precisely when, this condition is known as racing condition.
+
+* Part of the program where the shared memory is accessed is called a critical region. (or critical section)
+
+*The solution to critical section problem must ensure following three conditions:
+	Mutual Exclusion
+	Progress
+	Bounded Waiting
+
+Mutual Exclusion:
+	* Some way of making sure that if one process is using a shared variable or file, the other processes will be excluded from doing the same thing.
+	* One way to achieve it may be (Using Critical Region):
+		- No two processes may be simultaneously inside their critical regions.
+		- No assumptions may be made about speeds or the number of CPUs.
+		- No process running outside its critical region may block other processes.
+		- No process should have to wait forever to enter its critical region.
+	* SOLUTIONS:
+		- Disabling interrupts (For single processor system) : 
+			-disable all interrupts before the process enters the critical section.
+			-the context switching between processes only occur due to clocks and interrupts
+			-disabling the interrupts will thus restrict other process switching when one process is in critical region
+			-Problem: no such veto power should be given to any process. If somehow one process disables all the interrupts and then never turn them on again... ? what to do in that case. haha.. such a foolish idea. :P. Also in multprocessor systems, disabling interrupts of one CPU will not make it easy at all.. Other CPU's process could disturb time and again.
+		- Lock Variables
+			-Implement a lock variable, intially set to 0
+			-When a process wants to enter the critical region, then it checks the variable at first
+			-If the lock is 0, it sets it and then enters the critical region
+			-If the lock is 1, it has to wait till the lock becomes 0 (asuming that some other process is in its critical region already)
+			-Problem: What if some process comes and interrupt the current process just before this process has set the lock to 1? In that case, both process will assume that it is about to enter the critical region right now.
+		-Strict Alteration
+			-Programming Solution
+			-make a variable  say 'x'. Process 1 can enter the critical state only if it is 0, while the process 2 can enter the critical state only if it is 1. Once the process completes its critical state, it changes the value of 'x', so that other process waiting can begin their critical region
+			-other process are 'busy waiting', meaning that they are waiting till the 'x' is set to 0/1
+			-Busy waiting adds CPU overhead. This is the main problem with this method.
+
+				start
+				wait till it is not my turn
+				do my things
+				say it is other's turn now
+				end
+
+		-Dekker's Algorithm
+			-the first approach to solution of mutual exclusion problem
+			-If two processes attempt to enter a critical section at the same time, the algorithm will allow only one process in, based on whose turn it is. If one process is already in the critical section, the other process will busy wait for the first process to exit.
+			-Dekker's algorithm guarantees mutual exclusion, freedom from deadlock, and freedom from starvation.
+			-Disadvantage: limited to two processes, makes use of busy waiting instead of process 
+
+
+
+					Bikalpa and Barsha reached Toilet at the same time.
+					Only one of them can enter and pee.
+					*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+
+					Bikalpa wants to Enter.
+					But he first sees if Barsha wants to enter too.
+					If Barsha wants to enter too, he checks if it is actually his turn to get inside or not.
+					If not, he will say I don't want to enter. He will wait until it is his turn.
+					Once it is his turn, he will say "I want to enter"
+					Once he is sure Barsha doesn't want to go inside, he goes inside and pees.
+					After peeing, he will come out and then say 'It's your turn barsha. I dont want to enter.'
+
+					*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+					Start
+					BikalpaWantsToEnter = true;
+					while (barshaWantsToEnter){
+						if (!BikalpaTurn){
+							BikalpaWantsToEnter = false;
+							while(!BikalpaTurn){
+									// Bikalpa Keeps on Waiting
+							}
+							BikalpaWantsToEnter = true;
+						}
+					}
+					//Critical Works are done by Bikalpa
+
+					BikapaTurn = false;
+					BarshaTurn = true;
+					BikalpaWantsToEnter = false;
+
+					//Remaining Non Critical Works
+
+					End
+
+		-Peterson's algorithm
+
+
+					Start
+
+					BikalpaWantsToEnter = true;
+					turn = Barsha;
+
+					while( BarshaWantsToEnter AND turn==Barsha){
+						//Bikalpa Keeps On Waiting
+					}
+
+					//Bikalpa does critical works
+
+					BikalpaWantsToEnter = false;
+
+					End
+		-Test and Set Lock (TSL)
+			-Test-and-set instruction is an instruction used to write 1 (set) to a memory location and return its old value as a single atomic (i.e., non-interruptible) operation.
+			-If multiple processes may access the same memory location, and if a process is currently performing a test-and-set, no other process may begin another test-and-set until the first process's test-and-set is finished.
+			-The CPU executing TSL locks the memory bus to prohibit other CPUs from acessing memory until it is done. (This special hardware feature is required)
+			-TSL locks are the ones that require hardware support
+			- TSL REGISTER, LOCK : reads the contents of word 'lock' from memory and simultaneously write a non zero value to it
+
+			-Use a shared variable 'lock'
+			-When a process wants to use shared memory, test 'lock'. if 0, write set 1 to it immediately.
+			-If 'lock' = 1, busy wait
+			-after the critical state is finished, reset the 'lock' back to 0. (using ordinary MOVE)
+
+				enter_region:
+						TSL REGISTER, LOCK
+						CMP REGISTER, #0
+						JNE enter_region
+						RET
+
+				leave_region:
+						MOVE LOCK, #0
+						RET
+
+		-Semaphores
+			-They are integer variables that count the number of wakepus saved for the future use
+			-apart from their initialization, are accessed only by two calls: wait() and signal(). 
+				wait( s ){
+					while(s<=0);
+					s = s - 1;
+				}
+
+				signal( s ){
+					s = s + 1;
+				}
+			-Semaphores can solve the critical section problem by:
+				S = 1;
+				do{
+					wait(s);
+					//critical section
+					signal(s);
+					//remainder section
+				}while(true);
+
+
+		-Monitors
+			-Special language constructs
+			-Compiler knows they are special calls
+			-So, only one process can be active in the monitor at a time.
+			-When a process calls a monitor process, the first few instructions of the procedure will check to see if any other process is currently active within the monitor.
+			-It is up to the compiler to implement mutual exclusion on monitor entries, but a common way is to use a mutex or a binary semaphore.
+
+Classical Problems related to IPC
+	* The Readers and Writers Problem
+		-this problem models acess to the database
+
+
+DeadLocks
+	*Conditions for deadlock:
+		-Mutual exclusion
+		-Hold and wait
+		-No preemption
+		-Circular wait
+
+	*Deadlock Avoidance
+		-OS has pre knowledge of some information on what resources a process requests. Then OS evaluates whether those resources can be safely allocated or not. If not, the process has to wait.
+		-Only applicable when certain information about the process and resources are known to OS
+
+
+
+
+Producer Consumer's problem solution (By use of monitors)
+
+monitor ProducerConsumer
+	condition full, empty;
+	integer count;
+
+	procedure insert(item: integer);
+	begin
+		if count = N then wait(full);
+		insert_item(item);
+		count = count + 1;
+		if count = 1 then signal(empty);
+	end
+
+	procedure remove:integer;
+	begin
+		if count = 0 then wait(empty);
+		remove = remove_item();
+		count = count - 1;
+		if count = N -1 then signal(full);
+	end
+end monitor
+
+procedure producer
+begin
+	while true do
+	begin
+		item = produce_item();
+		ProducerConsumer.insert(item);
+	end
+end
+
+procedure consumer
+begin
+	while true do
+	begin
+		item = ProducerConsumer.remove();
+		consume_item(item);
+	end
+end
+
+
+
+
+
+Producer Consumer Problem with Message Passing
+*-*-*-**-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+
+#define N 100
+
+void producer(void){
+	int item;
+	message m;
+
+	while(TRUE){
+		item = produce_item();
+		receive(consumer, &m);
+		build_message(&m, item);
+		send(consumer, &m);
+	}
+}
+
+void consumer(void){
+	int item;
+	message m;
+	int i;
+
+	for(i=0; i<N; i++)
+		send(producer, &m)				//send N empty message
+
+	while(TRUE){
+		receive(producer, &m);
+		item = extract_item(&m);
+		send(producer, &m);
+		consume_item(item);
+	}
+}
+
+
+
+Dining Philosopher's Problem solution:
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+
+#define N 5
+#define LEFT (i-1+N)%N
+#define RIGHT (i+1)%N
+#define TRUE 1
+#define HUNGRY 0
+#define THINKING 1
+#define EATING 2
+
+typedef int semaphore;
+
+int state[N];
+semaphore mutex = 1;
+semaphore s[N];
+
+void philosopher(int i){
+	while(TRUE){
+		think();
+		take_forks(i);
+		eat();
+		put_forks(i);
+	}
+}
+
+void take_forks(int i){
+	down(&mutex);
+	state[i] = HUNGRY;
+	test(i);
+	up(&mutex);
+	down(&s[i]);
+}
+
+void test(int i){
+	if(state[i] == HUNGRY && state[LEFT] != EATING && state[RIGHT] != EATING){
+		state[i] = EATING;
+		up(&s[i]);
+	}
+}
+
+void put_forks(int i){
+	down(&mutex);
+	state[i] = THINKING;
+	test(LEFT);
+	test(RIGHT);
+	up(&mutex);
+
+}
+
+
+Reader's Writer's Problem Solution
+*-*-**-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*
+
+typedef int semaphore;
+int rc = 0;
+semaphore mutex = 1;
+semaphore db = 1;
+
+void reader(void){
+	while(TRUE){
+		down(&mutex);
+		rc = rc + 1;
+		if(rc == 1) down(&db);
+		up(&mutex);
+		read_database();
+		down(&mutex);
+		rc = rc - 1;
+		if(rc == 0) up(&db);
+		up(&mutex);
+		process_read_data();
+	}
+}
+
+void writer(void){
+	while(TRUE){
+		prepare_data();
+		down(&db);
+		write_database();
+		up(&db);
+	}
+}
+
+
+
+Sleeping Barber Problem SOlution
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*--*
+#define CHAIRS 5
+
+typedef int semaphore;
+
+semaphore mutex = 1;
+semaphore barbers = 0;
+semaphore customers = 0;
+int waiting = 0;
+
+void barber(void){
+	while(TRUE){
+		down(&customers);
+		down(&mutex);
+		waiting = waiting - 1;
+		up(&barbers);
+		up(&mutex);
+		cut_hair();	
+	}
+}
+
+void customer(void){
+	down(&mutex);
+	if(waiting < CHAIRS){
+		waiting = waiting + 1;
+		up(&customers);
+		up(&mutex);
+		down(&barbers);
+		get_haircut();
+	}else{
+		up(&mutex);
+	}
+}

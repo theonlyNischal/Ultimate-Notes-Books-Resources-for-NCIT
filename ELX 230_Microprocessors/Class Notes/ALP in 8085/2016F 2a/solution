@@ -1,0 +1,2 @@
+lxi h, c000h ;assuming that the input is in c000h.
+

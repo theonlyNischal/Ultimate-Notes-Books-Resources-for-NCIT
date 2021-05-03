@@ -1,0 +1,25 @@
+-Available file formats are: FAT 16, FAT 32, NTFS.
+	-FAT 16: 16 bit disk addressing
+	-FAT 32: 32 bit disk addressing
+	-NTFS: 64 bit disk addressing
+
+-Built in disk management tool : disk manager
+
+
+-Security:
+	Keberos 5 security protocol.
+	Encrypted File System
+
+-Memory Management in linux
+	-Tries to avoid segmentatation
+	-Uses Paging
+		- 4K page size
+		- Three level page table
+		- 64 bit address space
+
+		On x86 processors:	only two level page tables, paging supported in hardware, TLB provided as well
+
+		First 2 MB of memory is reserved for PC architecture and for OS text and data. The rest is available for paging.
+		Also implements mechanism for allocating contiguous page frames. Tackles with the fragmentation by Buddy System algorithm.
+		slab allocator for dealing
+			with small memory area allocation

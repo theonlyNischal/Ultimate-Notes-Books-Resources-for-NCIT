@@ -1,0 +1,1 @@
+Write a 8085 program to find smallest of 3 numbers.

@@ -1,0 +1,3 @@
+http://fsd-amoeba.sourceforge.net/amoeba.html#System%20architecture
+
+https://www.e-reading.club/chapter.php/143358/259/Tanenbaum_-_Distributed_operating_systems.html

@@ -1,0 +1,19 @@
+;smallest of three numbers
+
+lxi h,0c000h; assuming the first number is in c000h
+mov b,m
+
+inx h
+mov a,m
+cmp b
+jnc skip
+mov b,a
+skip: inx h
+mov a,m
+cmp b
+jnc skip1
+mov b,a
+skip1: mov a,b
+out 00h
+
+hlt

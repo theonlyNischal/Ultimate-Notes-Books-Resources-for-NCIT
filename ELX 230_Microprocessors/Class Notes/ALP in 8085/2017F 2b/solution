@@ -1,0 +1,16 @@
+lxi h, 0c000h
+lxi d, 0c00eh
+
+mvi c,0ah
+
+loop: mov a,m
+ani 01h
+jz skip
+mov a,m
+stax d
+inx d
+skip: inx h
+dcr c
+jnz loop
+
+hlt
