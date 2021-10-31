@@ -1,0 +1,149 @@
+Setting environment for using XAMPP for Windows.
+Anushka@DESKTOP-BHNQHBB c:\xampp
+# mysql -u root;
+ERROR 1045 (28000): Access denied for user 'root;'@'localhost' (using password: NO)
+
+Anushka@DESKTOP-BHNQHBB c:\xampp
+#  mysql -u root
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 25
+Server version: 10.4.11-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> create database CollMgmtSys;
+ERROR 1007 (HY000): Can't create database 'collmgmtsys'; database exists
+MariaDB [(none)]> use CollMgmtSys;
+Database changed
+MariaDB [CollMgmtSys]> show tables;
++-----------------------+
+| Tables_in_collmgmtsys |
++-----------------------+
+| class                 |
+| enrolled              |
+| faculty               |
+| student               |
++-----------------------+
+4 rows in set (0.001 sec)
+
+MariaDB [CollMgmtSys]> select name from student where major = 'Software';
++------------+
+| name       |
++------------+
+| Susan Guru |
+| Gopal Shre |
++------------+
+2 rows in set (0.000 sec)
+
+MariaDB [CollMgmtSys]> select name, age, major from student;
++------------+------+------------+
+| name       | age  | major      |
++------------+------+------------+
+| Susan Guru |   24 | Software   |
+| Sam KC     |   23 | Computer   |
+| Hari Rai   |   25 | Electronic |
+| Gopal Shre |   26 | Software   |
++------------+------+------------+
+4 rows in set (0.000 sec)
+
+MariaDB [CollMgmtSys]> select name from student where major = 'Soft' and age > 25;
+Empty set (0.001 sec)
+
+MariaDB [CollMgmtSys]> select name from student where major = 'Software' and age > 25;
++------------+
+| name       |
++------------+
+| Gopal Shre |
++------------+
+1 row in set (0.000 sec)
+
+MariaDB [CollMgmtSys]> select name from student where name like 'S%';
++------------+
+| name       |
++------------+
+| Susan Guru |
+| Sam KC     |
++------------+
+2 rows in set (0.000 sec)
+
+MariaDB [CollMgmtSys]> select name from student where name like '%.T%';
+Empty set (0.000 sec)
+
+MariaDB [CollMgmtSys]> select name from faculty where name like '%.T%';
++------+
+| name |
++------+
+| R.Th |
+| S.Ta |
++------+
+2 rows in set (0.000 sec)
+
+MariaDB [CollMgmtSys]> select * from class;
++------+------+------+------+
+| Name | Time | Room | Fid  |
++------+------+------+------+
+| C+   | M9   | R3   | F5   |
+| Ma   | M8   | R4   | F5   |
+| C+   | E5   | R7   | F5   |
+| PH   | E5   | R7   | F5   |
++------+------+------+------+
+4 rows in set (0.000 sec)
+
+MariaDB [CollMgmtSys]> select Name from class where Time = 'E5';
++------+
+| Name |
++------+
+| C+   |
+| PH   |
++------+
+2 rows in set (0.000 sec)
+
+MariaDB [CollMgmtSys]> select * from Faculty order by dept desc , Fid ;
++------+------+------+
+| Fid  | Name | Dept |
++------+------+------+
+| F5   | P.Ac | Scie |
+| F5   | R.Th | Math |
+| F5   | B.Sh | Comp |
+| F5   | S.Ta | Comp |
++------+------+------+
+4 rows in set (0.000 sec)
+
+MariaDB [CollMgmtSys]> select Name from Class where Fid in (select Fid in Faculty where Name ='B.Sh');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Faculty where Name ='B.Sh')' at line 1
+MariaDB [CollMgmtSys]> select Name from class where Room ='R3' of Fid =(select Fid from Faculty where Name ='B.Sh');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'of Fid =(select Fid from Faculty where Name ='B.Sh')' at line 1
+MariaDB [CollMgmtSys]> select Name from class where Room ='R3' or Fid =(select Fid from Faculty where Name ='B.Sh');
++------+
+| Name |
++------+
+| C+   |
+| Ma   |
+| C+   |
+| PH   |
++------+
+4 rows in set (0.001 sec)
+
+MariaDB [CollMgmtSys]> select Name from student where Snum in (select Snum from Enrolled where Classname = 'C++');
++------------+
+| Name       |
++------------+
+| Susan Guru |
+| Sam KC     |
++------------+
+2 rows in set (0.001 sec)
+
+MariaDB [CollMgmtSys]> select Name, Dept from Faculty where Fid in (select Fid from Class where Time = 'E5');
++------+------+
+| Name | Dept |
++------+------+
+| B.Sh | Comp |
+| R.Th | Math |
+| S.Ta | Comp |
+| P.Ac | Scie |
++------+------+
+4 rows in set (0.001 sec)
+
+MariaDB [CollMgmtSys]>
