@@ -1,0 +1,84 @@
+Data Models
+
+What do you mean by Data model? 
+Simply, Data model is the modeling of the data description, data semantics, and consistency constraints(used to define rules that must be followed for the data you are going to be entering in the table you create) of the data.
+It provides a way to describe the design of database.
+The data model emphasizes on what data is needed and how it should be organized instead of what operations will be performed on data. 
+Data Model is like an architect's building plan, which helps to build conceptual models and set a relationship between data items.
+In simplified version,the data models are used to represent the data and how it is stored in the database and to set the relationship between data items. 
+
+
+Why do we use Data Model ?
+
+Ensures that all data objects required by the database are accurately represented.
+A data model helps design the database at the conceptual, physical and logical levels.
+The structure of Data Model helps to define the relational tables, primary and foreign keys and stored procedures. 
+Though the initial creation of data model is labor and time consuming, in the long run, it makes your IT infrastructure upgrade and maintenance cheaper and faster.
+It is also helpful to identify missing and redundant data.
+
+Types of Data Models
+
+There are mainly three different types of data models: 
+Conceptual Data Model (High level)
+Logical Data Model (Representational / Implementational level)
+Physical Data Model (Low level)
+
+Basic concept of these three models :
+
+The conceptual model is to establish the entities, their attributes, and their relationships.
+The logical model defines the structure of the data elements and set the relationships between them.
+The physical model describes the database-specific Implementation of the data model.
+
+Detailed Information of these models
+
+
+Conceptual Model
+
+A conceptual model identifies the highest-level relationships between the different entities. 
+Feature of conceptual data model includes the following:
+Includes the important entities and the relationships among them.
+No attribute is specified.
+No primary key is specified.
+
+
+     
+             
+
+Example of Conceptual Model :
+From the given figure, we can see that the only information shown via the conceptual data model is the entities that describe the data and the relationships between those entities. No other information is shown through the conceptual data model.
+
+2. Logical Data Model
+
+A logical data model describes the data in as much detail as possible, without the regard how they will be physically implemented in the database. 
+Features of a logical data module are as follows :
+Includes all entities and relationships among them.
+All attributes for each entity is specified.
+The primary key for each entity is specified.
+Foreign keys are specified.
+Normalization(process of organizing the data in the database;divides the larger table into the smaller table and links them using relationship.) occurs at this level.
+
+Example of Logical Model
+In this model, primary keys for all entities are specified. The relationships between different entities are found out. All the attributes related to each entity are found. Normalization takes place.
+
+3. Physical Data Model
+Physical Data Model represents how the model will be built in the database. A physical database model shows all table structures, including column name, column data type, column constraints, primary key, foreign key, and relationships between tables.
+Features of a physical data model includes:
+Specification of all tables and columns.
+Foreign keys are used to identify relationships between tables.
+Physical data model will be different for different RDBMS. For example, data type for a column may be different between MYSQL and SQL Server. 
+
+Example of Physical Model
+In this model, entities are converted into tables. Relationships are converted into foreign keys.Attributes are converted into columns. Physical data model are modified based on physical constraints/requirements.
+
+Logical Versus Conceptual 
+
+In a logical data model, primary keys are present, whereas in a conceptual data model, no primary key is present.
+In a logical data model, all attributes are specified within an entity. No attributes are specified in a conceptual data model.
+Relationships between entities are specified using primary keys and foreign keys in a logical data model. In a conceptual data model, the relationships are simply know that two entities are related, but we do not specify what attributes are used for this relationship.
+
+Logical Versus Physical
+Entity names in Logical model are now table names in Physical model.
+Similarly, Attributes are now column names.
+Data type for each column is specified. Data types can be different depending on the actual database being used.
+
+Thank you!!! :)

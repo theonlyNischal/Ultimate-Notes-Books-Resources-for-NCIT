@@ -13,6 +13,8 @@ To add your notes on this repo, fork the repo and upload your files using the gi
 
 Please help us in adding new resources. Add your resources here or you can mail at: aakrist666@gmail.com, aakrist666(at)gmail.com
 
+Search via: https://notesearch.bloggernepal.com/
+
 
 
       
