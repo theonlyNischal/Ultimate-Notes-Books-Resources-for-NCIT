@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <style>
+            table,th,td{
+                border:3px solid black;
+            }
+        </style>
+    </head>
+    <body>
+        <input type="radio" id="blue" name="color" value="blue"/>Blue
+        <input type="radio" id="red" name="color" value="red"/>Red
+        <table id="myTable">
+            <tr>
+                <th>Item</th>
+                <th>Qty</th>
+                <th>Price</th>
+                <th>Total</th>
+            </tr>
+            <tr>
+                <td>Laptop</td>
+                <td><input type="text" size="3" id="lqty"/></td>
+                <td>NRs.100000</td>
+                <td><input type="text" id="ltotal" onfocus="this.blur()"/></td>
+            </tr>
+            <tr>
+                <td>Mobile</td>
+                <td><input type="text" size="3" id="mqty"/></td>
+                <td>NRs.50000</td>
+                <td><input type="text" id="mtotal" onfocus="this.blur()"/></td>
+            </tr>
+            <tr>
+                <th colspan="3"><input type="button" id="totalBtn" value="Total"/></th>
+                <td><input type="text" id="total" onfocus="this.blur()"/></td>
+            </tr>
+        </table>
+
+        <script src="tableColor.js"></script>
+    </body>
+</html>

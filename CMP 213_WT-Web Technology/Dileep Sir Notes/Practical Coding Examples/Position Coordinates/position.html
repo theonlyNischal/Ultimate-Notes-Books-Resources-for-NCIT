@@ -1,0 +1,32 @@
+<html>
+    <head>
+     
+        <style>
+            #mybox{
+                border: 2px solid blue;
+                width:200px;
+                height:100px;
+                position: absolute;
+                top:50px;
+                left:250px;
+            }
+            img{
+                width:100%;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            Left:<input type="text" id="leftcoord"/><br><br>
+            Top:<input type="text" id="topcoord"/><br><br>
+            <input type="button" value="Change Position" onclick="changepos()"/>
+        </div>
+        <div id="mybox">
+                <img src="pu_logo_new.png" />
+        </div>
+        
+
+
+        <script type="text/javascript" src="position.js"></script>
+    </body>
+</html>

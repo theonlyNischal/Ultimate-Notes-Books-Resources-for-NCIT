@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IndraChowk Lassi </title>
+
+    <!--Css-->
+    <style>
+        body {
+            background-color: rgb(19, 19, 43, 0.8);
+            color: rgba(255, 255, 255, 0.651);
+        }
+
+        #input-field {
+            position: absolute;
+            top: 10px;
+            left: 100px;
+        }
+
+        #summary {
+            position: absolute;
+            top: 10px;
+            left: 600px;
+        }
+
+        #error {
+            color: red;
+        }
+
+        table {
+            width: 300px;
+        }
+
+        table input {
+            width: 40px;
+        }
+
+        span {
+            color: rgb(252, 13, 13);
+        }
+    </style>
+    <!--Css End-->
+
+
+</head>
+
+<body>
+    <div id="input-field">
+        <form method="post" action="" id="form">
+            <h1>Indrachowk Lassi Shop</h1>
+            <!--name , address(alphabet,comma,-,number) ,ph no only 10, quantity(2 digits only), default cash on delivery-->
+            <br><br>Customer Name:&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="name" id="name" placeholder="NAME">
+            <span id="errname"></span>
+            <br><br>Customer Address:&nbsp;<input type="text" name="address" id="address">
+            <span id="erraddress"> </span>
+            <br><br>Customer Phone:&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="phone" id="phone">
+            <span id="errphone"> </span>
+            <br><br>
+            <table border="1">
+                <tr>
+                    <th>Lassi type</th>
+                    <th>Price</th>
+                    <th>Qty</th>
+                </tr>
+                <tr>
+                    <td>Plain Lassi</td>
+                    <td>NRs.60</td>
+                    <th><input type="text" name="plain" id="qty1"></th>
+                </tr>
+                <tr>
+                    <td>Banana Lassi</td>
+                    <td>NRs.80</td>
+                    <th><input type="text" name="banana" id="qty2"></th>
+                </tr>
+                <tr>
+                    <td>Special Lassi</td>
+                    <td>NRs.100</td>
+                    <th><input type="text" name="special" id="qty3"></th>
+                </tr>
+
+            </table>
+            <span id="errqty"></span>
+            <br><br>
+            <h1>Payment Method</h1>
+            E-sewa<input type="radio" name="payment" id="payment1">
+            Cash-on-delevery<input type="radio" name="payment" id="payment2" checked="default">
+            <br><br>
+            <input type="submit" value="submit order" id="submit">
+            <input type="reset" name="reset" value="clear order form">
+            <br><br>
+        </form>
+    </div>
+    <div id="summary">
+
+    </div>
+
+    <!--Js-->
+    <script>
+        var submit = document.getElementById("submit");
+        var errname = document.getElementById("errname");
+        var erraddress = document.getElementById("erraddress");
+        var errphone = document.getElementById("errphone");
+        var errqty = document.getElementById("errqty");
+        var summary = document.getElementById("summary");
+        var i;
+
+        submit.addEventListener("click", check, true);
+        function check(e) {
+            e.preventDefault();
+            var address = document.getElementById("address").value;
+            var phone = document.getElementById("phone").value;
+            var qty1 = document.getElementById("qty1").value;
+            var qty2 = document.getElementById("qty2").value;
+            var qty3 = document.getElementById("qty3").value;
+            var name = document.getElementById("name").value;
+            var esewa = document.getElementById("payment1").checked;
+
+            var payment;
+            if (esewa) {
+                payment = "esewa";
+            } else {
+                payment = "cash-on-delivery"
+            }
+
+            i = 0;
+
+            if (!(name.match(/^[a-zA-Z]+\s?[a-zA-Z]+?\s[a-zA-Z]+$/))) {
+                errname.innerHTML = "<br>Name should only contain letters <br>and should be of 3 words";
+            } else {
+                errname.innerHTML = '';
+                i++;
+            }
+
+            if (!address.match(/^[a-zA-Z0-9\s,.-]{3,}$/)) {//address include number,letter,comma,dot and -
+                erraddress.innerHTML = "<br>Address should only contain letters and - , ."
+            } else {
+                erraddress.innerHTML = '';
+                i++;
+            }
+
+            if (!phone.match(/^[0-9]{10}$/)) {
+                errphone.innerHTML = "<br>Phone number can only be of 10 digits"
+            } else {
+                errphone.innerHTML = '';
+                i++;
+            }
+
+            if (!(qty1.match(/^[0-9]{0,2}$/) && qty2.match(/^[0-9]{0,2}$/) && qty3.match(/^[0-9]{0,2}$/))) {
+                errqty.innerHTML = "<br>Quantity should only be of 2 digits"
+            } else {
+                errqty.innerHTML = '';
+                i++;
+            }
+
+            if(qty1==''){qty1='0';}
+            if(qty2==''){qty2='0';}
+            if(qty3==''){qty3='0';}
+
+            console.log(qty1 * 2);
+            if (i == 4) {
+                summary.innerHTML = `
+                <h1>Order Summary</h1><br><br>
+                                    ${name}<br>${address}<br>${phone}<br><br><br>
+                                    Plain lassi = ${qty1}<br>
+                                    Banana Lassi = ${qty2}<br>
+                                    Special Lassi = ${qty3}<br>
+                                    
+                                    Payment Method is ${payment}<br>
+                                    Total amount is ${Number(qty1) * 60 + Number(qty2) * 80 + Number(qty3) * 100}
+                                `
+            } else {
+                summary.innerHTML = '';
+            }
+        }
+
+    </script>
+    <!--Js End-->
+
+</body>
+
+</html>
