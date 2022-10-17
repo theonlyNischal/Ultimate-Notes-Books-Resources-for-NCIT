@@ -1,0 +1,32 @@
+<html>
+
+<head></head>
+
+<body>
+    <div class="buttons">
+        <label><input type="radio" name="fruit" value="1" onclick="msg(1)"/>Apple</label>
+        <label><input type="radio" name="fruit" value="2" onclick="msg(2)"/>Orange</label>
+        <label><input type="radio" name="fruit" value="3" onclick="msg(3)"/>Banana</label>
+    </div>
+
+
+    <script type="text/javascript">
+        function msg(choice) {
+
+            switch (choice) {
+                case 1:
+                    alert("You clicked Apple, it is basically red!");
+                    break;
+                case 2:
+                    alert("You clicked Orange, it is basically orange!");
+                    break;
+                case 3:
+                    alert("You clicked Banana, it is basically yellow!");
+                    break;
+            }
+
+        }
+    </script>
+</body>
+
+</html>

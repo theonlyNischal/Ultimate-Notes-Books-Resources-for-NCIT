@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <style>
+            .err{
+                color:red;
+            }
+        </style>
+        
+    </head>
+    <body>
+        <center>
+            <form action="process.php">
+
+
+               <label>Name:
+                   <input type="text" id="name" name="name"/>
+                   (format: lastname firstname middle-initial(uppercase))</label>
+               <span id="errname" class="err"> This is a span element</span>
+               <br><br>
+
+
+               <label>
+                   Phone number:<input type="text" id="phone" name="phone"/> (format: 00977-ddd-ddddddd)
+               </label>   
+               <span id="errph" class="err"></span>  
+               <br><br>
+               <input type="submit" id="subButton" value="Submit"/>
+            </form>
+        </center>
+
+        <script type="text/javascript" src="dom2ex1.js"></script>
+    </body>
+</html>

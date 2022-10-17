@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <style>
+            
+            #img1{
+                position: absolute;
+                top:0px;
+                left:0px;
+                z-index: 0;
+            
+            }
+            #img2{
+                position: absolute;
+                top:100px;
+                left:50px;
+                z-index: 0;
+            }
+            #img3{
+                position: absolute;
+                top:200px;
+                left:100px;
+                z-index: 0;
+            }
+            #img4{
+                position: absolute;
+                top:300px;
+                left:150px;
+                z-index: 0;
+            }
+        </style>
+       
+    </head>
+    <body>
+        <div>
+            <img src="https://ichef.bbci.co.uk/news/976/cpsprodpb/67CF/production/_108857562_mediaitem108857561.jpg" id="img1" onclick="moveTop('img1')"/>
+            <img src="https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F20%2F2018%2F12%2Fsanta-claus-2.jpg&q=85" id="img2" onclick="moveTop('img2')"/>
+            <img src="https://cdn.vox-cdn.com/thumbor/HW-LF6BxSbljrJrxVFYCAUK4_7o=/0x0:4000x2250/1400x1050/filters:focal(1680x805:2320x1445):no_upscale()/cdn.vox-cdn.com/uploads/chorus_image/image/67369155/Skateboard_.0.jpg" id="img3" onclick="moveTop('img3')"/>
+            <img src="http://p2.img.cctvpic.com/photoAlbum/page/performance/img/2020/2/6/1580979144255_105.jpg" id="img4" onclick="moveTop('img4')"/>
+        </div>
+
+        <script type="text/javascript" src="imagestack.js"></script>
+    </body>
+</html>

@@ -1,0 +1,32 @@
+
+
+<html>
+    <head>
+        <style>
+            body{
+                margin:0px;
+                padding: 0px;
+            }
+        </style>
+
+        <script>
+            function getCoord(event){
+                
+                document.getElementById('clientx').value=event.clientX;
+                document.getElementById('clienty').value=event.clientY;
+                document.getElementById('screenx').value=event.screenX;
+                document.getElementById('screeny').value=event.screenY;
+            }
+        </script>
+
+    </head>
+    <body onclick="getCoord(event)">
+        <p>Coordinates within Client Area</p>
+        clientX:<input type="text" id="clientx"/>
+        clientY:<input type="text" id="clienty"/>
+
+        <p>Coordinates Relative to Screen </p>
+        screenX:<input type="text" id="screenx"/>
+        screenY:<input type="text" id="screeny"/>
+    </body>
+</html>

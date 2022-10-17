@@ -1,0 +1,42 @@
+<html>
+
+<head>
+
+    <script>
+        function display(event) {
+
+            var msg = document.getElementById('msg');
+
+            msg.style.left = (event.clientX - 50) + "px";
+            msg.style.top = (event.clientY - 10) + "px";
+
+            msg.style.visibility = "visible";
+        }
+        function hide() {
+            document.getElementById('msg').style.visibility = "hidden";
+        }
+    </script>
+
+    <style>
+        #msg {
+            visibility: hidden;
+            position: relative;
+            border: 1px solid red;
+        }
+
+      
+    </style>
+</head>
+
+
+<body onmousedown="display(event)" onmouseup="hide()">
+
+        <span id="msg">Do not click here!</span>
+
+       
+
+
+
+</body>
+
+</html>

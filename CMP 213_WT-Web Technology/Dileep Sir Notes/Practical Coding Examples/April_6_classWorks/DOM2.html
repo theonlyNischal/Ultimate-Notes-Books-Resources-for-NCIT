@@ -1,0 +1,38 @@
+<html>
+    <head>
+        
+    </head>
+    <body>
+        <form id="myform">
+            Name:<input type="text" id="name"/><br>
+            Email:<input type="text" id="email"/><br>
+            <input type="button" value="Check" id="checkBtn"/>
+
+        </form>
+
+        <script>
+            document.getElementById('checkBtn').addEventListener('click',validate,false);        
+
+            function validate(){
+                
+                var email_value=document.getElementById('email').value;
+
+                if(email_value==""){
+                    alert('email field is empty');
+                }
+                else{
+                    //basic pattern abc@gmail.com
+                    var pos=email_value.search(/^\w+@\w+\.\w{2,4}$/);
+                    
+                    if(pos==0){
+                        alert("email is valid");
+                    }
+                    else{
+                        alert("invalid email");
+                    }
+
+                }
+            }
+            </script>
+    </body>
+</html>

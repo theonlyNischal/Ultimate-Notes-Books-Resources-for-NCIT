@@ -1,0 +1,38 @@
+<html>
+    <head>
+
+            <style>
+                #mybox{
+                    width:400px;
+                    height: 200px;
+                    border: 2px solid green;
+                }
+                #textbox{
+                    height:100px;
+                    width:600px;
+                    margin-top:20px;
+                }
+
+             
+            </style>
+    </head>
+    <body>
+        
+        <div id="mybox">
+            <h3>Sample Heading</h3>
+        </div>
+
+        <div id="textbox">
+
+            <span onmouseover="this.style.fontSize='30px'" onmouseout="this.style.fontSize='16px'">Font Color:</span>
+            <input type="text" id="fontcolor" />
+
+            <input type="button" id="fontbutton" value="Change Font Color" /><br><br>
+            Background Color:<input type="text" id="bgcolor" />
+            <input type="button" id="bgbutton" value="Change background Color" />
+        </div>
+
+
+        <script type="text/javascript" src="color.js"></script>
+    </body>
+</html>
