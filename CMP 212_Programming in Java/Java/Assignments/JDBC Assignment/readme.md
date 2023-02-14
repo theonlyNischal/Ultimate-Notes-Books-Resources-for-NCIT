@@ -154,7 +154,7 @@ Answer:-
 - # Ask the user to enter a faculty and print the average marks of the students enrolled in that faculty.
 
 
-Answer:-
+Answer:-  "[ConnectDb.java](https://github.com/dhunganaPradeep/Java/blob/main/Assignments/JDBC%20Assignment/ConnectDb.java)"
   
 
 # [Assume that the table has following columns: roll, name, faculty, marks]
