@@ -1,0 +1,10 @@
+2023-10-05 16:25:01.227 [info] [perf] Render performance baseline is 63ms
+2023-10-05 16:25:10.700 [info] [perf] Render performance baseline is 77ms
+2023-10-05 16:26:18.076 [error] Unknown (FileSystemError): Failed to move 'MTH130_MFCS -  Mathematical Foundation of Computer Science' to the trash
+    at i.create (/usr/share/code/resources/app/out/vs/code/electron-main/main.js:37:3400)
+    at n (/usr/share/code/resources/app/out/vs/code/electron-main/main.js:37:3512)
+    at $.s (/usr/share/code/resources/app/out/vs/code/electron-main/main.js:42:41957)
+2023-10-05 16:26:18.091 [error] Failed to move 'MTH130_MFCS -  Mathematical Foundation of Computer Science' to the trash: Unknown (FileSystemError): Failed to move 'MTH130_MFCS -  Mathematical Foundation of Computer Science' to the trash
+    at i.create (/usr/share/code/resources/app/out/vs/code/electron-main/main.js:37:3400)
+    at n (/usr/share/code/resources/app/out/vs/code/electron-main/main.js:37:3512)
+    at $.s (/usr/share/code/resources/app/out/vs/code/electron-main/main.js:42:41957)
