@@ -1,0 +1,1 @@
+All the credit of Notes goes to Rishi sir which was provided during 2023 of BESE Fall 2019 Batch.
