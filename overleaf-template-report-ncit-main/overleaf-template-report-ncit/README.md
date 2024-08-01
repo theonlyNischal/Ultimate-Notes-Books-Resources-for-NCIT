@@ -2,6 +2,9 @@
 
 This repository contains an Overleaf template designed for writing project reports at NCIT College. It provides a structured format to help you create professional and consistent reports.
 
+## Author
+[Pradip Dhungana](https://dhunganapradip.com.np/)
+
 ## Contents
 
 - **Overleaf Template**: A ready-to-use Overleaf template for creating project reports.
